@@ -1,0 +1,45 @@
+* Interesse for deltagelse (id 82087) - 03.09.2018 15:50
+
+* Variabel	Etikett
+
+
+Fornavn	Fornavn
+
+
+Etternavn	Etternavn
+
+
+Bursdag	Fødselsdato
+
+
+Epost	E-post
+
+
+Telefon	Telefonnummer
+
+
+Adresse	Adresse
+
+
+Sted	Post-sted
+
+
+Postnummer	Postnummer
+
+
+TilleggsInfo	Har du noe tilleggsinformasjon du ønsker informere oss om?
+
+
+Inklusjon	null
+
+Ja	Jeg har lest om prosjektet og oppfyller inklusjonskriteriene
+
+
+Deltatt_tidligere	null
+
+Ja	Jeg har vært med før og ønsker å delta på nytt
+
+
+Nyrekruttert	null
+
+Ja	Jeg har ikke vært med før
