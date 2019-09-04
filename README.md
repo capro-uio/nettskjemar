@@ -6,7 +6,9 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/Athanasiamo/nettskjemar.svg?branch=master)](https://travis-ci.org/Athanasiamo/nettskjemar)
+status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
+[![Codecov test
+coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/nettskjemar?branch=master)
 <!-- badges: end -->
 
 The goal of nettskjemar is to …
@@ -16,8 +18,10 @@ The goal of nettskjemar is to …
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("LCBC-UiO/nettskjemar")
+# install.packages("remotes")
+remotes::install_github("LCBC-UiO/nettskjemar")
+#> Skipping install of 'nettskjemar' from a github remote, the SHA1 (888722a9) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 ```
 
 ## Example
