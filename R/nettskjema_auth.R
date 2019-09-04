@@ -92,8 +92,6 @@ nettskjema_renviron_edit <- function(){
   usethis::edit_r_environ()
 }
 
-
-
 nettskjema_api <- function(path, token_name) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
   httr::GET(url,
