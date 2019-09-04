@@ -25,7 +25,7 @@ The goal of nettskjemar is to ...
 
 Install the development version from [GitHub](https://github.com/) with:
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # install.packages("remotes")
 remotes::install_github("LCBC-UiO/nettskjemar")
 ```
@@ -54,5 +54,5 @@ nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
 
 
 ## Documentation
-Package documentation can be found on the associated [GitHub pages](https://lcbc-uio.github.io/nettskjemar/), among other documentation on [how to create the API acces user and token]().
+Package documentation can be found on the associated [GitHub pages](https://lcbc-uio.github.io/nettskjemar/), among other documentation on [how to create the API acces user and token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
 

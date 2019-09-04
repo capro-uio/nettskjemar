@@ -13,43 +13,46 @@ coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.s
 
 The goal of nettskjemar is to …
 
-## Installation
-
-And the development version from [GitHub](https://github.com/) with:
+Install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("LCBC-UiO/nettskjemar")
 ```
 
-## Setting up a connection to the Nettskjema API
+## Setting up the authentication
 
-To set up a connection to the Nettskjema API, you need to create an
-api-user, and a token associated with this user. Use the
-“nettskjema\_user\_create” function to be routed to the portal to set
-this up.
-
-``` r
-library(nettskjemar)
-#nettskjema_user_create()
-```
-
-![](inst/static/nettskjema_api_create.png)
-![](inst/static/nettskjema_api_create2.png)
-![](inst/static/nettskjema_create_token.png)
-![](inst/static/nettskjema_create_token2.png)
+The is a
+[wiki](https://github.com/LCBC-UiO/nettskjemar/wiki/Setting-up-authentication)
+on setting up the authentication to access the nettskjema through the
+api. This will need to be completed before you can access any other
+features of this package.
 
 ## Example
 
 Currently there are very few functions actually working in the package.
 The most important, is the function that will download nettskjema
-submission data and return them as a tibble (data.frame).
+submission data and return them as a tibble (data.frame). This needs
+only the *id* of a nettskjema, which can be found in the last part of
+the nettskjema url.
 
 ``` r
-## basic example code
+library(nettskjema)
+
+nettskjema_get_data(nettskjema_id)
+```
+
+If you do not have the codebook activated, or you want to use the full
+answers to questions rather than the coded ones, you can toggle off code
+book answers:
+
+``` r
+nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
 ```
 
 ## Documentation
 
 Package documentation can be found on the associated [GitHub
-pages](https://lcbc-uio.github.io/nettskjemar/)
+pages](https://lcbc-uio.github.io/nettskjemar/), among other
+documentation on [how to create the API acces user and
+token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
