@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check nettskjema API token expiry date — nettskjema_token_expiry • nettskjemar</title>
+<title>Get data from a form — nettskjema_get_data • nettskjemar</title>
 
 
 <!-- jquery -->
@@ -33,9 +33,8 @@
 
 
 
-<meta property="og:title" content="Check nettskjema API token expiry date — nettskjema_token_expiry" />
-<meta property="og:description" content="Given an API token, will retrieve the expiry
-date of the said token." />
+<meta property="og:title" content="Get data from a form — nettskjema_get_data" />
+<meta property="og:description" content="Get data from a form" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,30 +101,34 @@ date of the said token." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check nettskjema API token expiry date</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Athanasiamo/nettskjemar/blob/master/R/nettskjema_auth.R'><code>R/nettskjema_auth.R</code></a></small>
-    <div class="hidden name"><code>nettskjema_token_expiry.Rd</code></div>
+    <h1>Get data from a form</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Athanasiamo/nettskjemar/blob/master/R/nettskjema_get.R'><code>R/nettskjema_get.R</code></a></small>
+    <div class="hidden name"><code>nettskjema_get_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Given an API token, will retrieve the expiry
-date of the said token.</p>
+    <p>Get data from a form</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_token_expiry</span>(<span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_data</span>(<span class='no'>form_id</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>form_id</th>
+      <td><p>integer. Number of the form to retrieve
+data from</p></td>
+    </tr>
+    <tr>
       <th>token_name</th>
-      <td><p>Given name of the token</p></td>
+      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character date string</p>
+    <p>tibble data.frame</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

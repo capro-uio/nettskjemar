@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check nettskjema API token expiry date — nettskjema_token_expiry • nettskjemar</title>
+<title>Get all forms you have access to — nettskjema_get_forms • nettskjemar</title>
 
 
 <!-- jquery -->
@@ -33,9 +33,9 @@
 
 
 
-<meta property="og:title" content="Check nettskjema API token expiry date — nettskjema_token_expiry" />
-<meta property="og:description" content="Given an API token, will retrieve the expiry
-date of the said token." />
+<meta property="og:title" content="Get all forms you have access to — nettskjema_get_forms" />
+<meta property="og:description" content="With the fiven API token, will retrieve
+a list of all the forms you have access to" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,30 +102,30 @@ date of the said token." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check nettskjema API token expiry date</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Athanasiamo/nettskjemar/blob/master/R/nettskjema_auth.R'><code>R/nettskjema_auth.R</code></a></small>
-    <div class="hidden name"><code>nettskjema_token_expiry.Rd</code></div>
+    <h1>Get all forms you have access to</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Athanasiamo/nettskjemar/blob/master/R/nettskjema_get.R'><code>R/nettskjema_get.R</code></a></small>
+    <div class="hidden name"><code>nettskjema_get_forms.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Given an API token, will retrieve the expiry
-date of the said token.</p>
+    <p>With the fiven API token, will retrieve
+a list of all the forms you have access to</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_token_expiry</span>(<span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_forms</span>(<span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>token_name</th>
-      <td><p>Given name of the token</p></td>
+      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character date string</p>
+    <p>list</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
