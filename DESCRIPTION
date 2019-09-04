@@ -19,7 +19,9 @@ Imports:
     stringr,
     usethis,
     httr,
-    jsonlite
+    jsonlite,
+    purrr,
+    tibble
 Suggests: 
     knitr,
     rmarkdown,

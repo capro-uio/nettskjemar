@@ -110,14 +110,20 @@
     <p>Get data from a form</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_data</span>(<span class='no'>form_id</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_data</span>(<span class='no'>form_id</span>, <span class='kw'>use_codebook</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>form_id</th>
-      <td><p>integer. Number of the form to retrieve
+      <td><p>integer. Number of the form to retrieve</p></td>
+    </tr>
+    <tr>
+      <th>use_codebook</th>
+      <td><p>logical. Use codebook for answers, or
+retrieve actualy text options.
 data from</p></td>
     </tr>
     <tr>

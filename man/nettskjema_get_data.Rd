@@ -4,10 +4,14 @@
 \alias{nettskjema_get_data}
 \title{Get data from a form}
 \usage{
-nettskjema_get_data(form_id, token_name = "NETTSKJEMA_API_TOKEN")
+nettskjema_get_data(form_id, use_codebook = TRUE,
+  token_name = "NETTSKJEMA_API_TOKEN")
 }
 \arguments{
-\item{form_id}{integer. Number of the form to retrieve
+\item{form_id}{integer. Number of the form to retrieve}
+
+\item{use_codebook}{logical. Use codebook for answers, or
+retrieve actualy text options.
 data from}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
