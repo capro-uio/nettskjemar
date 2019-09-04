@@ -45,6 +45,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/auth_setup.html">Setting up Nettskjema API authentication</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -75,17 +87,14 @@
 <!-- badges: start -->
 
 <p>The goal of nettskjemar is to …</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<p>Install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"LCBC-UiO/nettskjemar"</span>)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;   </span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>g0<span class="op">/</span>twfkwxms1jb4bhc098_l35g80000gq<span class="op">/</span>T<span class="op">/</span>RtmpxOrAMa<span class="op">/</span>remotes9c93350a251c<span class="op">/</span>LCBC<span class="op">-</span>UiO<span class="op">-</span>nettskjemar<span class="op">-</span>f46e128<span class="op">/</span>DESCRIPTION’ ...</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>g0<span class="op">/</span>twfkwxms1jb4bhc098_l35g80000gq<span class="op">/</span>T<span class="op">/</span>Rtmp1jOKf1<span class="op">/</span>remotes108b849877ea3<span class="op">/</span>LCBC<span class="op">-</span>UiO<span class="op">-</span>nettskjemar<span class="op">-</span>78356bc<span class="op">/</span>DESCRIPTION’ ...</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">✔  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>g0<span class="op">/</span>twfkwxms1jb4bhc098_l35g80000gq<span class="op">/</span>T<span class="op">/</span>RtmpxOrAMa<span class="op">/</span>remotes9c93350a251c<span class="op">/</span>LCBC<span class="op">-</span>UiO<span class="op">-</span>nettskjemar<span class="op">-</span>f46e128<span class="op">/</span>DESCRIPTION’</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">✔  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span>g0<span class="op">/</span>twfkwxms1jb4bhc098_l35g80000gq<span class="op">/</span>T<span class="op">/</span>Rtmp1jOKf1<span class="op">/</span>remotes108b849877ea3<span class="op">/</span>LCBC<span class="op">-</span>UiO<span class="op">-</span>nettskjemar<span class="op">-</span>78356bc<span class="op">/</span>DESCRIPTION’</a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb1-9" data-line-number="9">  </a>
 <a class="sourceLine" id="cb1-10" data-line-number="10">─  preparing ‘nettskjemar’<span class="op">:</span></a>
@@ -107,18 +116,25 @@
 <a class="sourceLine" id="cb1-26" data-line-number="26">  </a>
 <a class="sourceLine" id="cb1-27" data-line-number="27">   </a>
 <a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt; </span></a></code></pre></div>
+<div id="setting-up-the-authentication" class="section level2">
+<h2 class="hasAnchor">
+<a href="#setting-up-the-authentication" class="anchor"></a>Setting up the authentication</h2>
+<p>The is a <a href="https://github.com/LCBC-UiO/nettskjemar/wiki/Setting-up-authentication">wiki</a> on setting up the authentication to access the nettskjema through the api. This will need to be completed before you can access any other features of this package.</p>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nettskjemar)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">## basic example code</span></a></code></pre></div>
+<p>Currently there are very few functions actually working in the package. The most important, is the function that will download nettskjema submission data and return them as a tibble (data.frame). This needs only the <em>id</em> of a nettskjema, which can be found in the last part of the nettskjema url.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nettskjema)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="reference/nettskjema_get_data.html">nettskjema_get_data</a></span>(nettskjema_id)</a></code></pre></div>
+<p>If you do not have the codebook activated, or you want to use the full answers to questions rather than the coded ones, you can toggle off code book answers:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/nettskjema_get_data.html">nettskjema_get_data</a></span>(nettskjema_id, <span class="dt">use_codebook =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>Package documentation can be found on the associated <a href="https://lcbc-uio.github.io/nettskjemar/">GitHub pages</a></p>
+<p>Package documentation can be found on the associated <a href="https://lcbc-uio.github.io/nettskjemar/">GitHub pages</a>, among other documentation on <a href="">how to create the API acces user and token</a>.</p>
 </div>
 </div>
   </div>

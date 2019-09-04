@@ -35,7 +35,7 @@ nettskjema_get_data <- function(form_id, use_codebook = TRUE, token_name = "NETT
 #' @export
 nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
-  resp <- nettskjema_api("forms", token_name = token_name)
+  resp <- nettskjema_api("forms/", token_name = token_name)
 
   api_catch_error(resp)
   api_catch_empty(resp)

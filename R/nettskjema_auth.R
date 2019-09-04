@@ -58,7 +58,7 @@ nettskjema_token2renviron <- function(token,
 
   token_exists <- grep(paste0("^", token_name, "="), envir)
   if(length(token_exists) != 0){
-    if(force){
+    if(overwrite){
       message(paste0("Token name '", token_name,
                      "' already exists, forcing an overwrite."))
       envir[token_exists] <- paste(token_name, token, sep="=")
@@ -74,7 +74,8 @@ nettskjema_token2renviron <- function(token,
   writeLines(envir, path)
 
   # Make sure the file is only accessible to the user
-  Sys.chmod(path, mode = "0400")
+  Sys.chmod(path, mode = "0700")
+
 }
 
 #' Open .Renviron file for editing
