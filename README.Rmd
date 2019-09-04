@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# nettskjemar
+# nettskjemar <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
