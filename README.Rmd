@@ -31,12 +31,27 @@ And the development version from [GitHub](https://github.com/) with:
 remotes::install_github("LCBC-UiO/nettskjemar")
 ```
 
+## Setting up a connection to the Nettskjema API
+To set up a connection to the Nettskjema API, you need to create an api-user, and a token associated with this user. 
+Use the "nettskjema_user_create" function to be routed to the portal to set this up.
+
+```{r}
+library(nettskjemar)
+#nettskjema_user_create()
+```
+
+![](inst/static/nettskjema_api_create.png){width=50%}
+![](inst/static/nettskjema_api_create2.png){width=50%}
+![](inst/static/nettskjema_create_token.png){width=50%}
+![](inst/static/nettskjema_create_token2.png){width=50%}
+
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Currently there are very few functions actually working in the package.
+The most important, is the function that will download nettskjema submission data and return them as a tibble (data.frame). 
 
 ```{r example}
-library(nettskjemar)
 ## basic example code
 ```
 

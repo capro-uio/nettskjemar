@@ -32,7 +32,7 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
 #' TODO: Add possibility to supply username and description through function
 #' @export
-api_user_create <- function(){
+nettskjema_user_create <- function(){
   utils::browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
@@ -115,6 +115,26 @@ api_catch_error <- function(resp){
       paste(
         "Nettskjema API request failed with error",
         paste(httr::status_code(resp), parsed$message, sep=": "),
+        sep="\n"
+      ),
+      call. = FALSE
+    )
+  }
+}
+
+
+api_catch_empty <- function(resp){
+  if (httr::http_type(resp) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
+  parsed <- jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
+
+  if (resp$status_code == 500) {
+    stop(
+      paste(
+        "Nettskjema API request with",
+        httr::http_status(resp)$message,
         sep="\n"
       ),
       call. = FALSE

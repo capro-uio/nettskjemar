@@ -18,6 +18,7 @@ nettskjema_get_data <- function(form_id, use_codebook = TRUE, token_name = "NETT
 
   cont <- httr::content(resp)
 
+  # Add form_id to the outputed data
   dt <- dplyr::mutate(clean_form_submissions(cont),
          form_id = form_id)
   dplyr::select(dt, form_id, dplyr::everything())
@@ -34,9 +35,10 @@ nettskjema_get_data <- function(form_id, use_codebook = TRUE, token_name = "NETT
 #' @export
 nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
-  resp <- nettskjema_api("users/admin/users", token_name = token_name)
+  resp <- nettskjema_api("forms", token_name = token_name)
 
   api_catch_error(resp)
+  api_catch_empty(resp)
 
   httr::content(resp)
 
