@@ -20,8 +20,6 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("remotes")
 remotes::install_github("LCBC-UiO/nettskjemar")
-#> Skipping install of 'nettskjemar' from a github remote, the SHA1 (888722a9) has not changed since last install.
-#>   Use `force = TRUE` to force installation
 ```
 
 ## Example
@@ -32,3 +30,8 @@ This is a basic example which shows you how to solve a common problem:
 library(nettskjemar)
 ## basic example code
 ```
+
+## Documentation
+
+Package documentation can be found on the associated [GitHub
+pages](https://lcbc-uio.github.io/nettskjemar/)
