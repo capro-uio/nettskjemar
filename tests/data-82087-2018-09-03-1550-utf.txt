@@ -1,4 +1,0 @@
-NR	E-post	Opprettet	Endret	Fornavn	Etternavn	Bursdag	Epost	Telefon	Adresse	Sted	Postnummer	TilleggsInfo	Inklusjon_1	Deltatt_tidligere_1	Nyrekruttert_1	Svartid
-1735123	random@gmail.com	09.04.2017 08:50	09.04.2017 08:50	Athanasia Monika	Mowinckel	12.01.1999	random@gmail.com	9999999	Evenrytveien 123	Isgard	1337	test. Slett svaret senere	Ja		Ja	1 minutt
-1735124	greta.garbo@gmail.com	12.04.2017 08:50	12.04.2017 10:12	Gretha	Garbo	18.11.1905	greta.garbo@gmail.com	9999799	Hollywood glam 2	Hollywood	8995	Swedish-American film actress	Ja			3 minutt
-1735125	marlene.dietrich@gmail.com	12.04.2017 08:50	12.04.2017 10:12	Marlene	Dietrich	27.12.1901	marlene.dietrich@gmail.com	9999889	Champs-Elyssé 400	Paris	5555	German actress and singer 		Ja		3 minutt
