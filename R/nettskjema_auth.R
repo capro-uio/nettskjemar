@@ -4,7 +4,7 @@
 #' Given an API token, will retrieve the expiry
 #' date of the said token.
 #'
-#' @param token_name Given name of the token
+#' @inheritParams nettskjema_get_forms
 #'
 #' @return character date string
 #' @export
@@ -43,9 +43,9 @@ nettskjema_user_create <- function(){
 #' name you provide.
 #'
 #' @param token character. Token generated in the UiO portal \code{api_user_create}
-#' @param token_name character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'
 #' @param overwrite logical. Overwrite token if token by that name already exists.
 #' Defaults to FALSE
+#' @inheritParams nettskjema_get_forms
 #'
 #' @export
 nettskjema_token2renviron <- function(token,

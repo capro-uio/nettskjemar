@@ -13,6 +13,6 @@ nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN")
 list
 }
 \description{
-With the fiven API token, will retrieve
+With the given API token, will retrieve
 a list of all the forms you have access to
 }

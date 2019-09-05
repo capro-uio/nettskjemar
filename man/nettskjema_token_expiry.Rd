@@ -7,7 +7,7 @@
 nettskjema_token_expiry(token_name = "NETTSKJEMA_API_TOKEN")
 }
 \arguments{
-\item{token_name}{Given name of the token}
+\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 }
 \value{
 character date string

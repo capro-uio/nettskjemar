@@ -2,6 +2,7 @@
 
 export(nettskjema_get_data)
 export(nettskjema_get_forms)
+export(nettskjema_get_meta)
 export(nettskjema_renviron_edit)
 export(nettskjema_token2renviron)
 export(nettskjema_token_expiry)
