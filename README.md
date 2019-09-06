@@ -11,7 +11,14 @@ status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://t
 coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/nettskjemar?branch=master)
 <!-- badges: end -->
 
-The goal of nettskjemar is to …
+The goal of {nettskjemar} is to have easy access to data and form
+information on the [Nettskjema](https://nettskjema.uio.no/) service by
+the [University of Oslo, Norway](https://www.uio.no/english/). The
+package is under development, and is still lacking alot of desired
+functionality. Currently the main possibilities is help in creating
+users and tokens for accessing Nettskjema through its API, downloading
+meta-data about specific forms and data associated with a specific form.
+Not all types of form elements are supported yet.
 
 Install the development version from [GitHub](https://github.com/) with:
 
@@ -22,11 +29,10 @@ remotes::install_github("LCBC-UiO/nettskjemar")
 
 ## Setting up the authentication
 
-The is a
-[wiki](https://github.com/LCBC-UiO/nettskjemar/wiki/Setting-up-authentication)
-on setting up the authentication to access the nettskjema through the
-api. This will need to be completed before you can access any other
-features of this package.
+There is a tutorial on [how to create the API access user and
+token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html)
+needed to work with the api. This will need to be completed before you
+can access any other features of this package.
 
 ## Example
 

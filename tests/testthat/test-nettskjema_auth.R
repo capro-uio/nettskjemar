@@ -60,13 +60,14 @@ test_that("nettskjema_token2renviron works",{
 })
 
 test_that("api_auth  works",{
-
+  skip_if_no_auth()
   tt <- api_auth(test_token)
   expect_length(strsplit(tt, "")[[1]],
                 139)
 })
 
 test_that("nettskjema_api works",{
+  skip_if_no_auth()
   resp <- nettskjema_api(paste0("forms/", test_form),
                  test_token)
 
