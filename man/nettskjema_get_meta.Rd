@@ -10,6 +10,10 @@ nettskjema_get_meta(form_id, information = c("title", "language",
   token_name = "NETTSKJEMA_API_TOKEN")
 }
 \arguments{
+\item{form_id}{integer. Number of the form to retrieve}
+
+\item{information}{which meta data elements to extract}
+
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 }
 \value{

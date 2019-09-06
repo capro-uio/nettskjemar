@@ -4,16 +4,17 @@
 \alias{nettskjema_token2renviron}
 \title{Write token to .Renviron}
 \usage{
-nettskjema_token2renviron(token, token_name = "NETTSKJEMA_API_TOKEN",
-  overwrite = FALSE)
+nettskjema_token2renviron(token = character(),
+  token_name = "NETTSKJEMA_API_TOKEN", action = c("create",
+  "overwrite", "delete"))
 }
 \arguments{
 \item{token}{character. Token generated in the UiO portal \code{api_user_create}}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
-\item{overwrite}{logical. Overwrite token if token by that name already exists.
-Defaults to FALSE}
+\item{action}{character. One of three actions: 'create', 'overwrite' or 'delete'.
+Defaults to 'create'.}
 }
 \description{
 This function will write a token

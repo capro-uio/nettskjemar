@@ -4,7 +4,7 @@
 #' Given an API token, will retrieve the expiry
 #' date of the said token.
 #'
-#' @inheritParams nettskjema_get_forms
+#' @inheritParams nettskjema_get_data
 #'
 #' @return character date string
 #' @export
@@ -15,15 +15,15 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
                                         call. =FALSE)
 
   resp <- nettskjema_api("users/admin/tokens/expire-date",
-                      token_name = token_name)
+                         token_name = token_name)
 
   api_catch_error(resp)
 
   dt <- as.Date(unlist(httr::content(resp)))
 
   message(paste0("Token with name '", token_name, "' expires in ",
-                as.numeric(dt - Sys.Date()),
-                " days."
+                 as.numeric(dt - Sys.Date()),
+                 " days."
   ))
 
   dt
@@ -43,39 +43,69 @@ nettskjema_user_create <- function(){
 #' name you provide.
 #'
 #' @param token character. Token generated in the UiO portal \code{api_user_create}
-#' @param overwrite logical. Overwrite token if token by that name already exists.
-#' Defaults to FALSE
+#' @param action character. One of three actions: 'create', 'overwrite' or 'delete'.
+#' Defaults to 'create'.
 #' @inheritParams nettskjema_get_forms
 #'
 #' @export
-nettskjema_token2renviron <- function(token,
-                               token_name = "NETTSKJEMA_API_TOKEN",
-                               overwrite = FALSE){
+nettskjema_token2renviron <- function(token = character(),
+                                      token_name = "NETTSKJEMA_API_TOKEN",
+                                      action = c("create", "overwrite", "delete")){
+
+  # Find .Renviron path
   path <- usethis:::scoped_path_r(c("user", "project"),
                                   ".Renviron",
                                   envvar = "R_ENVIRON_USER")
+
+  action <- match.arg(action,
+                      c("create", "overwrite", "delete"),
+                      several.ok = FALSE)
+
   envir <- readLines(path)
 
   token_exists <- grep(paste0("^", token_name, "="), envir)
-  if(length(token_exists) != 0){
-    if(overwrite){
-      message(paste0("Token name '", token_name,
-                     "' already exists, forcing an overwrite."))
-      envir[token_exists] <- paste(token_name, token, sep="=")
-    }else{
-      stop(paste0("Token name '", token_name,
-                  "' already exists. Pick another name, or force an overwrite."))
-    }
-  }else{
-    envir[length(envir)+1] <- paste(token_name, token, sep="=")
-  }
+  envir_new <- switch(action,
+         "delete" = {
+           if(length(token_exists) != 0){
+             message(paste0("Deleting token name '", token_name,"'"))
+             envir <- envir[-token_exists]
+             envir
+           }else{
+             stop(paste0("Token name '", token_name,
+                         "' does not exists, nothing to delete."))
+           }
+         },
+         "overwrite" = {
+           if(length(token_exists) != 0){
+             message(paste0("Token name '", token_name,
+                            "' already exists, forcing an overwrite."))
+             envir[token_exists] <- paste(token_name, token, sep="=")
+             envir
+           }else{
+             message(paste0("Token name '", token_name,
+                            "' does not already exists, adding new token"))
+             envir[length(envir)+1] <- paste(token_name, token, sep="=")
+             envir
+           }
+         },
+         "create" = {
+           if(length(token_exists) != 0){
+             stop(paste0("Token name '", token_name,
+                         "' already exists. If you want to overwrite it, use action = 'overwrite'"),
+                  call. = FALSE)
+           }else{
+             envir[length(envir)+1] <- paste(token_name, token, sep="=")
+             message(paste0("Token name '", token_name,
+                            "' added."))
+             envir
+           }
+         })
 
   # Write updated environment variables
-  writeLines(envir, path)
+  writeLines(envir_new, path)
 
   # Make sure the file is only accessible to the user
   Sys.chmod(path, mode = "0700")
-
 }
 
 #' Open .Renviron file for editing
@@ -96,7 +126,7 @@ nettskjema_renviron_edit <- function(){
 nettskjema_api <- function(path, token_name) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
   httr::GET(url,
-      httr::add_headers(Authorization = api_auth(token_name))
+            httr::add_headers(Authorization = api_auth(token_name))
   )
 }
 
@@ -104,41 +134,4 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
   paste("Bearer", Sys.getenv(token_name))
 }
 
-api_catch_error <- function(resp){
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
 
-  parsed <- jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
-
-  if (httr::http_error(resp)) {
-    stop(
-      paste(
-        "Nettskjema API request failed with error",
-        paste(httr::status_code(resp), parsed$message, sep=": "),
-        sep="\n"
-      ),
-      call. = FALSE
-    )
-  }
-}
-
-
-api_catch_empty <- function(resp){
-  if (httr::http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::fromJSON(httr::content(resp, "text"), simplifyVector = FALSE)
-
-  if (resp$status_code == 500) {
-    stop(
-      paste(
-        "Nettskjema API request with",
-        httr::http_status(resp)$message,
-        sep="\n"
-      ),
-      call. = FALSE
-    )
-  }
-}

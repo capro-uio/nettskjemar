@@ -16,7 +16,7 @@ meta_fields <- function(){
 meta_classes <- function(content){
   nm <- names(content)
 
-  dt <- lapply(nm, meta_change_class, content)
+  dt <- lapply(nm, function(x) meta_change_class(x, content))
   names(dt) <- nm
 
   dt
