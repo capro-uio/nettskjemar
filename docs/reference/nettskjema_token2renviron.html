@@ -134,8 +134,9 @@ to the .Renviron file with the
 name you provide.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_token2renviron</span>(<span class='no'>token</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
-  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_token2renviron</span>(<span class='kw'>token</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(),
+  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='kw'>action</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"create"</span>,
+  <span class='st'>"overwrite"</span>, <span class='st'>"delete"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,9 +150,9 @@ name you provide.</p>
       <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     <tr>
-      <th>overwrite</th>
-      <td><p>logical. Overwrite token if token by that name already exists.
-Defaults to FALSE</p></td>
+      <th>action</th>
+      <td><p>character. One of three actions: 'create', 'overwrite' or 'delete'.
+Defaults to 'create'.</p></td>
     </tr>
     </table>
 
