@@ -4,10 +4,12 @@
 \alias{nettskjema_get_forms}
 \title{Get all forms you have access to}
 \usage{
-nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN")
+nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN", ...)
 }
 \arguments{
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
+
+\item{...}{arguments passed to httr::GET}
 }
 \value{
 list

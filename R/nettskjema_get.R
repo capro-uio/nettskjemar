@@ -5,14 +5,17 @@
 #' retrieve actualy text options.
 #' data from
 #' @param token_name character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'
+#' @param ... arguments passed to httr::GET
 #'
 #' @return tibble data.frame
 #' @export
-nettskjema_get_data <- function(form_id, use_codebook = TRUE, token_name = "NETTSKJEMA_API_TOKEN"){
+nettskjema_get_data <- function(form_id,
+                                use_codebook = TRUE,
+                                token_name = "NETTSKJEMA_API_TOKEN", ...){
 
   path = paste0("forms/", form_id, "/submissions")
 
-  resp <- nettskjema_api(path, token_name = token_name)
+  resp <- nettskjema_api(path, token_name = token_name, ...)
 
   api_catch_error(resp)
 
@@ -33,9 +36,9 @@ nettskjema_get_data <- function(form_id, use_codebook = TRUE, token_name = "NETT
 #' @inheritParams nettskjema_get_data
 #'
 #' @return list
-nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN"){
+nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN", ...){
 
-  resp <- nettskjema_api("forms/", token_name = token_name)
+  resp <- nettskjema_api("forms/", token_name = token_name, ...)
 
   api_catch_error(resp)
   api_catch_empty(resp)
@@ -52,6 +55,7 @@ nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' @inheritParams nettskjema_get_forms
 #' @inheritParams nettskjema_get_data
 #' @param information which meta data elements to extract
+#' @param ...  arguments to httr::GET
 #'
 #' @return list
 #' @export
@@ -61,10 +65,11 @@ nettskjema_get_meta <- function(form_id,
                                                 "respondents", "contact","codebook",
                                                 "personal_data", "sensitive_data",
                                                 "editors", "elements"),
-                                token_name = "NETTSKJEMA_API_TOKEN"){
+                                token_name = "NETTSKJEMA_API_TOKEN",
+                                ...){
 
   path = paste0("forms/", form_id)
-  resp <- nettskjema_api(path, token_name = token_name)
+  resp <- nettskjema_api(path, token_name = token_name, ...)
 
   api_catch_error(resp)
   api_catch_empty(resp)

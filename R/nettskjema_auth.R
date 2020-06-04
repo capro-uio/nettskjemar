@@ -123,10 +123,19 @@ nettskjema_renviron_edit <- function(){
   usethis::edit_r_environ()
 }
 
-nettskjema_api <- function(path, token_name) {
+#' nettskjema api connection
+#'
+#' @param path path connection
+#' @param token_name token name for lookup
+#' @param ... arguments passed to httr::GET
+#'
+#' @return
+#' @examples
+nettskjema_api <- function(path, token_name, ...) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
   httr::GET(url,
-            httr::add_headers(Authorization = api_auth(token_name))
+            httr::add_headers(Authorization = api_auth(token_name)),
+            ...
   )
 }
 

@@ -4,8 +4,12 @@
 \alias{nettskjema_get_data}
 \title{Get data from a form}
 \usage{
-nettskjema_get_data(form_id, use_codebook = TRUE,
-  token_name = "NETTSKJEMA_API_TOKEN")
+nettskjema_get_data(
+  form_id,
+  use_codebook = TRUE,
+  token_name = "NETTSKJEMA_API_TOKEN",
+  ...
+)
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
@@ -15,6 +19,8 @@ retrieve actualy text options.
 data from}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
+
+\item{...}{arguments passed to httr::GET}
 }
 \value{
 tibble data.frame

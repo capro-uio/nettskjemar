@@ -4,9 +4,11 @@
 \alias{nettskjema_token2renviron}
 \title{Write token to .Renviron}
 \usage{
-nettskjema_token2renviron(token = character(),
-  token_name = "NETTSKJEMA_API_TOKEN", action = c("create",
-  "overwrite", "delete"))
+nettskjema_token2renviron(
+  token = character(),
+  token_name = "NETTSKJEMA_API_TOKEN",
+  action = c("create", "overwrite", "delete")
+)
 }
 \arguments{
 \item{token}{character. Token generated in the UiO portal \code{api_user_create}}
