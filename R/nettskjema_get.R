@@ -5,8 +5,9 @@
 #' retrieve actualy text options.
 #' data from
 #' @param token_name character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'
-#' @param incremental logical. If responses should be grabbed incrementally.
-#' This is necessary when there are large numbers of responses, it is more stable, but also slower.
+# #' @param incremental numeric. Incremental size of number of responses to fetch incrementally.
+# #' Necessary for successful fetching of large number of responses. Default (NULL) fetches all at once.
+#' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
 #' @param ... arguments passed to httr::GET
 #'
 #' @return tibble data.frame
@@ -34,21 +35,16 @@ nettskjema_get_data <- function(form_id,
     api_catch_error(resp_inc)
 
     submissionIds <- unlist(httr::content(resp_inc))
-    submissionIds <- paste0("?fromSubmissionId=", submissionIds)
-
+    submissionIds <- file.path("submissions", submissionIds)
 
     resp <- pbapply::pblapply(submissionIds,
-                   function(x) nettskjema_api(paste0(path, x),
-                                              token_name = token_name, ...)
-                   )
+                              function(x) nettskjema_api(x,
+                                                         token_name = token_name, ...)
+    )
+
     j <- lapply(resp, api_catch_error)
 
     cont <- lapply(resp, httr::content)
-    #remove empty content
-    cont <- cont[unlist(lapply(cont, function(x) length(x) > 0))]
-
-    # remove a list level
-    cont <- lapply(cont, function(x) x[[1]])
   }
 
   # Add form_id to the outputed data

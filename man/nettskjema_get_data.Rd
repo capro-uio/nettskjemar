@@ -21,8 +21,7 @@ data from}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
-\item{incremental}{logical. If responses should be grabbed incrementally.
-This is necessary when there are large numbers of responses, it is more stable, but also slower.}
+\item{incremental}{logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.}
 
 \item{...}{arguments passed to httr::GET}
 }
