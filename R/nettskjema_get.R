@@ -5,21 +5,51 @@
 #' retrieve actualy text options.
 #' data from
 #' @param token_name character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'
+#' @param incremental logical. If responses should be grabbed incrementally.
+#' This is necessary when there are large numbers of responses, it is more stable, but also slower.
 #' @param ... arguments passed to httr::GET
 #'
 #' @return tibble data.frame
 #' @export
 nettskjema_get_data <- function(form_id,
                                 use_codebook = TRUE,
-                                token_name = "NETTSKJEMA_API_TOKEN", ...){
+                                token_name = "NETTSKJEMA_API_TOKEN",
+                                incremental = FALSE,
+                                ...){
 
-  path = paste0("forms/", form_id, "/submissions")
+  path = file.path("forms", form_id, "submissions")
 
-  resp <- nettskjema_api(path, token_name = token_name, ...)
+  if(!incremental){
+    resp <- nettskjema_api(path, token_name = token_name, ...)
 
-  api_catch_error(resp)
+    api_catch_error(resp)
 
-  cont <- httr::content(resp)
+    cont <- httr::content(resp)
+
+  }else{
+    # get all submissionIds first, to create increments
+    path_inc <- paste0(path, "?fields=submissionId")
+    resp_inc <- nettskjema_api(path_inc, token_name = token_name, ...)
+
+    api_catch_error(resp_inc)
+
+    submissionIds <- unlist(httr::content(resp_inc))
+    submissionIds <- paste0("?fromSubmissionId=", submissionIds)
+
+
+    resp <- pbapply::pblapply(submissionIds,
+                   function(x) nettskjema_api(paste0(path, x),
+                                              token_name = token_name, ...)
+                   )
+    j <- lapply(resp, api_catch_error)
+
+    cont <- lapply(resp, httr::content)
+    #remove empty content
+    cont <- cont[unlist(lapply(cont, function(x) length(x) > 0))]
+
+    # remove a list level
+    cont <- lapply(cont, function(x) x[[1]])
+  }
 
   # Add form_id to the outputed data
   dt <- dplyr::mutate(clean_form_submissions(cont),

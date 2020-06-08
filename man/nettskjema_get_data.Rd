@@ -8,6 +8,7 @@ nettskjema_get_data(
   form_id,
   use_codebook = TRUE,
   token_name = "NETTSKJEMA_API_TOKEN",
+  incremental = FALSE,
   ...
 )
 }
@@ -19,6 +20,9 @@ retrieve actualy text options.
 data from}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
+
+\item{incremental}{logical. If responses should be grabbed incrementally.
+This is necessary when there are large numbers of responses, it is more stable, but also slower.}
 
 \item{...}{arguments passed to httr::GET}
 }

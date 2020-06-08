@@ -23,7 +23,8 @@ Imports:
     purrr,
     tibble,
     xml2,
-    rvest
+    rvest,
+    pbapply
 Suggests: 
     knitr,
     rmarkdown,
