@@ -8,6 +8,8 @@ nettskjema_get_data(
   form_id,
   use_codebook = TRUE,
   token_name = "NETTSKJEMA_API_TOKEN",
+  from_date = "",
+  from_submission = "",
   incremental = FALSE,
   ...
 )
@@ -21,13 +23,24 @@ data from}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
+\item{from_date}{date. From which date on should data be fetched for}
+
+\item{from_submission}{integer. From which SubmissionId should data be collected from.}
+
 \item{incremental}{logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.}
 
-\item{...}{arguments passed to httr::GET}
+\item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 tibble data.frame
 }
 \description{
-Get data from a form
+This function connects to a specific form and fetches all answers.
+The reponses are placed in a data.frame for easy use.
+For large data sets, toggle the \code{incremental} option,
+which while slow, will be better able to retrieve all responses.
+For retrieving responses only from a specific date on, or all responses
+after a certain submission, use the \code{from_date} and \code{from_submission} arguments.
+Forms that are anonymous and do not collect personal information do not record date,
+and as such the \code{from_date} will not work on those and an error will be thrown.
 }

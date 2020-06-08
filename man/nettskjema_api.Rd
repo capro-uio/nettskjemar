@@ -14,7 +14,7 @@ nettskjema_api(path, token_name, ...)
 \item{...}{arguments passed to httr::GET}
 }
 \value{
-
+an httr reponse
 }
 \description{
 nettskjema api connection

@@ -9,7 +9,7 @@ nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN", ...)
 \arguments{
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
-\item{...}{arguments passed to httr::GET}
+\item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
 \value{
 list

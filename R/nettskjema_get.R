@@ -1,5 +1,14 @@
 #' Get data from a form
 #'
+#' This function connects to a specific form and fetches all answers.
+#' The reponses are placed in a data.frame for easy use.
+#' For large data sets, toggle the \code{incremental} option,
+#' which while slow, will be better able to retrieve all responses.
+#' For retrieving responses only from a specific date on, or all responses
+#' after a certain submission, use the \code{from_date} and \code{from_submission} arguments.
+#' Forms that are anonymous and do not collect personal information do not record date,
+#' and as such the \code{from_date} will not work on those and an error will be thrown.
+#'
 #' @param form_id integer. Number of the form to retrieve
 #' @param use_codebook logical. Use codebook for answers, or
 #' retrieve actualy text options.
@@ -8,20 +17,35 @@
 # #' @param incremental numeric. Incremental size of number of responses to fetch incrementally.
 # #' Necessary for successful fetching of large number of responses. Default (NULL) fetches all at once.
 #' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
-#' @param ... arguments passed to httr::GET
+#' @param from_date date. From which date on should data be fetched for
+#' @param from_submission integer. From which SubmissionId should data be collected from.
+#' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return tibble data.frame
 #' @export
 nettskjema_get_data <- function(form_id,
                                 use_codebook = TRUE,
                                 token_name = "NETTSKJEMA_API_TOKEN",
+                                from_date = "",
+                                from_submission = "",
                                 incremental = FALSE,
                                 ...){
 
   path = file.path("forms", form_id, "submissions")
 
   if(!incremental){
-    resp <- nettskjema_api(path, token_name = token_name, ...)
+
+    if(from_date != "" ){
+      from_date <- paste0("fromDate=", from_date)
+    }
+
+    if(from_submission != "" ){
+      from_submission <- paste0("fromSubmissionId=", from_submission)
+    }
+
+    opts <- paste0("?", from_date, from_submission)
+
+    resp <- nettskjema_api(paste0(path, opts), token_name = token_name, ...)
 
     api_catch_error(resp)
 
@@ -35,6 +59,9 @@ nettskjema_get_data <- function(form_id,
     api_catch_error(resp_inc)
 
     submissionIds <- unlist(httr::content(resp_inc))
+
+    if(from_submission != "") submissionIds[submissionIds > from_submission]
+
     submissionIds <- file.path("submissions", submissionIds)
 
     resp <- pbapply::pblapply(submissionIds,

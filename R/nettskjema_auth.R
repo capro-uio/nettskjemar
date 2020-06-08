@@ -129,8 +129,7 @@ nettskjema_renviron_edit <- function(){
 #' @param token_name token name for lookup
 #' @param ... arguments passed to httr::GET
 #'
-#' @return
-#' @examples
+#' @return an httr reponse
 nettskjema_api <- function(path, token_name, ...) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
   httr::GET(url,
