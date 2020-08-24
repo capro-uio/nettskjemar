@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/nettskjemar?branch=master)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
+[![R build status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/LCBC-UiO/nettskjemar?branch=master&svg=true)](https://ci.appveyor.com/project/LCBC-UiO/nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.uio.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
