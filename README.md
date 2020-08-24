@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/LCBC-UiO/nettskjemar?branch=master&svg=true)](https://ci.appveyor.com/project/LCBC-UiO/nettskjemar)
 [![Travis build
 status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
 [![Codecov test
