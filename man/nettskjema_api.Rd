@@ -11,7 +11,7 @@ nettskjema_api(path, token_name, ...)
 
 \item{token_name}{token name for lookup}
 
-\item{...}{arguments passed to httr::GET}
+\item{...}{arguments passed to GET}
 }
 \value{
 an httr reponse

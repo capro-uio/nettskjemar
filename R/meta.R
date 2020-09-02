@@ -19,17 +19,19 @@ meta_classes <- function(content){
   dt <- lapply(nm, function(x) meta_change_class(x, content))
   names(dt) <- nm
 
-  dt
+  structure(dt, class = "nettskjema_meta_data")
 }
 
 meta_change_class <- function(name, content){
-
   switch(name,
          # characters
          "title" = as.character(content[[name]]),
          "language" = as.character(content[[name]]),
          "respondents" = as.character(content[[name]]),
          "contact"  = as.character(content[[name]]),
+
+         # integer
+         "form_id" = as.integer(content[[name]]),
 
          # dates
          "created" = as.Date(content[[name]],
@@ -52,4 +54,25 @@ meta_change_class <- function(name, content){
          # form elements
          "elements" = as_element(content[[name]])
   )
+}
+
+#' @export
+format.nettskjema_meta_data <- function(x, ...){
+  c(
+    sprintf("# Nettskjema metadata for form %s", x$form_id),
+    "",
+    unname(sapply(c("title","language","opened", "respondents", "contact",
+             "codebook", "personal_data", "sensitive_data"),
+           function(i) sprintf("%s: %s", i, x[[i]]))
+           ),
+
+    sprintf("editors: %s", nrow(x$editors)),
+    sprintf("no. elements: %s", length(x$elements$type))
+  )
+}
+
+#' @export
+print.nettskjema_meta_data <- function(x, ...){
+  cat(format(x), sep="\n")
+  invisible(x)
 }

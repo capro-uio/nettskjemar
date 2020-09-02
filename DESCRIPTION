@@ -1,14 +1,15 @@
 Package: nettskjemar
 Type: Package
 Title: Package to work with University of Oslo Nettskjema API
-Version: 0.1.0
+Version: 0.1.01
 Authors@R: c(
             person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
                     role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-5756-0223"))
             )
-Description: Work in progress. At the end, should at minimum be able to retrieve nettskjema data and lists of forms that a user has access to.
+Description: Package to retrieve data, meta-data, and codebooks 
+    from nettskjema.no.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -24,7 +25,8 @@ Imports:
     tibble,
     xml2,
     rvest,
-    pbapply
+    pbapply,
+    readr
 Suggests: 
     knitr,
     rmarkdown,

@@ -6,28 +6,27 @@
 \usage{
 nettskjema_get_data(
   form_id,
-  use_codebook = TRUE,
-  token_name = "NETTSKJEMA_API_TOKEN",
+  additional_data = NULL,
   from_date = "",
   from_submission = "",
   incremental = FALSE,
+  token_name = "NETTSKJEMA_API_TOKEN",
   ...
 )
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{use_codebook}{logical. Use codebook for answers, or
-retrieve actualy text options.
-data from}
-
-\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
+\item{additional_data}{character vector of additional answer information
+to add (One or more of "order", "option", "correct" "preselected"). If NLLL (default) nothing is added.}
 
 \item{from_date}{date. From which date on should data be fetched for}
 
 \item{from_submission}{integer. From which SubmissionId should data be collected from.}
 
 \item{incremental}{logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.}
+
+\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
 \item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
@@ -36,11 +35,30 @@ tibble data.frame
 }
 \description{
 This function connects to a specific form and fetches all answers.
-The reponses are placed in a data.frame for easy use.
+The responses are placed in a data.frame for easy use.
 For large data sets, toggle the \code{incremental} option,
 which while slow, will be better able to retrieve all responses.
 For retrieving responses only from a specific date on, or all responses
 after a certain submission, use the \code{from_date} and \code{from_submission} arguments.
 Forms that are anonymous and do not collect personal information do not record date,
 and as such the \code{from_date} will not work on those and an error will be thrown.
+}
+\examples{
+\dontrun{
+
+# Retrieve all data
+data_110000 <- nettskjema_get_data(110000)
+# Retrieve all data, and add answer order and option text
+data_110000 <- nettskjema_get_data(110000, add)
+
+# Retrieve all data after a certain date
+data_110000 <- nettskjema_get_data(110000, from_date = "2019-01-01")
+
+# Retrieve all submissions after a specific submission id
+data_110000 <- nettskjema_get_data(110000, from_submission = "12000000")
+
+# For large data
+data_110000 <- nettskjema_get_data(110000, incremental = TRUE)
+
+}
 }

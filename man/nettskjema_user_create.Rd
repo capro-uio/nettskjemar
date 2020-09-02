@@ -2,10 +2,10 @@
 % Please edit documentation in R/nettskjema_auth.R
 \name{nettskjema_user_create}
 \alias{nettskjema_user_create}
-\title{TODO: Add possibility to supply username and description through function}
+\title{Create Nettskjema API user}
 \usage{
 nettskjema_user_create()
 }
 \description{
-TODO: Add possibility to supply username and description through function
+Opens OS browser to create API user.
 }
