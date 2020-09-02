@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Get metadata for a form — nettskjema_get_meta" />
 <meta property="og:description" content="With the given API token, will retrieve
-a list of all the forms you have access to" />
+the meta-data connected to a form." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -81,7 +81,7 @@ a list of all the forms you have access to" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.01</span>
       </span>
     </div>
 
@@ -107,6 +107,9 @@ a list of all the forms you have access to" />
       <a href="../articles/auth_setup.html">Setting up Nettskjema API authentication</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -136,16 +139,10 @@ a list of all the forms you have access to" />
 
     <div class="ref-description">
     <p>With the given API token, will retrieve
-a list of all the forms you have access to</p>
+the meta-data connected to a form.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_meta</span>(
-  <span class='no'>form_id</span>,
-  <span class='kw'>information</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"title"</span>, <span class='st'>"language"</span>, <span class='st'>"created"</span>, <span class='st'>"modified"</span>, <span class='st'>"opened"</span>, <span class='st'>"respondents"</span>,
-    <span class='st'>"contact"</span>, <span class='st'>"codebook"</span>, <span class='st'>"personal_data"</span>, <span class='st'>"sensitive_data"</span>, <span class='st'>"editors"</span>, <span class='st'>"elements"</span>),
-  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_meta</span>(<span class='no'>form_id</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,23 +152,24 @@ a list of all the forms you have access to</p>
       <td><p>integer. Number of the form to retrieve</p></td>
     </tr>
     <tr>
-      <th>information</th>
-      <td><p>which meta data elements to extract</p></td>
-    </tr>
-    <tr>
       <th>token_name</th>
       <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>arguments to httr::GET</p></td>
+      <td><p>arguments passed to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>list of class nettskjema_meta_data</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>meta_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_meta</span>(<span class='fl'>110000</span>)
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
