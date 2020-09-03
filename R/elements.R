@@ -1,6 +1,4 @@
-#' Extract element as user information
-#'
-#' @template el
+# Extract element as user information
 #' @importFrom purrr map_chr
 #' @importFrom tibble tibble
 as_user <- function(el){
@@ -10,9 +8,7 @@ as_user <- function(el){
   )
 }
 
-#' Extract form elements list
-#'
-#' @template el
+# Extract form elements list
 #' @importFrom purrr map_chr map_int
 #' @importFrom tibble tibble
 as_element <- function(el){
@@ -29,9 +25,6 @@ as_element <- function(el){
   structure(tmp, class = "nettskjema_elements")
 }
 
-#' Title
-#'
-#' @template el
 #' @importFrom tibble tibble
 as_img_element <- function(el){
   dt <- tibble(.rows = 1)
@@ -44,21 +37,17 @@ as_img_element <- function(el){
   dt
 }
 
-#' Title
-#'
-#' @template el
+
 as_txt_element <- function(el){
   strip_html(el$description)
 }
 
-#' Title
+
 as_pagebreak_element <- function(){
   NULL
 }
 
-#' Title
-#'
-#' @template el
+
 #' @importFrom tibble tibble
 as_radio_element <- function(el){
   as_tibble(cbind(
@@ -67,9 +56,7 @@ as_radio_element <- function(el){
   ))
 }
 
-#' Title
-#'
-#' @template el
+
 #' @importFrom tidyr unnest
 as_radiomatrix_element <- function(el){
   tmp <- element_matrix(el)
@@ -79,9 +66,7 @@ as_radiomatrix_element <- function(el){
   unnest(tmp, answers)
 }
 
-#' Title
-#'
-#' @template el
+
 #' @importFrom purrr map_chr map_lgl
 #' @importFrom tibble tibble
 as_checkbox_element <- function(el){
@@ -94,24 +79,19 @@ as_checkbox_element <- function(el){
   )
 }
 
-#' Title
-#'
-#' @template el
+
 as_checkboxmatrix_element <- function(el){
 
 }
 
-#' Title
-#'
-#' @template el
+
 #' @importFrom tibble as_tibble
 as_question_element <- function(el){
   as_tibble(element_question(el))
 }
 
-#' Extract select element
-#'
-#' @template el
+
+
 #' @importFrom tibble tibble
 as_select_element <- function(el){
   as_tibble(cbind(
@@ -120,9 +100,7 @@ as_select_element <- function(el){
   ))
 }
 
-#' Extract question element
-#'
-#' @template el
+
 #' @importFrom purrr map_chr map_int map_lgl map
 #' @importFrom tibble tibble
 #' @importFrom dplyr bind_cols select one_of
@@ -155,9 +133,7 @@ element_question <- function(el){
   # )
 }
 
-#' Extract answer options
-#'
-#' @template el
+
 #' @importFrom purrr map_chr map_lgl
 #' @importFrom tibble tibble
 element_answeropts <- function(el){
@@ -170,9 +146,6 @@ element_answeropts <- function(el){
   )
 }
 
-#' Extract checkbox element
-#'
-#' @template el
 #' @importFrom purrr map_chr
 #' @importFrom tibble tibble
 element_checkbox <- function(el){
@@ -183,9 +156,7 @@ element_checkbox <- function(el){
   )
 }
 
-#' Extract matrix element
-#'
-#' @template el
+
 #' @importFrom purrr map_chr map_int map_lgl
 #' @importFrom tibble tibble
 element_matrix <- function(el){
@@ -198,10 +169,7 @@ element_matrix <- function(el){
   )
 }
 
-#' Grabs information about nettskjema elements
-#'
-#' @param type type of element
-#' @template el
+
 element_details <- function(type, el){
   j <- sapply(type, function(x) list())
   for(e in 1:length(type)){
@@ -221,19 +189,13 @@ element_details <- function(type, el){
   unname(j)
 }
 
-#' Title
-#'
-#' @template el
-#' @template fields
+
 element_exists <- function(el, fields){
   nms <- names(unlist(el))
   fields[fields %in% names(el)]
 }
 
-#' Title
-#'
-#' @template el
-#' @template fields
+
 element_missing <- function(el, fields){
   nms <- names(unlist(el))
   fields[!fields %in% names(el)]
