@@ -10,9 +10,12 @@
 #' and as such the \code{from_date} will not work on those and an error will be thrown.
 #'
 #' @template form_id
+#' @template use_codebook
 #' @param additional_data character vector of additional answer information
-#' to add (One or more of "order", "option", "correct" "preselected"). If NLLL (default) nothing is added.
+#' to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
+#' Currently not combinable with \code{use_codebook = TRUE}.
 #' @template token_name
+#' @template as_is
 #' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
 #' @param from_date date. From which date on should data be fetched for
 #' @param from_submission integer. From which SubmissionId should data be collected from.
@@ -20,9 +23,7 @@
 #'
 #' @return tibble data.frame
 #' @export
-#' @importFrom dplyr mutate select everything
-#' @importFrom httr content
-#' @importFrom pbapply pblapply
+#' @importFrom dplyr mutate relocate
 #' @examples
 #' \dontrun{
 #'
@@ -44,11 +45,19 @@
 #' }
 nettskjema_get_data <- function(form_id,
                                 additional_data = NULL,
+                                use_codebook = TRUE,
+                                as_is = FALSE,
                                 from_date = "",
                                 from_submission = "",
                                 incremental = FALSE,
                                 token_name = "NETTSKJEMA_API_TOKEN",
                                 ...){
+
+  if(!use_codebook & !is.null(additional_data)){
+    warning("Cannot combine `use_codebook` and `additional_data`, setting `additional_data = NULL`",
+            call. = FALSE)
+    additional_data <- NULL
+  }
 
   path = file.path("forms", form_id, "submissions")
 
@@ -73,64 +82,57 @@ nettskjema_get_data <- function(form_id,
   if(from_submission != "") submissionIds[submissionIds > from_submission]
   cat(sprintf("There are %s responses to download.\n", length(submissionIds)))
 
-  if(incremental | length(submissionIds) > 1000){
+  cont <- grab_data(incremental, submissionIds,
+                    token_name, path, opts, ...)
 
-    if(length(submissionIds) > 1000)
-      cat("Number of responses to download exceeds 1000, switching to incremental download.\n")
+  if(as_is) return(cont)
 
-    submissionIds <- file.path("submissions", submissionIds)
-
-    resp <- pblapply(
-      submissionIds,
-      function(x) nettskjema_api(x,
-                                 token_name = token_name, ...)
-    )
-
-    j <- lapply(resp, api_catch_error)
-
-    cont <- lapply(resp, content)
-  }else{
-
-    resp <- nettskjema_api(paste0(path, opts),
-                           token_name = token_name, ...)
-
-    api_catch_error(resp)
-
-    cont <- content(resp)
-
-  }
+  cb <- nettskjema_get_codebook(form_id = form_id,
+                                as_is = TRUE,
+                                token_name = token_name,
+                                ...)
 
   # Add form_id to the outputted data
-  dt <- mutate(clean_form_submissions(cont),
+  dt <- mutate(clean_form_submissions(cont, cb = cb, use_codebook = use_codebook),
                form_id = form_id)
-  dt <- select(dt, form_id, everything())
 
   if(!is.null(additional_data)){
-    cb <- nettskjema_get_codebook(form_id, token_name)
-    dt <- add_answer_data(dt, cb, additional_data)
+    cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)
+    dt <- add_answer_data(data = dt,
+                          codebook = cb,
+                          information = additional_data,
+                          use_codebook = use_codebook)
   }
-  dt
+
+
+  dt <- dt[,order(colnames(dt))]
+  relocate(dt, form_id, submission_id)
 }
 
 #' Get all forms you have access to
 #'
 #' With the given API token, will retrieve
 #' a list of all the forms you have access to
-#' TODO: make this work
+#' TODO: Wait for IT to make this possible
 #'
 #' @template token_name
+#' @template as_is
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return tibble
 #' @importFrom httr content
-nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN", ...){
+# #' @export
+nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
+                                 as_is = FALSE, ...){
 
   resp <- nettskjema_api("forms/", token_name = token_name, ...)
 
   api_catch_error(resp)
   api_catch_empty(resp)
 
-  content(resp)
+  cont <- content(resp)
+
+  if(as_is) return(cont)
 
 }
 
@@ -141,6 +143,7 @@ nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN", ...){
 #'
 #' @template form_id
 #' @template token_name
+#' @template as_is
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return list of class nettskjema_meta_data
@@ -152,6 +155,7 @@ nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN", ...){
 #'
 #' }
 nettskjema_get_meta <- function(form_id,
+                                as_is = FALSE,
                                 token_name = "NETTSKJEMA_API_TOKEN",
                                 ...){
 
@@ -172,6 +176,8 @@ nettskjema_get_meta <- function(form_id,
 
   cont <- content(resp)
 
+  if(as_is) return(cont)
+
   dt <- lapply(fields, function(x) cont[[x]])
   names(dt) <- meta_fields()[fields_idx]
 
@@ -187,6 +193,7 @@ nettskjema_get_meta <- function(form_id,
 #'
 #' @template form_id
 #' @template token_name
+#' @template as_is
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return list of class nettskjema_meta_data
@@ -197,10 +204,22 @@ nettskjema_get_meta <- function(form_id,
 #' codebook_110000 <- nettskjema_get_codebook(110000)
 #' }
 nettskjema_get_codebook <- function(form_id,
-                                token_name = "NETTSKJEMA_API_TOKEN",
-                                ...){
+                                    as_is = FALSE,
+                                    token_name = "NETTSKJEMA_API_TOKEN",
+                                    ...){
+
+  if(as_is){
+    cb <- get_raw_codebook(form_id = form_id,
+                           token_name = token_name,
+                           ...)
+    return(cb)
+  }
 
   # Get codebook based on the meta-data elements
-  meta <- nettskjema_get_meta(form_id, token_name, ...)
+  meta <- nettskjema_get_meta(form_id = form_id,
+                              as_is = FALSE,
+                              token_name = token_name,
+                              ...)
+
   codebook(meta)
 }

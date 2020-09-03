@@ -7,6 +7,8 @@
 nettskjema_get_data(
   form_id,
   additional_data = NULL,
+  use_codebook = TRUE,
+  as_is = FALSE,
   from_date = "",
   from_submission = "",
   incremental = FALSE,
@@ -18,7 +20,13 @@ nettskjema_get_data(
 \item{form_id}{integer. Number of the form to retrieve}
 
 \item{additional_data}{character vector of additional answer information
-to add (One or more of "order", "option", "correct" "preselected"). If NLLL (default) nothing is added.}
+to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
+Currently not combinable with \code{use_codebook = TRUE}.}
+
+\item{use_codebook}{logical. Use codebook for retrieving answers (default TRUE). If you have not
+set up the codebook in nettskjema, then turning this off will return the data as is.}
+
+\item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 
 \item{from_date}{date. From which date on should data be fetched for}
 

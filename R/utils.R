@@ -58,9 +58,15 @@ api_catch_empty <- function(resp){
 }
 
 check_element <- function(x){
-  browser()
   if(length(x) == 1)
     return(x)
 
   NULL
+}
+
+
+## quiets concerns of R CMD check
+if(getRversion() >= "2.15.1"){
+  utils::globalVariables(c("question_codebook","cb",
+                           "form_id", "element_no", "submission_id"))
 }

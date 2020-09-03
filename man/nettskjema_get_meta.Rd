@@ -4,10 +4,17 @@
 \alias{nettskjema_get_meta}
 \title{Get metadata for a form}
 \usage{
-nettskjema_get_meta(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...)
+nettskjema_get_meta(
+  form_id,
+  as_is = FALSE,
+  token_name = "NETTSKJEMA_API_TOKEN",
+  ...
+)
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
+
+\item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 

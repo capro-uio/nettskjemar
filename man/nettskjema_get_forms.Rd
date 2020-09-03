@@ -4,10 +4,12 @@
 \alias{nettskjema_get_forms}
 \title{Get all forms you have access to}
 \usage{
-nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN", ...)
+nettskjema_get_forms(token_name = "NETTSKJEMA_API_TOKEN", as_is = FALSE, ...)
 }
 \arguments{
 \item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
+
+\item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 
 \item{...}{arguments passed to \code{\link[httr]{GET}}}
 }
@@ -17,5 +19,5 @@ tibble
 \description{
 With the given API token, will retrieve
 a list of all the forms you have access to
-TODO: make this work
+TODO: Wait for IT to make this possible
 }
