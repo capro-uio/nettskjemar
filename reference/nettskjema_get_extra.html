@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get data from a form — nettskjema_get_data • nettskjemar</title>
+<title>Add additional answer data — nettskjema_get_extra • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,15 +46,17 @@
 
 
 
-<meta property="og:title" content="Get data from a form — nettskjema_get_data" />
-<meta property="og:description" content="This function connects to a specific form and fetches all answers.
-The responses are placed in a data.frame for easy use.
-For large data sets, toggle the incremental option,
-which while slow, will be better able to retrieve all responses.
-For retrieving responses only from a specific date on, or all responses
-after a certain submission, use the from_date and from_submission arguments.
-Forms that are anonymous and do not collect personal information do not record date,
-and as such the from_date will not work on those and an error will be thrown." />
+<meta property="og:title" content="Add additional answer data — nettskjema_get_extra" />
+<meta property="og:description" content="The answers in the nettskjema forms
+have some extra information attached
+that is not returned by default.
+This is for instance information on
+the order of the answer options, the true
+text, whether the answer is correct or
+if it is preselected. This function makes
+it possible to retrieve and add this
+information to the nettskjema data, using
+the codebook." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -138,31 +140,29 @@ and as such the from_date will not work on those and an error will be thrown." /
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get data from a form</h1>
+    <h1>Add additional answer data</h1>
     <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema_get.R'><code>R/nettskjema_get.R</code></a></small>
-    <div class="hidden name"><code>nettskjema_get_data.Rd</code></div>
+    <div class="hidden name"><code>nettskjema_get_extra.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function connects to a specific form and fetches all answers.
-The responses are placed in a data.frame for easy use.
-For large data sets, toggle the <code>incremental</code> option,
-which while slow, will be better able to retrieve all responses.
-For retrieving responses only from a specific date on, or all responses
-after a certain submission, use the <code>from_date</code> and <code>from_submission</code> arguments.
-Forms that are anonymous and do not collect personal information do not record date,
-and as such the <code>from_date</code> will not work on those and an error will be thrown.</p>
+    <p>The answers in the nettskjema forms
+have some extra information attached
+that is not returned by default.
+This is for instance information on
+the order of the answer options, the true
+text, whether the answer is correct or
+if it is preselected. This function makes
+it possible to retrieve and add this
+information to the nettskjema data, using
+the codebook.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_data</span>(
-  <span class='no'>form_id</span>,
+    <pre class="usage"><span class='fu'>nettskjema_get_extra</span>(
+  <span class='no'>data</span>,
+  <span class='no'>codebook</span>,
   <span class='kw'>information</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>use_codebook</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>as_is</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>from_date</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>from_submission</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>incremental</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -170,39 +170,22 @@ and as such the <code>from_date</code> will not work on those and an error will 
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>form_id</th>
-      <td><p>integer. Number of the form to retrieve</p></td>
+      <th>data</th>
+      <td><p>tibble. Data retrieved from nettskjema</p></td>
+    </tr>
+    <tr>
+      <th>codebook</th>
+      <td><p>codebook object retreived by <code><a href='nettskjema_get_codebook.html'>nettskjema_get_codebook</a></code></p></td>
     </tr>
     <tr>
       <th>information</th>
-      <td><p>character vector of additional answer information
-to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
-Currently not combinable with <code>use_codebook = TRUE</code>.</p></td>
+      <td><p>character vector of information to add.
+One or more of "order", "option", "correct" "preselected".</p></td>
     </tr>
     <tr>
       <th>use_codebook</th>
       <td><p>logical. Use codebook for retrieving answers (default TRUE). If you have not
 set up the codebook in nettskjema, then turning this off will return the data as is.</p></td>
-    </tr>
-    <tr>
-      <th>as_is</th>
-      <td><p>logical. Whether to return the raw content from nettskjema. Default is FALSE.</p></td>
-    </tr>
-    <tr>
-      <th>from_date</th>
-      <td><p>date. From which date on should data be fetched for</p></td>
-    </tr>
-    <tr>
-      <th>from_submission</th>
-      <td><p>integer. From which SubmissionId should data be collected from.</p></td>
-    </tr>
-    <tr>
-      <th>incremental</th>
-      <td><p>logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.</p></td>
-    </tr>
-    <tr>
-      <th>token_name</th>
-      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -212,26 +195,8 @@ set up the codebook in nettskjema, then turning this off will return the data as
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>tibble data.frame</p>
+    <p>tibble with added columns</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-
-<span class='co'># Retrieve all data</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>)
-<span class='co'># Retrieve all data, and add answer order and option text</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='no'>add</span>)
-
-<span class='co'># Retrieve all data after a certain date</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>from_date</span> <span class='kw'>=</span> <span class='st'>"2019-01-01"</span>)
-
-<span class='co'># Retrieve all submissions after a specific submission id</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>from_submission</span> <span class='kw'>=</span> <span class='st'>"12000000"</span>)
-
-<span class='co'># For large data</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>incremental</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
