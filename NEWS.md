@@ -2,6 +2,7 @@
 
 * codebooks improved  
 * Bug fix: all information from checkbox elements now returned
+* automatic incremental download of data happens now at >2000 rather than >1000 responses  
 
 # nettskjemar 0.1.01
 
