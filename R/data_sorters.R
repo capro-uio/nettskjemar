@@ -38,7 +38,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
   if(incremental | length(submissionIds) > 2000){
 
     if(length(submissionIds) > 2000)
-      cat("Number of responses to download exceeds 2000, switching to incremental download.\n")
+      cat("\tNumber of responses to download exceeds 2000, switching to incremental download.\n")
 
     submissionIds <- file.path("submissions", submissionIds)
 
@@ -67,7 +67,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
 # Function to add additional columns to the data based on the codebook information
 #' @importFrom dplyr filter select starts_with bind_cols matches relocate
 #' @importFrom tibble tibble
-get_extra_data <- function(questions, col, type, type_answ, data, information) {
+get_extra_data <- function(questions, col, type, type_answ, data, information, cb) {
 
   # prep df for populating
   data_extra <- data[,0]

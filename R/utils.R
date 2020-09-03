@@ -64,6 +64,7 @@ check_element <- function(x){
   NULL
 }
 
+#' @importFrom stats setNames
 validate_information <- function(information) {
 
   inf_nms <- if(is.null(names(information))){

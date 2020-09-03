@@ -19,8 +19,9 @@ nettskjema_get_data(
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{information}{character vector of additional answer information
-to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
+\item{information}{character or list vector of additional answer information
+to add (One or more of "order", "option", "correct" "preselected"). If the list
+is named, the additional information suffixes will be changed to the list names. If NULLL (default) nothing is added.
 Currently not combinable with \code{use_codebook = TRUE}.}
 
 \item{use_codebook}{logical. Use codebook for retrieving answers (default TRUE). If you have not

@@ -285,7 +285,7 @@ nettskjema_get_extra <- function(data,
 
   get_extra_data(questions, col,
                  type, type_answ,
-                 data, information)
+                 data, information, cb)
 
 }
 
