@@ -64,6 +64,29 @@ check_element <- function(x){
   NULL
 }
 
+validate_information <- function(information) {
+
+  inf_nms <- if(is.null(names(information))){
+    information
+  }else{
+    names(information)
+  }
+
+  setNames(match.arg(unlist(information),
+                     info(),
+                     several.ok = TRUE),
+           inf_nms)
+}
+
+info <- function(){
+  c("order", "option",
+    "correct", "preselected")
+}
+
+
+rn_cols <- function(x, from, to){
+ gsub(paste0(from, "$"), to, x)
+}
 
 ## quiets concerns of R CMD check
 if(getRversion() >= "2.15.1"){

@@ -64,70 +64,13 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
   return(cont)
 }
 
-
-
-#' Add additional answer data
-#'
-#' The answers in the nettskjema forms
-#' have some extra information attached
-#' that is not returned by default.
-#' This is for instance information on
-#' the order of the answer options, the true
-#' text, whether the answer is correct or
-#' if it is preselected. This function makes
-#' it possible to retrieve and add this
-#' information to the nettskjema data, using
-#' the codebook.
-#'
-#' @template data
-#' @param information character vector of information to add.
-#' One or more of "order", "option", "correct" "preselected".
-#' @param codebook codebook object retreived by \code{\link{nettskjema_get_codebook}}
-#' @template use_codebook
-#' @template token_name
-#' @param ... arguments passed to \code{\link[httr]{GET}}
-#'
-#' @return tibble with added columns
-#' @export
-#'
-# #' @examples
+# Function to add additional columns to the data based on the codebook information
 #' @importFrom dplyr filter select starts_with bind_cols matches relocate
-#' @importFrom stats na.omit
 #' @importFrom tibble tibble
-add_answer_data <- function(data,
-                            codebook,
-                            information = c("order", "option"),
-                            use_codebook = TRUE,
-                            token_name = "NETTSKJEMA_API_TOKEN",
-                            ...){
+get_extra_data <- function(questions, col, type, type_answ, data, information) {
 
-  information <- match.arg(information,
-                           c("order", "option",
-                             "correct", "preselected"),
-                           several.ok = TRUE)
-
-  type <- ifelse(use_codebook, "question_codebook", "question")
-  type_answ <- ifelse(use_codebook, "answer_codebook", "answer_option")
-
-  # reduce codebook to only those with answer options
-  cb <- codebook[!is.na(codebook[,type_answ]),]
-
-  # Those without order are check-boxes
-  cb <- cb[!is.na(cb[,"question_order"]),]
-
-  # prep dataframe for populating
+  # prep df for populating
   data_extra <- data[,0]
-
-  # get unique questions
-  questions <- unname(unlist(unique(cb[,type])))
-
-  # If they have set up questions that are not represented in the actual
-  # question part of the form, this process will fail to merge properly.
-  if(any(is.na(questions)))
-    stop(paste("The codebook is not set up correctly, or some questions do not have text.",
-               "Adding extra information from the codebook is not possible in this situation.",
-               "Try filling out the codebook, before downloading the data once more.", sep="\n"),
-         call. = FALSE)
 
   for(q in 1:length(questions)){
     col <- questions[q]
@@ -155,6 +98,13 @@ add_answer_data <- function(data,
 
   data_extra <- select(data_extra,
                        matches(paste0(information, collapse="|", sep="$")))
+
+  for(inf in 1:length(information)){
+    data_extra <- dplyr::rename_all(data_extra, rn_cols,
+                    from = information[inf],
+                    to = names(information)[inf]
+                    )
+  }
 
   bind_cols(data, data_extra)
 }

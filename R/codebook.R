@@ -1,18 +1,18 @@
-#' Grab codebook for a form
-#'
-#' Function works on meta-data downloaded from a form.
-#' It will return a data.frame in long format
-#'
-#' @param meta_data form meta-data from \code{\link{nettskjema_get_meta}}
-#'
-#' @return long format tibble
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' meta_110000 <- nettskjema_get_meta(110000)
-#' codebook(meta_110000)
-#' }
+# Grab codebook for a form
+#
+# Function works on meta-data downloaded from a form.
+# It will return a data.frame in long format
+#
+# @param meta_data form meta-data from \code{\link{nettskjema_get_meta}}
+#
+# @return long format tibble
+# @export
+#
+# @examples
+# \dontrun{
+# meta_110000 <- nettskjema_get_meta(110000)
+# codebook(meta_110000)
+# }
 #' @importFrom dplyr bind_rows relocate
 #' @importFrom readr type_convert cols
 codebook <- function(meta_data){
@@ -30,7 +30,7 @@ codebook <- function(meta_data){
 }
 
 #
-# #' @export
+# @export
 # format.nettskjema_elements <- function(x, ...){
 #   browser()
 #   c(
@@ -46,27 +46,21 @@ codebook <- function(meta_data){
 #   )
 # }
 #
-# #' @export
+# @export
 # print.nettskjema_elements <- function(x, ...){
 #   cat(format(x), sep="\n")
 #   invisible(x)
 # }
 
-#' Get the raw codebook
-#'
-#' The raw codebook is a list
-#' of answers and questions with
-#' unique ids for both, and the text associated
-#' with them. This information can be retrieved
-#' from the raw nettskjema data. This can be useful
-#' if the nettskjema submission data has been returned
-#' with \code{as_is = TRUE}.
-#'
-#' @template form_id
-#' @template token_name
-#' @param ... arguments passed to \code{\link[httr]{GET}}
-#'
-#' @return list class of raw_codebook
+# Get the raw codebook
+#
+# The raw codebook is a list
+# of answers and questions with
+# unique ids for both, and the text associated
+# with them. This information can be retrieved
+# from the raw nettskjema data. This can be useful
+# if the nettskjema submission data has been returned
+# with \code{as_is = TRUE}.
 get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
 
   path = file.path("forms", form_id, "codebook")
@@ -76,6 +70,14 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
   api_catch_empty(resp)
 
   dt <- content(resp)
+
+  # remove NULLs
+  idx <- which(!sapply(dt$externalAnswerOptionIds, is.null))
+  dt$externalQuestionIds <- lapply(idx, function(x) dt$externalAnswerOptionIds[[x]])
+
+  # remove NULLs
+  idx <- which(!sapply(dt$externalAnswerOptionIds, is.null))
+  dt$externalAnswerOptionIds <- lapply(idx, function(x) dt$externalAnswerOptionIds[[x]])
 
   structure(
     list(

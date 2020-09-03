@@ -6,7 +6,7 @@
 \usage{
 nettskjema_get_data(
   form_id,
-  additional_data = NULL,
+  information = NULL,
   use_codebook = TRUE,
   as_is = FALSE,
   from_date = "",
@@ -19,7 +19,7 @@ nettskjema_get_data(
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{additional_data}{character vector of additional answer information
+\item{information}{character vector of additional answer information
 to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
 Currently not combinable with \code{use_codebook = TRUE}.}
 
