@@ -38,7 +38,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
   if(incremental | length(submissionIds) > 2000){
 
     if(length(submissionIds) > 2000)
-      cat("Number of responses to download exceeds 1000, switching to incremental download.\n")
+      cat("Number of responses to download exceeds 2000, switching to incremental download.\n")
 
     submissionIds <- file.path("submissions", submissionIds)
 
