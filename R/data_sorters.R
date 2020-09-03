@@ -35,9 +35,9 @@ extract_submission_answers <- function(cont, cb, use_codebook = TRUE){
 #' @importFrom httr content
 #' @importFrom pbapply pblapply
 grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
-  if(incremental | length(submissionIds) > 1000){
+  if(incremental | length(submissionIds) > 2000){
 
-    if(length(submissionIds) > 1000)
+    if(length(submissionIds) > 2000)
       cat("Number of responses to download exceeds 1000, switching to incremental download.\n")
 
     submissionIds <- file.path("submissions", submissionIds)
