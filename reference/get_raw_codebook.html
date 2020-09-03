@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add additional answer data — add_answer_data • nettskjemar</title>
+<title>Get the raw codebook — get_raw_codebook • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,17 +46,14 @@
 
 
 
-<meta property="og:title" content="Add additional answer data — add_answer_data" />
-<meta property="og:description" content="The answers in the nettskjema forms
-have some extra information attached
-that is not returned by default.
-This is for instance information on
-the order of the answer options, the true
-text, whether the answer is correct or
-if it is preselected. This function makes
-it possible to retrieve and add this
-information to the nettskjema data, using
-the codebook." />
+<meta property="og:title" content="Get the raw codebook — get_raw_codebook" />
+<meta property="og:description" content="The raw codebook is a list
+of answers and questions with
+unique ids for both, and the text associated
+with them. This information can be retrieved
+from the raw nettskjema data. This can be useful
+if the nettskjema submission data has been returned
+with as_is = TRUE." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,53 +137,29 @@ the codebook." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add additional answer data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/data_sorters.R'><code>R/data_sorters.R</code></a></small>
-    <div class="hidden name"><code>add_answer_data.Rd</code></div>
+    <h1>Get the raw codebook</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/codebook.R'><code>R/codebook.R</code></a></small>
+    <div class="hidden name"><code>get_raw_codebook.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The answers in the nettskjema forms
-have some extra information attached
-that is not returned by default.
-This is for instance information on
-the order of the answer options, the true
-text, whether the answer is correct or
-if it is preselected. This function makes
-it possible to retrieve and add this
-information to the nettskjema data, using
-the codebook.</p>
+    <p>The raw codebook is a list
+of answers and questions with
+unique ids for both, and the text associated
+with them. This information can be retrieved
+from the raw nettskjema data. This can be useful
+if the nettskjema submission data has been returned
+with <code>as_is = TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_answer_data</span>(
-  <span class='no'>data</span>,
-  <span class='no'>codebook</span>,
-  <span class='kw'>information</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"order"</span>, <span class='st'>"option"</span>),
-  <span class='kw'>use_codebook</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_raw_codebook</span>(<span class='no'>form_id</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>tibble. Data retrieved from nettskjema</p></td>
-    </tr>
-    <tr>
-      <th>codebook</th>
-      <td><p>codebook object retreived by <code><a href='nettskjema_get_codebook.html'>nettskjema_get_codebook</a></code></p></td>
-    </tr>
-    <tr>
-      <th>information</th>
-      <td><p>character vector of information to add.
-One or more of "order", "option", "correct" "preselected".</p></td>
-    </tr>
-    <tr>
-      <th>use_codebook</th>
-      <td><p>logical. Use codebook for retrieving answers (default TRUE). If you have not
-set up the codebook in nettskjema, then turning this off will return the data as is.</p></td>
+      <th>form_id</th>
+      <td><p>integer. Number of the form to retrieve</p></td>
     </tr>
     <tr>
       <th>token_name</th>
@@ -200,7 +173,7 @@ set up the codebook in nettskjema, then turning this off will return the data as
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>tibble with added columns</p>
+    <p>list class of raw_codebook</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

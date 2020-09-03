@@ -87,7 +87,7 @@ and as such the from_date will not work on those and an error will be thrown." /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.01</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
       </span>
     </div>
 
@@ -157,6 +157,8 @@ and as such the <code>from_date</code> will not work on those and an error will 
     <pre class="usage"><span class='fu'>nettskjema_get_data</span>(
   <span class='no'>form_id</span>,
   <span class='kw'>additional_data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>use_codebook</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>as_is</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>from_date</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>from_submission</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>incremental</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
@@ -174,7 +176,17 @@ and as such the <code>from_date</code> will not work on those and an error will 
     <tr>
       <th>additional_data</th>
       <td><p>character vector of additional answer information
-to add (One or more of "order", "option", "correct" "preselected"). If NLLL (default) nothing is added.</p></td>
+to add (One or more of "order", "option", "correct" "preselected"). If NULLL (default) nothing is added.
+Currently not combinable with <code>use_codebook = TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>use_codebook</th>
+      <td><p>logical. Use codebook for retrieving answers (default TRUE). If you have not
+set up the codebook in nettskjema, then turning this off will return the data as is.</p></td>
+    </tr>
+    <tr>
+      <th>as_is</th>
+      <td><p>logical. Whether to return the raw content from nettskjema. Default is FALSE.</p></td>
     </tr>
     <tr>
       <th>from_date</th>

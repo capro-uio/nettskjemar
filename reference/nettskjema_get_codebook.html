@@ -81,7 +81,7 @@ a list of all the forms you have access to" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.01</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
       </span>
     </div>
 
@@ -142,7 +142,12 @@ a list of all the forms you have access to" />
 a list of all the forms you have access to</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_codebook</span>(<span class='no'>form_id</span>, <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_codebook</span>(
+  <span class='no'>form_id</span>,
+  <span class='kw'>as_is</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +155,10 @@ a list of all the forms you have access to</p>
     <tr>
       <th>form_id</th>
       <td><p>integer. Number of the form to retrieve</p></td>
+    </tr>
+    <tr>
+      <th>as_is</th>
+      <td><p>logical. Whether to return the raw content from nettskjema. Default is FALSE.</p></td>
     </tr>
     <tr>
       <th>token_name</th>

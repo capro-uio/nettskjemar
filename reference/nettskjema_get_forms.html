@@ -49,7 +49,7 @@
 <meta property="og:title" content="Get all forms you have access to — nettskjema_get_forms" />
 <meta property="og:description" content="With the given API token, will retrieve
 a list of all the forms you have access to
-TODO: make this work" />
+TODO: Wait for IT to make this possible" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -82,7 +82,7 @@ TODO: make this work" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.01</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
       </span>
     </div>
 
@@ -141,10 +141,10 @@ TODO: make this work" />
     <div class="ref-description">
     <p>With the given API token, will retrieve
 a list of all the forms you have access to
-TODO: make this work</p>
+TODO: Wait for IT to make this possible</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_forms</span>(<span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_forms</span>(<span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='kw'>as_is</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,6 +152,10 @@ TODO: make this work</p>
     <tr>
       <th>token_name</th>
       <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
+    </tr>
+    <tr>
+      <th>as_is</th>
+      <td><p>logical. Whether to return the raw content from nettskjema. Default is FALSE.</p></td>
     </tr>
     <tr>
       <th>...</th>
