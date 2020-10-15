@@ -1,7 +1,7 @@
 Package: nettskjemar
 Type: Package
 Title: Package to work with University of Oslo Nettskjema API
-Version: 0.1.02
+Version: 0.1.03
 Authors@R: c(
             person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
@@ -16,17 +16,14 @@ LazyData: true
 Imports: 
     dplyr,
     tidyr,
-    magrittr,
-    stringr,
     usethis,
+    here,
     httr,
     jsonlite,
     purrr,
-    tibble,
     xml2,
     rvest,
-    pbapply,
-    readr
+    pbapply
 Suggests: 
     knitr,
     rmarkdown,
