@@ -18,9 +18,10 @@ meta_classes <- function(content){
 
   dt <- lapply(nm, function(x) meta_change_class(x, content))
   names(dt) <- nm
-
-  structure(dt, class = "nettskjema_meta_data")
+  structure(dt,
+            class = c("nettskjema_meta_data", "list"))
 }
+
 
 meta_change_class <- function(name, content){
   switch(name,
@@ -41,7 +42,7 @@ meta_change_class <- function(name, content){
          "opened" = as.Date(content[[name]],
                             origin = "1970-01-01"),
 
-         # logicals
+         # boolean
          "codebook" = as.logical(content[[name]]),
          "personal_data" = as.logical(content[[name]]),
          "sensitive_data" = as.logical(content[[name]]),
@@ -76,3 +77,33 @@ print.nettskjema_meta_data <- function(x, ...){
   cat(format(x), sep="\n")
   invisible(x)
 }
+
+
+
+meta_raw <- function(content){
+  structure(content,
+            class = c("nettskjema_meta_raw", "list"))
+}
+
+#' @export
+format.nettskjema_meta_raw <- function(x, ...){
+  c(
+    sprintf("# Nettskjema raw metadata for form %s", x$formId),
+    "",
+    unname(sapply(c("title","languageCode","createdDate", "respondentGroup", "editorsContactEmail",
+                    "codebookActivated", "collectsPersonalData","sensitivePersonalDataCollected"),
+                  function(i) sprintf("%s: %s", i, x[[i]]))
+    ),
+
+    sprintf("editors: %s", length(x$editors)),
+    sprintf("no. elements: %s", length(x$elements))
+  )
+}
+
+#' @export
+print.nettskjema_meta_raw <- function(x, ...){
+  cat(format(x), sep="\n")
+  invisible(x)
+}
+
+

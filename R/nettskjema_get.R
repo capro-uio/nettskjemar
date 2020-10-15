@@ -177,7 +177,7 @@ nettskjema_get_meta <- function(form_id,
 
   cont <- content(resp)
 
-  if(as_is) return(cont)
+  if(as_is) return(meta_raw(cont))
 
   dt <- lapply(fields, function(x) cont[[x]])
   names(dt) <- meta_fields()[fields_idx]
@@ -222,7 +222,7 @@ nettskjema_get_codebook <- function(form_id,
                               token_name = token_name,
                               ...)
 
-  codebook(meta)
+  codebook(meta, form_id)
 }
 
 

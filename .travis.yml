@@ -10,5 +10,5 @@ after_success:
 before_cache: Rscript -e 'install.packages("pkgdown", repos = "https://cloud.r-project.org/")'
 deploy:
   provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY"))'
+  script: Rscript -e 'install.packages("pkgdown", repos = "https://cloud.r-project.org/"); pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY"))'
   skip_cleanup: true

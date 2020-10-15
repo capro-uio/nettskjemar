@@ -22,7 +22,7 @@ as_element <- function(el){
 
   tmp$details <- lapply(details, function(x) x)
 
-  structure(tmp, class = "nettskjema_elements")
+  structure(tmp, class = c("nettskjema_elements", "list"))
 }
 
 #' @importFrom dplyr tibble

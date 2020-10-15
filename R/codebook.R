@@ -14,7 +14,7 @@
 # codebook(meta_110000)
 # }
 #' @importFrom dplyr bind_rows relocate
-codebook <- function(meta_data){
+codebook <- function(meta_data, form_id){
   els <- meta_data$elements$details
 
   idx <- which(unlist(lapply(els, is.data.frame)))
@@ -24,8 +24,15 @@ codebook <- function(meta_data){
   names(codes) <- meta_data$elements$order[idx]
 
   dt <- bind_rows(codes, .id = "element_no")
-  relocate(dt, element_no)
+  dt$form_id <- form_id
+  dt <- relocate(dt, form_id, element_no)
+
+  structure(
+    dt, class = c("nettskjema_codebook", class(dt))
+  )
 }
+
+
 
 # Get the raw codebook
 #
@@ -65,7 +72,7 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
         id = names(dt$externalAnswerOptionIds),
         text = unlist(unname(dt$externalAnswerOptionIds))
       )
-    ), class = "nettskjema_codebook_raw"
+    ), class = c("nettskjema_codebook_raw", "list")
   )
 }
 
