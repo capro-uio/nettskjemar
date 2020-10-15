@@ -29,7 +29,7 @@ nettskjema_get_data(110000)
 
 There are many arguments that can be set that give you control over the data extration. 
 By default, the data as set by the codebook is retrieved by `use_codebook = TRUE`, this can be set to `FALSE` which would retrieve the full-text information.
-If the codebook has not been set up, initial download will fail because there is none, and the user must toggle this themselves. 
+If the codebook has not been set up, initial download will fail because there is none, and the user must toggle this themselves in the nettskjema-portal. 
 
 ```{r}
 nettskjema_get_data(110000, use_codebook = FALSE)

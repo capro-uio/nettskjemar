@@ -27,29 +27,6 @@ codebook <- function(meta_data){
   relocate(dt, element_no)
 }
 
-#
-# @export
-# format.nettskjema_elements <- function(x, ...){
-#   browser()
-#   c(
-#     sprintf("# Nettskjema elements information for form %s", x$form_id),
-#     "",
-#     unname(sapply(c("title","language","opened", "respondents", "contact",
-#                     "codebook", "personal_data", "sensitive_data"),
-#                   function(i) sprintf("%s: %s", i, x[[i]]))
-#     ),
-#
-#     sprintf("editors: %s", nrow(x$editors)),
-#     sprintf("no. elements: %s", length(x$elements$type))
-#   )
-# }
-#
-# @export
-# print.nettskjema_elements <- function(x, ...){
-#   cat(format(x), sep="\n")
-#   invisible(x)
-# }
-
 # Get the raw codebook
 #
 # The raw codebook is a list
@@ -70,8 +47,8 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
   dt <- content(resp)
 
   # remove NULLs
-  idx <- which(!sapply(dt$externalAnswerOptionIds, is.null))
-  dt$externalQuestionIds <- lapply(idx, function(x) dt$externalAnswerOptionIds[[x]])
+  idx <- which(!sapply(dt$externalQuestionIds, is.null))
+  dt$externalQuestionIds <- lapply(idx, function(x) dt$externalQuestionIds[[x]])
 
   # remove NULLs
   idx <- which(!sapply(dt$externalAnswerOptionIds, is.null))
@@ -88,12 +65,13 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
         id = names(dt$externalAnswerOptionIds),
         text = unlist(unname(dt$externalAnswerOptionIds))
       )
-    ), class = "raw_codebook"
+    ), class = "nettskjema_codebook_raw"
   )
 }
 
 #' @export
-format.raw_codebook <- function(x, ...){
+format.nettskjema_codebook_raw <- function(x, ...){
+
   c(
     sprintf("# Nettskjema raw codebook for form %s", x$form_id),
     "",
@@ -103,7 +81,7 @@ format.raw_codebook <- function(x, ...){
 }
 
 #' @export
-print.raw_codebook <- function(x, ...){
+print.nettskjema_codebook_raw <- function(x, ...){
   cat(format(x), sep="\n")
   invisible(x)
 }
