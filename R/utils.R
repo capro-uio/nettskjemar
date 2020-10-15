@@ -2,7 +2,10 @@
 #' @importFrom rvest html_text
 #' @importFrom xml2 read_html
 strip_html <- function(s) {
-  html_text(read_html(s))
+  if(!is.na(s))
+  s <- gsub("\\\n|\\\t", "", html_text(read_html(s)))
+
+  s
 }
 
 max_selected <- function(x){
