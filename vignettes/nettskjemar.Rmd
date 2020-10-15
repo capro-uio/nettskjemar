@@ -1,0 +1,39 @@
+---
+title: "Using nettskjemar"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using nettskjemar}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+Nettskjemar connects to version 2 of the [nettskjema api](www.nettskjema.no), and the main functionality here is to download data from a form into R.
+Once you have [created a nettskjema api user](auth_setup.html), and set up your Renvironment locally, you can start accessing your forms.
+
+## Download submissions
+Perhaps at the core of nettskjemar is the ability to download submission answers to a form into a tibble (variation of a data.frame). 
+
+```{r}
+library(nettskjemar)
+
+nettskjema_get_data(110000)
+```
+
+There are many arguments that can be set that give you control over the data extration. 
+By default, the data as set by the codebook is retrieved by `use_codebook = TRUE`, this can be set to `FALSE` which would retrieve the full-text information.
+If the codebook has not been set up, initial download will fail because there is none, and the user must toggle this themselves. 
+
+```{r}
+nettskjema_get_data(110000, use_codebook = FALSE)
+```
+
+
+
