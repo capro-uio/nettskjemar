@@ -90,9 +90,11 @@ nettskjema_get_data <- function(form_id,
                                 token_name = token_name,
                                 ...)
 
+  dt <- clean_form_submissions(cont, cb = cb,
+                               use_codebook = use_codebook)
+
   # Add form_id to the outputted data
-  dt <- mutate(clean_form_submissions(cont, cb = cb, use_codebook = use_codebook),
-               form_id = form_id)
+  dt <- dplyr::mutate(dt, form_id = form_id)
 
   if(!is.null(information)){
     cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)

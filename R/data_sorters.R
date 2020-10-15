@@ -18,17 +18,23 @@ clean_form_submissions <- function(cont, cb, use_codebook = TRUE){
 }
 
 #' @importFrom purrr map
-#' @importFrom tibble as_tibble
+#' @importFrom dplyr as_tibble
 extract_submission_answers <- function(cont, cb, use_codebook = TRUE){
-  opt <- ifelse(use_codebook, "externalAnswerOptionId", "text" )
+  type <- sapply(cont$answers, function(x) "answerOptions" %in% names(x) )
 
-  tmp <- cont$answers
+  opt <- ifelse(use_codebook,
+                "externalAnswerOptionId",
+                "text" )
 
-  qs <- map(tmp, "externalQuestionId")
-  answ <- map(tmp, function(x)
-    paste0(map_chr(x[["answerOptions"]], opt), collapse = ";"))
-  names(answ) <- qs
-
+  answ <- lapply(1:length(cont$answers),
+         function(x){
+           if(type[x]){
+             paste0(map_chr(cont$answers[[x]][["answerOptions"]], opt), collapse = ";")
+           }else{
+             cont$answers[[x]][["textAnswer"]]
+           }
+         })
+  names(answ) <- map(cont$answers, "externalQuestionId")
   as_tibble(lapply(answ, function(x) ifelse(is.null(x), NA, x)))
 }
 

@@ -56,7 +56,6 @@ as_radio_element <- function(el){
   ))
 }
 
-
 #' @importFrom tidyr unnest
 as_radiomatrix_element <- function(el){
   tmp <- element_matrix(el)
@@ -110,69 +109,47 @@ as_select_element <- function(el){
 
 
 #' @importFrom purrr map_chr map_int map_lgl map
-#' @importFrom tibble tibble
-#' @importFrom dplyr bind_cols select one_of
+#' @importFrom dplyr bind_cols select one_of tibble
 element_question <- function(el){
-  colnms <- c(question = "description",
-              question_codebook = "externalQuestionId",
-              question_mandatory = "mandatory")
-
-  exsts <- element_exists(el$questions[[1]],
-                          colnms)
-  tmp <- sapply(exsts,
-                function(x) map(el$questions, x)
+  tibble(
+    question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+    question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
+    question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
   )
-
-  for(tt in element_missing(el$questions[[1]],
-                            colnms)){
-    tmp[[names(colnms)[colnms == tt]]] <- "<p>"
-  }
-
-  tmp <- bind_cols(tmp)
-  tmp$question <- strip_html(tmp$question)
-
-  select(tmp, one_of(names(colnms)))
-
-  # This should work when each field is returned, even empty ones
-  # tibble(
-  #   question = strip_html(map_chr(el$questions, "description", .default = NA)),
-  #   question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA),
-  #   question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
-  # )
 }
 
 
 #' @importFrom purrr map_chr map_lgl
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 element_answeropts <- function(el){
   tibble(
-    answer_order = map_chr(el$answerOptions, "sequence", .default = NA),
-    answer_option = map_chr(el$answerOptions, "text", .default = NA),
-    answer_codebook = map_chr(el$answerOptions, "externalAnswerOptionId", .default = NA),
+    answer_order = map_chr(el$answerOptions, "sequence", .default = NA_character_),
+    answer_option = map_chr(el$answerOptions, "text", .default = NA_character_),
+    answer_codebook = map_chr(el$answerOptions, "externalAnswerOptionId", .default = NA_character_),
     answer_preselected = map_lgl(el$answerOptions, "preselected", .default = NA),
     answer_correct = map_lgl(el$answerOptions, "correct", .default = NA)
   )
 }
 
 #' @importFrom purrr map_chr
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 element_checkbox <- function(el){
   tibble(
-    order = map_chr(el, "sequence", .default = NA),
-    text = strip_html(map_chr(el, "description", .default = NA)),
-    mandatory = map_chr(el, "mandatory", .default = NA)
+    order = map_chr(el, "sequence", .default = NA_character_),
+    text = strip_html(map_chr(el, "description", .default = NA_character_)),
+    mandatory = map_chr(el, "mandatory", .default = NA_character_)
   )
 }
 
 
 #' @importFrom purrr map_chr map_int map_lgl
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 element_matrix <- function(el){
   # This should work when each field is returned, even empty ones
   tibble(
-    question = map_chr(el$questions, "text", .default = NA),
-    question_order = map_int(el$questions, "sequence", .default = NA),
-    question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA),
+    question = map_chr(el$questions, "text", .default = NA_character_),
+    question_order = map_int(el$questions, "sequence", .default = NA_integer_),
+    question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
     question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
   )
 }
@@ -180,20 +157,20 @@ element_matrix <- function(el){
 
 element_details <- function(type, el){
   j <- sapply(type, function(x) list())
-  for(e in 1:length(type)){
-    j[[e]] <- switch(type[e],
-                      "IMAGE"         = as_img_element(el[[e]]),
-                      "CHECKBOX"      = as_checkbox_element(el[[e]]),
-                      "PAGE_BREAK"    = as_pagebreak_element(),
-                      "QUESTION"      = as_question_element(el[[e]]),
-                      "RADIO"         = as_radio_element(el[[e]]),
-                      "MATRIX_RADIO"  = as_radiomatrix_element(el[[e]]),
-                      "TEXT"          = as_txt_element(el[[e]]),
-                      "SELECT"        = as_select_element(el[[e]]),
-                      "unknown element class"
+  j <- lapply(1:length(type), function(e){
+    switch(type[e],
+           "IMAGE"         = as_img_element(el[[e]]),
+           "CHECKBOX"      = as_checkbox_element(el[[e]]),
+           "MATRIX_CHECKBOX"      = as_checkboxmatrix_element(el[[e]]),
+           "PAGE_BREAK"    = as_pagebreak_element(),
+           "QUESTION"      = as_question_element(el[[e]]),
+           "RADIO"         = as_radio_element(el[[e]]),
+           "MATRIX_RADIO"  = as_radiomatrix_element(el[[e]]),
+           "TEXT"          = as_txt_element(el[[e]]),
+           "SELECT"        = as_select_element(el[[e]]),
+           "unknown element class"
     )
-  }
-
+  })
   unname(j)
 }
 
