@@ -14,7 +14,6 @@
 # codebook(meta_110000)
 # }
 #' @importFrom dplyr bind_rows relocate
-#' @importFrom readr type_convert cols
 codebook <- function(meta_data){
   els <- meta_data$elements$details
 
@@ -25,7 +24,6 @@ codebook <- function(meta_data){
   names(codes) <- meta_data$elements$order[idx]
 
   dt <- bind_rows(codes, .id = "element_no")
-  dt <- type_convert(dt, col_types = cols())
   relocate(dt, element_no)
 }
 
@@ -82,11 +80,11 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
   structure(
     list(
       form_id = form_id,
-      questions = tibble::tibble(
+      questions = dplyr::tibble(
         id = names(dt$externalQuestionIds),
         text = unlist(unname(dt$externalQuestionIds))
       ),
-      answers = tibble::tibble(
+      answers = dplyr::tibble(
         id = names(dt$externalAnswerOptionIds),
         text = unlist(unname(dt$externalAnswerOptionIds))
       )

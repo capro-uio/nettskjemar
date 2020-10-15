@@ -1,7 +1,7 @@
 
 #' @importFrom dplyr bind_cols bind_rows relocate
 #' @importFrom purrr map_chr map
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 clean_form_submissions <- function(cont, cb, use_codebook = TRUE){
 
   dt <- tibble(
@@ -66,7 +66,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
 
 # Function to add additional columns to the data based on the codebook information
 #' @importFrom dplyr filter select starts_with bind_cols matches relocate
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 get_extra_data <- function(questions, col, type, type_answ, data, information, cb) {
 
   # prep df for populating

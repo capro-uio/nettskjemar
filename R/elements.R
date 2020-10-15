@@ -1,6 +1,6 @@
 # Extract element as user information
 #' @importFrom purrr map_chr
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_user <- function(el){
   tibble(
     username = map_chr(el, "username", .default = NA),
@@ -10,7 +10,7 @@ as_user <- function(el){
 
 # Extract form elements list
 #' @importFrom purrr map_chr map_int
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_element <- function(el){
   tmp <- tibble(
     type = map_chr(el, "elementType", .default = NA),
@@ -25,7 +25,7 @@ as_element <- function(el){
   structure(tmp, class = "nettskjema_elements")
 }
 
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_img_element <- function(el){
   dt <- tibble(.rows = 1)
 
@@ -48,7 +48,7 @@ as_pagebreak_element <- function(){
 }
 
 
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_radio_element <- function(el){
   as_tibble(cbind(
     element_question(el),
@@ -68,31 +68,39 @@ as_radiomatrix_element <- function(el){
 
 
 #' @importFrom purrr map_chr map_lgl
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_checkbox_element <- function(el){
   cbind(
     tibble(
       max_selected = max_selected(el),
-      question = strip_html(map_chr(el$questions, "description")),
-      question_mandatory = map_lgl(el$questions, "mandatory")),
+      question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+      question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)),
     element_answeropts(el$questions[[1]])
   )
 }
 
-
+#' @importFrom dplyr tibble
+#' @importFrom purrr map_chr map_lgl
 as_checkboxmatrix_element <- function(el){
+  tmp <- tibble(
+    max_selected = max_selected(el),
+    question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+    question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
+    )
+  tmp$answers <- lapply(1:nrow(tmp),
+                        function(x) element_answeropts(el))
 
+  unnest(tmp, answers)
 }
 
-
-#' @importFrom tibble as_tibble
+#' @importFrom dplyr tibble
 as_question_element <- function(el){
-  as_tibble(element_question(el))
+  tibble(element_question(el))
 }
 
 
 
-#' @importFrom tibble tibble
+#' @importFrom dplyr tibble
 as_select_element <- function(el){
   as_tibble(cbind(
     element_question(el),

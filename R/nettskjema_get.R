@@ -103,7 +103,7 @@ nettskjema_get_data <- function(form_id,
   }
 
   dt <- dt[,order(colnames(dt))]
-  relocate(dt, form_id, submission_id)
+  dplyr::relocate(dt, form_id, submission_id)
 }
 
 #' Get all forms you have access to
