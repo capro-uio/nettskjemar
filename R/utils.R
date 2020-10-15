@@ -84,9 +84,28 @@ info <- function(){
     "correct", "preselected")
 }
 
-
 rn_cols <- function(x, from, to){
  gsub(paste0(from, "$"), to, x)
+}
+
+get_renv_path <- function(type = c("user", "project"),
+                          envvar = "R_ENVIRON_USER"){
+  envvar <- Sys.getenv(envvar)
+
+  if(envvar == ""){
+    type <- match.arg(type, c("user", "project"))
+
+    type <- switch(type,
+                   "user" = Sys.getenv("HOME"),
+                   "project" = here::here()
+    )
+
+    path <- file.path(file.path(type, ".Renviron"))
+  }else{
+    path <- envvar
+  }
+
+
 }
 
 ## quiets concerns of R CMD check

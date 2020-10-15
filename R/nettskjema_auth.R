@@ -53,20 +53,26 @@ nettskjema_user_create <- function(){
 #' @inheritParams nettskjema_get_forms
 #'
 #' @export
-nettskjema_token2renviron <- function(token = character(),
+nettskjema_token2renviron <- function(token,
                                       token_name = "NETTSKJEMA_API_TOKEN",
                                       action = c("create", "overwrite", "delete")){
+  if(missing(token)){
+    stop("token missing", call. = FALSE)
+  }
 
   # Find .Renviron path
-  path <- usethis:::scoped_path_r(c("user", "project"),
-                                  ".Renviron",
-                                  envvar = "R_ENVIRON_USER")
+  path <- get_renv_path(type = c("user", "project"),
+                        envvar = "R_ENVIRON_USER")
 
   action <- match.arg(action,
                       c("create", "overwrite", "delete"),
                       several.ok = FALSE)
 
-  envir <- readLines(path)
+  envir <- if(file.exists(path)){
+    readLines(path)
+  }else{
+    ""
+  }
 
   token_exists <- grep(paste0("^", token_name, "="), envir)
   envir_new <- switch(action,
