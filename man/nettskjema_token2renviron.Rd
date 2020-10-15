@@ -5,7 +5,7 @@
 \title{Write token to .Renviron}
 \usage{
 nettskjema_token2renviron(
-  token = character(),
+  token,
   token_name = "NETTSKJEMA_API_TOKEN",
   action = c("create", "overwrite", "delete")
 )

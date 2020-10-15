@@ -58,7 +58,7 @@ and as such the \code{from_date} will not work on those and an error will be thr
 # Retrieve all data
 data_110000 <- nettskjema_get_data(110000)
 # Retrieve all data, and add answer order and option text
-data_110000 <- nettskjema_get_data(110000, add)
+data_110000 <- nettskjema_get_data(110000, information = list(dummy = "order", text = "option"))
 
 # Retrieve all data after a certain date
 data_110000 <- nettskjema_get_data(110000, from_date = "2019-01-01")

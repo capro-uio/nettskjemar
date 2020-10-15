@@ -29,7 +29,7 @@
 #' data_110000 <- nettskjema_get_data(110000)
 #
 #' # Retrieve all data, and add answer order and option text
-#' data_110000 <- nettskjema_get_data(110000, add)
+#' data_110000 <- nettskjema_get_data(110000, information = list(dummy = "order", text = "option"))
 #'
 #' # Retrieve all data after a certain date
 #' data_110000 <- nettskjema_get_data(110000, from_date = "2019-01-01")
@@ -83,6 +83,8 @@ nettskjema_get_data <- function(form_id,
   cont <- grab_data(incremental, submissionIds,
                     token_name, path, opts, ...)
 
+  # If asked to return as_is, then return the
+  # raw json content
   if(as_is) return(cont)
 
   cb <- nettskjema_get_codebook(form_id = form_id,

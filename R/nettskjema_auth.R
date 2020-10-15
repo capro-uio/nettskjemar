@@ -90,11 +90,13 @@ nettskjema_token2renviron <- function(token,
                         if(length(token_exists) != 0){
                           message(paste0("Token name '", token_name,
                                          "' already exists, forcing an overwrite."))
+                          message("R session must be rephreshed for new token to take effect")
                           envir[token_exists] <- paste(token_name, token, sep="=")
                           envir
                         }else{
                           message(paste0("Token name '", token_name,
                                          "' does not already exists, adding new token"))
+                          message("R session must be rephreshed for new token to take effect")
                           envir[length(envir)+1] <- paste(token_name, token, sep="=")
                           envir
                         }
