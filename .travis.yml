@@ -7,7 +7,7 @@ cache:
 warnings_are_errors: true
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+before_cache: Rscript -e 'install.packages("pkgdown", repos = "https://cloud.r-project.org/")'
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY"))'
