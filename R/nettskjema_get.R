@@ -9,11 +9,23 @@
 #' Forms that are anonymous and do not collect personal information do not record date,
 #' and as such the \code{from_date} will not work on those and an error will be thrown.
 #'
+#'@details Checkbox types
+#' \itemize{
+#'  \item{"string"}{ - returns a delimited character value per submission, where \code{checkbox_delim}
+#'  denotes the options that the respondent has chosen}
+#'  \item{"list"}{ - returns a list column, where each submission has a character vector with all the
+#'  chosen options as separate elements in the list}
+#'  \item{"columns"}{ - returns checkbox answers as separate binarized columns (column names are appended with
+#'  response names), where 1 means the option was selected and 0 it was not.}
+#' }
+#'
 #' @template form_id
 #' @template use_codebook
 #' @template information
 #' @template token_name
 #' @template as_is
+#' @param checkbox_type string of either "string" (default), "list" or "columns" for how to handle checkbox answers
+#' @param checkbox_delim delimiter string if \code{checkbox:type} is "string". Ignored else.
 #' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
 #' @param from_date date. From which date on should data be fetched for
 #' @param from_submission integer. From which SubmissionId should data be collected from.
@@ -44,6 +56,8 @@
 nettskjema_get_data <- function(form_id,
                                 information = NULL,
                                 use_codebook = TRUE,
+                                checkbox_type = c("string", "list", "columns"),
+                                checkbox_delim = ";",
                                 as_is = FALSE,
                                 from_date = "",
                                 from_submission = "",
@@ -93,7 +107,9 @@ nettskjema_get_data <- function(form_id,
                                 ...)
 
   dt <- clean_form_submissions(cont, cb = cb,
-                               use_codebook = use_codebook)
+                               use_codebook = use_codebook,
+                               checkbox_type = checkbox_type,
+                               checkbox_delim = checkbox_delim)
 
   # Add form_id to the outputted data
   dt <- dplyr::mutate(dt, form_id = form_id)

@@ -72,7 +72,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
 
 # Function to add additional columns to the data based on the codebook information
 #' @importFrom dplyr filter select starts_with bind_cols matches relocate
-#' @importFrom dplyr tibble
+#' @importFrom dplyr tibble rename_all
 get_extra_data <- function(questions, col, type, type_answ, data, information, cb) {
 
   # prep df for populating
@@ -106,10 +106,10 @@ get_extra_data <- function(questions, col, type, type_answ, data, information, c
                        matches(paste0(information, collapse="|", sep="$")))
 
   for(inf in 1:length(information)){
-    data_extra <- dplyr::rename_all(data_extra, rn_cols,
-                    from = information[inf],
-                    to = names(information)[inf]
-                    )
+    data_extra <- rename_all(data_extra, rn_cols,
+                             from = information[inf],
+                             to = names(information)[inf]
+    )
   }
 
   bind_cols(data, data_extra)

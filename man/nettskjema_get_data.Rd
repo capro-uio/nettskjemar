@@ -8,6 +8,8 @@ nettskjema_get_data(
   form_id,
   information = NULL,
   use_codebook = TRUE,
+  checkbox_type = c("string", "list", "columns"),
+  checkbox_delim = ";",
   as_is = FALSE,
   from_date = "",
   from_submission = "",
@@ -26,6 +28,10 @@ Currently not combinable with \code{use_codebook = TRUE}.}
 
 \item{use_codebook}{logical. Use codebook for retrieving answers (default TRUE). If you have not
 set up the codebook in nettskjema, then turning this off will return the data as is.}
+
+\item{checkbox_type}{string of either "string" (default), "list" or "columns" for how to handle checkbox answers}
+
+\item{checkbox_delim}{delimiter string if \code{checkbox:type} is "string". Ignored else.}
 
 \item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 
@@ -51,6 +57,17 @@ For retrieving responses only from a specific date on, or all responses
 after a certain submission, use the \code{from_date} and \code{from_submission} arguments.
 Forms that are anonymous and do not collect personal information do not record date,
 and as such the \code{from_date} will not work on those and an error will be thrown.
+}
+\details{
+Checkbox types
+\itemize{
+ \item{"string"}{ - returns a delimited character value per submission, where \code{checkbox_delim}
+ denotes the options that the respondent has chosen}
+ \item{"list"}{ - returns a list column, where each submission has a character vector with all the
+ chosen options as separate elements in the list}
+ \item{"columns"}{ - returns checkbox answers as separate binarized columns (column names are appended with
+ response names), where 1 means the option was selected and 0 it was not.}
+}
 }
 \examples{
 \dontrun{

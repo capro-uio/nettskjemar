@@ -22,7 +22,7 @@ status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-projec
 The goal of {nettskjemar} is to have easy access to data and form
 information on the [Nettskjema](https://nettskjema.uio.no/) service by
 the [University of Oslo, Norway](https://www.uio.no/english/). The
-package is under development, and is still lacking alot of desired
+package is under development, and is still lacking a lot of desired
 functionality. Currently the main possibilities is help in creating
 users and tokens for accessing Nettskjema through its API, downloading
 meta-data about specific forms and data associated with a specific form.
@@ -70,3 +70,14 @@ Package documentation can be found on the associated [GitHub
 pages](https://lcbc-uio.github.io/nettskjemar/), among other
 documentation on [how to create the API acces user and
 token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
+
+# Funding
+
+This tool is partly funded by:
+
+**EU Horizon 2020 Grant:** Healthy minds 0-100 years: Optimising the use
+of European brain imaging cohorts (Lifebrain).
+
+**Grant agreement number:** 732592.
+
+**Call:** Societal challenges: Health, demographic change and well-being

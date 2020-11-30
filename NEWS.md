@@ -1,3 +1,8 @@
+# nettskjemar 0.1.03
+
+* added JOSS submission paper
+* added options for checkbox answers
+
 # nettskjemar 0.1.02
 
 * codebooks improved  
