@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.14)  15 OCT 2020 11:13
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.11.23)  30 NOV 2020 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **paper.tex
 (./paper.tex
-LaTeX2e <2020-10-01> patch level 1
-L3 programming layer <2020-10-05> xparse <2020-03-03> (/Users/athanasm/Library/
+LaTeX2e <2020-10-01> patch level 2
+L3 programming layer <2020-10-27> xparse <2020-03-03> (/Users/athanasm/Library/
 TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -530,9 +530,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package hyperref Info: Option `colorlinks' set `true' on input line 12.
 Package hyperref Info: Option `breaklinks' set `true' on input line 12.
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2020/09/12 v3.5b Customizing captions (AR)
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2020/09/17 v2.1b caption3 kernel (AR)
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
 \captionmargin=\dimen258
 \captionmargin@=\dimen259
 \captionwidth=\dimen260
@@ -714,7 +714,7 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \bibhang=\skip67
 \blx@bcfin=\read4
 \blx@bcfout=\write6
-\blx@langwohyphens=\language3
+\blx@langwohyphens=\language4
 \c@mincomprange=\count347
 \c@maxcomprange=\count348
 \c@mincompwidth=\count349
@@ -815,7 +815,7 @@ Package biblatex Info: ... file 'blx-compat.def' found.
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/biblatex/blx-compat.def
 File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
 ) (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-10-05 L3 programming layer (loader) 
+Package: expl3 2020-10-27 L3 programming layer (loader) 
 
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex
 .def
@@ -826,7 +826,7 @@ File: l3backend-xetex.def 2020-09-24 L3 backend support: XeTeX
 \g__pdf_backend_annotation_int=\count420
 ))
 Package biblatex Info: expl3
-(biblatex)             2020-10-05 L3 programming layer (loader) 
+(biblatex)             2020-10-27 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 Package biblatex Info: Trying to load expl3 case changing code...
@@ -836,7 +836,7 @@ Package biblatex Info: ... file 'blx-case-expl3.def' found.
 ef
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.
 sty
-Package: xparse 2020-10-05 L3 Experimental document command parser
+Package: xparse 2020-10-27 L3 Experimental document command parser
 
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse-
 generic.tex))
@@ -949,7 +949,7 @@ X
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 ) (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))
 ) (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/U
 sers/athanasm/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks39
@@ -995,37 +995,39 @@ line 40.
 ) (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2020-06-15 v2.0f non-zero parskip adjustments
 )
+\csllabelwidth=\skip91
+\cslhangindent=\skip92
 \@quotelevel=\count452
 \@quotereset=\count453
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 194.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-94.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 222.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+22.
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 194.
-LaTeX Font Info:    ... okay on input line 194.
-Package hyperref Info: Link coloring ON on input line 194.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+Package hyperref Info: Link coloring ON on input line 222.
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1037,9 +1039,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count454
 )
-LaTeX Info: Redefining \ref on input line 194.
-LaTeX Info: Redefining \pageref on input line 194.
-LaTeX Info: Redefining \nameref on input line 194.
+LaTeX Info: Redefining \ref on input line 222.
+LaTeX Info: Redefining \pageref on input line 222.
+LaTeX Info: Redefining \nameref on input line 222.
 (./paper.out) (./paper.out)
 \@outlinefile=\write7
 \openout7 = `paper.out'.
@@ -1060,8 +1062,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' not found.
 No file paper.bbl.
-Package biblatex Info: Reference section=0 on input line 194.
-Package biblatex Info: Reference segment=0 on input line 194.
+Package biblatex Info: Reference section=0 on input line 222.
+Package biblatex Info: Reference segment=0 on input line 222.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1096,7 +1098,7 @@ Package biblatex Info: Reference segment=0 on input line 194.
 * \@reversemargintrue
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 194.
+LaTeX Info: Redefining \microtypecontext on input line 222.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1116,14 +1118,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 195
+LaTeX Font Info:    Trying to load font information for U+msa on input line 223
 .
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 195
+LaTeX Font Info:    Trying to load font information for U+msb on input line 223
 .
 (/Users/athanasm/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1131,15 +1133,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Suppressing link with empty target on input line 221.
+Package hyperref Warning: Suppressing link with empty target on input line 249.
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 221.
+Package hyperref Warning: Suppressing link with empty target on input line 249.
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 221.
+Package hyperref Warning: Suppressing link with empty target on input line 249.
 
 
 File: /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rticles/rm
@@ -1153,12 +1155,41 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 273.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 309.
 [1
 
-] (./paper.aux)
+]
+Underfull \hbox (badness 1303) in paragraph at lines 325--331
+[][]\TU/lmr/m/n/10 University of Oslo IT. (2020a). Short introduction to Nettsk
+jema - University
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 325--331
+\TU/lmr/m/n/10 of Oslo. https://www.uio.no/english/services/it/adm-services/net
+tskjema/about-
+ []
+
+
+Overfull \hbox (8.0314pt too wide) in paragraph at lines 325--331
+\TU/lmr/m/n/10 nettskjema.html. Retrieved from [][]$[][][][][] [] [] [] [][][] 
+[] [][][] [] [][] [] [][][][][][][] [] [][][][][][][][] [] [][] [] [][][][][][]
+[][][][][][][] []
+ []
+
+
+Overfull \hbox (3.3714pt too wide) in paragraph at lines 332--336
+[][]\TU/lmr/m/n/10 University of Oslo IT. (2020b). Nettskjema API. https://utv.
+uio.no/docs/nettskjema/api/.
+ []
+
+File: /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rticles/rm
+arkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/4.0/Resources/library/rticles/rmarkdo
+wn/templates/joss/resources/JOSS-logo.png>
+[2] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: A5BB8837F452D6A3F8958BE39381E7A0;141.
+(rerunfilecheck)             Checksum: 0DB1363FC16F1AF9EC484A82A4F5F7DB;132.
 
 LaTeX Warning: There were undefined references.
 
@@ -1172,12 +1203,12 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34713 strings out of 479466
- 698602 string characters out of 5881179
- 1475079 words of memory out of 5000000
- 53502 multiletter control sequences out of 15000+600000
- 540229 words of font info for 65 fonts, out of 8000000 for 9000
+ 34782 strings out of 479373
+ 699868 string characters out of 5877677
+ 1480254 words of memory out of 5000000
+ 53641 multiletter control sequences out of 15000+600000
+ 541944 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 77i,12n,88p,1194b,800s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,12n,96p,1194b,800s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper.pdf (1 page).
+Output written on paper.pdf (2 pages).
