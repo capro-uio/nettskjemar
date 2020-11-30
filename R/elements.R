@@ -61,14 +61,13 @@ as_radiomatrix_element <- function(el){
   tmp <- element_matrix(el)
   tmp$answers <- lapply(1:nrow(tmp),
                         function(x) element_answeropts(el))
-
   unnest(tmp, answers)
 }
 
 
 #' @importFrom purrr map_chr map_lgl
 #' @importFrom dplyr tibble
-as_checkbox_element <- function(el){
+as_checkbox_element <- function(el, checkbox_type = c(string, list, columns)){
   cbind(
     tibble(
       max_selected = max_selected(el),

@@ -1,25 +1,62 @@
 
-#' @importFrom dplyr bind_cols bind_rows relocate
+#' @importFrom dplyr bind_cols bind_rows mutate
+#' @importFrom dplyr tibble across all_of
 #' @importFrom purrr map_chr map
-#' @importFrom dplyr tibble
-clean_form_submissions <- function(cont, cb, use_codebook = TRUE){
+#' @importFrom tidyr pivot_longer pivot_wider separate_rows unite
+clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
+                                   checkbox_type = c("string", "list", "columns"),
+                                   checkbox_delim = ";"){
+
+  checkbox_type <- match.arg(checkbox_type, c("string", "list", "columns"))
 
   dt <- tibble(
     submission_id = map_chr(cont, "submissionId")
   )
 
-  bind_cols(
+  dt <- bind_cols(
     dt,
     bind_rows(map(cont,
                   extract_submission_answers,
                   cb = cb,
                   use_codebook = use_codebook))
   )
+
+  checkbox_idx <- which(apply(dt, 2, function(x) any(grepl(";-;", x))))
+
+  if(checkbox_type == "string"){
+    sub_it <- function(x){
+      x <- strsplit(x, split = ";-;")
+      x <- lapply(x, function(x) x[order(x)])
+      x <- lapply(x, function(x) paste0(x, collapse = checkbox_delim))
+      lapply(x, function(x) ifelse(x == "NA", NA, x))
+    }
+    mutate(dt, across(checkbox_idx, sub_it))
+  }else if(checkbox_type == "list"){
+    split_it <- function(x){
+      x <- strsplit(x, split = ";-;")
+      lapply(x, function(y) y[order(y)])
+    }
+    mutate(dt, across(checkbox_idx, split_it))
+  }else if(checkbox_type == "columns"){
+    dt <- pivot_longer(dt,
+                       all_of(checkbox_idx),
+                       names_to = "question",
+                       values_to = "answer",
+                       values_drop_na = TRUE)
+    dt <- separate_rows(dt, answer, sep = ";-;")
+    dt$value <- 1
+    dt <- unite(dt, question, question, answer)
+    pivot_wider(dt,
+                names_from = question,
+                values_from = value,
+                values_fill = 0)
+  }
 }
 
 #' @importFrom purrr map
 #' @importFrom dplyr as_tibble
-extract_submission_answers <- function(cont, cb, use_codebook = TRUE){
+extract_submission_answers <- function(cont, cb,
+                                       use_codebook = TRUE){
   type <- sapply(cont$answers, function(x) "answerOptions" %in% names(x) )
 
   opt <- ifelse(use_codebook,
@@ -27,13 +64,14 @@ extract_submission_answers <- function(cont, cb, use_codebook = TRUE){
                 "text" )
 
   answ <- lapply(1:length(cont$answers),
-         function(x){
-           if(type[x]){
-             paste0(map_chr(cont$answers[[x]][["answerOptions"]], opt), collapse = ";")
-           }else{
-             cont$answers[[x]][["textAnswer"]]
-           }
-         })
+                 function(x){
+                   if(type[x]){
+                     paste0(map_chr(cont$answers[[x]][["answerOptions"]], opt),
+                            collapse = ";-;")
+                   }else{
+                     cont$answers[[x]][["textAnswer"]]
+                   }
+                 })
   names(answ) <- map(cont$answers, "externalQuestionId")
   as_tibble(lapply(answ, function(x) ifelse(is.null(x), NA, x)))
 }

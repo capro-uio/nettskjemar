@@ -66,6 +66,7 @@ get_renv_path <- function(type = c("user", "project"),
 
 ## quiets concerns of R CMD check
 if(getRversion() >= "2.15.1"){
-  utils::globalVariables(c("question_codebook","cb",
+  utils::globalVariables(c("question_codebook","cb", "question", "answer", "columns",
+                           "string", "value",
                            "form_id", "element_no", "submission_id"))
 }
