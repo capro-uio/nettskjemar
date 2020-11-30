@@ -7,8 +7,6 @@
 
 [![R build
 status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/LCBC-UiO/nettskjemar?branch=master&svg=true)](https://ci.appveyor.com/project/LCBC-UiO/nettskjemar)
 [![Travis build
 status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
 [![Codecov test
@@ -21,12 +19,10 @@ status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-projec
 
 The goal of {nettskjemar} is to have easy access to data and form
 information on the [Nettskjema](https://nettskjema.uio.no/) service by
-the [University of Oslo, Norway](https://www.uio.no/english/). The
-package is under development, and is still lacking a lot of desired
-functionality. Currently the main possibilities is help in creating
-users and tokens for accessing Nettskjema through its API, downloading
-meta-data about specific forms and data associated with a specific form.
-Not all types of form elements are supported yet.
+the [University of Oslo, Norway](https://www.uio.no/english/). Currently
+the main possibilities is help in creating users and tokens for
+accessing Nettskjema through its API, downloading meta-data and
+codebooks about specific forms and data associated with a specific form.
 
 Install the development version from [GitHub](https://github.com/) with:
 

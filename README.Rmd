@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/LCBC-UiO/nettskjemar?branch=master&svg=true)](https://ci.appveyor.com/project/LCBC-UiO/nettskjemar)
 [![Travis build status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
 [![Codecov test coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/nettskjemar?branch=master)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -25,9 +24,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.uio.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
-The package is under development, and is still lacking alot of desired functionality.
-Currently the main possibilities is help in creating users and tokens for accessing Nettskjema through its API, downloading meta-data about specific forms and data associated with a specific form.
-Not all types of form elements are supported yet. 
+Currently the main possibilities is help in creating users and tokens for accessing Nettskjema through its API, downloading meta-data and codebooks about specific forms and data associated with a specific form.
 
 Install the development version from [GitHub](https://github.com/) with:
 
@@ -61,4 +58,13 @@ nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
 
 ## Documentation
 Package documentation can be found on the associated [GitHub pages](https://lcbc-uio.github.io/nettskjemar/), among other documentation on [how to create the API acces user and token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
+
+# Funding
+This tool is partly funded by:  
+
+**EU Horizon 2020 Grant:** Healthy minds 0-100 years: Optimising the use of European brain imaging cohorts (Lifebrain).
+
+**Grant agreement number:** 732592.
+
+**Call:** Societal challenges: Health, demographic change and well-being
 
