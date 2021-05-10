@@ -43,7 +43,7 @@ The most important, is the function that will download nettskjema submission dat
 This needs only the _id_ of a nettskjema, which can be found in the last part of the nettskjema url.
 
 ```{r example, eval=FALSE}
-library(nettskjema)
+library(nettskjemar)
 
 nettskjema_get_data(nettskjema_id)
 ```
