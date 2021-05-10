@@ -1,9 +1,17 @@
-citHeader("To cite nettskjemar in publications use:")
+bibentry(
+  bibtype = "Manual",
+  title        = "nettskjemar - Package to work with University of Oslo Nettskjema API",
+  author       = c(
+            person("Athanasia Mo", "Mowinckel",
+                    email = "a.m.mowinckel@psykologi.uio.no",
+                    role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0002-5756-0223"))
+            ),
+  year         = "2021",
+  month        = "05",
+  day          = "10",
+  doi          = "10.5281/zenodo.4745481",
 
-citEntry(
-  entry    = "Other",
-  title    = "nettskjemar - Package to work with University of Oslo Nettskjema API",
-  author   = "A. M. Mowinckel",
-  year     = "2021",
-  DOI      = "10.5281/zenodo.4745481"
+  header       = "To cite nettskjemar in publications use:",
+  textVersion  = paste("Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar: v0.1.04 (Version v0.1.04). Zenodo. http://doi.org/10.5281/zenodo.4745481")
 )
