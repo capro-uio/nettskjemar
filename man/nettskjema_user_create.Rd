@@ -4,7 +4,10 @@
 \alias{nettskjema_user_create}
 \title{Create Nettskjema API user}
 \usage{
-nettskjema_user_create()
+nettskjema_user_create(ip = TRUE)
+}
+\arguments{
+\item{ip}{logical. Output current IP address (default) or not}
 }
 \description{
 Opens OS browser to create API user.

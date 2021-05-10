@@ -12,8 +12,9 @@
 nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
   # Check that token exists in env
-  if(Sys.getenv(token_name) == "") stop(paste0("Token with name '", token_name, "' does not exist."),
-                                        call. =FALSE)
+  if(Sys.getenv(token_name) == "")
+    stop("Token with name '", token_name, "' does not exist.",
+         call. = FALSE)
 
   resp <- nettskjema_api("users/admin/tokens/expire-date",
                          token_name = token_name)
@@ -22,10 +23,10 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
   dt <- as.Date(unlist(content(resp)))
 
-  message(paste0("Token with name '", token_name, "' expires in ",
-                 as.numeric(dt - Sys.Date()),
-                 " days."
-  ))
+  message("Token with name '", token_name, "' expires in ",
+          as.numeric(dt - Sys.Date()),
+          " days."
+  )
 
   dt
 }
@@ -34,10 +35,12 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' Create Nettskjema API user
 #'
 #' Opens OS browser to create API user.
-#'
+#' @param ip logical. Output current IP address (default) or not
 #' @importFrom utils browseURL
+#' @importFrom jsonlite fromJSON
 #' @export
-nettskjema_user_create <- function(){
+nettskjema_user_create <- function(ip = TRUE){
+  if(ip) nettskjema_find_ip()
   browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
@@ -50,15 +53,14 @@ nettskjema_user_create <- function(){
 #' @param token character. Token generated in the UiO portal \code{api_user_create}
 #' @param action character. One of three actions: 'create', 'overwrite' or 'delete'.
 #' Defaults to 'create'.
+#' @template token_name
 #' @inheritParams nettskjema_get_forms
 #'
 #' @export
 nettskjema_token2renviron <- function(token,
                                       token_name = "NETTSKJEMA_API_TOKEN",
                                       action = c("create", "overwrite", "delete")){
-  if(missing(token)){
-    stop("token missing", call. = FALSE)
-  }
+  if(missing(token)) stop("token missing", call. = FALSE)
 
   # Find .Renviron path
   path <- get_renv_path(type = c("user", "project"),
@@ -68,48 +70,45 @@ nettskjema_token2renviron <- function(token,
                       c("create", "overwrite", "delete"),
                       several.ok = FALSE)
 
-  envir <- if(file.exists(path)){
-    readLines(path)
-  }else{
-    ""
-  }
+  envir <- ""
+  if(file.exists(path)) envir <- readLines(path)
 
   token_exists <- grep(paste0("^", token_name, "="), envir)
   envir_new <- switch(action,
                       "delete" = {
                         if(length(token_exists) != 0){
-                          message(paste0("Deleting token name '", token_name,"'"))
+                          message("Deleting token name '", token_name,"'")
                           envir <- envir[-token_exists]
                           envir
                         }else{
-                          stop(paste0("Token name '", token_name,
-                                      "' does not exists, nothing to delete."))
+                          stop("Token name '", token_name,
+                               "' does not exists, nothing to delete.")
                         }
                       },
                       "overwrite" = {
                         if(length(token_exists) != 0){
-                          message(paste0("Token name '", token_name,
-                                         "' already exists, forcing an overwrite."))
-                          message("R session must be rephreshed for new token to take effect")
+                          message("Token name '", token_name,
+                                  "' already exists, forcing an overwrite.\n",
+                                  "R session must be rephreshed for new token to take effect.")
                           envir[token_exists] <- paste(token_name, token, sep="=")
                           envir
                         }else{
-                          message(paste0("Token name '", token_name,
-                                         "' does not already exists, adding new token"))
-                          message("R session must be rephreshed for new token to take effect")
+                          message("Token name '", token_name,
+                                  "' does not already exists, adding new token.\n",
+                                  "R session must be rephreshed for new token to take effect.")
                           envir[length(envir)+1] <- paste(token_name, token, sep="=")
                           envir
                         }
                       },
                       "create" = {
                         if(length(token_exists) != 0){
-                          stop(paste0("Token name '", token_name,
-                                      "' already exists. If you want to overwrite it, use action = 'overwrite'"),
+                          stop("Token name '", token_name,
+                               "' already exists. If you want to overwrite it, use action = 'overwrite'",
                                call. = FALSE)
                         }else{
                           envir[length(envir)+1] <- paste(token_name, token, sep="=")
-                          message(paste0("Token name '", token_name,
-                                         "' added."))
+                          message("Token name '", token_name,
+                                  "' added.")
                           envir
                         }
                       })
@@ -140,10 +139,10 @@ nettskjema_renviron_edit <- function(){
 #' nettskjema api connection
 #'
 #' @param path path connection
-#' @param token_name token name for lookup
+#' @template token_name
 #' @param ... arguments passed to GET
 #'
-#' @return an httr reponse
+#' @return an httr response
 #' @importFrom httr GET add_headers
 nettskjema_api <- function(path, token_name, ...) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
@@ -157,4 +156,9 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
   paste("Bearer", Sys.getenv(token_name))
 }
 
+nettskjema_find_ip <- function(){
+  message("Your current IP address is:\n",
+          fromJSON(readLines("http://api.hostip.info/get_json.php",
+                             warn = FALSE))$ip)
+}
 

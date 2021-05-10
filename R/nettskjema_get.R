@@ -74,11 +74,11 @@ nettskjema_get_data <- function(form_id,
   path = file.path("forms", form_id, "submissions")
 
   if(from_date != "" ){
-    from_date <- paste0("fromDate=", from_date)
+    from_date <- sprintf("fromDate=%s", from_date)
   }
 
   if(from_submission != "" ){
-    from_submission <- paste0("fromSubmissionId=", from_submission)
+    from_submission <- sprintf("fromSubmissionId=%s", from_submission)
   }
 
   opts <- paste0("?", from_date, from_submission)
@@ -112,7 +112,7 @@ nettskjema_get_data <- function(form_id,
                                checkbox_delim = checkbox_delim)
 
   # Add form_id to the outputted data
-  dt <- dplyr::mutate(dt, form_id = form_id)
+  dt <- mutate(dt, form_id = form_id)
 
   if(!is.null(information)){
     cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)
@@ -123,35 +123,35 @@ nettskjema_get_data <- function(form_id,
   }
 
   dt <- dt[,order(colnames(dt))]
-  dplyr::relocate(dt, form_id, submission_id)
+  relocate(dt, form_id, submission_id)
 }
 
-#' Get all forms you have access to
-#'
-#' With the given API token, will retrieve
-#' a list of all the forms you have access to
-#' TODO: Wait for IT to make this possible
-#'
-#' @template token_name
-#' @template as_is
-#' @param ... arguments passed to \code{\link[httr]{GET}}
-#'
-#' @return tibble
-#' @importFrom httr content
+# #' Get all forms you have access to
+# #'
+# #' With the given API token, will retrieve
+# #' a list of all the forms you have access to
+# #' TODO: Wait for IT to make this possible
+# #'
+# #' @template token_name
+# #' @template as_is
+# #' @param ... arguments passed to \code{\link[httr]{GET}}
+# #'
+# #' @return tibble
+# #' @importFrom httr content
 # #' @export
-nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
-                                 as_is = FALSE, ...){
-
-  resp <- nettskjema_api("forms/", token_name = token_name, ...)
-
-  api_catch_error(resp)
-  api_catch_empty(resp)
-
-  cont <- content(resp)
-
-  if(as_is) return(cont)
-
-}
+# nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
+#                                  as_is = FALSE, ...){
+#
+#   resp <- nettskjema_api("forms/", token_name = token_name, ...)
+#
+#   api_catch_error(resp)
+#   api_catch_empty(resp)
+#
+#   cont <- content(resp)
+#
+#   if(as_is) return(cont)
+#
+# }
 
 #' Get metadata for a form
 #'
@@ -260,7 +260,7 @@ nettskjema_get_codebook <- function(form_id,
 #' @template data
 #' @param information character vector of information to add.
 #' One or more of "order", "option", "correct" "preselected".
-#' @param codebook codebook object retreived by \code{\link{nettskjema_get_codebook}}
+#' @param codebook codebook object retrieved by \code{\link{nettskjema_get_codebook}}
 #' @template use_codebook
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
@@ -298,9 +298,9 @@ nettskjema_get_extra <- function(data,
   # If they have set up questions that are not represented in the actual
   # question part of the form, this process will fail to merge properly.
   if(any(is.na(questions)))
-    stop(paste("The codebook is not set up correctly, or some questions do not have text.",
-               "Adding extra information from the codebook is not possible in this situation.",
-               "Try filling out the codebook, before downloading the data once more.", sep="\n"),
+    stop("The codebook is not set up correctly, or some questions do not have text.\n",
+               "Adding extra information from the codebook is not possible in this situation.\n",
+               "Try filling out the codebook, before downloading the data once more.\n",
          call. = FALSE)
 
   get_extra_data(questions, col,

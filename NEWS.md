@@ -1,3 +1,9 @@
+# nettskjemar 0.1.04
+
+* simplification of internal code  
+* added function to find currently IP address   
+* moved CI to github actions from travis (inconsequential for package use)  
+
 # nettskjemar 0.1.03
 
 * added JOSS submission paper

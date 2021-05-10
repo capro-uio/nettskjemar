@@ -158,15 +158,15 @@ element_details <- function(type, el){
   j <- sapply(type, function(x) list())
   j <- lapply(1:length(type), function(e){
     switch(type[e],
-           "IMAGE"         = as_img_element(el[[e]]),
-           "CHECKBOX"      = as_checkbox_element(el[[e]]),
-           "MATRIX_CHECKBOX"      = as_checkboxmatrix_element(el[[e]]),
-           "PAGE_BREAK"    = as_pagebreak_element(),
-           "QUESTION"      = as_question_element(el[[e]]),
-           "RADIO"         = as_radio_element(el[[e]]),
-           "MATRIX_RADIO"  = as_radiomatrix_element(el[[e]]),
-           "TEXT"          = as_txt_element(el[[e]]),
-           "SELECT"        = as_select_element(el[[e]]),
+           "IMAGE"            = as_img_element(el[[e]]),
+           "CHECKBOX"         = as_checkbox_element(el[[e]]),
+           "MATRIX_CHECKBOX"  = as_checkboxmatrix_element(el[[e]]),
+           "PAGE_BREAK"       = as_pagebreak_element(),
+           "QUESTION"         = as_question_element(el[[e]]),
+           "RADIO"            = as_radio_element(el[[e]]),
+           "MATRIX_RADIO"     = as_radiomatrix_element(el[[e]]),
+           "TEXT"             = as_txt_element(el[[e]]),
+           "SELECT"           = as_select_element(el[[e]]),
            "unknown element class"
     )
   })

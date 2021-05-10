@@ -78,7 +78,6 @@ get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
 
 #' @export
 format.nettskjema_codebook_raw <- function(x, ...){
-
   c(
     sprintf("# Nettskjema raw codebook for form %s", x$form_id),
     "",

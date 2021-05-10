@@ -9,12 +9,12 @@ nettskjema_api(path, token_name, ...)
 \arguments{
 \item{path}{path connection}
 
-\item{token_name}{token name for lookup}
+\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
 \item{...}{arguments passed to GET}
 }
 \value{
-an httr reponse
+an httr response
 }
 \description{
 nettskjema api connection

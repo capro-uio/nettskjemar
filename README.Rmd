@@ -17,8 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
-[![Travis build status](https://travis-ci.org/LCBC-UiO/nettskjemar.svg?branch=master)](https://travis-ci.org/LCBC-UiO/nettskjemar)
-[![Codecov test coverage](https://codecov.io/gh/LCBC-UiO/nettskjemar/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/nettskjemar?branch=master)
+[![R pak build status](https://github.com/LCBC-UiO/nettskjemar/workflows/check-pak/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
 <!-- badges: end -->
@@ -39,7 +38,7 @@ This will need to be completed before you can access any other features of this 
 
 ## Example
 
-Currently there are very few functions actually working in the package.
+Currently, the package contains functions to download data from forms, including submission answers, meta-data and codebook information.
 The most important, is the function that will download nettskjema submission data and return them as a tibble (data.frame). 
 This needs only the _id_ of a nettskjema, which can be found in the last part of the nettskjema url.
 

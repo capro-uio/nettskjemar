@@ -3,7 +3,7 @@
 #' @importFrom xml2 read_html
 strip_html <- function(s) {
   if(!is.na(s))
-  s <- gsub("\\\n|\\\t", "", html_text(read_html(s)))
+    s <- gsub("\\\n|\\\t", "", html_text(read_html(s)))
 
   s
 }
@@ -41,27 +41,23 @@ info <- function(){
 }
 
 rn_cols <- function(x, from, to){
- gsub(paste0(from, "$"), to, x)
+  gsub(paste0(from, "$"), to, x)
 }
 
 get_renv_path <- function(type = c("user", "project"),
                           envvar = "R_ENVIRON_USER"){
   envvar <- Sys.getenv(envvar)
 
-  if(envvar == ""){
-    type <- match.arg(type, c("user", "project"))
+  if(envvar != "") return(envvar)
 
-    type <- switch(type,
-                   "user" = Sys.getenv("HOME"),
-                   "project" = here::here()
-    )
+  type <- match.arg(type, c("user", "project"))
 
-    path <- file.path(file.path(type, ".Renviron"))
-  }else{
-    path <- envvar
-  }
+  type <- switch(type,
+                 "user" = Sys.getenv("HOME"),
+                 "project" = here::here()
+  )
 
-
+  file.path(file.path(type, ".Renviron"))
 }
 
 ## quiets concerns of R CMD check

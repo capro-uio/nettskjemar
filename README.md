@@ -40,11 +40,12 @@ can access any other features of this package.
 
 ## Example
 
-Currently there are very few functions actually working in the package.
-The most important, is the function that will download nettskjema
-submission data and return them as a tibble (data.frame). This needs
-only the *id* of a nettskjema, which can be found in the last part of
-the nettskjema url.
+Currently, the package contains functions to download data from forms,
+including submission answers, meta-data and codebook information. The
+most important, is the function that will download nettskjema submission
+data and return them as a tibble (data.frame). This needs only the *id*
+of a nettskjema, which can be found in the last part of the nettskjema
+url.
 
 ``` r
 library(nettskjema)

@@ -18,7 +18,7 @@ nettskjema_write_meta <- function(meta, file, pretty = TRUE, ...){
 #' @export
 #' @rdname nettskjema_write_meta
 nettskjema_write_meta.default <- function(meta, file, pretty = TRUE, ...){
-  warning(paste("Cannot write object of class", class(meta)[1], "as meta-data file"),
+  warning("Cannot write object of class", class(meta)[1], "as meta-data file",
           call. = FALSE)
 }
 
@@ -62,7 +62,7 @@ nettskjema_write_codebook <- function(codebook, file, ...){
 #' @export
 #' @rdname nettskjema_write_codebook
 nettskjema_write_codebook.default <- function(codebook, file, ...){
-  warning(paste("Cannot write object of class", class(codebook)[1], "as codebook-data file"),
+  warning("Cannot write object of class", class(codebook)[1], "as codebook-data file",
           call. = FALSE)
 }
 

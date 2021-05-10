@@ -15,7 +15,7 @@ nettskjema_get_extra(
 \arguments{
 \item{data}{tibble. Data retrieved from nettskjema}
 
-\item{codebook}{codebook object retreived by \code{\link{nettskjema_get_codebook}}}
+\item{codebook}{codebook object retrieved by \code{\link{nettskjema_get_codebook}}}
 
 \item{information}{character vector of information to add.
 One or more of "order", "option", "correct" "preselected".}
