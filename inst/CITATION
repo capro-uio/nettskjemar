@@ -1,0 +1,9 @@
+citHeader("To cite nettskjemar in publications use:")
+
+citEntry(
+  entry    = "Other",
+  title    = "nettskjemar - Package to work with University of Oslo Nettskjema API",
+  author   = "A. M. Mowinckel",
+  year     = "2021",
+  DOI      = "10.5281/zenodo.4745481"
+)
