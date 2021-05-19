@@ -1,3 +1,49 @@
+
+#' Get metadata for a form
+#'
+#' With the given API token, will retrieve
+#' the meta-data connected to a form.
+#'
+#' @template form_id
+#' @template token_name
+#' @template as_is
+#' @param ... arguments passed to \code{\link[httr]{GET}}
+#'
+#' @return list of class nettskjema_meta_data
+#' @export
+#' @importFrom httr content
+#' @examples
+#' \dontrun{
+#' meta_110000 <- nettskjema_get_meta(110000)
+#'
+#' }
+nettskjema_get_meta <- function(form_id,
+                                as_is = FALSE,
+                                token_name = "NETTSKJEMA_API_TOKEN",
+                                ...){
+
+  path = file.path("forms", form_id)
+  resp <- nettskjema_api(path, token_name = token_name, ...)
+
+  api_catch_error(resp)
+  api_catch_empty(resp)
+
+  fields_idx <- meta_fields() %in% valid_form_inf()
+  fields <- names(meta_fields())[fields_idx]
+
+  cont <- content(resp)
+
+  if(as_is) return(meta_raw(cont))
+
+  dt <- lapply(fields, function(x) cont[[x]])
+  names(dt) <- meta_fields()[fields_idx]
+
+  dt$form_id = form_id
+  meta_classes(dt)
+}
+
+
+#' @noRd
 meta_fields <- function(){
   c(title = "title",
     languageCode = "language",
@@ -13,6 +59,7 @@ meta_fields <- function(){
     elements = "elements")
 }
 
+#' @noRd
 meta_classes <- function(content){
   nm <- names(content)
 
@@ -22,7 +69,7 @@ meta_classes <- function(content){
             class = c("nettskjema_meta_data", "list"))
 }
 
-
+#' @noRd
 meta_change_class <- function(name, content){
   switch(name,
          # characters
@@ -78,8 +125,7 @@ print.nettskjema_meta_data <- function(x, ...){
   invisible(x)
 }
 
-
-
+#' @noRd
 meta_raw <- function(content){
   structure(content,
             class = c("nettskjema_meta_raw", "list"))

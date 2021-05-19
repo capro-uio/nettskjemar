@@ -36,9 +36,17 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #'
 #' Opens OS browser to create API user.
 #' @param ip logical. Output current IP address (default) or not
+#' @return No return value, opens a browser for creating a API user.
 #' @importFrom utils browseURL
 #' @importFrom jsonlite fromJSON
 #' @export
+#' @examples
+#' \dontrun{
+#' nettskjema_user_create()
+#'
+#' # Turn off ip detection
+#' nettskjema_user_create(ip = FALSE)
+#' }
 nettskjema_user_create <- function(ip = TRUE){
   if(ip) nettskjema_find_ip()
   browseURL("https://nettskjema.uio.no/user/api/index.html")
@@ -50,13 +58,31 @@ nettskjema_user_create <- function(ip = TRUE){
 #' to the .Renviron file with the
 #' name you provide.
 #'
+#' @details Possible actions
+#' \itemize{
+#'  \item{create}{ - create Renviron token, default}
+#'  \item{overwrite}{ - overwrite Renviron token, default}
+#'  \item{delete}{ - delete Renviron token, default}
+#' }
+#'
 #' @param token character. Token generated in the UiO portal \code{api_user_create}
 #' @param action character. One of three actions: 'create', 'overwrite' or 'delete'.
 #' Defaults to 'create'.
 #' @template token_name
-#' @inheritParams nettskjema_get_forms
 #'
+#' @return No return value. Writes a token to Renviron
 #' @export
+#' @examples
+#' \dontrun{
+#' my_token <- "aoiehtvo09e7h"
+#' nettskjema_token2renviron(my_token)
+#' nettskjema_token2renviron(my_token, action = "overwrite")
+#' nettskjema_token2renviron(my_token, action = "delete")
+#'
+#' # Under a custom name
+#' nettskjema_token2renviron(my_token,
+#'                          token_name = "NETTAKJEMA_TOKEN_ALT")
+#' }
 nettskjema_token2renviron <- function(token,
                                       token_name = "NETTSKJEMA_API_TOKEN",
                                       action = c("create", "overwrite", "delete")){
@@ -131,7 +157,12 @@ nettskjema_token2renviron <- function(token,
 #' securely with nettskjema.
 #'
 #' @export
+#' @return No return value. Opens Renviron file.
 #' @importFrom usethis edit_r_environ
+#' @examples
+#' \dontrun{
+#' nettskjema_renviron_edit()
+#' }
 nettskjema_renviron_edit <- function(){
   edit_r_environ()
 }
@@ -144,6 +175,7 @@ nettskjema_renviron_edit <- function(){
 #'
 #' @return an httr response
 #' @importFrom httr GET add_headers
+#' @noRd
 nettskjema_api <- function(path, token_name, ...) {
   url <- paste0("http://nettskjema.no/api/v2/", path)
   GET(url,
@@ -152,10 +184,13 @@ nettskjema_api <- function(path, token_name, ...) {
   )
 }
 
+#' @noRd
+#' @template token_name
 api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
   paste("Bearer", Sys.getenv(token_name))
 }
 
+#' @noRd
 nettskjema_find_ip <- function(){
   message("Your current IP address is:\n",
           fromJSON(readLines("http://api.hostip.info/get_json.php",

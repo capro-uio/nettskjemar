@@ -21,8 +21,11 @@ This is a specific user that may access nettskjema through the API.
 
 Use the `nettskjema_user_create` function to be routed to the portal to set this up.
 
-```{r, eval=F}
+```{r, eval = TRUE}
 library(nettskjemar)
+```
+
+```{r}
 nettskjema_user_create()
 ```
 
@@ -48,14 +51,14 @@ NETTSKJEMA_API_TOKEN=paste_token_here
 
 or add it directly with:
 
-```{r, eval=FALSE}
+```{r}
 nettskjema_token2renviron("paste_token_here")
 ```
 
 This will add the token to the environment variable `NETTSKJEMA_API_TOKEN`. 
 If you want to give the token another name, or you have several tokens and need to store them separately, you can do so:
 
-```{r, eval=FALSE}
+```{r}
 nettskjema_token2renviron("paste_token_here",
                           token_name = "ANOTHER_NAME")
 ```
@@ -72,6 +75,12 @@ If you believe the token has been compromised in any way, delete it in the API u
 The token is valid for 1 year. 
 You can check the remaining time left a token is valid by
 
-```{r, eval=FALSE}
+```{r}
 nettskjema_token_expiry()
 ```
+
+```
+Token with name 'NETTSKJEMA_API_TOKEN' expires in 292 days.
+[1] "2022-02-26"
+```
+

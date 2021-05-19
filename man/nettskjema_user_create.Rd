@@ -9,6 +9,17 @@ nettskjema_user_create(ip = TRUE)
 \arguments{
 \item{ip}{logical. Output current IP address (default) or not}
 }
+\value{
+No return value, opens a browser for creating a API user.
+}
 \description{
 Opens OS browser to create API user.
+}
+\examples{
+\dontrun{
+nettskjema_user_create()
+
+# Turn off ip detection
+nettskjema_user_create(ip = FALSE)
+}
 }

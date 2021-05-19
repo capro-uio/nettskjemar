@@ -3,6 +3,7 @@
 #' @importFrom dplyr tibble across all_of
 #' @importFrom purrr map_chr map
 #' @importFrom tidyr pivot_longer pivot_wider separate_rows unite
+#' @noRd
 clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
                                    checkbox_type = c("string", "list", "columns"),
                                    checkbox_delim = ";"){
@@ -55,6 +56,7 @@ clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
 
 #' @importFrom purrr map
 #' @importFrom dplyr as_tibble
+#' @noRd
 extract_submission_answers <- function(cont, cb,
                                        use_codebook = TRUE){
   type <- sapply(cont$answers, function(x) "answerOptions" %in% names(x) )
@@ -78,6 +80,7 @@ extract_submission_answers <- function(cont, cb,
 
 #' @importFrom httr content
 #' @importFrom pbapply pblapply
+#' @noRd
 grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
   if(incremental | length(submissionIds) > 2000){
 
@@ -111,6 +114,7 @@ grab_data <- function(incremental, submissionIds, token_name, path, opts, ...) {
 # Function to add additional columns to the data based on the codebook information
 #' @importFrom dplyr filter select starts_with bind_cols matches relocate
 #' @importFrom dplyr tibble rename_all
+#' @noRd
 get_extra_data <- function(questions, col, type, type_answ, data, information, cb) {
 
   # prep df for populating

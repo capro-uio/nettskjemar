@@ -117,9 +117,9 @@ nettskjema_get_data <- function(form_id,
   if(!is.null(information)){
     cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)
     dt <- nettskjema_get_extra(data = dt,
-                          codebook = cb,
-                          information = information,
-                          use_codebook = use_codebook)
+                               codebook = cb,
+                               information = information,
+                               use_codebook = use_codebook)
   }
 
   dt <- dt[,order(colnames(dt))]
@@ -153,96 +153,6 @@ nettskjema_get_data <- function(form_id,
 #
 # }
 
-#' Get metadata for a form
-#'
-#' With the given API token, will retrieve
-#' the meta-data connected to a form.
-#'
-#' @template form_id
-#' @template token_name
-#' @template as_is
-#' @param ... arguments passed to \code{\link[httr]{GET}}
-#'
-#' @return list of class nettskjema_meta_data
-#' @export
-#' @importFrom httr content
-#' @examples
-#' \dontrun{
-#' meta_110000 <- nettskjema_get_meta(110000)
-#'
-#' }
-nettskjema_get_meta <- function(form_id,
-                                as_is = FALSE,
-                                token_name = "NETTSKJEMA_API_TOKEN",
-                                ...){
-
-  path = file.path("forms", form_id)
-  resp <- nettskjema_api(path, token_name = token_name, ...)
-
-  api_catch_error(resp)
-  api_catch_empty(resp)
-
-  information <- c("title", "language",
-                   "created", "modified", "opened",
-                   "respondents", "contact","codebook",
-                   "personal_data", "sensitive_data",
-                   "editors", "elements")
-
-  fields_idx <- meta_fields() %in% information
-  fields <- names(meta_fields())[fields_idx]
-
-  cont <- content(resp)
-
-  if(as_is) return(meta_raw(cont))
-
-  dt <- lapply(fields, function(x) cont[[x]])
-  names(dt) <- meta_fields()[fields_idx]
-
-  dt$form_id = form_id
-  meta_classes(dt)
-}
-
-
-#' Get metadata for a form
-#'
-#' With the given API token, will retrieve
-#' a list of all the forms you have access to
-#'
-#' @template form_id
-#' @template token_name
-#' @template as_is
-#' @param ... arguments passed to \code{\link[httr]{GET}}
-#'
-#' @return list of class nettskjema_meta_data
-#' @export
-#' @importFrom httr content
-#' @examples
-#' \dontrun{
-#' codebook_110000 <- nettskjema_get_codebook(110000)
-#' }
-nettskjema_get_codebook <- function(form_id,
-                                    as_is = FALSE,
-                                    token_name = "NETTSKJEMA_API_TOKEN",
-                                    ...){
-
-  if(as_is){
-    cb <- get_raw_codebook(form_id = form_id,
-                           token_name = token_name,
-                           ...)
-    return(cb)
-  }
-
-  # Get codebook based on the meta-data elements
-  meta <- nettskjema_get_meta(form_id = form_id,
-                              as_is = FALSE,
-                              token_name = token_name,
-                              ...)
-
-  codebook(meta, form_id)
-}
-
-
-
 
 #' Add additional answer data
 #'
@@ -267,18 +177,25 @@ nettskjema_get_codebook <- function(form_id,
 #'
 #' @return tibble with added columns
 #' @export
+#' @examples
+#' \dontrun{
+#' form_id <- 100000
 #'
-# #' @examples
+#' my_data <- nettskjema_get_data(form_id)
+#' cb <-  nettskjema_get_codebook(form_id)
+#'
+#' my_data <- nettskjema_get_extra(my_data, cb, "order")
+#'
+#' }
 nettskjema_get_extra <- function(data,
                                  codebook,
-                                 information = NULL,
+                                 information,
                                  use_codebook = TRUE,
                                  ...){
 
-  if(is.null(information)){
-    warning("No argument passed to `information`, no extra data to add",
+  if(missing(information)){
+    stop("No argument passed to `information`, no extra data to add",
             call. = FALSE)
-    return(data)
   }
 
   information <- validate_information(information)
@@ -299,8 +216,8 @@ nettskjema_get_extra <- function(data,
   # question part of the form, this process will fail to merge properly.
   if(any(is.na(questions)))
     stop("The codebook is not set up correctly, or some questions do not have text.\n",
-               "Adding extra information from the codebook is not possible in this situation.\n",
-               "Try filling out the codebook, before downloading the data once more.\n",
+         "Adding extra information from the codebook is not possible in this situation.\n",
+         "Try filling out the codebook, before downloading the data once more.\n",
          call. = FALSE)
 
   get_extra_data(questions, col,

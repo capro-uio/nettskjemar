@@ -1,6 +1,7 @@
 # Extract element as user information
 #' @importFrom purrr map_chr
 #' @importFrom dplyr tibble
+#' @noRd
 as_user <- function(el){
   tibble(
     username = map_chr(el, "username", .default = NA),
@@ -11,6 +12,7 @@ as_user <- function(el){
 # Extract form elements list
 #' @importFrom purrr map_chr map_int
 #' @importFrom dplyr tibble
+#' @noRd
 as_element <- function(el){
   tmp <- tibble(
     type = map_chr(el, "elementType", .default = NA),
@@ -26,6 +28,7 @@ as_element <- function(el){
 }
 
 #' @importFrom dplyr tibble
+#' @noRd
 as_img_element <- function(el){
   dt <- tibble(.rows = 1)
 
@@ -37,7 +40,7 @@ as_img_element <- function(el){
   dt
 }
 
-
+#' @noRd
 as_txt_element <- function(el){
   strip_html(el$description)
 }

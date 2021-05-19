@@ -1,10 +1,16 @@
+valid_form_inf <- function(){
+  c("title", "language",
+    "created", "modified", "opened",
+    "respondents", "contact","codebook",
+    "personal_data", "sensitive_data",
+    "editors", "elements")
+}
 
 #' @importFrom rvest html_text
 #' @importFrom xml2 read_html
 strip_html <- function(s) {
   if(!is.na(s))
     s <- gsub("\\\n|\\\t", "", html_text(read_html(s)))
-
   s
 }
 

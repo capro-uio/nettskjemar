@@ -9,8 +9,14 @@
 #' @param file file name or path
 #' @param pretty logical. If json-file should be made "pretty"
 #' @param ... other arguments to \code{\link[jsonlite]{write_json}}
-#'
+#' @return no return value. Writes a file to path.
 #' @export
+#' @examples
+#' \dontrun{
+#' form_id <- 1100000
+#' my_meta <- nettskjema_get_meta(form_id)
+#' nettskjema_write_meta(my_meta, "my/path/meta_110000.json")
+#' }
 nettskjema_write_meta <- function(meta, file, pretty = TRUE, ...){
   UseMethod("nettskjema_write_meta")
 }
@@ -48,13 +54,26 @@ nettskjema_write_meta.nettskjema_meta_data <- function(meta, file, pretty = TRUE
 #' json-file through \code{\link[jsonlite]{write_json}}
 #' or a text table through \code{\link[utils]{write.table}}.
 #'
+#' @details Given the two types of codebooks, writes different
+#'        types of files.
+#' \itemize{
+#' \item{codebook}{ - writes a tab-separated table}
+#' \item{codebook_raw}{ - writes a json-file}
+#' }
+#'
 #' @param codebook object of class nettskjema_codebook
 #' @param pretty logical. If writing json-file, make it pretty
 #' @param sep character. If writing text table, column delimiter.
 #' @param file filename or path
 #' @param ... arguments to \code{\link[jsonlite]{write_json}} or \code{\link[utils]{write.table}}
-#'
+#' @return no return value. Writes a file to path.
 #' @export
+#' @examples
+#' \dontrun{
+#' form_id <- 1100000
+#' my_cb <- nettskjema_get_codebook(form_id)
+#' nettskjema_write_codebook(my_cb, "my/path/codebook_110000.txt")
+#' }
 nettskjema_write_codebook <- function(codebook, file, ...){
   UseMethod("nettskjema_write_codebook")
 }

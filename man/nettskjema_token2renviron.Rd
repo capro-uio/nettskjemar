@@ -18,8 +18,31 @@ nettskjema_token2renviron(
 \item{action}{character. One of three actions: 'create', 'overwrite' or 'delete'.
 Defaults to 'create'.}
 }
+\value{
+No return value. Writes a token to Renviron
+}
 \description{
 This function will write a token
 to the .Renviron file with the
 name you provide.
+}
+\details{
+Possible actions
+\itemize{
+ \item{create}{ - create Renviron token, default}
+ \item{overwrite}{ - overwrite Renviron token, default}
+ \item{delete}{ - delete Renviron token, default}
+}
+}
+\examples{
+\dontrun{
+my_token <- "aoiehtvo09e7h"
+nettskjema_token2renviron(my_token)
+nettskjema_token2renviron(my_token, action = "overwrite")
+nettskjema_token2renviron(my_token, action = "delete")
+
+# Under a custom name
+nettskjema_token2renviron(my_token,
+                         token_name = "NETTAKJEMA_TOKEN_ALT")
+}
 }

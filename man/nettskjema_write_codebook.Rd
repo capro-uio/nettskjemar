@@ -26,6 +26,9 @@ nettskjema_write_codebook(codebook, file, ...)
 
 \item{sep}{character. If writing text table, column delimiter.}
 }
+\value{
+no return value. Writes a file to path.
+}
 \description{
 Save codebook information to a
 file for safe keeping. Depending
@@ -33,4 +36,19 @@ on the type of codebook (raw or tidy)
 the file will either be stored as a
 json-file through \code{\link[jsonlite]{write_json}}
 or a text table through \code{\link[utils]{write.table}}.
+}
+\details{
+Given the two types of codebooks, writes different
+       types of files.
+\itemize{
+\item{codebook}{ - writes a tab-separated table}
+\item{codebook_raw}{ - writes a json-file}
+}
+}
+\examples{
+\dontrun{
+form_id <- 1100000
+my_cb <- nettskjema_get_codebook(form_id)
+nettskjema_write_codebook(my_cb, "my/path/codebook_110000.txt")
+}
 }

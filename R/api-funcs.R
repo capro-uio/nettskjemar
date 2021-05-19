@@ -1,6 +1,7 @@
-
+#' @noRd
 is.response <- function(x) inherits(x, "response")
 
+#' @noRd
 is.app_json <- function(x){
   if(!is.response(x)) return(FALSE)
   http_type(x) == "application/json"
@@ -8,6 +9,7 @@ is.app_json <- function(x){
 
 #' @importFrom httr http_type content http_error status_code
 #' @importFrom jsonlite fromJSON
+#' @noRd
 api_catch_error <- function(resp){
   if (!is.app_json(resp)) {
     stop("API did not return json", call. = FALSE)
@@ -29,6 +31,7 @@ api_catch_error <- function(resp){
 
 #' @importFrom httr http_type content http_status
 #' @importFrom jsonlite fromJSON
+#' @noRd
 api_catch_empty <- function(resp){
   if (http_type(resp) != "application/json") {
     stop("API did not return json", call. = FALSE)

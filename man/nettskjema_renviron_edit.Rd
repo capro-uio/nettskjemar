@@ -6,6 +6,9 @@
 \usage{
 nettskjema_renviron_edit()
 }
+\value{
+No return value. Opens Renviron file.
+}
 \description{
 Will open the .Renviron file for editing.
 In this file you set environment variables
@@ -14,4 +17,9 @@ command line arguments through functions.
 In this package the .Renviron stores the
 API access tokens necessary to communicate
 securely with nettskjema.
+}
+\examples{
+\dontrun{
+nettskjema_renviron_edit()
+}
 }

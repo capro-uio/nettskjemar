@@ -24,9 +24,19 @@ nettskjema_write_meta(meta, file, pretty = TRUE, ...)
 
 \item{...}{other arguments to \code{\link[jsonlite]{write_json}}}
 }
+\value{
+no return value. Writes a file to path.
+}
 \description{
 Save meta-data information to a
 file for safe keeping. The function
 saves the data in json-format, which
 best preserves the information.
+}
+\examples{
+\dontrun{
+form_id <- 1100000
+my_meta <- nettskjema_get_meta(form_id)
+nettskjema_write_meta(my_meta, "my/path/meta_110000.json")
+}
 }
