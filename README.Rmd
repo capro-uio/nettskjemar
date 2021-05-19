@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
 <!-- badges: end -->
 
-The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.uio.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
+The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
 Currently the main possibilities is help in creating users and tokens for accessing Nettskjema through its API, downloading meta-data and codebooks about specific forms and data associated with a specific form.
 
 Install the development version from [GitHub](https://github.com/) with:
