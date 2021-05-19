@@ -1,4 +1,4 @@
-# nettskjemar 0.1.04
+# nettskjemar 0.1.4
 
 * simplification of internal code  
 * added function to find currently IP address   
