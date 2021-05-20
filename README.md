@@ -9,17 +9,23 @@
 status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
 [![DOI](https://zenodo.org/badge/206264675.svg)](https://zenodo.org/badge/latestdoi/206264675)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form
-information on the [Nettskjema](https://nettskjema.uio.no/) service by
-the [University of Oslo, Norway](https://www.uio.no/english/). Currently
-the main possibilities is help in creating users and tokens for
-accessing Nettskjema through its API, downloading meta-data and
-codebooks about specific forms and data associated with a specific form.
+information on the [Nettskjema](https://nettskjema.no/) service by the
+[University of Oslo, Norway](https://www.uio.no/english/). Currently the
+main possibilities is help in creating users and tokens for accessing
+Nettskjema through its API, downloading meta-data and codebooks about
+specific forms and data associated with a specific form.
+
+Install the released version from CRAN with:
+
+``` r
+install.packages("nettskjemar")
+```
 
 Install the development version from [GitHub](https://github.com/) with:
 
@@ -45,7 +51,7 @@ of a nettskjema, which can be found in the last part of the nettskjema
 url.
 
 ``` r
-library(nettskjema)
+library(nettskjemar)
 
 nettskjema_get_data(nettskjema_id)
 ```
