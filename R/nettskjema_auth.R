@@ -38,7 +38,6 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' @param ip_version IP version to look up. Either "v4" (default) or "v6".
 #' @return No return value, opens a browser for creating a API user.
 #' @importFrom utils browseURL
-#' @importFrom jsonlite fromJSON
 #' @export
 #' @examples
 #' \dontrun{
@@ -191,18 +190,20 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 }
 
 #' @noRd
+#' @importFrom httr GET content
+#' @importFrom jsonlite fromJSON
 nettskjema_find_ip <- function(version = c("v4","v6")){
   version <- match.arg(version, c("v4","v6"))
   ip_url <- switch(version,
                    "v4" = "https://api.ipify.org?format=json",
                    "v6" = "https://api64.ipify.org?format=json")
-  resp <- httr::GET("https://api.ipify.org?format=json")
+  resp <- GET("https://api.ipify.org?format=json")
   message(
     sprintf(
       "Your current IP%s address is:\n%s",
       version,
-      jsonlite::fromJSON(httr::content(resp, "text",
-                                       encoding = "UTF-8"))$ip
+      fromJSON(content(resp, "text",
+                       encoding = "UTF-8"))$ip
     )
   )
 }
