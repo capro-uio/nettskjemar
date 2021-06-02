@@ -7,7 +7,7 @@
 nettskjema_user_create(ip_version = c("v4", "v6"))
 }
 \arguments{
-\item{ip}{logical. Output current IP address (default) or not}
+\item{ip_version}{IP version to look up. Either "v4" (default) or "v6".}
 }
 \value{
 No return value, opens a browser for creating a API user.

@@ -35,7 +35,7 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' Create Nettskjema API user
 #'
 #' Opens OS browser to create API user.
-#' @param ip logical. Output current IP address (default) or not
+#' @param ip_version IP version to look up. Either "v4" (default) or "v6".
 #' @return No return value, opens a browser for creating a API user.
 #' @importFrom utils browseURL
 #' @importFrom jsonlite fromJSON
@@ -48,7 +48,7 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' nettskjema_user_create(ip = FALSE)
 #' }
 nettskjema_user_create <- function(ip_version = c("v4", "v6")){
-  if(ip) nettskjema_find_ip(ip_version)
+  nettskjema_find_ip(ip_version)
   browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
