@@ -4,7 +4,7 @@
 \alias{nettskjema_user_create}
 \title{Create Nettskjema API user}
 \usage{
-nettskjema_user_create(ip = TRUE)
+nettskjema_user_create(ip_version = c("v4", "v6"))
 }
 \arguments{
 \item{ip}{logical. Output current IP address (default) or not}

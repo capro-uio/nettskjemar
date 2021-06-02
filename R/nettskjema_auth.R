@@ -47,8 +47,8 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' # Turn off ip detection
 #' nettskjema_user_create(ip = FALSE)
 #' }
-nettskjema_user_create <- function(ip = TRUE){
-  if(ip) nettskjema_find_ip()
+nettskjema_user_create <- function(ip_version = c("v4", "v6")){
+  if(ip) nettskjema_find_ip(ip_version)
   browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
@@ -191,9 +191,19 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 }
 
 #' @noRd
-nettskjema_find_ip <- function(){
-  message("Your current IP address is:\n",
-          fromJSON(readLines("http://api.hostip.info/get_json.php",
-                             warn = FALSE))$ip)
+nettskjema_find_ip <- function(version = c("v4","v6")){
+  version <- match.arg(version, c("v4","v6"))
+  ip_url <- switch(version,
+                   "v4" = "https://api.ipify.org?format=json",
+                   "v6" = "https://api64.ipify.org?format=json")
+  resp <- httr::GET("https://api.ipify.org?format=json")
+  message(
+    sprintf(
+      "Your current IP%s address is:\n%s",
+      version,
+      jsonlite::fromJSON(httr::content(resp, "text",
+                                       encoding = "UTF-8"))$ip
+    )
+  )
 }
 

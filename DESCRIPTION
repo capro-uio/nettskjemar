@@ -1,7 +1,7 @@
 Package: nettskjemar
 Type: Package
 Title: Connect to the 'nettskjema.no' API of the University of Oslo
-Version: 0.1.4
+Version: 0.1.4.001
 Authors@R: c(
             person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
