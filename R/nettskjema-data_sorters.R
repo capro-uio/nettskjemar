@@ -29,7 +29,7 @@ clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
       x <- strsplit(x, split = ";-;")
       x <- lapply(x, function(x) x[order(x)])
       x <- lapply(x, function(x) paste0(x, collapse = checkbox_delim))
-      lapply(x, function(x) ifelse(x == "NA", NA, x))
+      sapply(x, function(x) ifelse(x == "NA", NA, x))
     }
     mutate(dt, across(checkbox_idx, sub_it))
   }else if(checkbox_type == "list"){
