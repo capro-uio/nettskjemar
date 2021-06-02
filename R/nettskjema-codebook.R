@@ -17,7 +17,6 @@
 #' @importFrom dplyr bind_rows relocate
 codebook <- function(meta_data, form_id){
   els <- meta_data$elements$details
-
   idx <- which(unlist(lapply(els, is.data.frame)))
 
   codes <- lapply(idx,

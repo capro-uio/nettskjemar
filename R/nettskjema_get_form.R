@@ -106,7 +106,16 @@ nettskjema_get_data <- function(form_id,
                                 token_name = token_name,
                                 ...)
 
-  dt <- clean_form_submissions(cont, cb = cb,
+  m <- nettskjema_get_meta(form_id)
+  if(!m$codebook){
+    warning("No codebook defined for this form. Setting 'use_codebook' to FALSE.",
+            call. = FALSE)
+    cb <- codebook(m, form_id)
+    use_codebook = FALSE
+  }
+
+  dt <- clean_form_submissions(cont,
+                               cb = cb,
                                use_codebook = use_codebook,
                                checkbox_type = checkbox_type,
                                checkbox_delim = checkbox_delim)

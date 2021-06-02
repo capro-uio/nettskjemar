@@ -63,7 +63,7 @@ extract_submission_answers <- function(cont, cb,
 
   opt <- ifelse(use_codebook,
                 "externalAnswerOptionId",
-                "text" )
+                "text")
 
   answ <- lapply(1:length(cont$answers),
                  function(x){
@@ -74,8 +74,15 @@ extract_submission_answers <- function(cont, cb,
                      cont$answers[[x]][["textAnswer"]]
                    }
                  })
-  names(answ) <- map(cont$answers, "externalQuestionId")
-  as_tibble(lapply(answ, function(x) ifelse(is.null(x), NA, x)))
+  if(any(use_codebook & !inherits(cb, "data.frame"))){
+    names(answ) <- map(cont$answers, "externalQuestionId")
+  }else{
+    nms <- select(cb, element_no, question)
+    nms <- unique(nms)
+    names(answ) <- nms$question
+  }
+  as_tibble(lapply(answ, function(x) ifelse(is.null(x), NA, x)),
+            .name_repair = "universal")
 }
 
 #' @importFrom httr content

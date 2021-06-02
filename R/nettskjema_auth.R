@@ -197,7 +197,7 @@ nettskjema_find_ip <- function(version = c("v4","v6")){
   ip_url <- switch(version,
                    "v4" = "https://api.ipify.org?format=json",
                    "v6" = "https://api64.ipify.org?format=json")
-  resp <- GET("https://api.ipify.org?format=json")
+  resp <- GET(ip_url)
   message(
     sprintf(
       "Your current IP%s address is:\n%s",

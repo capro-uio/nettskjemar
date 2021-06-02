@@ -106,27 +106,67 @@ as_select_element <- function(el){
   ))
 }
 
+as_linearscale_element <- function(el){
+  element_linearscale(el)
+}
 
-#' @importFrom purrr map_chr map_int map_lgl map
-#' @importFrom dplyr bind_cols select one_of tibble
-element_question <- function(el){
+element_linearscale <- function(el){
+  cbind(
+    element_main(el),
+    tibble(
+      question_order       = map_int(el$questions, "sequence", .default = NA_integer_),
+      question_preselected = map_lgl(el$questions, "horizontal", .default = NA),
+      question_rangemarks  = map_lgl(el$questions, "rangeMarksShown", .default = NA),
+      question_scaletype   = el$linearScaleType,
+      question_minvalue    = map_int(el$questions, "minimumValue", .default = NA_integer_),
+      question_mintext     = map_chr(el$questions, "maximumValueText", .default = NA_character_),
+      question_midtext     = map_chr(el$questions, "midValueText", .default = NA_character_),
+      question_maxvalue    = map_int(el$questions, "maximumValue", .default = NA_integer_),
+      question_maxtext     = map_chr(el$questions, "maximumValueText", .default = NA_character_)
+    )
+  )
+}
+
+element_main <- function(el){
   tibble(
-    question = map_chr(el$questions, "text", .default = NA_character_),
-    question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
+    question           = map_chr(el$questions, "text", .default = NA_character_),
+    question_descr     = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+    question_codebook  = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
     question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
   )
 }
 
 #' @importFrom purrr map_chr map_int map_lgl map
 #' @importFrom dplyr bind_cols select one_of tibble
+element_question <- function(el){
+  element_main(el)
+}
+
+#' @importFrom purrr map_chr map_int map_lgl map
+#' @importFrom dplyr bind_cols select one_of tibble
 element_select <- function(el){
-  tibble(
-    question = map_chr(el$questions, "text", .default = NA_character_),
-    question_codebook    = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
+  cbind(
+    element_main(el),
     question_order       = map_int(el$questions, "sequence", .default = NA_integer_),
-    question_mandatory   = map_lgl(el$questions, "mandatory", .default = NA),
     question_preselected = map_lgl(el$questions, "horizontal", .default = NA),
     question_rangemarks  = map_lgl(el$questions, "rangeMarksShown", .default = NA)
+  )
+}
+
+
+#' @importFrom purrr map_chr
+#' @importFrom dplyr tibble
+element_checkbox <- function(el){
+  element_main(el)
+}
+
+
+#' @importFrom purrr map_chr map_int map_lgl
+#' @importFrom dplyr tibble
+element_matrix <- function(el){
+  cbind(
+    element_main(el),
+    question_order = map_int(el$questions, "sequence", .default = NA_integer_)
   )
 }
 
@@ -143,30 +183,6 @@ element_answeropts <- function(el){
   )
 }
 
-#' @importFrom purrr map_chr
-#' @importFrom dplyr tibble
-element_checkbox <- function(el){
-  tibble(
-    order = map_chr(el, "sequence", .default = NA_character_),
-    text = strip_html(map_chr(el, "text", .default = NA_character_)),
-    mandatory = map_chr(el, "mandatory", .default = NA_character_)
-  )
-}
-
-
-#' @importFrom purrr map_chr map_int map_lgl
-#' @importFrom dplyr tibble
-element_matrix <- function(el){
-  # This should work when each field is returned, even empty ones
-  tibble(
-    question = map_chr(el$questions, "text", .default = NA_character_),
-    question_order = map_int(el$questions, "sequence", .default = NA_integer_),
-    question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
-    question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
-  )
-}
-
-
 element_details <- function(type, el){
   j <- sapply(type, function(x) list())
   j <- lapply(1:length(type), function(e){
@@ -180,6 +196,7 @@ element_details <- function(type, el){
            "MATRIX_RADIO"     = as_radiomatrix_element(el[[e]]),
            "TEXT"             = as_txt_element(el[[e]]),
            "SELECT"           = as_select_element(el[[e]]),
+           "LINEAR_SCALE"     = as_linearscale_element(el[[e]]),
            "unknown element class"
     )
   })
