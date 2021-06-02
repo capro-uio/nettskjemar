@@ -74,7 +74,7 @@ as_checkbox_element <- function(el, checkbox_type = c(string, list, columns)){
   cbind(
     tibble(
       max_selected = max_selected(el),
-      question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+      question = strip_html(map_chr(el$questions, "text", .default = NA_character_)),
       question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)),
     element_answeropts(el$questions[[1]])
   )
@@ -83,11 +83,8 @@ as_checkbox_element <- function(el, checkbox_type = c(string, list, columns)){
 #' @importFrom dplyr tibble
 #' @importFrom purrr map_chr map_lgl
 as_checkboxmatrix_element <- function(el){
-  tmp <- tibble(
-    max_selected = max_selected(el),
-    question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
-    question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
-    )
+  tmp <- element_matrix(el)
+  tmp$max_selected <- max_selected(el)
   tmp$answers <- lapply(1:nrow(tmp),
                         function(x) element_answeropts(el))
 
@@ -104,7 +101,7 @@ as_question_element <- function(el){
 #' @importFrom dplyr tibble
 as_select_element <- function(el){
   as_tibble(cbind(
-    element_question(el),
+    element_select(el),
     element_answeropts(el$questions[[1]])
   ))
 }
@@ -114,9 +111,22 @@ as_select_element <- function(el){
 #' @importFrom dplyr bind_cols select one_of tibble
 element_question <- function(el){
   tibble(
-    question = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
+    question = map_chr(el$questions, "text", .default = NA_character_),
     question_codebook = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
     question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
+  )
+}
+
+#' @importFrom purrr map_chr map_int map_lgl map
+#' @importFrom dplyr bind_cols select one_of tibble
+element_select <- function(el){
+  tibble(
+    question = map_chr(el$questions, "text", .default = NA_character_),
+    question_codebook    = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
+    question_order       = map_int(el$questions, "sequence", .default = NA_integer_),
+    question_mandatory   = map_lgl(el$questions, "mandatory", .default = NA),
+    question_preselected = map_lgl(el$questions, "horizontal", .default = NA),
+    question_rangemarks  = map_lgl(el$questions, "rangeMarksShown", .default = NA)
   )
 }
 
@@ -138,7 +148,7 @@ element_answeropts <- function(el){
 element_checkbox <- function(el){
   tibble(
     order = map_chr(el, "sequence", .default = NA_character_),
-    text = strip_html(map_chr(el, "description", .default = NA_character_)),
+    text = strip_html(map_chr(el, "text", .default = NA_character_)),
     mandatory = map_chr(el, "mandatory", .default = NA_character_)
   )
 }

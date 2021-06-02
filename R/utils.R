@@ -9,9 +9,11 @@ valid_form_inf <- function(){
 #' @importFrom rvest html_text
 #' @importFrom xml2 read_html
 strip_html <- function(s) {
-  if(!is.na(s))
-    s <- gsub("\\\n|\\\t", "", html_text(read_html(s)))
-  s
+  ifelse(
+    !is.na(s),
+    gsub("\\\n|\\\t", "", html_text(read_html(s))),
+    NA_character_
+  )
 }
 
 max_selected <- function(x){
