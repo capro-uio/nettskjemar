@@ -27,6 +27,18 @@ Install the released version from CRAN with:
 install.packages("nettskjemar")
 ```
 
+Newer releases can be installed through the authors r-universe:
+
+``` r
+# Enable this universe
+options(repos = c(
+    athanasiamo = 'https://athanasiamo.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+# Install some packages
+install.packages('nettskjemar')
+```
+
 Install the development version from [GitHub](https://github.com/) with:
 
 ``` r

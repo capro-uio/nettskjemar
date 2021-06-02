@@ -209,23 +209,27 @@ nettskjema_get_extra <- function(data,
 
   information <- validate_information(information)
 
-  type <- ifelse(use_codebook, "question_codebook", "question")
-  type_answ <- ifelse(use_codebook, "answer_codebook", "answer_option")
-
   # reduce codebook to only those with answer options
-  cb <- codebook[!is.na(codebook[,type_answ]),]
+  questions <- NA
+  if(!inherits(codebook, "data.frame")){
+    type <- ifelse(use_codebook, "question_codebook", "question")
+    type_answ <- ifelse(use_codebook, "answer_codebook", "answer_option")
 
-  # Those without order are check-boxes
-  cb <- cb[!is.na(cb[,"question_order"]),]
+    cb <- codebook[!is.na(codebook[,type_answ]),]
 
-  # get unique questions
-  questions <- unname(unlist(unique(cb[,type])))
+    # Those without order are check-boxes
+    cb <- cb[!is.na(cb[,"question_order"]),]
+
+    # get unique questions
+    questions <- unname(unlist(unique(cb[,type])))
+  }
+
 
   # If they have set up questions that are not represented in the actual
   # question part of the form, this process will fail to merge properly.
   if(any(is.na(questions)))
-    stop("The codebook is not set up correctly, or some questions do not have text.\n",
-         "Adding extra information from the codebook is not possible in this situation.\n",
+    stop("The codebook is not set up correctly, or some questions do not have text. ",
+         "Adding extra information from the codebook is not possible in this situation. ",
          "Try filling out the codebook, before downloading the data once more.\n",
          call. = FALSE)
 

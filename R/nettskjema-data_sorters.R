@@ -82,8 +82,18 @@ extract_submission_answers <- function(cont, cb,
     names(answ) <- nms$question
   }
   as_tibble(lapply(answ, function(x) ifelse(is.null(x), NA, x)),
-            .name_repair = "universal")
+            .name_repair = repair_names)
 }
+
+repair_names <- function(x){
+  idx <- match(x, x)
+  for(k in idx[duplicated(idx)]){
+    i <- x[idx == k]
+    x[idx == k] <- sprintf("%s_%02d", i, 1:length(i))
+  }
+  x
+}
+
 
 #' @importFrom httr content
 #' @importFrom pbapply pblapply
