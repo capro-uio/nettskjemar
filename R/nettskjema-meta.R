@@ -153,3 +153,55 @@ print.nettskjema_meta_raw <- function(x, ...){
 }
 
 
+#' Write meta-data to file
+#'
+#' Save meta-data information to a
+#' file for safe keeping. The function
+#' saves the data in json-format, which
+#' best preserves the information.
+#'
+#' @param meta object of class nettskjema_meta class
+#' @param file file name or path
+#' @param pretty logical. If json-file should be made "pretty"
+#' @param ... other arguments to \code{\link[jsonlite]{write_json}}
+#' @return no return value. Writes a file to path.
+#' @export
+#' @examples
+#' \dontrun{
+#' form_id <- 1100000
+#' my_meta <- nettskjema_get_meta(form_id)
+#' nettskjema_write_meta(my_meta, "my/path/meta_110000.json")
+#' }
+nettskjema_write_meta <- function(meta, file, pretty = TRUE, ...){
+  UseMethod("nettskjema_write_meta")
+}
+
+#' @export
+#' @rdname nettskjema_write_meta
+nettskjema_write_meta.default <- function(meta, file, pretty = TRUE, ...){
+  warning("Cannot write object of class", class(meta)[1], "as meta-data file",
+          call. = FALSE)
+}
+
+#' @export
+#' @rdname nettskjema_write_meta
+nettskjema_write_meta.nettskjema_meta_raw <- function(meta, file, pretty = TRUE, ...){
+  if(!grepl("json$", file)){
+    message("Switching file extention to .json")
+    file <- sprintf("%s.json", rm_ext(file))
+  }
+  jsonlite::write_json(meta,
+                       path = file,
+                       pretty = pretty, ...)
+}
+
+#' @export
+#' @rdname nettskjema_write_meta
+nettskjema_write_meta.nettskjema_meta_data <- function(meta, file, pretty = TRUE, ...){
+  jsonlite::write_json(meta,
+                       path = file,
+                       pretty = pretty, ...)
+}
+
+
+

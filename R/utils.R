@@ -68,6 +68,34 @@ get_renv_path <- function(type = c("user", "project"),
   file.path(file.path(type, ".Renviron"))
 }
 
+
+#' Check if form has codebook
+#'
+#' Codebook is by default turned off
+#' in Nettskjema, but best practices in handling
+#' data is to have it on. This function
+#' checks if the codebook of a form has been activated
+#' or not
+#'
+#' @template form_id
+#'
+#' @return logical is codebook is turned on
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' has_codebook(110000)
+#' }
+has_codebook <- function(form_id){
+  nettskjema_get_meta(form_id)$codebook
+}
+
+rm_ext <- function(file){
+  ex <- strsplit(basename(file), split="\\.")[[1]]
+  ex <- ex[-length(ex)]
+  paste0(ex, collapse = ".")
+}
+
 ## quiets concerns of R CMD check
 if(getRversion() >= "2.15.1"){
   utils::globalVariables(c("question_codebook","cb", "question", "answer", "columns",
