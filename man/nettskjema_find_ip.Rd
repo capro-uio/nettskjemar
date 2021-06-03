@@ -6,8 +6,12 @@
 \usage{
 nettskjema_find_ip(version = c("v4", "v6"))
 }
+\arguments{
+\item{version}{string. ip version to check.
+one of either "v4" or "v6".}
+}
 \description{
-The nettskjema v2 API requires a token
+The Nettskjema v2 API requires a token
 to be registered with IP addresses.
 This function returns the current IP address.
 }

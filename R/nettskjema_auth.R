@@ -199,7 +199,8 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #' will not be returned as the Nettskjema API sees it.
 #' We are looking for solutions to this.
 #'
-#'
+#' @param version string. ip version to check.
+#'   one of either "v4" or "v6".
 #' @importFrom httr GET content
 #' @importFrom jsonlite fromJSON
 nettskjema_find_ip <- function(version = c("v4","v6")){
