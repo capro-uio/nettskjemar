@@ -1,3 +1,10 @@
+# nettskjemar 0.1.4.004
+
+- add linear scale support  
+- fix bugs in codebook and meta data that did not retrieve question data  
+- force writing raw codebook and raw metadata to json extension  
+- add direct check for if a form has codebook `has_codebook()`
+
 # nettskjemar 0.1.4
 
 * simplification of internal code  

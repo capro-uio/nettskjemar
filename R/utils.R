@@ -91,7 +91,7 @@ has_codebook <- function(form_id){
 }
 
 rm_ext <- function(file){
-  ex <- strsplit(basename(file), split="\\.")[[1]]
+  ex <- strsplit(file, split="\\.")[[1]]
   ex <- ex[-length(ex)]
   paste0(ex, collapse = ".")
 }

@@ -211,7 +211,7 @@ nettskjema_get_extra <- function(data,
 
   # reduce codebook to only those with answer options
   questions <- NA
-  if(!inherits(codebook, "data.frame")){
+  if(inherits(codebook, "data.frame")){
     type <- ifelse(use_codebook, "question_codebook", "question")
     type_answ <- ifelse(use_codebook, "answer_codebook", "answer_option")
 

@@ -189,7 +189,17 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
   paste("Bearer", Sys.getenv(token_name))
 }
 
-#' @noRd
+#' Find your current IP
+#'
+#' The Nettskjema v2 API requires a token
+#' to be registered with IP addresses.
+#' This function returns the current IP address.
+#'
+#' If you are working through a VPN, the IP address
+#' will not be returned as the Nettskjema API sees it.
+#' We are looking for solutions to this.
+#'
+#'
 #' @importFrom httr GET content
 #' @importFrom jsonlite fromJSON
 nettskjema_find_ip <- function(version = c("v4","v6")){
