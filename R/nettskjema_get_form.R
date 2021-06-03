@@ -81,7 +81,7 @@ nettskjema_get_data <- function(form_id,
     from_submission <- sprintf("fromSubmissionId=%s", from_submission)
   }
 
-  opts <- paste0("?", from_date, from_submission)
+  opts <- paste0("?", from_date, "&", from_submission)
 
   # get all submissionIds first, to create increments
   path_inc <- paste0(path, opts, "fields=submissionId")
