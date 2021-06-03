@@ -4,7 +4,7 @@
 #' @importFrom purrr map_chr map
 #' @importFrom tidyr pivot_longer pivot_wider separate_rows unite
 #' @noRd
-clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
+clean_form_submissions <- function(cont, cb, use_codebook,
                                    checkbox_type = c("string", "list", "columns"),
                                    checkbox_delim = ";"){
 
@@ -58,7 +58,7 @@ clean_form_submissions <- function(cont, cb, use_codebook = TRUE,
 #' @importFrom dplyr as_tibble
 #' @noRd
 extract_submission_answers <- function(cont, cb,
-                                       use_codebook = TRUE){
+                                       use_codebook){
   type <- sapply(cont$answers, function(x) "answerOptions" %in% names(x) )
 
   opt <- ifelse(use_codebook,

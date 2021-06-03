@@ -7,7 +7,7 @@
 nettskjema_get_data(
   form_id,
   information = NULL,
-  use_codebook = TRUE,
+  use_codebook = has_codebook(form_id),
   checkbox_type = c("string", "list", "columns"),
   checkbox_delim = ";",
   as_is = FALSE,

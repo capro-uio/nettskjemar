@@ -143,3 +143,64 @@ print.nettskjema_codebook_raw <- function(x, ...){
 
 
 
+#' Write codebook to file
+#'
+#' Save codebook information to a
+#' file for safe keeping. Depending
+#' on the type of codebook (raw or tidy)
+#' the file will either be stored as a
+#' json-file through \code{\link[jsonlite]{write_json}}
+#' or a text table through \code{\link[utils]{write.table}}.
+#'
+#' @details Given the two types of codebooks, writes different
+#'        types of files.
+#' \itemize{
+#' \item{codebook}{ - writes a tab-separated table}
+#' \item{codebook_raw}{ - writes a json-file}
+#' }
+#'
+#' @param codebook object of class nettskjema_codebook
+#' @param pretty logical. If writing json-file, make it pretty
+#' @param sep character. If writing text table, column delimiter.
+#' @param file filename or path
+#' @param ... arguments to \code{\link[jsonlite]{write_json}} or \code{\link[utils]{write.table}}
+#' @return no return value. Writes a file to path.
+#' @export
+#' @examples
+#' \dontrun{
+#' form_id <- 1100000
+#' my_cb <- nettskjema_get_codebook(form_id)
+#' nettskjema_write_codebook(my_cb, "my/path/codebook_110000.txt")
+#' }
+nettskjema_write_codebook <- function(codebook, file, ...){
+  UseMethod("nettskjema_write_codebook")
+}
+
+#' @export
+#' @rdname nettskjema_write_codebook
+nettskjema_write_codebook.default <- function(codebook, file, ...){
+  warning("Cannot write object of class", class(codebook)[1], "as codebook-data file",
+          call. = FALSE)
+}
+
+#' @export
+#' @rdname nettskjema_write_codebook
+nettskjema_write_codebook.nettskjema_codebook_raw <- function(codebook, file, pretty = TRUE, ...){
+  if(!grepl("json$", file)){
+    message("Switching file extention to .json")
+    file <- sprintf("%s.json", rm_ext(file))
+  }
+  jsonlite::write_json(codebook,
+                       path = file,
+                       pretty = pretty, ...)
+}
+
+#' @export
+#' @rdname nettskjema_write_codebook
+nettskjema_write_codebook.nettskjema_codebook <- function(codebook, file, sep = "\t", ...){
+  utils::write.table(codebook,
+                     file = file,
+                     sep = sep,
+                     row.names = FALSE,
+                     ...)
+}
