@@ -6,7 +6,11 @@ Authors@R: c(
             person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
                     role = c("aut", "cre"),
-                    comment = c(ORCID = "0000-0002-5756-0223"))
+                    comment = c(ORCID = "0000-0002-5756-0223")),
+            person("Trym Nohr", "Fjørtoft", 
+                    email = "t.n.fjortoft@arena.uio.no",
+                    role = c("ctb"),
+                    comment = c(ORCID = "0000-0002-7654-4587"))
             )
 Description: Enables users to retrieve data, meta-data, and codebooks 
     from <https://nettskjema.no/>. The data from the API is richer than from the
