@@ -20,3 +20,6 @@ If you are working through a VPN, the IP address
 will not be returned as the Nettskjema API sees it.
 We are looking for solutions to this.
 }
+\examples{
+nettskjema_find_ip()
+}

@@ -203,6 +203,10 @@ api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 #'   one of either "v4" or "v6".
 #' @importFrom httr GET content
 #' @importFrom jsonlite fromJSON
+#'
+#' @export
+#' @examples
+#' nettskjema_find_ip()
 nettskjema_find_ip <- function(version = c("v4","v6")){
   version <- match.arg(version, c("v4","v6"))
   ip_url <- switch(version,
