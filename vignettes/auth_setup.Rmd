@@ -36,6 +36,8 @@ Click on the created username to access the token generation.
 ![Click on the created API user name to access the token generation](static/nettskjema_api_create2.png){width=100%}
 
 Select which permissions the token should be allowed to have, and save to create the token.
+Make sure that the IP addresses you want the token to be used from is in the list of ips at the bottom. 
+If you don't know your current IP address, [google "what's my ip"](https://www.google.com/search?q=whats+my+ip&rlz=1C5CHFA_enNO891NO891&oq=whats+my+ip&aqs=chrome..69i57.1587j0j7&sourceid=chrome&ie=UTF-8)
 ![Select the permissions the token should allow you to have](static/nettskjema_create_token.png){width=100%}
 
 Copy the token and return to RStudio (this example token has been deleted).
@@ -64,9 +66,10 @@ nettskjema_token2renviron("paste_token_here",
 ```
 
 This function will add the token so you can authenticate your self to nettskjema, and also make sure the `.Renviron` file is locked so no other user of your computer may access it. 
-Fot it to take effect, you need your R session to restart. 
-You may do so in RStudio by going to `Session` -> `Restart R session`, og by pressing `cmd/ctrl + shift + F10` on the keyboard.
+For it to take effect, you need your R session to restart. 
+You may do so in RStudio by going to `Session` -> `Restart R session`, and by pressing `cmd/ctrl + shift + F10` on the keyboard.
 
+**OBS!**
 This token is important to keep safe.
 If you believe the token has been compromised in any way, delete it in the API user-portal and create a new one.
 

@@ -7,14 +7,14 @@
 nettskjema_get_data(
   form_id,
   information = NULL,
-  use_codebook = has_codebook(form_id),
+  token_name = "NETTSKJEMA_API_TOKEN",
+  use_codebook = has_codebook(form_id, token_name),
   checkbox_type = c("string", "list", "columns"),
   checkbox_delim = ";",
   as_is = FALSE,
   from_date = "",
   from_submission = "",
   incremental = FALSE,
-  token_name = "NETTSKJEMA_API_TOKEN",
   ...
 )
 }
@@ -25,6 +25,8 @@ nettskjema_get_data(
 to add (One or more of "order", "option", "correct" "preselected"). If the list
 is named, the additional information suffixes will be changed to the list names. If NULL (default) nothing is added.
 Currently not combinable with \code{use_codebook = TRUE}.}
+
+\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
 \item{use_codebook}{logical. Use codebook for retrieving answers (default TRUE). If you have not
 set up the codebook in nettskjema, then turning this off will return the data as is.}
@@ -40,8 +42,6 @@ set up the codebook in nettskjema, then turning this off will return the data as
 \item{from_submission}{integer. From which SubmissionId should data be collected from.}
 
 \item{incremental}{logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.}
-
-\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 
 \item{...}{arguments passed to \code{\link[httr]{GET}}}
 }

@@ -4,10 +4,12 @@
 \alias{has_codebook}
 \title{Check if form has codebook}
 \usage{
-has_codebook(form_id)
+has_codebook(form_id, token_name = "NETTSKJEMA_API_TOKEN")
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
+
+\item{token_name}{character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'}
 }
 \value{
 logical is codebook is turned on

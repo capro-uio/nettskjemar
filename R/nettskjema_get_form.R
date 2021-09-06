@@ -55,16 +55,15 @@
 #' }
 nettskjema_get_data <- function(form_id,
                                 information = NULL,
-                                use_codebook = has_codebook(form_id),
+                                token_name = "NETTSKJEMA_API_TOKEN",
+                                use_codebook = has_codebook(form_id, token_name),
                                 checkbox_type = c("string", "list", "columns"),
                                 checkbox_delim = ";",
                                 as_is = FALSE,
                                 from_date = "",
                                 from_submission = "",
                                 incremental = FALSE,
-                                token_name = "NETTSKJEMA_API_TOKEN",
                                 ...){
-
   if(!use_codebook & !is.null(information)){
     warning("Cannot combine `use_codebook` and `information`, setting `information = NULL`",
             call. = FALSE)
@@ -81,7 +80,7 @@ nettskjema_get_data <- function(form_id,
     from_submission <- sprintf("fromSubmissionId=%s", from_submission)
   }
 
-  opts <- paste0("?", from_date, "&", from_submission)
+    opts <- paste0("?", from_date, "&", from_submission)
 
   # get all submissionIds first, to create increments
   path_inc <- paste0(path, opts, "fields=submissionId")
@@ -106,7 +105,7 @@ nettskjema_get_data <- function(form_id,
                                 token_name = token_name,
                                 ...)
 
-  m <- nettskjema_get_meta(form_id)
+  m <- nettskjema_get_meta(form_id, token_name = token_name)
   if(!m$codebook){
     warning("No codebook defined for this form. Setting 'use_codebook' to FALSE.",
             call. = FALSE)
