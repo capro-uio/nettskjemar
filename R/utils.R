@@ -78,6 +78,7 @@ get_renv_path <- function(type = c("user", "project"),
 #' or not
 #'
 #' @template form_id
+#' @template token_name
 #'
 #' @return logical is codebook is turned on
 #' @export
@@ -86,8 +87,8 @@ get_renv_path <- function(type = c("user", "project"),
 #' \dontrun{
 #' has_codebook(110000)
 #' }
-has_codebook <- function(form_id){
-  nettskjema_get_meta(form_id)$codebook
+has_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN"){
+  nettskjema_get_meta(form_id, token_name = token_name)$codebook
 }
 
 rm_ext <- function(file){

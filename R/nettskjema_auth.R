@@ -28,7 +28,7 @@ nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
           " days."
   )
 
-  dt
+  invisible(dt)
 }
 
 
