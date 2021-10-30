@@ -7,7 +7,6 @@
 clean_form_submissions <- function(cont, cb, use_codebook,
                                    checkbox_type = c("string", "list", "columns"),
                                    checkbox_delim = ";"){
-
   checkbox_type <- match.arg(checkbox_type, c("string", "list", "columns"))
 
   dt <- tibble(

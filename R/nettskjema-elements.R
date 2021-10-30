@@ -110,6 +110,10 @@ as_linearscale_element <- function(el){
   element_linearscale(el)
 }
 
+as_element_attachment <- function(el){
+  browser()
+}
+
 element_linearscale <- function(el){
   cbind(
     element_main(el),
@@ -197,12 +201,16 @@ element_details <- function(type, el){
            "TEXT"             = as_txt_element(el[[e]]),
            "SELECT"           = as_select_element(el[[e]]),
            "LINEAR_SCALE"     = as_linearscale_element(el[[e]]),
+           "ATTACHMENT"     = as_linearscale_element(el[[e]]),
            "unknown element class"
     )
   })
   unname(j)
 }
 
+element_attachment <- function(el){
+  browser()
+}
 
 element_exists <- function(el, fields){
   nms <- names(unlist(el))

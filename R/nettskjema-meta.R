@@ -62,7 +62,6 @@ meta_fields <- function(){
 #' @noRd
 meta_classes <- function(content){
   nm <- names(content)
-
   dt <- lapply(nm, function(x) meta_change_class(x, content))
   names(dt) <- nm
   structure(dt,
@@ -188,7 +187,7 @@ nettskjema_write_meta.default <- function(meta, file, pretty = TRUE, ...){
 nettskjema_write_meta.nettskjema_meta_raw <- function(meta, file, pretty = TRUE, ...){
   if(!grepl("json$", file)){
     message("Switching file extention to .json")
-    file <- sprintf("%s.json", rm_ext(file))
+    file <- sprintf("%sjson", rm_ext(file))
   }
   jsonlite::write_json(meta,
                        path = file,
