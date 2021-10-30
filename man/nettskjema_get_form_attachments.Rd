@@ -6,7 +6,7 @@
 \usage{
 nettskjema_get_form_attachments(
   form_id,
-  filenames = c("standardised", "original"),
+  filenames = c("standardized", "original"),
   output_dir = ".",
   token_name = "NETTSKJEMA_API_TOKEN",
   from_date = "",
@@ -17,7 +17,7 @@ nettskjema_get_form_attachments(
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{filenames}{string of either 'standardised' (default) or
+\item{filenames}{string of either 'standardized' (default) or
 'original' indicating which file names to use.}
 
 \item{output_dir}{directory to output the files to}
@@ -46,7 +46,7 @@ of the names used.
 \itemize{
  \item{"original"}{ - uses file names are they were
     uploaded to Nettskjema}
- \item{"standardised"}{ - creates file names based on
+ \item{"standardized"}{ - creates file names based on
     the submission id and a counter number to uniquely
     create file names for each submission (in case there
     are more than one attachment)}

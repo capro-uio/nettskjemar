@@ -34,6 +34,6 @@ file names.
 \dontrun{
 submission_id <- c(22222, 1232, 21555)
 attach_dt <- nettskjema_list_attachments(submission_id)
-nettskjema_save_attachment(path = attach_dt$path, output = attach_dt$standardised)
+nettskjema_save_attachment(path = attach_dt$path, output = attach_dt$standardized)
 }
 }
