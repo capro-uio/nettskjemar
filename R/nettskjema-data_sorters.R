@@ -7,7 +7,6 @@
 clean_form_submissions <- function(cont, cb, use_codebook,
                                    checkbox_type = c("string", "list", "columns"),
                                    checkbox_delim = ";"){
-
   checkbox_type <- match.arg(checkbox_type, c("string", "list", "columns"))
 
   dt <- tibble(
@@ -45,12 +44,12 @@ clean_form_submissions <- function(cont, cb, use_codebook,
                        values_to = "answer",
                        values_drop_na = TRUE)
     dt <- separate_rows(dt, answer, sep = ";-;")
-    dt$value <- 1
+    dt$value <- 1L
     dt <- unite(dt, question, question, answer)
     pivot_wider(dt,
                 names_from = question,
                 values_from = value,
-                values_fill = 0)
+                values_fill = 0L)
   }
 }
 

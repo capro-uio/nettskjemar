@@ -1,6 +1,5 @@
 test_that("strip_html works", {
   expect_equal(strip_html("<p>"), "")
-  expect_error(strip_html(""))
 })
 
 test_that("max_selected works", {

@@ -1,7 +1,7 @@
 Package: nettskjemar
 Type: Package
 Title: Connect to the 'nettskjema.no' API of the University of Oslo
-Version: 0.1.4.006
+Version: 0.1.4.008
 Authors@R: c(
             person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
@@ -17,6 +17,7 @@ Description: Enables users to retrieve data, meta-data, and codebooks
     online data portal. Mowinckel (2021) <doi:10.5281/zenodo.4745481>.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Depends: R (>= 3.4)
 Imports: 
     dplyr,
     tidyr,
@@ -25,15 +26,17 @@ Imports:
     httr,
     jsonlite,
     purrr,
-    xml2,
     rvest,
-    pbapply
+    pbapply,
+    tools,
+    base64enc
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 2.1.0),
     covr,
-    spelling
+    spelling,
+    vcr (>= 0.6.0)
 RoxygenNote: 7.1.1
 URL: https://github.com/LCBC-UiO/nettskjemar, https://zenodo.org/badge/latestdoi/206264675
 BugReports: https://github.com/LCBC-UiO/nettskjemar/issues

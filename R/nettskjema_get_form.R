@@ -27,8 +27,8 @@
 #' @param checkbox_type string of either "string" (default), "list" or "columns" for how to handle checkbox answers
 #' @param checkbox_delim delimiter string if \code{checkbox:type} is "string". Ignored else.
 #' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
-#' @param from_date date. From which date on should data be fetched for
-#' @param from_submission integer. From which SubmissionId should data be collected from.
+#' @template from_date
+#' @template from_submission
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #'
 #' @return tibble data.frame
@@ -71,24 +71,10 @@ nettskjema_get_data <- function(form_id,
   }
 
   path = file.path("forms", form_id, "submissions")
-
-  if(from_date != "" ){
-    from_date <- sprintf("fromDate=%s", from_date)
-  }
-
-  if(from_submission != "" ){
-    from_submission <- sprintf("fromSubmissionId=%s", from_submission)
-  }
-
-    opts <- paste0("?", from_date, "&", from_submission)
+  opts <- make_opts(from_date, from_submission)
 
   # get all submissionIds first, to create increments
-  path_inc <- paste0(path, opts, "fields=submissionId")
-  resp_inc <- nettskjema_api(path_inc, token_name = token_name, ...)
-
-  api_catch_error(resp_inc)
-
-  submissionIds <- unlist(content(resp_inc))
+  submissionIds <- list_submissions(path, opts, token_name, ...)
 
   if(from_submission != "") submissionIds[submissionIds > from_submission]
   cat(sprintf("Form %s has %s responses to download.\n",form_id, length(submissionIds)))
@@ -100,17 +86,17 @@ nettskjema_get_data <- function(form_id,
   # raw json content
   if(as_is) return(cont)
 
-  cb <- nettskjema_get_codebook(form_id = form_id,
-                                as_is = TRUE,
-                                token_name = token_name,
-                                ...)
-
   m <- nettskjema_get_meta(form_id, token_name = token_name)
   if(!m$codebook){
     warning("No codebook defined for this form. Setting 'use_codebook' to FALSE.",
             call. = FALSE)
     cb <- codebook(m, form_id)
     use_codebook = FALSE
+  }else{
+    cb <- nettskjema_get_codebook(form_id = form_id,
+                                  as_is = TRUE,
+                                  token_name = token_name,
+                                  ...)
   }
 
   dt <- clean_form_submissions(cont,
@@ -120,7 +106,7 @@ nettskjema_get_data <- function(form_id,
                                checkbox_delim = checkbox_delim)
 
   # Add form_id to the outputted data
-  dt <- mutate(dt, form_id = form_id)
+  dt$form_id <- form_id
 
   if(!is.null(information)){
     cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)
@@ -203,7 +189,7 @@ nettskjema_get_extra <- function(data,
 
   if(missing(information)){
     stop("No argument passed to `information`, no extra data to add",
-            call. = FALSE)
+         call. = FALSE)
   }
 
   information <- validate_information(information)

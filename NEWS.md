@@ -1,3 +1,9 @@
+# nettskjemar 0.1.4.008
+
+- add functions to download attachments
+- binaries returned as integer rather than double
+- added general usage vignette
+
 # nettskjemar 0.1.4.004
 
 - add linear scale support  

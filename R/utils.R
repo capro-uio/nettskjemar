@@ -6,14 +6,8 @@ valid_form_inf <- function(){
     "editors", "elements")
 }
 
-#' @importFrom rvest html_text
-#' @importFrom xml2 read_html
-strip_html <- function(s) {
-  ifelse(
-    !is.na(s),
-    gsub("\\\n|\\\t", "", html_text(read_html(s))),
-    NA_character_
-  )
+strip_html <- function(string) {
+  gsub("<[^>]*>", "", string)
 }
 
 max_selected <- function(x){
@@ -82,7 +76,7 @@ get_renv_path <- function(type = c("user", "project"),
 #'
 #' @return logical is codebook is turned on
 #' @export
-#'
+#' @importFrom tools file_ext
 #' @examples
 #' \dontrun{
 #' has_codebook(110000)
@@ -92,9 +86,41 @@ has_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN"){
 }
 
 rm_ext <- function(file){
-  ex <- strsplit(file, split="\\.")[[1]]
-  ex <- ex[-length(ex)]
-  paste0(ex, collapse = ".")
+  ex <- tools::file_ext(file)
+  gsub(ex, "", file)
+}
+
+# will list the submission ids associated with a form
+list_submissions <- function(path, opts, token_name, ...) {
+  path_inc <- sprintf("%s%s&fields=submissionId", path, opts)
+  resp <- nettskjema_api(path_inc, token_name = token_name, ...)
+  api_catch_error(resp)
+  unlist(content(resp))
+}
+
+# make options for getting form data
+make_opts <- function(from_date = "", from_submission = ""){
+  if(from_date != "" ){
+    from_date <- sprintf("fromDate=%s", from_date)
+  }
+
+  if(from_submission != "" ){
+    from_submission <- sprintf("fromSubmissionId=%s", from_submission)
+  }
+
+  sprintf("?%s&%s", from_date, from_submission)
+}
+
+# get global options
+get_option = function(x, default = NULL){
+  getOption("test") %||% default
+}
+
+# assign b if a is nothing
+`%||%` <- function(a, b){
+  if(length(a) == 0) return(b)
+  if(is.na(a) | is.null(a) | a == "") return(b)
+  a
 }
 
 ## quiets concerns of R CMD check
