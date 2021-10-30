@@ -102,6 +102,9 @@
 
     
     
+<div id="create-an-api-user" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-an-api-user" class="anchor"></a>Create an API user</h2>
 <p>To set up a connection to the Nettskjema API, you need to create an api-user, and a token associated with this user. The nettskjema api-user is different from your standard user that has access to nettskjema. This is a specific user that may access nettskjema through the API.</p>
 <p>Use the <code>nettskjema_user_create</code> function to be routed to the portal to set this up.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -109,9 +112,20 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_user_create.html">nettskjema_user_create</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Create an api user, I recommend using your uio user name or an UiO user group. <img src="static/nettskjema_api_create.png" style="width:100.0%" alt="Create an API user"></p>
+</div>
+<div id="create-an-api-token" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-an-api-token" class="anchor"></a>Create an API token</h2>
 <p>Click on the created username to access the token generation. <img src="static/nettskjema_api_create2.png" style="width:100.0%" alt="Click on the created API user name to access the token generation"></p>
-<p>Select which permissions the token should be allowed to have, and save to create the token. Make sure that the IP addresses you want the token to be used from is in the list of ips at the bottom. If you don’t know your current IP address, <a href="https://www.google.com/search?q=whats+my+ip&amp;rlz=1C5CHFA_enNO891NO891&amp;oq=whats+my+ip&amp;aqs=chrome..69i57.1587j0j7&amp;sourceid=chrome&amp;ie=UTF-8">google “what’s my ip”</a> <img src="static/nettskjema_create_token.png" style="width:100.0%" alt="Select the permissions the token should allow you to have"></p>
+<p>Select which permissions the token should be allowed to have, and save to create the token. Make sure that the IP addresses you want the token to be used from is in the list of ips at the bottom. If you don’t know your current IP address, <a href="https://www.google.com/search?q=whats+my+ip&amp;rlz=1C5CHFA_enNO891NO891&amp;oq=whats+my+ip&amp;aqs=chrome..69i57.1587j0j7&amp;sourceid=chrome&amp;ie=UTF-8">google “what’s my ip”</a>. Your API user access will not work if you do not add your IP address, and you will have to regenerate the token with the correct IP address if you don’t ensure this. If you are connecting from a mobile network (mobile hotspot or your home network is wireless), you should find you IPv6 address, rather than IPv4 (default).</p>
+<div class="figure">
+<img src="static/nettskjema_create_token.png" style="width:100.0%" alt=""><p class="caption">Select the permissions the token should allow you to have</p>
+</div>
 <p>Copy the token and return to RStudio (this example token has been deleted). <img src="static/nettskjema_create_token2.png" style="width:100.0%" alt="Copy the token and return to RStudio. FYI: This token has since been deleted."></p>
+</div>
+<div id="add-token-to-renvironment" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-token-to-renvironment" class="anchor"></a>Add token to Renvironment</h2>
 <p>In R, you can now add this token to your <code>.Renviron</code> file.</p>
 <p>You can do this in one of two ways, either open the file with <code><a href="../reference/nettskjema_renviron_edit.html">nettskjema_renviron_edit()</a></code>,</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">NETTSKJEMA_API_TOKEN=</span>paste_token_here</span></code></pre></div>
@@ -124,14 +138,22 @@
                           token_name <span class="op">=</span> <span class="st">"ANOTHER_NAME"</span><span class="op">)</span></code></pre></div>
 <p>This function will add the token so you can authenticate your self to nettskjema, and also make sure the <code>.Renviron</code> file is locked so no other user of your computer may access it. For it to take effect, you need your R session to restart. You may do so in RStudio by going to <code>Session</code> -&gt; <code>Restart R session</code>, and by pressing <code>cmd/ctrl + shift + F10</code> on the keyboard.</p>
 <p><strong>OBS!</strong> This token is important to keep safe. If you believe the token has been compromised in any way, delete it in the API user-portal and create a new one.</p>
-<div id="check-token-expiry-date" class="section level2">
-<h2 class="hasAnchor">
-<a href="#check-token-expiry-date" class="anchor"></a>Check token expiry date</h2>
+<div id="check-token-expiry-date" class="section level3">
+<h3 class="hasAnchor">
+<a href="#check-token-expiry-date" class="anchor"></a>Check token expiry date</h3>
 <p>The token is valid for 1 year. You can check the remaining time left a token is valid by</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token_expiry.html">nettskjema_token_expiry</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>Token with name 'NETTSKJEMA_API_TOKEN' expires in 292 days.
 [1] "2022-02-26"</code></pre>
+</div>
+</div>
+<div id="add-your-api-user-to-your-forms" class="section level2">
+<h2 class="hasAnchor">
+<a href="#add-your-api-user-to-your-forms" class="anchor"></a>Add your API user to your form(s)</h2>
+<p>Whichever forms you want the API to have access to, you need to add your API user to the permissions of the form in the Nettskjema portal, like you would add another colleague to the form.</p>
+<p>Go to nettskjema.no, navigate to the form you want your API user to have access to, go to the permissions tab, and add the user to the editing group.</p>
+<p><img src="static/nettskjema_api_user_form.png" title="Screen shot of the Nettskjema portal's permission tab for a form. Where you can see the editing group where the API user needs to be added" alt="Screen shot of the Nettskjema portal's permission tab for a form. Where you can see the editing group where the API user needs to be added" width="100%"></p>
 </div>
   </div>
 

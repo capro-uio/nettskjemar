@@ -112,7 +112,7 @@
 <div id="tidyverse-compatible" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidyverse-compatible" class="anchor"></a><a href="https://www.tidyverse.org/">Tidyverse</a> compatible</h2>
-<p>The data returns in this package are developed to be tidyverse-compatible. This means that those who are familiar with tidyverse, should find working with the data as retrieved from this package fairly easy. If you want to learn about the tidyverse and how to use is, there are excellent reseources for that on the <a href="https://www.tidyverse.org/learn/">Tidyverse webpage</a>.</p>
+<p>The data returns in this package are developed to be tidyverse-compatible. This means that those who are familiar with tidyverse, should find working with the data as retrieved from this package fairly easy. If you want to learn about the tidyverse and how to use is, there are excellent resources for that on the <a href="https://www.tidyverse.org/learn/">Tidyverse webpage</a>.</p>
 </div>
 <div id="download-submissions" class="section level2">
 <h2 class="hasAnchor">
@@ -178,7 +178,7 @@ Run `rlang::last_error()` to see where the error occurred. </code></pre>
 <div id="controlling-checkbox-output" class="section level3">
 <h3 class="hasAnchor">
 <a href="#controlling-checkbox-output" class="anchor"></a>Controlling checkbox output</h3>
-<p>The Nettskjema survey tool includes the possibility to create checkboxes, i.e. giving the respondents the ability to select several options within a question. How this returned as data is not clear cut. The default behaviour of Nettskjema portal is to create one enumerated column per checkbox, with the context of the column cells being the codebook value. The default behaviour of this package is to return the checkboxes as character strings with options selected separated by semi-colon (<code>;</code>).</p>
+<p>The Nettskjema survey tool includes the possibility to create checkboxes, i.e. giving the respondents the ability to select several options within a question. How this returned as data is not clear cut. The default behavior of Nettskjema portal is to create one enumerated column per checkbox, with the context of the column cells being the codebook value. The default behavior of this package is to return the checkboxes as character strings with options selected separated by semi-colon (<code>;</code>).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># To start inspecting the data more</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -258,6 +258,55 @@ Run `rlang::last_error()` to see where the error occurred. </code></pre>
 # … with 2 more variables: checkbox_matrix_2_1 &lt;int&gt;, checkbox_matrix_2_2 &lt;int&gt;    </code></pre>
 <p>There is a gotcha with this last option. Currently, there is no way to indicate values that should actually be <code>NA</code>, i.e. if the question is optional there is no way to know if lack of selection means the item was explicitly not selected or someone just skipped the question.</p>
 </div>
+</div>
+<div id="getting-an-overview-of-responses" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-an-overview-of-responses" class="anchor"></a>Getting an overview of responses</h2>
+<p>If you want a quick idea of what your data contains, we recommend using the <code>skim()</code> function from the {skimr} package.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nettskjema_get_data.html">nettskjema_get_data</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span>
+<span class="fu">skimr</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></code></pre></div>
+<pre><code>── Data Summary ────────────────────────
+                           Values
+Name                       dt    
+Number of rows             4     
+Number of columns          18    
+_______________________          
+Column type frequency:           
+  character                17    
+  numeric                  1     
+________________________         
+Group variables            None  
+
+── Variable type: character ─────────────────────────────────────────────────────────────
+   skim_variable     n_missing complete_rate   min   max empty n_unique whitespace
+ 1 submission_id             0          1        8     8     0        4          0
+ 2 attachment_1              1          0.75    11    37     0        3          0
+ 3 attachment_2              3          0.25    21    21     0        1          0
+ 4 checkbox                  0          1        1     3     0        3          0
+ 5 checkbox_matrix_1         0          1        1     3     0        2          0
+ 6 checkbox_matrix_2         1          0.75     1     3     0        2          0
+ 7 date                      1          0.75    10    10     0        2          0
+ 8 datetime                  1          0.75    16    16     0        2          0
+ 9 dropdown                  0          1        1     1     0        2          0
+10 freetext                  0          1        3     9     0        4          0
+11 number_decimal            1          0.75     3     5     0        2          0
+12 number_integer            1          0.75     1     2     0        3          0
+13 radio                     0          1        1     1     0        2          0
+14 radio_matrix_1            0          1        1     1     0        2          0
+15 radio_matrix_2            0          1        1     1     0        2          0
+16 slider                    1          0.75     1     1     0        3          0
+17 time                      1          0.75     5     5     0        1          0
+
+── Variable type: numeric ───────────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate   mean    sd     p0    p25    p50    p75   p100
+1 form_id               0             1 123823     0 123823 123823 123823 123823 123823
+  hist 
+1 ▁▁▇▁▁</code></pre>
+<p>If you want a quick idea of data types and missing values, the <code>vis_dat()</code> function from the {visdat} package is a great graphical tool.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">visdat</span><span class="fu">::</span><span class="fu">vis_dat</span><span class="op">(</span><span class="va">dt</span><span class="op">)</span></code></pre></div>
+<p><img src="static/vis_dat.png" title="Image of the data where observations are on y, and clumns on x. This is a tile plot, where colours of the tiles corresponds to data types. In this plot, grey is NA, red is character of blue is integer." alt="Image of the data where observations are on y, and clumns on x. This is a tile plot, where colours of the tiles corresponds to data types. In this plot, grey is NA, red is character of blue is integer." width="100%"></p>
 </div>
   </div>
 
