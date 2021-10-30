@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.008</span>
       </span>
     </div>
 
@@ -46,9 +46,12 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/nettskjemar.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -72,7 +75,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/LCBC-UiO/nettskjemar/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -86,7 +89,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="auth_setup_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Setting up Nettskjema API authentication</h1>
@@ -101,27 +104,34 @@
     
 <p>To set up a connection to the Nettskjema API, you need to create an api-user, and a token associated with this user. The nettskjema api-user is different from your standard user that has access to nettskjema. This is a specific user that may access nettskjema through the API.</p>
 <p>Use the <code>nettskjema_user_create</code> function to be routed to the portal to set this up.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">nettskjemar</span>)
-<span class="fu"><a href="../reference/nettskjema_user_create.html">nettskjema_user_create</a></span>()</pre></body></html></div>
-<p>Create an api user, I recommend using your uio user name or an UiO user group. <img src="static/nettskjema_api_create.png" alt="Create an API user" style="width:100.0%"></p>
-<p>Click on the created username to access the token generation. <img src="static/nettskjema_api_create2.png" alt="Click on the created API user name to access the token generation" style="width:100.0%"></p>
-<p>Select which permissions the token should be allowed to have, and save to create the token. <img src="static/nettskjema_create_token.png" alt="Select the permissions the token should allow you to have" style="width:100.0%"></p>
-<p>Copy the token and return to RStudio (this example token has been deleted). <img src="static/nettskjema_create_token2.png" alt="Copy the token and return to RStudio. FYI: This token has since been deleted." style="width:100.0%"></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/nettskjemar">nettskjemar</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_user_create.html">nettskjema_user_create</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Create an api user, I recommend using your uio user name or an UiO user group. <img src="static/nettskjema_api_create.png" style="width:100.0%" alt="Create an API user"></p>
+<p>Click on the created username to access the token generation. <img src="static/nettskjema_api_create2.png" style="width:100.0%" alt="Click on the created API user name to access the token generation"></p>
+<p>Select which permissions the token should be allowed to have, and save to create the token. Make sure that the IP addresses you want the token to be used from is in the list of ips at the bottom. If you don’t know your current IP address, <a href="https://www.google.com/search?q=whats+my+ip&amp;rlz=1C5CHFA_enNO891NO891&amp;oq=whats+my+ip&amp;aqs=chrome..69i57.1587j0j7&amp;sourceid=chrome&amp;ie=UTF-8">google “what’s my ip”</a> <img src="static/nettskjema_create_token.png" style="width:100.0%" alt="Select the permissions the token should allow you to have"></p>
+<p>Copy the token and return to RStudio (this example token has been deleted). <img src="static/nettskjema_create_token2.png" style="width:100.0%" alt="Copy the token and return to RStudio. FYI: This token has since been deleted."></p>
 <p>In R, you can now add this token to your <code>.Renviron</code> file.</p>
 <p>You can do this in one of two ways, either open the file with <code><a href="../reference/nettskjema_renviron_edit.html">nettskjema_renviron_edit()</a></code>,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="va">NETTSKJEMA_API_TOKEN=</span>paste_token_here</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">NETTSKJEMA_API_TOKEN=</span>paste_token_here</span></code></pre></div>
 <p>or add it directly with:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span>(<span class="st">"paste_token_here"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span><span class="op">(</span><span class="st">"paste_token_here"</span><span class="op">)</span></code></pre></div>
 <p>This will add the token to the environment variable <code>NETTSKJEMA_API_TOKEN</code>. If you want to give the token another name, or you have several tokens and need to store them separately, you can do so:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span>(<span class="st">"paste_token_here"</span>,
-                          <span class="kw">token_name</span> <span class="kw">=</span> <span class="st">"ANOTHER_NAME"</span>)</pre></body></html></div>
-<p>This function will add the token so you can authenticate your self to nettskjema, and also make sure the <code>.Renviron</code> file is locked so no other user of your computer may access it. Fot it to take effect, you need your R session to restart. You may do so in RStudio by going to <code>Session</code> -&gt; <code>Restart R session</code>, og by pressing <code>cmd/ctrl + shift + F10</code> on the keyboard.</p>
-<p>This token is important to keep safe. If you believe the token has been compromised in any way, delete it in the API user-portal and create a new one.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span><span class="op">(</span><span class="st">"paste_token_here"</span>,
+                          token_name <span class="op">=</span> <span class="st">"ANOTHER_NAME"</span><span class="op">)</span></code></pre></div>
+<p>This function will add the token so you can authenticate your self to nettskjema, and also make sure the <code>.Renviron</code> file is locked so no other user of your computer may access it. For it to take effect, you need your R session to restart. You may do so in RStudio by going to <code>Session</code> -&gt; <code>Restart R session</code>, and by pressing <code>cmd/ctrl + shift + F10</code> on the keyboard.</p>
+<p><strong>OBS!</strong> This token is important to keep safe. If you believe the token has been compromised in any way, delete it in the API user-portal and create a new one.</p>
 <div id="check-token-expiry-date" class="section level2">
 <h2 class="hasAnchor">
 <a href="#check-token-expiry-date" class="anchor"></a>Check token expiry date</h2>
 <p>The token is valid for 1 year. You can check the remaining time left a token is valid by</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/nettskjema_token_expiry.html">nettskjema_token_expiry</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token_expiry.html">nettskjema_token_expiry</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>Token with name 'NETTSKJEMA_API_TOKEN' expires in 292 days.
+[1] "2022-02-26"</code></pre>
 </div>
   </div>
 
@@ -140,7 +150,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the raw codebook — get_raw_codebook • nettskjemar</title>
+<title>Write codebook to file — nettskjema_write_codebook • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,14 +46,13 @@
 
 
 
-<meta property="og:title" content="Get the raw codebook — get_raw_codebook" />
-<meta property="og:description" content="The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with as_is = TRUE." />
+<meta property="og:title" content="Write codebook to file — nettskjema_write_codebook" />
+<meta property="og:description" content="Save codebook information to a
+file for safe keeping. Depending
+on the type of codebook (raw or tidy)
+the file will either be stored as a
+json-file through write_json
+or a text table through write.table." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,46 +139,75 @@ with as_is = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the raw codebook</h1>
+    <h1>Write codebook to file</h1>
     <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-codebook.R'><code>R/nettskjema-codebook.R</code></a></small>
-    <div class="hidden name"><code>get_raw_codebook.Rd</code></div>
+    <div class="hidden name"><code>nettskjema_write_codebook.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with <code>as_is = TRUE</code>.</p>
+    <p>Save codebook information to a
+file for safe keeping. Depending
+on the type of codebook (raw or tidy)
+the file will either be stored as a
+json-file through <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>write_json</a></code>
+or a text table through <code><a href='https://rdrr.io/r/utils/write.table.html'>write.table</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_raw_codebook</span><span class='op'>(</span><span class='va'>form_id</span>, token_name <span class='op'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>nettskjema_write_codebook</span><span class='op'>(</span><span class='va'>codebook</span>, <span class='va'>file</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for default</span>
+<span class='fu'>nettskjema_write_codebook</span><span class='op'>(</span><span class='va'>codebook</span>, <span class='va'>file</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for nettskjema_codebook_raw</span>
+<span class='fu'>nettskjema_write_codebook</span><span class='op'>(</span><span class='va'>codebook</span>, <span class='va'>file</span>, pretty <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for nettskjema_codebook</span>
+<span class='fu'>nettskjema_write_codebook</span><span class='op'>(</span><span class='va'>codebook</span>, <span class='va'>file</span>, sep <span class='op'>=</span> <span class='st'>"\t"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>form_id</th>
-      <td><p>integer. Number of the form to retrieve</p></td>
+      <th>codebook</th>
+      <td><p>object of class nettskjema_codebook</p></td>
     </tr>
     <tr>
-      <th>token_name</th>
-      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
+      <th>file</th>
+      <td><p>filename or path</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other arguments to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
+      <td><p>arguments to <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>write_json</a></code> or <code><a href='https://rdrr.io/r/utils/write.table.html'>write.table</a></code></p></td>
+    </tr>
+    <tr>
+      <th>pretty</th>
+      <td><p>logical. If writing json-file, make it pretty</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>character. If writing text table, column delimiter.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>long format tibble with meta-data for a specific nettskjema</p>
+    <p>no return value. Writes a file to path.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Given the two types of codebooks, writes different
+       types of files.</p><ul>
+<li><p>codebook - writes a tab-separated table</p></li>
+<li><p>codebook_raw - writes a json-file</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>form_id</span> <span class='op'>&lt;-</span> <span class='fl'>1100000</span>
+<span class='va'>my_cb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='nettskjema_get_codebook.html'>nettskjema_get_codebook</a></span><span class='op'>(</span><span class='va'>form_id</span><span class='op'>)</span>
+<span class='fu'>nettskjema_write_codebook</span><span class='op'>(</span><span class='va'>my_cb</span>, <span class='st'>"my/path/codebook_110000.txt"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

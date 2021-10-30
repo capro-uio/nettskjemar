@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the raw codebook — get_raw_codebook • nettskjemar</title>
+<title>Retrieve attachments associated with a Nettskjema — nettskjema_get_form_attachments • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,14 +46,13 @@
 
 
 
-<meta property="og:title" content="Get the raw codebook — get_raw_codebook" />
-<meta property="og:description" content="The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with as_is = TRUE." />
+<meta property="og:title" content="Retrieve attachments associated with a Nettskjema — nettskjema_get_form_attachments" />
+<meta property="og:description" content="Some Nettskjema have fields for attachments. These
+can be downloaded through this function. There
+are two naming convention that may be used for the
+saved files' names. See output of
+nettskjema_list_attachments for idea
+of the names used." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,22 +139,29 @@ with as_is = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the raw codebook</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-codebook.R'><code>R/nettskjema-codebook.R</code></a></small>
-    <div class="hidden name"><code>get_raw_codebook.Rd</code></div>
+    <h1>Retrieve attachments associated with a Nettskjema</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-attachments.R'><code>R/nettskjema-attachments.R</code></a></small>
+    <div class="hidden name"><code>nettskjema_get_form_attachments.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with <code>as_is = TRUE</code>.</p>
+    <p>Some Nettskjema have fields for attachments. These
+can be downloaded through this function. There
+are two naming convention that may be used for the
+saved files' names. See output of
+<code><a href='nettskjema_list_attachments.html'>nettskjema_list_attachments</a></code> for idea
+of the names used.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_raw_codebook</span><span class='op'>(</span><span class='va'>form_id</span>, token_name <span class='op'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_form_attachments</span><span class='op'>(</span>
+  <span class='va'>form_id</span>,
+  filenames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"standardised"</span>, <span class='st'>"original"</span><span class='op'>)</span>,
+  output_dir <span class='op'>=</span> <span class='st'>"."</span>,
+  token_name <span class='op'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
+  from_date <span class='op'>=</span> <span class='st'>""</span>,
+  from_submission <span class='op'>=</span> <span class='st'>""</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,21 +171,60 @@ with <code>as_is = TRUE</code>.</p>
       <td><p>integer. Number of the form to retrieve</p></td>
     </tr>
     <tr>
+      <th>filenames</th>
+      <td><p>string of either 'standardised' (default) or
+'original' indicating which file names to use.</p></td>
+    </tr>
+    <tr>
+      <th>output_dir</th>
+      <td><p>directory to output the files to</p></td>
+    </tr>
+    <tr>
       <th>token_name</th>
       <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     <tr>
+      <th>from_date</th>
+      <td><p>date. From which date on should data be fetched for</p></td>
+    </tr>
+    <tr>
+      <th>from_submission</th>
+      <td><p>integer. From which SubmissionId should data be collected from.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>other arguments to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
+      <td><p>arguments passed to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>long format tibble with meta-data for a specific nettskjema</p>
+    <p>invisible named logical if the file was saved successfully</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>'filenames types</p><ul>
+<li><p>"original" - uses file names are they were
+    uploaded to Nettskjema</p></li>
+<li><p>"standardised" - creates file names based on
+    the submission id and a counter number to uniquely
+    create file names for each submission (in case there
+    are more than one attachment)</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>form_id</span> <span class='op'>&lt;-</span> <span class='fl'>1100000</span>
+<span class='fu'>nettskjema_get_form_attachments</span><span class='op'>(</span><span class='va'>form_id</span><span class='op'>)</span>
+
+<span class='co'># save files to specific folder</span>
+<span class='fu'>nettskjema_get_form_attachments</span><span class='op'>(</span><span class='va'>form_id</span>, output_dir <span class='op'>=</span> <span class='st'>"~/Desktop"</span><span class='op'>)</span>
+
+<span class='co'># save using original file names</span>
+<span class='fu'>nettskjema_get_form_attachments</span><span class='op'>(</span><span class='va'>form_id</span>, filenames <span class='op'>=</span> <span class='st'>"original"</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

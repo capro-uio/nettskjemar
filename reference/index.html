@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.008</span>
       </span>
     </div>
 
@@ -87,9 +87,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/nettskjemar.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -113,7 +116,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/LCBC-UiO/nettskjemar/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -156,15 +159,33 @@
       <tr>
         
         <td>
-          <p><code><a href="nettskjema_api.html">nettskjema_api()</a></code> </p>
+          <p><code><a href="codebook.html">codebook()</a></code> </p>
         </td>
-        <td><p>nettskjema api connection</p></td>
+        <td><p>Constructor for nettskjema codebook</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_raw_codebook.html">get_raw_codebook()</a></code> </p>
+        </td>
+        <td><p>Get the raw codebook</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="has_codebook.html">has_codebook()</a></code> </p>
+        </td>
+        <td><p>Check if form has codebook</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nettskjema_find_ip.html">nettskjema_find_ip()</a></code> </p>
+        </td>
+        <td><p>Find your current IP</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="nettskjema_get_codebook.html">nettskjema_get_codebook()</a></code> </p>
         </td>
-        <td><p>Get metadata for a form</p></td>
+        <td><p>Get codebook for a form</p></td>
       </tr><tr>
         
         <td>
@@ -180,9 +201,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="nettskjema_get_forms.html">nettskjema_get_forms()</a></code> </p>
+          <p><code><a href="nettskjema_get_form_attachments.html">nettskjema_get_form_attachments()</a></code> </p>
         </td>
-        <td><p>Get all forms you have access to</p></td>
+        <td><p>Retrieve attachments associated with a Nettskjema</p></td>
       </tr><tr>
         
         <td>
@@ -192,9 +213,21 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="nettskjema_list_attachments.html">nettskjema_list_attachments()</a></code> </p>
+        </td>
+        <td><p>List Nettskjema attachments</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="nettskjema_renviron_edit.html">nettskjema_renviron_edit()</a></code> </p>
         </td>
         <td><p>Open .Renviron file for editing</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nettskjema_save_attachment.html">nettskjema_save_attachment()</a></code> </p>
+        </td>
+        <td><p>Save Nettskjema attachments to file</p></td>
       </tr><tr>
         
         <td>
@@ -213,6 +246,18 @@
           <p><code><a href="nettskjema_user_create.html">nettskjema_user_create()</a></code> </p>
         </td>
         <td><p>Create Nettskjema API user</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nettskjema_write_codebook.html">nettskjema_write_codebook()</a></code> </p>
+        </td>
+        <td><p>Write codebook to file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nettskjema_write_meta.html">nettskjema_write_meta()</a></code> </p>
+        </td>
+        <td><p>Write meta-data to file</p></td>
       </tr>
     </tbody>
     </table>
@@ -232,7 +277,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

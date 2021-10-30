@@ -87,7 +87,7 @@ and as such the from_date will not work on those and an error will be thrown." /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.008</span>
       </span>
     </div>
 
@@ -95,9 +95,12 @@ and as such the from_date will not work on those and an error will be thrown." /
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/nettskjemar.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -121,7 +124,7 @@ and as such the from_date will not work on those and an error will be thrown." /
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/LCBC-UiO/nettskjemar/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -139,7 +142,7 @@ and as such the from_date will not work on those and an error will be thrown." /
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get data from a form</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema_get.R'><code>R/nettskjema_get.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema_get_form.R'><code>R/nettskjema_get_form.R</code></a></small>
     <div class="hidden name"><code>nettskjema_get_data.Rd</code></div>
     </div>
 
@@ -154,17 +157,19 @@ Forms that are anonymous and do not collect personal information do not record d
 and as such the <code>from_date</code> will not work on those and an error will be thrown.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nettskjema_get_data</span>(
-  <span class='no'>form_id</span>,
-  <span class='kw'>information</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>use_codebook</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>as_is</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>from_date</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>from_submission</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>incremental</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>token_name</span> <span class='kw'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>nettskjema_get_data</span><span class='op'>(</span>
+  <span class='va'>form_id</span>,
+  information <span class='op'>=</span> <span class='cn'>NULL</span>,
+  token_name <span class='op'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>,
+  use_codebook <span class='op'>=</span> <span class='fu'><a href='has_codebook.html'>has_codebook</a></span><span class='op'>(</span><span class='va'>form_id</span>, <span class='va'>token_name</span><span class='op'>)</span>,
+  checkbox_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"string"</span>, <span class='st'>"list"</span>, <span class='st'>"columns"</span><span class='op'>)</span>,
+  checkbox_delim <span class='op'>=</span> <span class='st'>";"</span>,
+  as_is <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  from_date <span class='op'>=</span> <span class='st'>""</span>,
+  from_submission <span class='op'>=</span> <span class='st'>""</span>,
+  incremental <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,13 +182,25 @@ and as such the <code>from_date</code> will not work on those and an error will 
       <th>information</th>
       <td><p>character or list vector of additional answer information
 to add (One or more of "order", "option", "correct" "preselected"). If the list
-is named, the additional information suffixes will be changed to the list names. If NULLL (default) nothing is added.
+is named, the additional information suffixes will be changed to the list names. If NULL (default) nothing is added.
 Currently not combinable with <code>use_codebook = TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>token_name</th>
+      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
     </tr>
     <tr>
       <th>use_codebook</th>
       <td><p>logical. Use codebook for retrieving answers (default TRUE). If you have not
 set up the codebook in nettskjema, then turning this off will return the data as is.</p></td>
+    </tr>
+    <tr>
+      <th>checkbox_type</th>
+      <td><p>string of either "string" (default), "list" or "columns" for how to handle checkbox answers</p></td>
+    </tr>
+    <tr>
+      <th>checkbox_delim</th>
+      <td><p>delimiter string if <code>checkbox:type</code> is "string". Ignored else.</p></td>
     </tr>
     <tr>
       <th>as_is</th>
@@ -202,10 +219,6 @@ set up the codebook in nettskjema, then turning this off will return the data as
       <td><p>logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.</p></td>
     </tr>
     <tr>
-      <th>token_name</th>
-      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>arguments passed to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
     </tr>
@@ -214,25 +227,37 @@ set up the codebook in nettskjema, then turning this off will return the data as
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>tibble data.frame</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Checkbox types</p><ul>
+<li><p>"string" - returns a delimited character value per submission, where <code>checkbox_delim</code>
+ denotes the options that the respondent has chosen</p></li>
+<li><p>"list" - returns a list column, where each submission has a character vector with all the
+ chosen options as separate elements in the list</p></li>
+<li><p>"columns" - returns checkbox answers as separate binarized columns (column names are appended with
+ response names), where 1 means the option was selected and 0 it was not.</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
 <span class='co'># Retrieve all data</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>)
+<span class='va'>data_110000</span> <span class='op'>&lt;-</span> <span class='fu'>nettskjema_get_data</span><span class='op'>(</span><span class='fl'>110000</span><span class='op'>)</span>
 <span class='co'># Retrieve all data, and add answer order and option text</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='no'>add</span>)
+<span class='va'>data_110000</span> <span class='op'>&lt;-</span> <span class='fu'>nettskjema_get_data</span><span class='op'>(</span><span class='fl'>110000</span>, information <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>dummy <span class='op'>=</span> <span class='st'>"order"</span>, text <span class='op'>=</span> <span class='st'>"option"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Retrieve all data after a certain date</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>from_date</span> <span class='kw'>=</span> <span class='st'>"2019-01-01"</span>)
+<span class='va'>data_110000</span> <span class='op'>&lt;-</span> <span class='fu'>nettskjema_get_data</span><span class='op'>(</span><span class='fl'>110000</span>, from_date <span class='op'>=</span> <span class='st'>"2019-01-01"</span><span class='op'>)</span>
 
 <span class='co'># Retrieve all submissions after a specific submission id</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>from_submission</span> <span class='kw'>=</span> <span class='st'>"12000000"</span>)
+<span class='va'>data_110000</span> <span class='op'>&lt;-</span> <span class='fu'>nettskjema_get_data</span><span class='op'>(</span><span class='fl'>110000</span>, from_submission <span class='op'>=</span> <span class='st'>"12000000"</span><span class='op'>)</span>
 
 <span class='co'># For large data</span>
-<span class='no'>data_110000</span> <span class='kw'>&lt;-</span> <span class='fu'>nettskjema_get_data</span>(<span class='fl'>110000</span>, <span class='kw'>incremental</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='va'>data_110000</span> <span class='op'>&lt;-</span> <span class='fu'>nettskjema_get_data</span><span class='op'>(</span><span class='fl'>110000</span>, incremental <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-}</div></pre>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -248,7 +273,7 @@ set up the codebook in nettskjema, then turning this off will return the data as
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

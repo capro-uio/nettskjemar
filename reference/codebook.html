@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grab codebook for a form — codebook • nettskjemar</title>
+<title>Constructor for nettskjema codebook — codebook • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,10 @@
 
 
 
-<meta property="og:title" content="Grab codebook for a form — codebook" />
+<meta property="og:title" content="Constructor for nettskjema codebook — codebook" />
 <meta property="og:description" content="Function works on meta-data downloaded from a form.
-It will return a data.frame in long format" />
+It will return a data.frame in long format with
+meta-data information from a specific nettskjema form." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -81,7 +82,7 @@ It will return a data.frame in long format" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nettskjemar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.02</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.008</span>
       </span>
     </div>
 
@@ -89,9 +90,12 @@ It will return a data.frame in long format" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/nettskjemar.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -115,7 +119,7 @@ It will return a data.frame in long format" />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/LCBC-UiO/nettskjemar/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,17 +136,18 @@ It will return a data.frame in long format" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Grab codebook for a form</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/codebook.R'><code>R/codebook.R</code></a></small>
+    <h1>Constructor for nettskjema codebook</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-codebook.R'><code>R/nettskjema-codebook.R</code></a></small>
     <div class="hidden name"><code>codebook.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Function works on meta-data downloaded from a form.
-It will return a data.frame in long format</p>
+It will return a data.frame in long format with
+meta-data information from a specific nettskjema form.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>codebook</span>(<span class='no'>meta_data</span>)</pre>
+    <pre class="usage"><span class='fu'>codebook</span><span class='op'>(</span><span class='va'>meta_data</span>, <span class='va'>form_id</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,17 +156,22 @@ It will return a data.frame in long format</p>
       <th>meta_data</th>
       <td><p>form meta-data from <code><a href='nettskjema_get_meta.html'>nettskjema_get_meta</a></code></p></td>
     </tr>
+    <tr>
+      <th>form_id</th>
+      <td><p>integer. Number of the form to retrieve</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>long format tibble</p>
+    <p>long format tibble with meta-data for a specific nettskjema</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>meta_110000</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nettskjema_get_meta.html'>nettskjema_get_meta</a></span>(<span class='fl'>110000</span>)
-<span class='fu'>codebook</span>(<span class='no'>meta_110000</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>meta_110000</span> <span class='op'>&lt;-</span> <span class='fu'><a href='nettskjema_get_meta.html'>nettskjema_get_meta</a></span><span class='op'>(</span><span class='fl'>110000</span><span class='op'>)</span>
+<span class='fu'>codebook</span><span class='op'>(</span><span class='va'>meta_110000</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -177,7 +187,7 @@ It will return a data.frame in long format</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

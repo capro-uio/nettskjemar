@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the raw codebook — get_raw_codebook • nettskjemar</title>
+<title>Write meta-data to file — nettskjema_write_meta • nettskjemar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,14 +46,11 @@
 
 
 
-<meta property="og:title" content="Get the raw codebook — get_raw_codebook" />
-<meta property="og:description" content="The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with as_is = TRUE." />
+<meta property="og:title" content="Write meta-data to file — nettskjema_write_meta" />
+<meta property="og:description" content="Save meta-data information to a
+file for safe keeping. The function
+saves the data in json-format, which
+best preserves the information." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,46 +137,61 @@ with as_is = TRUE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the raw codebook</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-codebook.R'><code>R/nettskjema-codebook.R</code></a></small>
-    <div class="hidden name"><code>get_raw_codebook.Rd</code></div>
+    <h1>Write meta-data to file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/nettskjemar/blob/master/R/nettskjema-meta.R'><code>R/nettskjema-meta.R</code></a></small>
+    <div class="hidden name"><code>nettskjema_write_meta.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The raw codebook is a list
-of answers and questions with
-unique ids for both, and the text associated
-with them. This information can be retrieved
-from the raw nettskjema data. This can be useful
-if the nettskjema submission data has been returned
-with <code>as_is = TRUE</code>.</p>
+    <p>Save meta-data information to a
+file for safe keeping. The function
+saves the data in json-format, which
+best preserves the information.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_raw_codebook</span><span class='op'>(</span><span class='va'>form_id</span>, token_name <span class='op'>=</span> <span class='st'>"NETTSKJEMA_API_TOKEN"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>nettskjema_write_meta</span><span class='op'>(</span><span class='va'>meta</span>, <span class='va'>file</span>, pretty <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for default</span>
+<span class='fu'>nettskjema_write_meta</span><span class='op'>(</span><span class='va'>meta</span>, <span class='va'>file</span>, pretty <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for nettskjema_meta_raw</span>
+<span class='fu'>nettskjema_write_meta</span><span class='op'>(</span><span class='va'>meta</span>, <span class='va'>file</span>, pretty <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for nettskjema_meta_data</span>
+<span class='fu'>nettskjema_write_meta</span><span class='op'>(</span><span class='va'>meta</span>, <span class='va'>file</span>, pretty <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>form_id</th>
-      <td><p>integer. Number of the form to retrieve</p></td>
+      <th>meta</th>
+      <td><p>object of class nettskjema_meta class</p></td>
     </tr>
     <tr>
-      <th>token_name</th>
-      <td><p>character. Name to give the token, defaults to 'NETTSKJEMA_API_TOKEN'</p></td>
+      <th>file</th>
+      <td><p>file name or path</p></td>
+    </tr>
+    <tr>
+      <th>pretty</th>
+      <td><p>logical. If json-file should be made "pretty"</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other arguments to <code><a href='https://httr.r-lib.org/reference/GET.html'>GET</a></code></p></td>
+      <td><p>other arguments to <code><a href='https://rdrr.io/pkg/jsonlite/man/read_json.html'>write_json</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>long format tibble with meta-data for a specific nettskjema</p>
+    <p>no return value. Writes a file to path.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>form_id</span> <span class='op'>&lt;-</span> <span class='fl'>1100000</span>
+<span class='va'>my_meta</span> <span class='op'>&lt;-</span> <span class='fu'><a href='nettskjema_get_meta.html'>nettskjema_get_meta</a></span><span class='op'>(</span><span class='va'>form_id</span><span class='op'>)</span>
+<span class='fu'>nettskjema_write_meta</span><span class='op'>(</span><span class='va'>my_meta</span>, <span class='st'>"my/path/meta_110000.json"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
