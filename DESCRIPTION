@@ -32,6 +32,7 @@ Imports:
     base64enc
 Suggests: 
     knitr,
+    skimr,
     rmarkdown,
     testthat (>= 2.1.0),
     covr,

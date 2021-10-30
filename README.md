@@ -80,7 +80,7 @@ nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
 
 Package documentation can be found on the associated [GitHub
 pages](https://lcbc-uio.github.io/nettskjemar/), among other
-documentation on [how to create the API acces user and
+documentation on [how to create the API access user and
 token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
 
 # Funding
