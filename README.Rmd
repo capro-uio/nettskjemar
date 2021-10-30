@@ -36,7 +36,7 @@ Newer releases can be installed through the authors r-universe:
 ```{r, eval = FALSE}
 # Enable this universe
 options(repos = c(
-    athanasiamo = 'https://lcbc-uio.r-universe.dev',
+    lcbc_uio = 'https://lcbc-uio.r-universe.dev',
     CRAN = 'https://cloud.r-project.org'))
 
 # Install some packages

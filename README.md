@@ -32,7 +32,7 @@ Newer releases can be installed through the authors r-universe:
 ``` r
 # Enable this universe
 options(repos = c(
-    athanasiamo = 'https://athanasiamo.r-universe.dev',
+    lcbc_uio = 'https://lcbc-uio.r-universe.dev',
     CRAN = 'https://cloud.r-project.org'))
 
 # Install some packages
