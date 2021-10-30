@@ -92,7 +92,7 @@ rm_ext <- function(file){
 
 # will list the submission ids associated with a form
 list_submissions <- function(path, opts, token_name, ...) {
-  path_inc <- paste0(path, opts, "fields=submissionId")
+  path_inc <- sprintf("%s%s&fields=submissionId", path, opts)
   resp <- nettskjema_api(path_inc, token_name = token_name, ...)
   api_catch_error(resp)
   unlist(content(resp))
