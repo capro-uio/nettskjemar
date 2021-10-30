@@ -13,14 +13,14 @@
 #' \itemize{
 #'  \item{"original"}{ - uses file names are they were
 #'     uploaded to Nettskjema}
-#'  \item{"standardised"}{ - creates file names based on
+#'  \item{"standardized"}{ - creates file names based on
 #'     the submission id and a counter number to uniquely
 #'     create file names for each submission (in case there
 #'     are more than one attachment)}
 #'  }
 #'
 #' @template form_id
-#' @param filenames string of either 'standardised' (default) or
+#' @param filenames string of either 'standardized' (default) or
 #'     'original' indicating which file names to use.
 #' @param output_dir directory to output the files to
 #' @template token_name
@@ -44,13 +44,13 @@
 #'
 #' }
 nettskjema_get_form_attachments <- function(form_id,
-                                            filenames = c("standardised", "original"),
+                                            filenames = c("standardized", "original"),
                                             output_dir = ".",
                                             token_name = "NETTSKJEMA_API_TOKEN",
                                             from_date = "",
                                             from_submission = "",
                                             ...){
-  filenames <- match.arg(filenames, c("standardised", "original"))
+  filenames <- match.arg(filenames, c("standardized", "original"))
   if(!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
   path = file.path("forms", form_id, "submissions")
   submission_ids <- list_submissions(path,
@@ -75,7 +75,7 @@ nettskjema_get_form_attachments <- function(form_id,
 #' using this function, which will provide the
 #' information on where in the Nettskjema API the
 #' files are located, their original file names,
-#' and a suggested standardised file names for
+#' and a suggested standardized file names for
 #' tidier data output.
 #'
 #' @template submission_id
@@ -126,7 +126,7 @@ nettskjema_list_attachments <- function(submission_id,
 #' \dontrun{
 #' submission_id <- c(22222, 1232, 21555)
 #' attach_dt <- nettskjema_list_attachments(submission_id)
-#' nettskjema_save_attachment(path = attach_dt$path, output = attach_dt$standardised)
+#' nettskjema_save_attachment(path = attach_dt$path, output = attach_dt$standardized)
 #' }
 nettskjema_save_attachment <- function(path, output, token_name , ...){
   resp <- nettskjema_api(path, token_name , ...)
@@ -160,7 +160,7 @@ fetch_attachment <- function(submission_id, token_name, ...){
     data.frame(
       submission_id = submission_id,
       original = at$fileName,
-      standardised = sprintf("%s-%s.%s", submission_id, x, tools::file_ext(at$fileName)),
+      standardized = sprintf("%s-%s.%s", submission_id, x, tools::file_ext(at$fileName)),
       path = paths[x],
       stringsAsFactors = FALSE
     )
