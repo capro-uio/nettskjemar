@@ -83,6 +83,20 @@ pages](https://lcbc-uio.github.io/nettskjemar/), among other
 documentation on [how to create the API access user and
 token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
 
+# Citation
+
+To cite nettskjemar in publications use:
+
+Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar:
+v0.1.04 (Version v0.1.04). Zenodo.
+<http://doi.org/10.5281/zenodo.4745481>
+
+A BibTeX entry for LaTeX users is
+
+@Manual{, title = {nettskjemar - Package to work with University of Oslo
+Nettskjema API}, author = {Athanasia Mo Mowinckel}, year = {2021}, month
+= {05}, day = {10}, doi = {10.5281/zenodo.4745481}, }
+
 # Funding
 
 This tool is partly funded by:
