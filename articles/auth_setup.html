@@ -126,23 +126,19 @@
 <div id="add-token-to-renvironment" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-token-to-renvironment" class="anchor"></a>Add token to Renvironment</h2>
-<p>In R, you can now add this token to your <code>.Renviron</code> file.</p>
-<p>You can do this in one of two ways, either open the file with <code><a href="../reference/nettskjema_renviron_edit.html">nettskjema_renviron_edit()</a></code>,</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">NETTSKJEMA_API_TOKEN=</span>paste_token_here</span></code></pre></div>
-<p>or add it directly with:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span><span class="op">(</span><span class="st">"paste_token_here"</span><span class="op">)</span></code></pre></div>
-<p>This will add the token to the environment variable <code>NETTSKJEMA_API_TOKEN</code>. If you want to give the token another name, or you have several tokens and need to store them separately, you can do so:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token2renviron.html">nettskjema_token2renviron</a></span><span class="op">(</span><span class="st">"paste_token_here"</span>,
-                          token_name <span class="op">=</span> <span class="st">"ANOTHER_NAME"</span><span class="op">)</span></code></pre></div>
-<p>This function will add the token so you can authenticate your self to nettskjema, and also make sure the <code>.Renviron</code> file is locked so no other user of your computer may access it. For it to take effect, you need your R session to restart. You may do so in RStudio by going to <code>Session</code> -&gt; <code>Restart R session</code>, and by pressing <code>cmd/ctrl + shift + F10</code> on the keyboard.</p>
-<p><strong>OBS!</strong> This token is important to keep safe. If you believe the token has been compromised in any way, delete it in the API user-portal and create a new one.</p>
+<p>In R, you can now add this token to your <code>.Renviron</code> file. We recommend using a function from the <a href="">usethis</a> package to edit your <code>.Renviron</code> file.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will open the file and enable you to add information to it. You will need to add the nettskjema token as shows below.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">NETTSKJEMA_API_TOKEN=</span>paste_token_here</span></code></pre></div>
+<p>For it to take effect, you need your R session to restart. You may do so in RStudio by going to <code>Session</code> -&gt; <code>Restart R session</code>, and by pressing <code>cmd/ctrl + shift + F10</code> on the keyboard.</p>
+<p>By default, the functions in this package will look for a token named <code>NETTSKJEMA_API_TOKEN</code>, but you may save it at something else (or have multiple token), but you will need to make sure the nettskjema functions then have the <code>token_name</code> argument altered.</p>
+<p><strong>OBS!</strong> All tokens are important to keep safe. If you believe a token has been compromised in any way, delete it in the API user-portal and create a new one.</p>
 <div id="check-token-expiry-date" class="section level3">
 <h3 class="hasAnchor">
 <a href="#check-token-expiry-date" class="anchor"></a>Check token expiry date</h3>
 <p>The token is valid for 1 year. You can check the remaining time left a token is valid by</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/nettskjema_token_expiry.html">nettskjema_token_expiry</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>Token with name 'NETTSKJEMA_API_TOKEN' expires in 292 days.
 [1] "2022-02-26"</code></pre>
