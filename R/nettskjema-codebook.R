@@ -204,3 +204,25 @@ nettskjema_write_codebook.nettskjema_codebook <- function(codebook, file, sep = 
                      row.names = FALSE,
                      ...)
 }
+
+#' Check if form has codebook
+#'
+#' Codebook is by default turned off
+#' in Nettskjema, but best practices in handling
+#' data is to have it on. This function
+#' checks if the codebook of a form has been activated
+#' or not
+#'
+#' @template form_id
+#' @template token_name
+#'
+#' @return logical is codebook is turned on
+#' @export
+#' @importFrom tools file_ext
+#' @examples
+#' \dontrun{
+#' has_codebook(110000)
+#' }
+has_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN"){
+  nettskjema_get_meta(form_id, token_name = token_name)$codebook
+}

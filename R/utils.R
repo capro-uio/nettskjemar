@@ -46,47 +46,15 @@ rn_cols <- function(x, from, to){
   gsub(paste0(from, "$"), to, x)
 }
 
-get_renv_path <- function(type = c("user", "project"),
-                          envvar = "R_ENVIRON_USER"){
-  envvar <- Sys.getenv(envvar)
-
-  if(envvar != "") return(envvar)
-
-  type <- match.arg(type, c("user", "project"))
-
-  type <- switch(type,
-                 "user" = Sys.getenv("HOME"),
-                 "project" = here::here()
-  )
-
-  file.path(file.path(type, ".Renviron"))
-}
-
-
-#' Check if form has codebook
+#' remove file extension
 #'
-#' Codebook is by default turned off
-#' in Nettskjema, but best practices in handling
-#' data is to have it on. This function
-#' checks if the codebook of a form has been activated
-#' or not
+#' @param file file name as string
 #'
-#' @template form_id
-#' @template token_name
-#'
-#' @return logical is codebook is turned on
-#' @export
+#' @return string without file extension
 #' @importFrom tools file_ext
-#' @examples
-#' \dontrun{
-#' has_codebook(110000)
-#' }
-has_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN"){
-  nettskjema_get_meta(form_id, token_name = token_name)$codebook
-}
-
+#' @noRd
 rm_ext <- function(file){
-  ex <- tools::file_ext(file)
+  ex <- file_ext(file)
   gsub(ex, "", file)
 }
 

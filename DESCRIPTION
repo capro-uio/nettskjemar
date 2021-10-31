@@ -21,19 +21,18 @@ Depends: R (>= 3.4)
 Imports: 
     dplyr,
     tidyr,
-    usethis,
-    here,
     httr,
     jsonlite,
     purrr,
-    rvest,
     pbapply,
     tools,
     base64enc
 Suggests: 
     knitr,
-    skimr,
     rmarkdown,
+    usethis,
+    skimr,
+    visdat,
     testthat (>= 2.1.0),
     covr,
     spelling,

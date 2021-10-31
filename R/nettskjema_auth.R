@@ -51,120 +51,6 @@ nettskjema_user_create <- function(ip_version = c("v4", "v6")){
   browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
-#' Write token to .Renviron
-#'
-#' This function will write a token
-#' to the .Renviron file with the
-#' name you provide.
-#'
-#' @details Possible actions
-#' \itemize{
-#'  \item{create}{ - create Renviron token, default}
-#'  \item{overwrite}{ - overwrite Renviron token, default}
-#'  \item{delete}{ - delete Renviron token, default}
-#' }
-#'
-#' @param token character. Token generated in the UiO portal \code{api_user_create}
-#' @param action character. One of three actions: 'create', 'overwrite' or 'delete'.
-#' Defaults to 'create'.
-#' @template token_name
-#'
-#' @return No return value. Writes a token to Renviron
-#' @export
-#' @examples
-#' \dontrun{
-#' my_token <- "aoiehtvo09e7h"
-#' nettskjema_token2renviron(my_token)
-#' nettskjema_token2renviron(my_token, action = "overwrite")
-#' nettskjema_token2renviron(my_token, action = "delete")
-#'
-#' # Under a custom name
-#' nettskjema_token2renviron(my_token,
-#'                          token_name = "NETTAKJEMA_TOKEN_ALT")
-#' }
-nettskjema_token2renviron <- function(token,
-                                      token_name = "NETTSKJEMA_API_TOKEN",
-                                      action = c("create", "overwrite", "delete")){
-  if(missing(token)) stop("token missing", call. = FALSE)
-
-  # Find .Renviron path
-  path <- get_renv_path(type = c("user", "project"),
-                        envvar = "R_ENVIRON_USER")
-
-  action <- match.arg(action,
-                      c("create", "overwrite", "delete"),
-                      several.ok = FALSE)
-
-  envir <- ""
-  if(file.exists(path)) envir <- readLines(path)
-
-  token_exists <- grep(paste0("^", token_name, "="), envir)
-  envir_new <- switch(action,
-                      "delete" = {
-                        if(length(token_exists) != 0){
-                          message("Deleting token name '", token_name,"'")
-                          envir <- envir[-token_exists]
-                          envir
-                        }else{
-                          stop("Token name '", token_name,
-                               "' does not exists, nothing to delete.")
-                        }
-                      },
-                      "overwrite" = {
-                        if(length(token_exists) != 0){
-                          message("Token name '", token_name,
-                                  "' already exists, forcing an overwrite.\n",
-                                  "R session must be rephreshed for new token to take effect.")
-                          envir[token_exists] <- paste(token_name, token, sep="=")
-                          envir
-                        }else{
-                          message("Token name '", token_name,
-                                  "' does not already exists, adding new token.\n",
-                                  "R session must be rephreshed for new token to take effect.")
-                          envir[length(envir)+1] <- paste(token_name, token, sep="=")
-                          envir
-                        }
-                      },
-                      "create" = {
-                        if(length(token_exists) != 0){
-                          stop("Token name '", token_name,
-                               "' already exists. If you want to overwrite it, use action = 'overwrite'",
-                               call. = FALSE)
-                        }else{
-                          envir[length(envir)+1] <- paste(token_name, token, sep="=")
-                          message("Token name '", token_name,
-                                  "' added.")
-                          envir
-                        }
-                      })
-
-  # Write updated environment variables
-  writeLines(envir_new, path)
-
-  # Make sure the file is only accessible to the user
-  Sys.chmod(path, mode = "0700")
-}
-
-#' Open .Renviron file for editing
-#'
-#' Will open the .Renviron file for editing.
-#' In this file you set environment variables
-#' that might be required for using certain
-#' command line arguments through functions.
-#' In this package the .Renviron stores the
-#' API access tokens necessary to communicate
-#' securely with nettskjema.
-#'
-#' @export
-#' @return No return value. Opens Renviron file.
-#' @importFrom usethis edit_r_environ
-#' @examples
-#' \dontrun{
-#' nettskjema_renviron_edit()
-#' }
-nettskjema_renviron_edit <- function(){
-  edit_r_environ()
-}
 
 #' nettskjema api connection
 #'
@@ -181,12 +67,6 @@ nettskjema_api <- function(path, token_name, ...) {
       ...,
       add_headers(Authorization = api_auth(token_name))
   )
-}
-
-#' @noRd
-#' @template token_name
-api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
-  paste("Bearer", Sys.getenv(token_name))
 }
 
 #' Find your current IP
@@ -221,5 +101,12 @@ nettskjema_find_ip <- function(version = c("v4","v6")){
                        encoding = "UTF-8"))$ip
     )
   )
+}
+
+# helpers ----
+#' @noRd
+#' @template token_name
+api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
+  paste("Bearer", Sys.getenv(token_name))
 }
 
