@@ -9,12 +9,12 @@
 #' @return character date string
 #' @export
 #' @importFrom httr content
+#' @importFrom cli cli_abort
 nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
 
   # Check that token exists in env
   if(Sys.getenv(token_name) == "")
-    stop("Token with name '", token_name, "' does not exist.",
-         call. = FALSE)
+    cli_abort("Token with name '%s' does not exist.", token_name)
 
   resp <- nettskjema_api("users/admin/tokens/expire-date",
                          token_name = token_name)

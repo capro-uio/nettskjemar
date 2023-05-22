@@ -109,9 +109,9 @@ format.nettskjema_meta_data <- function(x, ...){
     sprintf("# Nettskjema metadata for form %s", x$form_id),
     "",
     unname(sapply(c("title","language","opened", "respondents", "contact",
-             "codebook", "personal_data", "sensitive_data"),
-           function(i) sprintf("%s: %s", i, x[[i]]))
-           ),
+                    "codebook", "personal_data", "sensitive_data"),
+                  function(i) sprintf("%s: %s", i, x[[i]]))
+    ),
 
     sprintf("editors: %s", nrow(x$editors)),
     sprintf("no. elements: %s", length(x$elements$type))
@@ -176,10 +176,11 @@ nettskjema_write_meta <- function(meta, file, pretty = TRUE, ...){
 }
 
 #' @export
+#' @importFrom cli cli_warn
 #' @rdname nettskjema_write_meta
 nettskjema_write_meta.default <- function(meta, file, pretty = TRUE, ...){
-  warning("Cannot write object of class", class(meta)[1], "as meta-data file",
-          call. = FALSE)
+  cli_warn("Cannot write object of class %s as meta-data file",
+           class(meta)[1])
 }
 
 #' @export

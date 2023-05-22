@@ -15,6 +15,7 @@ as_user <- function(el){
 #' @noRd
 as_element <- function(el){
   tmp <- tibble(
+    id = map_chr(el, "elementId", .default = NA),
     type = map_chr(el, "elementType", .default = NA),
     order = map_int(el, "sequence", .default = NA)
   )
@@ -32,19 +33,21 @@ as_element <- function(el){
 as_img_element <- function(el){
   dt <- tibble(.rows = 1)
 
-  dt$img_id = el[["image"]][["imageId"]]
-  dt$img_url = el[["imageUrl"]]
-  dt$img_text = el[["altText"]]
-  dt$img_name = el[["image"]][["filename"]]
-
+  dt$img_id  <- el[["image"]][["imageId"]]
+  dt$img_url <-  el[["imageUrl"]]
+  dt$img_text <-  el[["altText"]]
+  dt$img_name <-  el[["image"]][["filename"]]
   dt
 }
 
 #' @noRd
 as_txt_element <- function(el){
-  strip_html(el$description)
+  el$description
 }
 
+as_heading_element <- function(el){
+  el$title
+}
 
 as_pagebreak_element <- function(){
   NULL
@@ -75,6 +78,7 @@ as_checkbox_element <- function(el, checkbox_type = c(string, list, columns)){
     tibble(
       max_selected = max_selected(el),
       question = strip_html(map_chr(el$questions, "text", .default = NA_character_)),
+      question_codebook = map_chr(el$questions, "externalQuestionId"),
       question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)),
     element_answeropts(el$questions[[1]])
   )
@@ -110,8 +114,8 @@ as_linearscale_element <- function(el){
   element_linearscale(el)
 }
 
-as_element_attachment <- function(el){
-  browser()
+as_attachment_element <- function(el){
+  as_question_element(el)
 }
 
 element_linearscale <- function(el){
@@ -134,6 +138,7 @@ element_linearscale <- function(el){
 element_main <- function(el){
   tibble(
     question           = map_chr(el$questions, "text", .default = NA_character_),
+    question_id        = map_chr(el$questions, "questionId", .default = NA_character_),
     question_descr     = strip_html(map_chr(el$questions, "description", .default = NA_character_)),
     question_codebook  = map_chr(el$questions, "externalQuestionId", .default = NA_character_),
     question_mandatory = map_lgl(el$questions, "mandatory", .default = NA)
@@ -189,27 +194,25 @@ element_answeropts <- function(el){
 
 element_details <- function(type, el){
   j <- sapply(type, function(x) list())
-  j <- lapply(1:length(type), function(e){
+  j <- lapply(seq_along(type), function(e){
     switch(type[e],
-           "IMAGE"            = as_img_element(el[[e]]),
-           "CHECKBOX"         = as_checkbox_element(el[[e]]),
-           "MATRIX_CHECKBOX"  = as_checkboxmatrix_element(el[[e]]),
-           "PAGE_BREAK"       = as_pagebreak_element(),
-           "QUESTION"         = as_question_element(el[[e]]),
-           "RADIO"            = as_radio_element(el[[e]]),
-           "MATRIX_RADIO"     = as_radiomatrix_element(el[[e]]),
-           "TEXT"             = as_txt_element(el[[e]]),
-           "SELECT"           = as_select_element(el[[e]]),
-           "LINEAR_SCALE"     = as_linearscale_element(el[[e]]),
-           "ATTACHMENT"     = as_linearscale_element(el[[e]]),
+           "IMAGE"              = as_img_element(el[[e]]),
+           "CHECKBOX"           = as_checkbox_element(el[[e]]),
+           "MATRIX_CHECKBOX"    = as_checkboxmatrix_element(el[[e]]),
+           "PAGE_BREAK"         = as_pagebreak_element(),
+           "QUESTION"           = as_question_element(el[[e]]),
+           "QUESTION_MULTILINE" = as_question_element(el[[e]]),
+           "RADIO"              = as_radio_element(el[[e]]),
+           "MATRIX_RADIO"       = as_radiomatrix_element(el[[e]]),
+           "TEXT"               = as_txt_element(el[[e]]),
+           "HEADING"            = as_heading_element(el[[e]]),
+           "SELECT"             = as_select_element(el[[e]]),
+           "LINEAR_SCALE"       = as_linearscale_element(el[[e]]),
+           "ATTACHMENT"         = as_attachment_element(el[[e]]),
            "unknown element class"
     )
   })
   unname(j)
-}
-
-element_attachment <- function(el){
-  browser()
 }
 
 element_exists <- function(el, fields){

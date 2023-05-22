@@ -24,7 +24,7 @@
 #' @template information
 #' @template token_name
 #' @template as_is
-#' @param checkbox_type string of either "string" (default), "list" or "columns" for how to handle checkbox answers
+#' @template checkbox_type
 #' @param checkbox_delim delimiter string if \code{checkbox:type} is "string". Ignored else.
 #' @param incremental logical. False fetches all at once, TRUE fetches each submission individually. Slower but more stable for larger datasets.
 #' @template from_date
@@ -34,6 +34,7 @@
 #' @return tibble data.frame
 #' @export
 #' @importFrom dplyr mutate relocate
+#' @importFrom cli cli_warn
 #' @examples
 #' \dontrun{
 #'
@@ -53,20 +54,20 @@
 #' data_110000 <- nettskjema_get_data(110000, incremental = TRUE)
 #'
 #' }
-nettskjema_get_data <- function(form_id,
-                                information = NULL,
-                                token_name = "NETTSKJEMA_API_TOKEN",
-                                use_codebook = has_codebook(form_id, token_name),
-                                checkbox_type = c("string", "list", "columns"),
-                                checkbox_delim = ";",
-                                as_is = FALSE,
-                                from_date = "",
-                                from_submission = "",
-                                incremental = FALSE,
-                                ...){
+nettskjema_get_data <- function(
+    form_id,
+    information = NULL,
+    token_name = "NETTSKJEMA_API_TOKEN",
+    use_codebook = has_codebook(form_id, token_name),
+    checkbox_type = c("string", "list", "columns"),
+    checkbox_delim = ";",
+    as_is = FALSE,
+    from_date = "",
+    from_submission = "",
+    incremental = FALSE,
+    ...){
   if(!use_codebook & !is.null(information)){
-    warning("Cannot combine `use_codebook` and `information`, setting `information = NULL`",
-            call. = FALSE)
+    cli_warn("Cannot combine `use_codebook` and `information`, setting `information = NULL`")
     information <- NULL
   }
 
@@ -79,18 +80,17 @@ nettskjema_get_data <- function(form_id,
   if(from_submission != "") submissionIds[submissionIds > from_submission]
   cat(sprintf("Form %s has %s responses to download.\n",form_id, length(submissionIds)))
 
-  cont <- grab_data(incremental, submissionIds,
-                    token_name, path, opts, ...)
+  ndata <- grab_data(incremental, submissionIds,
+                     token_name, path, opts, ...)
 
   # If asked to return as_is, then return the
   # raw json content
-  if(as_is) return(cont)
+  if(as_is) return(ndata)
 
   m <- nettskjema_get_meta(form_id, token_name = token_name)
-  if(!m$codebook){
-    warning("No codebook defined for this form. Setting 'use_codebook' to FALSE.",
-            call. = FALSE)
-    cb <- codebook(m, form_id)
+  cb <- codebook(m, form_id)
+  if(!m$codebook || any(is.na(codebook(m, form_id)$question_codebook))){
+    cli_warn("No codebook defined for this form. Setting 'use_codebook' to FALSE.")
     use_codebook = FALSE
   }else{
     cb <- nettskjema_get_codebook(form_id = form_id,
@@ -98,8 +98,7 @@ nettskjema_get_data <- function(form_id,
                                   token_name = token_name,
                                   ...)
   }
-
-  dt <- clean_form_submissions(cont,
+  dt <- clean_form_submissions(ndata,
                                cb = cb,
                                use_codebook = use_codebook,
                                checkbox_type = checkbox_type,
@@ -110,42 +109,16 @@ nettskjema_get_data <- function(form_id,
 
   if(!is.null(information)){
     cb <- nettskjema_get_codebook(form_id = form_id, token_name = token_name)
-    dt <- nettskjema_get_extra(data = dt,
-                               codebook = cb,
-                               information = information,
-                               use_codebook = use_codebook)
+    dt <- nettskjema_get_extra(
+      data = dt,
+      codebook = cb,
+      information = information,
+      use_codebook = use_codebook)
   }
 
   dt <- dt[,order(colnames(dt))]
   relocate(dt, form_id, submission_id)
 }
-
-# #' Get all forms you have access to
-# #'
-# #' With the given API token, will retrieve
-# #' a list of all the forms you have access to
-# #' TODO: Wait for IT to make this possible
-# #'
-# #' @template token_name
-# #' @template as_is
-# #' @param ... arguments passed to \code{\link[httr]{GET}}
-# #'
-# #' @return tibble
-# #' @importFrom httr content
-# #' @export
-# nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
-#                                  as_is = FALSE, ...){
-#
-#   resp <- nettskjema_api("forms/", token_name = token_name, ...)
-#
-#   api_catch_error(resp)
-#   api_catch_empty(resp)
-#
-#   cont <- content(resp)
-#
-#   if(as_is) return(cont)
-#
-# }
 
 
 #' Add additional answer data
@@ -171,6 +144,7 @@ nettskjema_get_data <- function(form_id,
 #'
 #' @return tibble with added columns
 #' @export
+#' @importFrom cli cli_abort
 #' @examples
 #' \dontrun{
 #' form_id <- 100000
@@ -188,8 +162,7 @@ nettskjema_get_extra <- function(data,
                                  ...){
 
   if(missing(information)){
-    stop("No argument passed to `information`, no extra data to add",
-         call. = FALSE)
+    cli_abort("No argument passed to `information`, no extra data to add")
   }
 
   information <- validate_information(information)
@@ -209,14 +182,10 @@ nettskjema_get_extra <- function(data,
     questions <- unname(unlist(unique(cb[,type])))
   }
 
-
   # If they have set up questions that are not represented in the actual
   # question part of the form, this process will fail to merge properly.
   if(any(is.na(questions)))
-    stop("The codebook is not set up correctly, or some questions do not have text. ",
-         "Adding extra information from the codebook is not possible in this situation. ",
-         "Try filling out the codebook, before downloading the data once more.\n",
-         call. = FALSE)
+    cli_abort("The codebook is not set up correctly, or some questions do not have text. Adding extra information from the codebook is not possible in this situation. Try filling out the codebook, before downloading the data once more.\n")
 
   get_extra_data(questions, col,
                  type, type_answ,
@@ -224,3 +193,29 @@ nettskjema_get_extra <- function(data,
 
 }
 
+# #' Get all forms you have access to
+# #'
+# #' With the given API token, will retrieve
+# #' a list of all the forms you have access to
+# #' TODO: Wait for IT to make this possible
+# #'
+# #' @template token_name
+# #' @template as_is
+# #' @param ... arguments passed to \code{\link[httr]{GET}}
+# #'
+# #' @return tibble
+# #' @importFrom httr content
+# #' @export
+# nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
+#                                  as_is = FALSE, ...){
+#
+#   resp <- nettskjema_api("forms/", token_name = token_name, ...)
+#
+#   api_catch_error(resp)
+#   api_catch_empty(resp)
+#
+#   ndata <- content(resp)
+#
+#   if(as_is) return(ndata)
+#
+# }

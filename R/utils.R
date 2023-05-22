@@ -6,6 +6,16 @@ valid_form_inf <- function(){
     "editors", "elements")
 }
 
+
+#' Strip HTML from string
+#'
+#' @param string String to strip HTML from.
+#'
+#' @return character vector without html tags.
+#' @export
+#'
+#' @examples
+#' strip_html("<p>This string has the paragraph html tag</p>")
 strip_html <- function(string) {
   gsub("<[^>]*>", "", string)
 }
@@ -51,11 +61,10 @@ rn_cols <- function(x, from, to){
 #' @param file file name as string
 #'
 #' @return string without file extension
-#' @importFrom tools file_ext
+#' @importFrom tools file_path_sans_ext
 #' @noRd
 rm_ext <- function(file){
-  ex <- file_ext(file)
-  gsub(ex, "", file)
+  file_path_sans_ext(file)
 }
 
 # will list the submission ids associated with a form
@@ -89,11 +98,4 @@ get_option = function(x, default = NULL){
   if(length(a) == 0) return(b)
   if(is.na(a) | is.null(a) | a == "") return(b)
   a
-}
-
-## quiets concerns of R CMD check
-if(getRversion() >= "2.15.1"){
-  utils::globalVariables(c("question_codebook","cb", "question", "answer", "columns",
-                           "string", "value",
-                           "form_id", "element_no", "submission_id"))
 }

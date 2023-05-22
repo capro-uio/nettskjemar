@@ -1,5 +1,3 @@
-
-
 #' Retrieve attachments associated with a Nettskjema
 #'
 #' Some Nettskjema have fields for attachments. These
@@ -49,9 +47,10 @@ nettskjema_get_form_attachments <- function(form_id,
                                             token_name = "NETTSKJEMA_API_TOKEN",
                                             from_date = "",
                                             from_submission = "",
-                                            ...){
+                                            ...) {
   filenames <- match.arg(filenames, c("standardized", "original"))
-  if(!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+  if (!dir.exists(output_dir))
+    dir.create(output_dir, recursive = TRUE)
   path = file.path("forms", form_id, "submissions")
   submission_ids <- list_submissions(path,
                                      make_opts(from_date, from_submission),
@@ -59,12 +58,12 @@ nettskjema_get_form_attachments <- function(form_id,
   ats <- nettskjema_list_attachments(submission_ids,
                                      token_name, ...)
   invisible(
-    mapply(nettskjema_save_attachment,
-           path = ats$path,
-           output = file.path(output_dir, unlist(ats[, filenames])),
-           MoreArgs = list(
-             token_name , ...
-           ))
+    mapply(
+      nettskjema_save_attachment,
+      path = ats$path,
+      output = file.path(output_dir, unlist(ats[, filenames])),
+      MoreArgs = list(token_name , ...)
+    )
   )
 }
 
@@ -93,7 +92,7 @@ nettskjema_get_form_attachments <- function(form_id,
 #' }
 nettskjema_list_attachments <- function(submission_id,
                                         token_name = "NETTSKJEMA_API_TOKEN",
-                                        ...){
+                                        ...) {
   ats <- lapply(submission_id, fetch_attachment, token_name, ...)
   ats <- do.call(rbind, ats)
   as_tibble(ats)
@@ -128,15 +127,16 @@ nettskjema_list_attachments <- function(submission_id,
 #' attach_dt <- nettskjema_list_attachments(submission_id)
 #' nettskjema_save_attachment(path = attach_dt$path, output = attach_dt$standardized)
 #' }
-nettskjema_save_attachment <- function(path, output, token_name , ...){
-  resp <- nettskjema_api(path, token_name , ...)
-  api_catch_error(resp)
-  attachment <- content(resp)$content
-  out <- file(output, "wb")
-  on.exit(close(out))
-  message("Saving attachment to ", output)
-  base64decode(attachment, output = out)
-}
+nettskjema_save_attachment <-
+  function(path, output, token_name , ...) {
+    resp <- nettskjema_api(path, token_name , ...)
+    api_catch_error(resp)
+    attachment <- content(resp)$content
+    out <- file(output, "wb")
+    on.exit(close(out))
+    message("Saving attachment to ", output)
+    base64decode(attachment, output = out)
+  }
 
 
 #' get attachment
@@ -145,22 +145,27 @@ nettskjema_save_attachment <- function(path, output, token_name , ...){
 #' @template token_name
 #' @param ... arguments passed to \code{\link[httr]{GET}}
 #' @importFrom tools file_ext
-#' @return
+#' @return list of attachments
 #' @noRd
-fetch_attachment <- function(submission_id, token_name, ...){
+fetch_attachment <- function(submission_id, token_name, ...) {
   path <- attachments_path(submission_id)
   resp <- lapply(path, nettskjema_api, token_name = token_name, ...)
   invisible(lapply(resp, api_catch_error))
   paths <- file.path(path, unlist(lapply(resp, content)))
 
-  ats <- lapply(1:length(paths), function(x){
+  ats <- lapply(1:length(paths), function(x) {
     resp <- nettskjema_api(paths[x], token_name, ...)
     api_catch_error(resp)
     at <- content(resp)
     data.frame(
       submission_id = submission_id,
       original = at$fileName,
-      standardized = sprintf("%s-%s.%s", submission_id, x, tools::file_ext(at$fileName)),
+      standardized = sprintf(
+        "%s-%s.%s",
+        submission_id,
+        x,
+        tools::file_ext(at$fileName)
+      ),
       path = paths[x],
       stringsAsFactors = FALSE
     )
@@ -171,6 +176,6 @@ fetch_attachment <- function(submission_id, token_name, ...){
 #' convenience attachments path.
 #' @template submission_id
 #' @noRd
-attachments_path <- function(submission_id){
+attachments_path <- function(submission_id) {
   file.path("submissions", submission_id, "attachments")
 }

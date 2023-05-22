@@ -18,7 +18,6 @@
 codebook <- function(meta_data, form_id){
   els <- meta_data$elements$details
   idx <- which(unlist(lapply(els, is.data.frame)))
-
   codes <- lapply(idx,
                   function(x) els[[x]])
   names(codes) <- meta_data$elements$order[idx]
@@ -60,7 +59,7 @@ nettskjema_get_codebook <- function(form_id,
                            ...)
     return(cb)
   }
-
+browser()
   # Get codebook based on the meta-data elements
   meta <- nettskjema_get_meta(form_id = form_id,
                               as_is = FALSE,
@@ -177,10 +176,11 @@ nettskjema_write_codebook <- function(codebook, file, ...){
 }
 
 #' @export
+#' @importFrom cli cli_warn
 #' @rdname nettskjema_write_codebook
 nettskjema_write_codebook.default <- function(codebook, file, ...){
-  warning("Cannot write object of class", class(codebook)[1], "as codebook-data file",
-          call. = FALSE)
+  cli_warn(sprintf("Cannot write object of class %s as codebook-data file",
+                        class(codebook)[1]))
 }
 
 #' @export

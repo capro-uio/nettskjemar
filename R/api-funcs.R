@@ -9,21 +9,21 @@ is.app_json <- function(x){
 
 #' @importFrom httr http_type content http_error status_code
 #' @importFrom jsonlite fromJSON
+#' @importFrom cli cli_abort
 #' @noRd
 api_catch_error <- function(resp){
   if (!is.app_json(resp)) {
-    stop("API did not return json", call. = FALSE)
+    cli_abort("API did not return json")
   }
 
   parsed <- fromJSON(content(resp, "text"),
                      simplifyVector = FALSE)
 
   if (http_error(resp)) {
-    stop(
+    cli_abort(
       sprintf(
         "Nettskjema API request failed with error\n %s : %s\n",
-        status_code(resp), parsed$message),
-      call. = FALSE
+        status_code(resp), parsed$message)
     )
   }
 }
@@ -31,21 +31,21 @@ api_catch_error <- function(resp){
 
 #' @importFrom httr http_type content http_status
 #' @importFrom jsonlite fromJSON
+#' @importFrom cli cli_abort
 #' @noRd
 api_catch_empty <- function(resp){
   if (http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+    cli_abort("API did not return json")
   }
 
   parsed <- fromJSON(content(resp, "text"),
                      simplifyVector = FALSE)
 
   if (resp$status_code == 500) {
-    stop(
+    cli_abort(
       sprintf(
         "Nettskjema API request with \n %s",
-        http_status(resp)$message),
-      call. = FALSE
+        http_status(resp)$message)
     )
   }
 }
