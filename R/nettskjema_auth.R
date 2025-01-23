@@ -32,16 +32,8 @@ nettskjema_auth_token <- function(
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"), 
   cache = TRUE,
   cache_path = fs::path_home(".nettskjema_token.rds")){
-  
-  if(cache){
-    if(file.exists(cache_path)){
-      token <- readRDS(cache_path)
-      if(Sys.time() < token$expires)
-        return(token)
-    }
-  }
 
-  token <- httr2::request(
+  req <- httr2::request(
     "https://authorization.nettskjema.no/oauth2/token"
     ) |> 
     httr2::req_method("POST") |> 
@@ -52,15 +44,19 @@ nettskjema_auth_token <- function(
     httr2::req_auth_basic(
       client_id, 
       client_secret
-    ) |> 
+    )
+  
+  if(cache){
+    req <- req |> 
+      httr2::req_cache(
+        cache_path,
+        max_age = 24*60*60
+      )
+  }
+
+  req |> 
     httr2::req_perform() |> 
     httr2::resp_body_json()
-
-  token$expires <- Sys.time() + token$expires_in
-  
-  saveRDS(token, cache_path)
-  
-  return(token)
 }
 
 nettskjema_token_expiry <- function(){}
