@@ -1,37 +1,4 @@
 
-#' Check nettskjema API token expiry date
-#'
-#' Given an API token, will retrieve the expiry
-#' date of the said token.
-#'
-#' @inheritParams nettskjema_get_data
-#'
-#' @return character date string
-#' @export
-#' @importFrom httr content
-nettskjema_token_expiry <- function(token_name = "NETTSKJEMA_API_TOKEN"){
-
-  # Check that token exists in env
-  if(Sys.getenv(token_name) == "")
-    stop("Token with name '", token_name, "' does not exist.",
-         call. = FALSE)
-
-  resp <- nettskjema_api("users/admin/tokens/expire-date",
-                         token_name = token_name)
-
-  api_catch_error(resp)
-
-  dt <- as.Date(unlist(content(resp)))
-
-  message("Token with name '", token_name, "' expires in ",
-          as.numeric(dt - Sys.Date()),
-          " days."
-  )
-
-  invisible(dt)
-}
-
-
 #' Create Nettskjema API user
 #'
 #' Opens OS browser to create API user.
@@ -51,23 +18,52 @@ nettskjema_user_create <- function(ip_version = c("v4", "v6")){
   browseURL("https://nettskjema.uio.no/user/api/index.html")
 }
 
-
-#' nettskjema api connection
-#'
-#' @param path path connection
-#' @template token_name
-#' @param ... arguments passed to GET
-#'
-#' @return an httr response
-#' @importFrom httr GET add_headers
-#' @noRd
-nettskjema_api <- function(path, token_name, ...) {
-  url <- paste0("http://nettskjema.no/api/v2/", path)
-  GET(url,
-      ...,
-      add_headers(Authorization = api_auth(token_name))
-  )
+#' @template token
+nettskjema_req <- function(...){
+  httr2::request("https://api.nettskjema.no/v3") |> 
+    httr2::req_auth_bearer_token(
+      nettskjema_auth_token(...)$access_token
+    )
 }
+
+nettskjema_auth_token <- function(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"), 
+  cache = TRUE,
+  cache_path = fs::path_home(".nettskjema_token.rds")){
+  
+  if(cache){
+    if(file.exists(cache_path)){
+      token <- readRDS(cache_path)
+      if(Sys.time() < token$expires)
+        return(token)
+    }
+  }
+
+  token <- httr2::request(
+    "https://authorization.nettskjema.no/oauth2/token"
+    ) |> 
+    httr2::req_method("POST") |> 
+    httr2::req_body_raw(
+      "grant_type=client_credentials", 
+      "application/x-www-form-urlencoded"
+    ) |> 
+    httr2::req_auth_basic(
+      client_id, 
+      client_secret
+    ) |> 
+    httr2::req_perform() |> 
+    httr2::resp_body_json()
+
+  token$expires <- Sys.time() + token$expires_in
+  
+  if(cache)
+    saveRDS(token, cache_path)
+  
+  return(token)
+}
+
+nettskjema_token_expiry <- function(){}
 
 #' Find your current IP
 #'
@@ -103,10 +99,4 @@ nettskjema_find_ip <- function(version = c("v4","v6")){
   )
 }
 
-# helpers ----
-#' @noRd
-#' @template token_name
-api_auth <- function(token_name = "NETTSKJEMA_API_TOKEN"){
-  paste("Bearer", Sys.getenv(token_name))
-}
-
+  

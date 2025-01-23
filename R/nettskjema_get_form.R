@@ -22,7 +22,7 @@
 #' @template form_id
 #' @template use_codebook
 #' @template information
-#' @template token_name
+#' @template token
 #' @template as_is
 #' @param checkbox_type string of either "string" (default), "list" or "columns" for how to handle checkbox answers
 #' @param checkbox_delim delimiter string if \code{checkbox:type} is "string". Ignored else.
@@ -120,33 +120,78 @@ nettskjema_get_data <- function(form_id,
   relocate(dt, form_id, submission_id)
 }
 
-# #' Get all forms you have access to
-# #'
-# #' With the given API token, will retrieve
-# #' a list of all the forms you have access to
-# #' TODO: Wait for IT to make this possible
-# #'
-# #' @template token_name
-# #' @template as_is
-# #' @param ... arguments passed to \code{\link[httr]{GET}}
-# #'
-# #' @return tibble
-# #' @importFrom httr content
-# #' @export
-# nettskjema_get_forms <- function(token_name = "NETTSKJEMA_API_TOKEN",
-#                                  as_is = FALSE, ...){
-#
-#   resp <- nettskjema_api("forms/", token_name = token_name, ...)
-#
-#   api_catch_error(resp)
-#   api_catch_empty(resp)
-#
-#   cont <- content(resp)
-#
-#   if(as_is) return(cont)
-#
-# }
 
+
+#' Get all forms you have access to
+#'
+#'
+#' @return data.frame
+#' @importFrom httr content
+#' @export
+nettskjema_get_forms <- function(){
+  resp <-   nettskjema_req() |> 
+    httr2::req_url_path_append("form", "me") |> 
+    httr2::req_perform() |> 
+    httr2::resp_body_json()
+
+  resp <- lapply(resp, unlist)
+  do.call(rbind, resp) |> 
+    as.data.frame()
+}
+
+
+nettskjema_get_me <- function(){
+  nettskjema_req() |> 
+    httr2::req_url_path_append("me") |> 
+    httr2::req_perform() |> 
+    httr2::resp_body_json()
+}
+
+nettskjema_get_form_answers <- function(formid){
+  resp <- nettskjema_req() |> 
+    httr2::req_url_path_append("form", formid, "answers") |> 
+    httr2::req_perform()
+
+  if(!httr2::resp_has_body(resp)){
+    cli::cli_alert_info("Form has no answers. Returning nothing.")
+    return(NULL)
+  }
+
+  # wont work
+  httr2::resp_body_string(resp) |> 
+    jsonlite::fromJSON()
+
+}
+
+report_path <- function(formid, type){
+  ext <- switch(type,
+    csv   = "csv",
+    spss  = "sav",
+    excel = "xlsx"
+  )
+  sprintf("%s.%s", formid, ext)
+}
+
+nettskjema_get_form_reports <- function(
+  formid,
+  type = c("csv", "excel", "spss"), 
+  path = report_path(formid, type)){
+
+  type <- match.arg(type)
+
+  type <- switch(type,
+    csv   = "csv-report",
+    spss  = "spss-syntax",
+    excel = "excel-report"
+  )
+
+  resp <- nettskjema_req() |> 
+    httr2::req_url_path_append("form", formid, type) |> 
+    httr2::req_perform() |> 
+    httr2::resp_body_raw()
+  
+  writeBin(resp, path)
+}
 
 #' Add additional answer data
 #'

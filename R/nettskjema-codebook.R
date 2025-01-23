@@ -92,10 +92,10 @@ nettskjema_get_codebook <- function(form_id,
 #' Or if the token is saved in a non-standard name
 #' get_raw_codebook(form_id, token_name = "MY_NETTSKJEMA_TOKEN_NAME")
 #' }
-get_raw_codebook <- function(form_id, token_name = "NETTSKJEMA_API_TOKEN", ...){
+get_raw_codebook <- function(form_id, ...){
 
-  path <- file.path("forms", form_id, "codebook")
-  resp <- nettskjema_api(path, token_name = token_name, ...)
+  resp <- nettskjema_req() |> 
+    httr2::req_url_path_append("forms", form_id, "codebook")
 
   api_catch_error(resp)
   api_catch_empty(resp)
