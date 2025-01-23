@@ -26,6 +26,7 @@ nettskjema_req <- function(...){
     )
 }
 
+
 nettskjema_auth_token <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"), 
@@ -57,8 +58,7 @@ nettskjema_auth_token <- function(
 
   token$expires <- Sys.time() + token$expires_in
   
-  if(cache)
-    saveRDS(token, cache_path)
+  saveRDS(token, cache_path)
   
   return(token)
 }
