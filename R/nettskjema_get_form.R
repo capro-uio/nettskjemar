@@ -139,7 +139,7 @@ nettskjema_get_forms <- function(){
     as.data.frame()
 }
 
-
+#' works
 nettskjema_get_me <- function(){
   nettskjema_req() |> 
     httr2::req_url_path_append("me") |> 
@@ -172,6 +172,7 @@ report_path <- function(formid, type){
   sprintf("%s.%s", formid, ext)
 }
 
+#' works
 nettskjema_get_form_reports <- function(
   formid,
   type = c("csv", "excel", "spss"), 

@@ -92,35 +92,18 @@ nettskjema_get_codebook <- function(form_id,
 #' Or if the token is saved in a non-standard name
 #' get_raw_codebook(form_id, token_name = "MY_NETTSKJEMA_TOKEN_NAME")
 #' }
-get_raw_codebook <- function(form_id, ...){
+get_raw_codebook <- function(form_id){
 
   resp <- nettskjema_req() |> 
-    httr2::req_url_path_append("forms", form_id, "codebook")
+    httr2::req_url_path_append("form", form_id, "definition") |> 
+    httr2::req_perform()
 
-  api_catch_error(resp)
-  api_catch_empty(resp)
-
-  dt <- content(resp)
-
-  # remove NULLs
-  idx <- which(!sapply(dt$externalQuestionIds, is.null))
-  dt$externalQuestionIds <- lapply(idx, function(x) dt$externalQuestionIds[[x]])
-
-  # remove NULLs
-  idx <- which(!sapply(dt$externalAnswerOptionIds, is.null))
-  dt$externalAnswerOptionIds <- lapply(idx, function(x) dt$externalAnswerOptionIds[[x]])
+  dt <- httr2::resp_body_json(resp)
 
   structure(
     list(
       form_id = form_id,
-      questions = dplyr::tibble(
-        id = names(dt$externalQuestionIds),
-        text = unlist(unname(dt$externalQuestionIds))
-      ),
-      answers = dplyr::tibble(
-        id = names(dt$externalAnswerOptionIds),
-        text = unlist(unname(dt$externalAnswerOptionIds))
-      )
+      elements = dt$elements
     ), class = c("nettskjema_codebook_raw", "list")
   )
 }
@@ -130,8 +113,7 @@ format.nettskjema_codebook_raw <- function(x, ...){
   c(
     sprintf("# Nettskjema raw codebook for form %s", x$form_id),
     "",
-    sprintf("no. questions: %s", nrow(x$questions)),
-    sprintf("no. answers: %s", nrow(x$answers))
+    sprintf("no. elements: %s", length(x$elements))
   )
 }
 

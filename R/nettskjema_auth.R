@@ -1,31 +1,10 @@
 
-#' Create Nettskjema API user
-#'
-#' Opens OS browser to create API user.
-#' @param ip_version IP version to look up. Either "v4" (default) or "v6".
-#' @return No return value, opens a browser for creating a API user.
-#' @importFrom utils browseURL
-#' @export
-#' @examples
-#' \dontrun{
-#' nettskjema_user_create()
-#'
-#' # Turn off ip detection
-#' nettskjema_user_create(ip = FALSE)
-#' }
-nettskjema_user_create <- function(ip_version = c("v4", "v6")){
-  nettskjema_find_ip(ip_version)
-  browseURL("https://nettskjema.uio.no/user/api/index.html")
-}
-
-#' @template token
 nettskjema_req <- function(...){
   httr2::request("https://api.nettskjema.no/v3") |> 
     httr2::req_auth_bearer_token(
       nettskjema_auth_token(...)$access_token
     )
 }
-
 
 nettskjema_auth_token <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
