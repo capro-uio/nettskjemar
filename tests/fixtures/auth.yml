@@ -1,0 +1,50 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Sat, 15 Feb 2025 19:21:31 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=ZjFkNTI0ZWUtOGUzMi00YTU1LWJjMjQtYmFkMzYwNjM2YzEw; Path=/;
+        Secure; HttpOnly; SameSite=Lax
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTczOTY0NzI5MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzM5NzMzNjkxLCJpYXQiOjE3Mzk2NDcyOTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJiN2EwN2Y1Ny03YjE2LTQxZWQtYmYyNi02N2NmZjYwYzZhNTIiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.FeGB68HHw5H2uAugUctYbEQikbk5prT_iqJKTEA-jUDdugBVgdJcPa4bIDOvT1LAdlkRvmduQHN1vuJ97vpOH7bDN9rrGuIfRnOaPdGUdFzhkCb0TFrmF8wHWAKMv_wy7nxVq9tvHj2Tjg_AfpO0nSrSAgTvzlTihPgqF8jxwMGPvR2fgs_jUcZWbDi5EOJkniysiWHDBWs7J-G5KGyu07EFM8hLpucS0R_wjfzJDxAc52hVnIIvU2hmBTKw5jatF7YkK7RScpgJ_WG7jzDo429i0SRffUKPLXOfZzRJk0Ra9qzh0BCkwCT0Z3q7GC47bkmm6x0AVGl7I1LGvhwxbuVA7X_GV5jbi2ucdNeoxt2k8EUwjr1CJc9nHzLWXj7VSth4uaKvuw_KdjFo3HeckTy9aA8HB-AcchGjVcceLsKEK9IiZ5BpBgB0gPXEJhlzhAC6RWQFlD70Vxml-4bi1AHY-XKi8AuPAxVqiU1qQ7FDZB_nA5R1XunKFfCa9zlt","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-02-15 19:21:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0

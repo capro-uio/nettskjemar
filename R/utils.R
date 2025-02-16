@@ -1,87 +1,15 @@
-valid_form_inf <- function(){
-  c("title", "language",
-    "created", "modified", "opened",
-    "respondents", "contact","codebook",
-    "personal_data", "sensitive_data",
-    "editors", "elements")
-}
-
-strip_html <- function(string) {
-  gsub("<[^>]*>", "", string)
-}
-
-max_selected <- function(x){
-  t <- x$maxSelectedAnswerOptions
-  ifelse(t == 0, NaN, t)
-}
-
-check_element <- function(x){
-  if(length(x) == 1)
-    return(x)
-
-  NULL
-}
-
-#' @importFrom stats setNames
-validate_information <- function(information) {
-
-  inf_nms <- if(is.null(names(information))){
-    information
-  }else{
-    names(information)
-  }
-
-  setNames(match.arg(unlist(information),
-                     info(),
-                     several.ok = TRUE),
-           inf_nms)
-}
-
-info <- function(){
-  c("order", "option",
-    "correct", "preselected")
-}
-
-rn_cols <- function(x, from, to){
-  gsub(paste0(from, "$"), to, x)
-}
 
 #' remove file extension
 #'
-#' @param file file name as string
+#' @template path
 #'
 #' @return string without file extension
 #' @importFrom tools file_ext
 #' @noRd
-rm_ext <- function(file){
-  ex <- file_ext(file)
-  gsub(ex, "", file)
-}
-
-# will list the submission ids associated with a form
-list_submissions <- function(path, opts, token_name, ...) {
-  path_inc <- sprintf("%s%s&fields=submissionId", path, opts)
-  resp <- nettskjema_api(path_inc, token_name = token_name, ...)
-  api_catch_error(resp)
-  unlist(content(resp))
-}
-
-# make options for getting form data
-make_opts <- function(from_date = "", from_submission = ""){
-  if(from_date != "" ){
-    from_date <- sprintf("fromDate=%s", from_date)
-  }
-
-  if(from_submission != "" ){
-    from_submission <- sprintf("fromSubmissionId=%s", from_submission)
-  }
-
-  sprintf("?%s&%s", from_date, from_submission)
-}
-
-# get global options
-get_option = function(x, default = NULL){
-  getOption("test") %||% default
+rm_ext <- function(path){
+  ex <- file_ext(path)
+  ex <- sprintf(".%s$", ex)
+  gsub(ex, "", path)
 }
 
 # assign b if a is nothing
@@ -91,9 +19,70 @@ get_option = function(x, default = NULL){
   a
 }
 
+merge_el <- function(df1, df2){
+  merge(df1, df2, by = "element_no", all = TRUE)
+}
+
+# Add variable labels
+add_var_labels <- function(data, labels){
+  lapply(seq_along(labels), function(x){
+    attr(data[, names(labels)[x]], "label") <<- unname(labels[x])
+  })
+  return(data)
+}
+
+# Add value labels
+add_val_labels <- function(data, codebook){
+  cb_vars <- subset(codebook, !is.na(codebook$answer_code))
+  variables <- stats::na.omit(unique(cb_vars$element_code))
+
+  for(var in variables){
+    cb_var <- codebook[codebook$element_code %in% var,]
+
+    val_labs <- stats::setNames(
+      utils::type.convert(
+        cb_var$answer_code,
+        tryLogical = FALSE,
+        numerals = "no.loss",
+        as.is = TRUE
+      ), 
+      cb_var$answer_text
+    )
+
+    data[[var]] <- structure(
+      data[[var]], 
+      labels = val_labs, 
+      label = attr(data[[var]], "label"), 
+      class = c(
+        "haven_labelled", 
+        "vctrs_vctr", 
+        class(val_labs)
+      ))
+  }
+  data
+}
+
+list2df <- function(x){
+  y <- lapply(x, list2row)
+  y <- do.call(rbind, y)
+  as.data.frame(y)
+}
+
+list2row <- function(x){
+  x <- null2na(x)
+  as.data.frame(x)
+}
+
+null2na <- function(x){
+  idx <- which(sapply(x, is.null))
+  for(i in idx){
+    x[[i]] <- NA
+  }
+  x
+}
+
 ## quiets concerns of R CMD check
 if(getRversion() >= "2.15.1"){
-  utils::globalVariables(c("question_codebook","cb", "question", "answer", "columns",
-                           "string", "value",
-                           "form_id", "element_no", "submission_id"))
+  utils::globalVariables(c("question_codebook","cb", "question", "answer", "columns", "string", "value",
+  "form_id", "element_no", "submission_id"))
 }

@@ -1,33 +1,44 @@
-test_that("strip_html works", {
-  expect_equal(strip_html("<p>"), "")
+test_that("rm_ext works", {
+  expect_equal(rm_ext("path.txt"), "path")
+  expect_equal(rm_ext("some/path.txt"), "some/path")
+  expect_equal(rm_ext("path.txt.txt"), "path.txt")
 })
 
-test_that("max_selected works", {
-  mock_element <- list(maxSelectedAnswerOptions = 3)
-  expect_equal(max_selected(mock_element), 3)
+test_that("default to works", {
+  expect_equal("a" %||% "b", "a")
+  expect_equal(NA %||% "b", "b")
+  expect_equal(NULL %||% "b", "b")
+  expect_equal(list() %||% "b", "b")
 })
-#
-# test_that("response checks works", {
-#   expect_false(is.response(1))
-#
-#   mock_resp <- structure(1, class = "response")
-#   expect_true(is.response(mock_resp))
-#
-#   expect_false(is.app_json(1))
-#   expect_false(is.app_json(mock_resp))
-#
-#   mock_resp <- structure(
-#     list(
-#       headers = list(
-#         `content-type` = "application/json"
-#         )
-#       ),
-#     class = "response")
-#   # mock not made correctly
-#   # expect_true(is.app_json(mock_resp))
-# })
 
-test_that("api_catch_error works", {
-  expect_error(api_catch_error("something"),
-               "did not return json")
+dt <- lapply(1:10, function(x){
+  list(
+    here = x,
+    there = TRUE,
+    everywhere = "a",
+    nothing = NULL
+  )
+})
+
+test_that("list2df works", {
+  dt_ret <- list2df(dt)
+  expect_is(dt_ret, "data.frame")
+  expect_equal(nrow(dt_ret), 10)
+  expect_equal(ncol(dt_ret), 4)
+  expect_equal(dt_ret$nothing[1], NA)
+})
+
+test_that("list2row works", {
+  dt_ret <- list2row(dt[[1]])
+  expect_is(dt_ret, "data.frame")
+  expect_equal(nrow(dt_ret), 1)
+  expect_equal(ncol(dt_ret), 4)
+  expect_equal(dt_ret$nothing[1], NA)
+})
+
+test_that("null2na works", {
+  dt_ret <- null2na(dt[[1]])
+  expect_is(dt_ret, "list")
+  expect_length(dt_ret, 4)
+  expect_equal(dt_ret$nothing, NA)
 })

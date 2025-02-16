@@ -1,5 +1,5 @@
-skip_if_no_auth <- function(token_name = "NETTSKJEMA_API_TOKEN") {
-  if (identical(Sys.getenv(token_name), "")) {
+skip_if_no_auth <- function() {
+  if (identical(Sys.getenv("NETTSKJEMA_CLIENT_SECRET"), "")) {
     testthat::skip("No authentication available")
   }
 }
