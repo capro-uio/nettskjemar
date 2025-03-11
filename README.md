@@ -1,17 +1,17 @@
 
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # nettskjemar <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/LCBC-UiO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/nettskjemar/actions)
+[![R-CMD-check](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml)
 [![DOI](https://zenodo.org/badge/206264675.svg)](https://zenodo.org/badge/latestdoi/206264675)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
+status](https://www.r-pkg.org/badges/version/nettskjemar.png)](https://CRAN.R-project.org/package=nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form
@@ -32,7 +32,7 @@ Newer releases can be installed through the authors r-universe:
 ``` r
 # Enable this universe
 options(repos = c(
-    lcbc_uio = 'https://lcbc-uio.r-universe.dev',
+    lcbc_uio = 'https://CAPRO-UIO.r-universe.dev',
     CRAN = 'https://cloud.r-project.org'))
 
 # Install some packages
@@ -43,24 +43,23 @@ Install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("LCBC-UiO/nettskjemar")
+remotes::install_github("CAPRO-UIO/nettskjemar")
 ```
 
 ## Setting up the authentication
 
-There is a tutorial on [how to create the API access user and
-token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html)
+There is a tutorial on [how to create an API
+client](https://CAPRO-UIO.github.io/nettskjemar/articles/authentication.html)
 needed to work with the api. This will need to be completed before you
 can access any other features of this package.
 
 ## Example
 
 Currently, the package contains functions to download data from forms,
-including submission answers, meta-data and codebook information. The
+including submission answers, meta-data, and codebook information. The
 most important, is the function that will download nettskjema submission
-data and return them as a tibble (data.frame). This needs only the *id*
-of a nettskjema, which can be found in the last part of the nettskjema
-url.
+data and return them as a data.frame. This needs only the *id* of a
+nettskjema.
 
 ``` r
 library(nettskjemar)
@@ -68,28 +67,18 @@ library(nettskjemar)
 nettskjema_get_data(nettskjema_id)
 ```
 
-If you do not have the codebook activated, or you want to use the full
-answers to questions rather than the coded ones, you can toggle off code
-book answers:
-
-``` r
-nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
-```
-
 ## Documentation
 
 Package documentation can be found on the associated [GitHub
-pages](https://lcbc-uio.github.io/nettskjemar/), among other
-documentation on [how to create the API access user and
-token](https://lcbc-uio.github.io/nettskjemar/articles/auth_setup.html).
+pages](https://CAPRO-UIO.github.io/nettskjemar/), where there are 6
+tutorials.
 
 # Citation
 
 To cite nettskjemar in publications use:
 
 Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar:
-v0.1.04 (Version v0.1.04). Zenodo.
-<http://doi.org/10.5281/zenodo.4745481>
+v0.1.04 (Version v0.1.04). Zenodo. http://doi.org/10.5281/zenodo.4745481
 
 A BibTeX entry for LaTeX users is
 

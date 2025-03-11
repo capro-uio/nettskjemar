@@ -1,5 +1,6 @@
 ---
 output: github_document
+format: gfm
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,11 +17,10 @@ knitr::opts_chunk$set(
 # nettskjemar <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
-[![R build status](https://github.com/CAPRO-UIO/nettskjemar/workflows/R-CMD-check/badge.svg)](https://github.com/CAPRO-UIO/nettskjemar/actions)
+[![R-CMD-check](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml)
 [![DOI](https://zenodo.org/badge/206264675.svg)](https://zenodo.org/badge/latestdoi/206264675)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
-[![R-CMD-check](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
@@ -53,14 +53,14 @@ remotes::install_github("CAPRO-UIO/nettskjemar")
 ```
 
 ## Setting up the authentication
-There is a tutorial on [how to create the API access user and token](https://CAPRO-UIO.github.io/nettskjemar/articles/auth_setup.html) needed to work with the api.
+There is a tutorial on [how to create an API client](https://CAPRO-UIO.github.io/nettskjemar/articles/authentication.html) needed to work with the api.
 This will need to be completed before you can access any other features of this package.
 
 ## Example
 
-Currently, the package contains functions to download data from forms, including submission answers, meta-data and codebook information.
-The most important, is the function that will download nettskjema submission data and return them as a tibble (data.frame). 
-This needs only the _id_ of a nettskjema, which can be found in the last part of the nettskjema url.
+Currently, the package contains functions to download data from forms, including submission answers, meta-data, and codebook information.
+The most important, is the function that will download nettskjema submission data and return them as a data.frame. 
+This needs only the _id_ of a nettskjema.
 
 ```{r example, eval=FALSE}
 library(nettskjemar)
@@ -68,15 +68,16 @@ library(nettskjemar)
 nettskjema_get_data(nettskjema_id)
 ```
 
-If you do not have the codebook activated, or you want to use the full answers to questions rather than the coded ones, you can toggle off code book answers:
-
-```{r, eval=FALSE}
-nettskjema_get_data(nettskjema_id, use_codebook = FALSE)
-```
-
 
 ## Documentation
-Package documentation can be found on the associated [GitHub pages](https://CAPRO-UIO.github.io/nettskjemar/), among other documentation on [how to create the API access user and token](https://CAPRO-UIO.github.io/nettskjemar/articles/auth_setup.html).
+
+```{r include=FALSE}
+vigs <-  list.files("vignettes", "Rmd$", full.names = TRUE)
+urls <- gsub("vignettes", "https://CAPRO-UIO.github.io/nettskjemar", vigs)
+urls <- gsub("Rmd", "html", urls)
+names(urls) <- sapply(vigs, function(x) rmarkdown::yaml_front_matter(x)$title)
+```
+Package documentation can be found on the associated [GitHub pages](https://CAPRO-UIO.github.io/nettskjemar/), where there are `r length(vigs)` tutorials.
 
 # Citation
 ```{r echo = FALSE, results='asis'}
