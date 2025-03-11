@@ -8,8 +8,6 @@ get_raw_codebook(form_id)
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
-
-\item{...}{other arguments to \code{\link[httr]{GET}}}
 }
 \value{
 long format tibble with meta-data for a specific nettskjema

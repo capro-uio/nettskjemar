@@ -23,8 +23,6 @@ nskj_write_codebook(codebook, path, ...)
 \item{...}{arguments to \code{\link[jsonlite]{write_json}} or \code{\link[utils]{write.table}}}
 
 \item{sep}{character. If writing text table, column delimiter.}
-
-\item{pretty}{logical. If writing json-file, make it pretty}
 }
 \value{
 no return value. Writes a file to path.
@@ -40,7 +38,7 @@ or a text table through \code{\link[utils]{write.table}}.
 \details{
 Given the two types of codebooks, writes different
        types of files.
-\itemize{
+\describe{
 \item{codebook}{ - writes a tab-separated table}
 \item{codebook_raw}{ - writes a json-file}
 }

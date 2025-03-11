@@ -4,12 +4,12 @@
 \alias{nskj_get_codebook}
 \title{Get codebook for a form}
 \usage{
-nskj_get_codebook(form_id, asis = FALSE, ...)
+nskj_get_codebook(form_id, asis = FALSE)
 }
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
+\item{asis}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 }
 \value{
 list of class nskj_meta_data

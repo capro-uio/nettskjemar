@@ -7,16 +7,25 @@ test_that("test user information", {
   expect_length(me, 10)
   expect_equal(
     names(me),
-    c("isPersonalDataResponsible", "displayName", "logoutLink", "isSuperUser", 
-    "isAuthenticated", "userType", "hasAcceptedTos", "isSupportUser", 
-    "isAdministrativeUser", "isInLdapGroupUioTils")
+    c(
+      "isPersonalDataResponsible",
+      "displayName",
+      "logoutLink",
+      "isSuperUser",
+      "isAuthenticated",
+      "userType",
+      "hasAcceptedTos",
+      "isSupportUser",
+      "isAdministrativeUser",
+      "isInLdapGroupUioTils"
+    )
   )
   expect_is(me$isPersonalDataResponsible, "logical")
   expect_is(me$isAuthenticated, "logical")
   expect_is(me$isAdministrativeUser, "logical")
   expect_is(me$displayName, "character")
   expect_match(
-    me$displayName, 
+    me$displayName,
     "^[[:alnum:].-_]+@[[:alnum:].-]+$"
   )
 })

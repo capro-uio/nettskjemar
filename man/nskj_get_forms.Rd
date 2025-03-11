@@ -7,7 +7,7 @@
 nskj_get_forms(asis = FALSE)
 }
 \arguments{
-\item{as_is}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
+\item{asis}{logical. Whether to return the raw content from nettskjema. Default is FALSE.}
 }
 \value{
 data.frame, if \code{asis = TRUE} returns a list

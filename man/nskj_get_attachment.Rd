@@ -4,22 +4,22 @@
 \alias{nskj_get_attachment}
 \title{Save Nettskjema attachments to file}
 \usage{
-nskj_get_attachment(attachment_id, path)
+nskj_get_attachment(attachment_id, path = NULL)
 }
 \arguments{
 \item{attachment_id}{integer. Unique ID of attachment, as found in the submission data.}
 
-\item{path}{Nettskjema API path where the attachment is}
+\item{path}{Character. Location to save the file.}
 }
 \value{
-nothing. saves attachments to file.
+httr2-response. saves attachment to file.
 }
 \description{
 The Nettskjema forms has an option
 to upload attachments with forms.
 These can be retrieved by this function.
 Recommended workflow is to first call
-\code{\link{nskj_list_attachments}},
+\code{\link{nskj_list_submission_attachments}},
 and use the output of this to pass along
 to the function. This function is called
 by \code{\link{nskj_get_form_attachments}},
@@ -29,7 +29,7 @@ file names.
 \examples{
 \dontrun{
 #submission_id <- c(22222, 1232, 21555)
-#attach_dt <- nskj_list_attachments(submission_id)
+#attach_dt <- nskj_list_submission_attachments(submission_id)
 #nskj_save_attachment(path = attach_dt$path, output = attach_dt$standardized)
 }
 }

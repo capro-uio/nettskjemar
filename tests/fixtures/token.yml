@@ -13,11 +13,11 @@ http_interactions:
       message: OK
     headers:
       server: nginx
-      date: Sat, 15 Feb 2025 19:21:31 GMT
+      date: Tue, 04 Mar 2025 11:45:30 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=NTA1MzY0N2QtYjNhMC00YTdmLThkNzctNmFiOTg1Y2I3MGI5; Path=/;
-        Secure; HttpOnly; SameSite=Lax
+      set-cookie: SESSION=YTA5MWVjOTItMjU4ZS00YWI5LWE2ZTQtNzNmNDI5YTkwYWQ0; Path=/;
+        Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
       x-content-type-options: nosniff
@@ -45,6 +45,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTczOTY0NzI5MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzM5NzMzNjkxLCJpYXQiOjE3Mzk2NDcyOTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI3YzcwOTgwZi01MTJlLTQ3ZWEtYjAwZS0yODJhZWU4MzFmM2QiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.G9S9Oe11y_bCewrE35YdEJwrGmbKRzbdo1rHbT4ca9NL1dmHA-QAooHfWGrVLVKK9KWUlqu2IdI-nJsIdMk0NdkvejaDsJesFRbq-L1sP6eANgNrGJJQR_SRe-wOa_ORtmePGI29lF_eDn3feaYdwncJ7auALWvxEejiew5bdqP4XnelmmmVFQUcC4gBnUSE_ptdobnHjWipJuogqIkIa6wLlSS-1_ftyz4SgNOweL165l2FACHTyMCLGck3wCefG806sXp8JCco9kzQVHRjXlLoZCEYCrzyOFx92y7McCgIi0Uz8RURdE2sDR6m24Ai_3Swc8fTkldua51Ik0Nk6fIOYCJk-DS1XI66LF40XANBQZJuLVzS3O1D4hLU3WbE8GxE5RTZ8_ZIBWHMLwgKBv3p5F3yT-EotMr5oqMCHp6SMP1Qluc6B39ghXbxtBoHLIkhpmiS0WFKJxRFj9zF9UxX7mQZKJRXnWptoOtTh59q6QixZN-LecNw5mN6dbWx","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-02-15 19:21:31 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTA4ODczMCwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxMTc1MTMwLCJpYXQiOjE3NDEwODg3MzAsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI2NTcxYjMyYS0yNzkzLTQyNjUtYTdjNi1lNTI4ZDBmNGMwZDEiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.hip8syyi9Hm3ge7wg_1D9cEbLpGSjNbnAMCiLr4axCl-H-LA0aeKoWb1VnpszjEvp3qnpiFggiy_4jsD8UxrTO5424NFOMqJnE45iGXB-tqWTpFCnvJ073bDt6FpX3KaM7-wHxl9e3eVE5pAI9yEK4kLYfaiqgXKB7o_QzojYJftBNkCTA1radFZQG7mobRax3eR17NOLecWlGTQqBRkAdLQnYGoKvSJdtUBuqydZG-v1GbXSX2dehtuguRP-IZd_Wa-i8x30_5afqPFl-M2QnTN856jIbnlql18ap8ehqWYoiANxi8nF6BFHaHcBgsGXb_CXvVfecSdg788oZQXMBfjPbQ9fJ5IR1tUEs_BUOKeGzTUDcYAdHphGzx16tfJLAdH_yr2-BKqhE6_HsO2-HxJUxTcYDowfls8q2_p_JkQ8ielbqmGLu1noz7BLLNPegyuSH3LmCfeZJ2lulAEUgYMHItd8dL6jY2ZVbeNyIxLymTBZTXB614jaMmn00Cv","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-03-04 11:45:30 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

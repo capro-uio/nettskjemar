@@ -1,0 +1,216 @@
+---
+title: "Using nettskjemar"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using nettskjemar}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE
+)
+options(max.print=50)
+```
+
+Nettskjemar connects to version 3 of the [nettskjema api](https://api.nettskjema.no/v3/swagger-ui/index.html), and the main functionality here is to download data from a form into R.
+Once you have [created a nettskjema client](setup_authentication.html), and set up your Renvironment locally, you can start accessing your forms.
+
+## General recommendations
+
+While functions to download data also have the option to turn off the codebook, i.e. return the data with the original questions as column names, this is **not recommended**.
+Working with data in R in this format is very unpredictable, and we cannot guarantee that the functions in this package will act as expected.
+
+Therefore, you are **highly advised** if you are using this package, to turn on the codebook in the Nettskjema portal for your form, and setting up a codebook for the entire form.
+
+You can toggle the codebook for a form by going to the Nettskjema portal and entering your form.
+Then proceed to "Settings" and then "General settings", and make sure "Codebook activated" is set to "Yes".
+Once this is toggled, you will need to setup the codebook, either manually (advised) or by using the pre-filling functionality in Nettskjema.
+
+You can read more about the details around the kodebook on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/kodebok.html) (only available in Norwegian).
+
+## [Tidyverse](https://www.tidyverse.org/) compatible
+
+The data returns in this package are developed to be tidyverse-compatible.
+This means that those who are familiar with tidyverse, should find working with the data as retrieved from this package fairly easy.
+If you want to learn about the tidyverse and how to use it, there are excellent resources for that on the [Tidyverse webpage](https://www.tidyverse.org/learn/).
+
+## Download submissions
+
+Perhaps at the core of this package is the ability to download submission answers to a form into a tibble (variation of a data.frame).
+
+```{r}
+library(nettskjemar)
+formid <- 123823
+
+ndata <- nskj_get_data(formid)
+ndata
+```
+
+You will notice three columns that are prefixed with `$`.
+These are columns automatically added by the Nettskema backend to your data, and the prefix is used to denote exactly this.
+
+### Fetching Labelled Data
+
+To retrieve labelled data with contextual information applied from the form's codebook, use the `labelled = TRUE` argument, which is the default behaviour.
+Labelled data is a special type of data, inherited mostly from programs like Stata and SPSS, which incorporate rich meta-data into the data structure it self.
+While the data are returned as labelled by default, the full scope and utilisation of labelled data cannot be done without explicitly importing the [labelled](https://larmarange.github.io/labelled/articles/labelled.html) package for expanding the functionality.
+
+With labelled data, you still see the full question as asked in the labels of the data, as well as more detailed coding for the answer options.
+
+```{r}
+library(labelled)
+
+str(ndata)
+```
+
+### Fetching Raw Data
+
+To fetch the raw data as returned by the API (unprocessed), set the `asis = TRUE` argument.
+
+Raw answers come in a very different format than the data as seen in the codebook and preview in Nettskjema portal.
+The raw data have a timestamped format, per question for each submission.
+This means the data comes in a _tall_ format (many rows per submission) rather than a wide format (one row per submission).
+The raw data may provide those who have keen interest in the time a users spent between each question.
+The data.frame this output will have one column that indicates which question the row is for, and another which is the response to that question.
+
+```{r}
+# Fetch raw data
+nskj_get_data(formid, asis = TRUE)
+```
+
+Raw data cannot be labelled, and no other alterations have been made to the data.
+They come axactly as the API returns them, so you may do what you need with them.
+
+
+
+### Controlling checkbox output
+
+**TODO: needs update and new solution for V3**
+
+The Nettskjema survey tool includes the possibility to create checkboxes, i.e. giving the respondents the ability to select several options within a question.
+How this returned as data is not clear cut.
+The default behavior of Nettskjema portal is to create one enumerated column per checkbox, with the context of the column cells being the codebook value.
+The default behavior of this package is to return the checkboxes as character strings with options selected separated by semi-colon (`;`).
+
+```{r}
+# To start inspecting the data more
+library(dplyr)
+
+# These are the defaults, they don't need to be set
+# They are just highlighted here
+nettskjema_get_data(123823, 
+                    checkbox_type = "string", 
+                    checkbox_delim = ";") %>% 
+  # this data has all checkbox questions coded with names like "checkbox"
+  select(form_id, submission_id, starts_with("checkbox"))
+```
+
+    Form 123823 has 4 responses to download.
+    # A tibble: 4 × 5
+      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
+        <dbl> <chr>         <chr>    <chr>             <chr>            
+    1  123823 16785801      1;2      1;2               1;2              
+    2  123823 16779763      2        1                 NA               
+    3  123823 16509317      1        1                 1                
+    4  123823 16508664      1        1;2               1    
+
+these can be separated into rows if wanted, using tidyverse syntax.
+
+```{r}
+nettskjema_get_data(123823, 
+                    checkbox_type = "string", 
+                    checkbox_delim = ";") %>% 
+  select(form_id, submission_id, starts_with("checkbox")) %>% 
+  separate_rows(checkbox)
+```
+
+    Form 123823 has 4 responses to download.
+    # A tibble: 5 × 5
+      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
+        <dbl> <chr>         <chr>    <chr>             <chr>            
+    1  123823 16785801      1        1;2               1;2              
+    2  123823 16785801      2        1;2               1;2              
+    3  123823 16779763      2        1                 NA               
+    4  123823 16509317      1        1                 1                
+    5  123823 16508664      1        1;2               1       
+
+Another way is to request the checkbox data returned as list columns
+
+```{r}
+nettskjema_get_data(123823, 
+                    checkbox_type = "list") %>% 
+  select(form_id, submission_id, starts_with("checkbox")) 
+```
+
+    Form 123823 has 4 responses to download.
+    # A tibble: 4 × 5
+      form_id submission_id checkbox  checkbox_matrix_1 checkbox_matrix_2
+        <dbl> <chr>         <list>    <list>            <list>           
+    1  123823 16785801      <chr [2]> <chr [2]>         <chr [2]>        
+    2  123823 16779763      <chr [1]> <chr [1]>         <chr [1]>        
+    3  123823 16509317      <chr [1]> <chr [1]>         <chr [1]>        
+    4  123823 16508664      <chr [1]> <chr [2]>         <chr [1]>       
+
+Similar type action for list columns as for string with `separate_rows` is to `unnest` the list column.
+
+```{r}
+nettskjema_get_data(123823, 
+                    checkbox_type = "list") %>% 
+  select(form_id, submission_id, starts_with("checkbox")) %>% 
+  unnest(checkbox)
+```
+
+    Form 123823 has 4 responses to download.
+    # A tibble: 5 × 5
+      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
+        <dbl> <chr>         <chr>    <list>            <list>           
+    1  123823 16785801      1        <chr [2]>         <chr [2]>        
+    2  123823 16785801      2        <chr [2]>         <chr [2]>        
+    3  123823 16779763      2        <chr [1]>         <chr [1]>        
+    4  123823 16509317      1        <chr [1]>         <chr [1]>        
+    5  123823 16508664      1        <chr [2]>         <chr [1]>         
+
+The last option is to return the data where each checkbox is a column, with a binary indicator showing if the option was selected (`1`) or not (`0`).
+
+```{r}
+nettskjema_get_data(123823, 
+                    checkbox_type = "columns") %>% 
+  select(form_id, submission_id, starts_with("checkbox"))
+```
+
+    Form 123823 has 4 responses to download.
+    # A tibble: 4 × 8
+      form_id submission_id checkbox_1 checkbox_2 checkbox_matrix_1_1 checkbox_matrix_1_2
+        <dbl> <chr>              <int>      <int>               <int>               <int>
+    1  123823 16785801               1          1                   1                   1
+    2  123823 16779763               0          1                   1                   0
+    3  123823 16509317               1          0                   1                   0
+    4  123823 16508664               1          0                   1                   1
+    # … with 2 more variables: checkbox_matrix_2_1 <int>, checkbox_matrix_2_2 <int>    
+
+There is a gotcha with this last option.
+Currently, there is no way to indicate values that should actually be `NA`, i.e. if the question is optional there is no way to know if lack of selection means the item was explicitly not selected or someone just skipped the question.
+
+
+## Getting an overview of responses
+
+If you want a quick idea of what your data contains, we recommend using the `skim()` function from the {skimr} package.
+
+```{r}
+skimr::skim(ndata)
+```
+
+If you want a quick idea of data types and missing values, the `vis_dat()` function from the {visdat} package is a great graphical tool.
+
+```{r nskj_vidat}
+visdat::vis_dat(ndata)
+```
+
+

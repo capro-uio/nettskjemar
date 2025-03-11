@@ -1,0 +1,114 @@
+---
+title: "Working with Nettskjema Form Metadata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working with Nettskjema Form Metadata}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE
+)
+options(max.print=50)
+```
+
+# Overview
+
+Forms on Nettskjema come with associated metadata, such as the title, contact information, and status.
+This vignette demonstrates how to use functions to:
+1. Retrieve metadata for a specific form.
+2. Save metadata to a file for safe keeping.
+
+---
+## Prerequisites
+
+Before executing any function, ensure you are authenticated.
+Refer to the vignette on authentication (`authentication.html`) for guidance.
+
+Additionally, load the required package:
+
+
+# Retrieving Metadata for a Form: `nskj_get_meta`
+
+The function `nskj_get_meta` retrieves metadata for a given form using its **form ID**.
+The retrieved metadata is returned as an object of class `nskj_meta`.
+
+## Example: Retrieve Metadata
+
+Here’s an example of how to retrieve metadata for a form:
+
+```{r meta-load}
+library(nettskjemar)
+
+# Replace this with your form ID
+formid <- 123823
+
+# Retrieve metadata for the form
+form_meta <- nskj_get_meta(formid)
+
+# Display the metadata
+form_meta
+```
+
+The metadata object includes various details about the form, such as the title, number of submissions, and whether the codebook is valid.
+
+# Exploring the Metadata Object
+
+The metadata object is a structured list with useful information about the form.
+You can directly access individual fields in the metadata object as you would with any list.
+
+### Example: Access Specific Metadata Fields
+
+```{r}
+# Access the title of the form
+form_meta$title
+
+# Check the number of submissions
+num_submissions <- form_meta$numberOfSubmissions
+print(paste("Number of submissions:", num_submissions))
+
+# Check if the form is open
+is_open <- form_meta$isOpen
+print(paste("Is the form open?:", is_open))
+```
+
+# Saving Metadata to a File: `nskj_write_meta`
+
+The metadata retrieved using `nskj_get_meta` can be saved to a file for safe keeping or further use.
+The `nskj_write_meta` function writes the metadata into a JSON file, preserving all its information in a structured format.
+
+## Example: Save Metadata as a JSON File
+
+```r
+# Replace with your desired file path
+output_path <- "meta_110000.json"
+
+# Save the metadata to the specified path
+nskj_write_meta(form_meta, output_path)
+```
+
+### Example: Save Metadata to a Custom Path
+
+If your file doesn’t have a `.json` extension, the function will automatically append it to the file name.
+
+```r
+# Save to a file without .json extension
+nskj_write_meta(form_meta, "meta_file")
+
+# The file will be saved as "meta_file.json"
+```
+
+### Example: Use Custom JSON Formatting Options
+
+The `nskj_write_meta` function supports any additional arguments passed to the [jsonlite::write_json](https://cran.r-project.org/package=jsonlite) function.
+For example, you can specify `pretty = TRUE` for a more human-readable format.
+
+```r
+# Save the metadata in a pretty-printed JSON file
+nskj_write_meta(form_meta, "pretty_meta.json", pretty = TRUE)
+```
+

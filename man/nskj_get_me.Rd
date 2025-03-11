@@ -14,3 +14,8 @@ Based on login credential, returns
 information on the user accessing the
 Nettskjema PI
 }
+\examples{
+\dontrun{
+nskj_get_me()
+}
+}

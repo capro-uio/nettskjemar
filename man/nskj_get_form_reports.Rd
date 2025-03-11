@@ -16,7 +16,7 @@ nskj_get_form_reports(
 \item{type}{Character. Either "csv", "excel" or
 "spss".}
 
-\item{path}{Character. Full path to where the 
+\item{path}{Character. Full path to where the
 downloaded file should be saved. Defaults to
 current directory with correct extension.}
 }
@@ -24,7 +24,7 @@ current directory with correct extension.}
 httr2-response
 }
 \description{
-Each Nettskjema form has several 
+Each Nettskjema form has several
 auxiliary forms that can be retrieved.
 }
 \examples{
@@ -33,7 +33,7 @@ nskj_get_form_reports(10009, type="csv")
 nskj_get_form_reports(10009, type="excel")
 nskj_get_form_reports(10009, type="spss")
 nskj_get_form_reports(
-  10009, 
+  10009,
   type="spss",
   path = "~/Desktop/10009/form.sav"
 )

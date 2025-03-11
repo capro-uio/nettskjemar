@@ -1,6 +1,7 @@
+formid <- 413658
+
 test_that("test get data", {
   vcr::use_cassette("get_data", {
-    formid <- 413658
     form_dt_raw <- nskj_get_data(formid, asis = TRUE)
     form_dt_lab <- nskj_get_data(formid)
     form_dt_unl <- nskj_get_data(formid, labelled = FALSE)
@@ -12,10 +13,25 @@ test_that("test get data", {
   expect_equal(ncol(form_dt_raw), 17)
   expect_equal(
     names(form_dt_raw),
-    c("formId", "submissionId", "answerId", "elementId", "externalElementId", 
-    "textAnswer", "answerOptionIds", "externalAnswerOptionIds", "elementType", 
-    "createdDate", "modifiedDate", "subElementId", "answerAttachmentId", 
-    "filename", "mediaType", "size", "attachment")
+    c(
+      "formId",
+      "submissionId",
+      "answerId",
+      "elementId",
+      "externalElementId",
+      "textAnswer",
+      "answerOptionIds",
+      "externalAnswerOptionIds",
+      "elementType",
+      "createdDate",
+      "modifiedDate",
+      "subElementId",
+      "answerAttachmentId",
+      "filename",
+      "mediaType",
+      "size",
+      "attachment"
+    )
   )
 
   # labelled data
@@ -36,7 +52,8 @@ test_that("test get data", {
     "Which mental activities did you do today\\?: Worked"
   )
   expect_is(
-    form_dt_lab$activity_mental.worked, "haven_labelled"
+    form_dt_lab$activity_mental.worked,
+    "haven_labelled"
   )
 
   # unlabelled data
@@ -62,14 +79,26 @@ test_that("test get forms list", {
   })
 
   expect_is(formslist, "data.frame")
-  expect_equal(nrow(formslist), 189)
+  expect_equal(nrow(formslist), 191)
   expect_equal(ncol(formslist), 14)
   expect_equal(
     names(formslist),
-    c("formId", "title", "openFrom", "openTo", "lastSubmissionDate", 
-    "modifiedDate", "personalDataErasedDate", "deliveryDestination", 
-    "anonymous", "numberOfDeliveredSubmissions", "owners", "isDictaphone", 
-    "myFormsFormListingGroup", "open")
+    c(
+      "formId",
+      "title",
+      "openFrom",
+      "openTo",
+      "lastSubmissionDate",
+      "modifiedDate",
+      "personalDataErasedDate",
+      "deliveryDestination",
+      "anonymous",
+      "numberOfDeliveredSubmissions",
+      "owners",
+      "isDictaphone",
+      "myFormsFormListingGroup",
+      "open"
+    )
   )
   expect_is(formslist$isDictaphone, "logical")
 
@@ -79,12 +108,22 @@ test_that("test get forms list", {
   expect_null(names(formslist_raw))
   expect_equal(
     names(formslist_raw[[1]]),
-    c("formId", "title", "openFrom", "openTo", "lastSubmissionDate", 
-    "modifiedDate", "personalDataErasedDate", "deliveryDestination", 
-    "anonymous", "numberOfDeliveredSubmissions", "owners", "isDictaphone", 
-    "myFormsFormListingGroup", "open")
+    c(
+      "formId",
+      "title",
+      "openFrom",
+      "openTo",
+      "lastSubmissionDate",
+      "modifiedDate",
+      "personalDataErasedDate",
+      "deliveryDestination",
+      "anonymous",
+      "numberOfDeliveredSubmissions",
+      "owners",
+      "isDictaphone",
+      "myFormsFormListingGroup",
+      "open"
+    )
   )
   expect_is(formslist$isDictaphone, "logical")
-
 })
-

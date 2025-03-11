@@ -4,12 +4,10 @@
 \alias{codebook}
 \title{Constructor for nettskjema codebook}
 \usage{
-codebook(details)
+codebook(meta)
 }
 \arguments{
-\item{meta_data}{form meta-data from \code{\link{nskj_get_meta}}}
-
-\item{form_id}{integer. Number of the form to retrieve}
+\item{meta}{form meta-data from \code{\link{nskj_get_meta}}}
 }
 \value{
 long format tibble with meta-data for a specific nettskjema

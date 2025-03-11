@@ -19,7 +19,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
 Imports: 
-    base64enc,
+    cli,
+    fs,
     httr2,
     jsonlite
 Suggests: 

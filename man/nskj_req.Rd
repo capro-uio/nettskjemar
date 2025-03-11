@@ -14,18 +14,18 @@ nskj_req(...)
 }
 \description{
 Sets the API url and access token.
-This is used for almost all the 
+This is used for almost all the
 functionality in this package. If
 you want to use endpoints not yet
 covered by functions in the package,
-this is the basis function you can 
+this is the basis function you can
 build from.
 }
 \examples{
 \dontrun{
-nskj_req() |> 
- httr2::req_url_path_append("form", "me") |> 
- httr2::req_perform() |> 
+nskj_req() |>
+ httr2::req_url_path_append("form", "me") |>
+ httr2::req_perform() |>
  httr2::resp_body_json()
 }
 }

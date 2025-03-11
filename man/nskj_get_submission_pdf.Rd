@@ -11,6 +11,8 @@ nskj_get_submission_pdf(
 }
 \arguments{
 \item{submission_id}{integer. Unique identifier of a specific Nettskjema submission.}
+
+\item{path}{Character. File path.}
 }
 \value{
 nothing, writes file to path

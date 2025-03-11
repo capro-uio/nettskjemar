@@ -1,0 +1,97 @@
+---
+title: "Fetching Information on Forms"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the Nettskjema API: Fetching Data and Forms}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+In this vignette, we demonstrate how to interact with the Nettskjema API to perform the following tasks:
+1. Retrieve a list of all forms you have access to.
+1. Download reports associated with a form.
+
+
+## Prerequisites
+
+Before you begin, ensure that you have already set up authentication.
+If you haven’t, refer to the vignette on authentication setup: `setup_authentication.Rmd`.
+
+Additionally, load the required package:
+
+```r
+library(nettskjemar)
+```
+
+# Retrieving All Available Forms
+
+To see which forms you have access to, use the `nskj_get_forms` function.
+
+## Example: Getting Forms
+
+```{r form-head}
+# Retrieve all forms
+forms <- nskj_get_forms()
+
+head(forms)
+```
+
+### Retrieving Raw Form Data
+
+If you prefer to get the raw list format as returned by the API, use `asis = TRUE`.
+
+```r
+# Retrieve raw form data
+raw_forms <- nskj_get_forms(asis = TRUE)
+
+# Display the raw response
+print(raw_forms)
+```
+
+# Downloading Form Reports
+
+Each form can have reports such as CSV, Excel, or SPSS files associated with it.
+Use the `nskj_get_form_reports` function to download these reports.
+
+## Example: Download a CSV Report
+
+```r
+# Define the form ID
+form_id <- 110000
+
+# Download a CSV report to the default path
+nskj_get_form_reports(form_id, type = "csv")
+
+# The report will be saved as `110000.csv` in your working directory
+```
+
+## Example: Download an Excel Report
+
+```r
+# Download an Excel report
+nskj_get_form_reports(form_id, type = "excel")
+```
+
+## Example: Save SPSS Report to a Custom Path
+
+```r
+# Specify the path you want to save the file
+path <- fs::path_home("Desktop/110000_report.sav")
+
+# Download and save the SPSS report
+nskj_get_form_reports(form_id, type = "spss", path = path)
+```
+
+## Custom Output Paths
+
+For custom output locations, make sure to provide the full file path in the `path` argument.
+

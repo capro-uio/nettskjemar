@@ -1,0 +1,110 @@
+---
+title: "Nettskjema Attachments: Download and Save"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Nettskjema Attachments}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+
+Nettskjema allows users to upload attachments with their form submissions. This vignette explains how to use the functions provided in this package to list, retrieve, and save these attachments efficiently.
+
+# Listing Attachments
+
+Before downloading any attachments, it's useful to list the available files.
+
+## Listing attachments for a specific submission
+
+Each submission ID may have associated attachments. Use `nskj_list_submission_attachments()` to retrieve information about the available attachments.
+
+```{r atch-sub}
+library(nettskjemar)
+# Example: List attachments for a specific submission
+submission_id <- 27685292
+nskj_list_submission_attachments(submission_id)
+```
+
+This function returns a `data.frame` with details such as the attachment ID, original filename, and standardized filename.
+
+## Listing all attachments for a form
+
+To list all attachments across multiple submissions for a form, use `nskj_list_form_attachments()`.
+
+```{r atch-all}
+# Example: List attachments for an entire form
+formid <- 123823
+nskj_list_form_attachments(formid)
+```
+
+# Downloading Attachments
+
+Once you have identified the attachments, you can download them using `nskj_get_attachment()`.
+
+```r
+# Example: Download a single attachment
+attachment_id <- "12345"
+nskj_get_attachment(attachment_id, path = "downloaded_file.pdf")
+```
+
+If `path` is not provided, the function returns the response object without saving the file.
+
+# Saving All Attachments
+
+## For a Single Submission
+
+Use `nskj_get_submission_attachments()` to download and save all attachments associated with a single submission.
+
+```r
+# Example: Save all attachments for a submission
+nskj_get_submission_attachments(submission_id)
+```
+
+This function supports two filename conventions:
+
+- **"standardized"** (default): Creates filenames based on submission ID and a counter.
+- **"original"**: Uses the filenames as they were uploaded.
+
+To save attachments using the original filenames:
+
+```r
+nskj_get_submission_attachments(submission_id, filenames = "original")
+```
+
+You can also specify an output directory:
+
+```r
+nskj_get_submission_attachments(submission_id, output_dir = "my_attachments/")
+```
+
+## For an Entire Form
+
+To download and save all attachments from a form:
+
+```r
+nskj_get_form_attachments(formid)
+```
+
+As with submission attachments, you can specify a filename format and output directory:
+
+```r
+nskj_get_form_attachments(formid, filenames = "original", output_dir = "all_attachments/")
+```
+
+# Summary
+
+This vignette demonstrated how to:
+- List attachments for submissions and forms.
+- Retrieve individual attachments.
+- Save attachments using different naming conventions.
+
+By using these functions, you can efficiently manage Nettskjema file attachments within your R workflow.
+
