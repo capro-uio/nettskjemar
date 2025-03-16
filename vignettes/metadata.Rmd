@@ -25,10 +25,10 @@ Refer to the vignette on authentication (`authentication.html`) for guidance.
 Additionally, load the required package:
 
 
-# Retrieving Metadata for a Form: `nskj_get_meta`
+# Retrieving Metadata for a Form: `ns_get_meta`
 
-The function `nskj_get_meta` retrieves metadata for a given form using its **form ID**.
-The retrieved metadata is returned as an object of class `nskj_meta`.
+The function `ns_get_meta` retrieves metadata for a given form using its **form ID**.
+The retrieved metadata is returned as an object of class `ns_meta`.
 
 ## Example: Retrieve Metadata
 
@@ -42,7 +42,7 @@ library(nettskjemar)
 formid <- 123823
 
 # Retrieve metadata for the form
-form_meta <- nskj_get_meta(formid)
+form_meta <- ns_get_meta(formid)
 
 # Display the metadata
 form_meta
@@ -62,7 +62,7 @@ form_meta
 #> [1] TRUE
 #> 
 #> $modifiedDate
-#> [1] "2025-03-10T21:08:26"
+#> [1] "2025-03-13T19:27:18"
 #> 
 #> $modifiedBy
 #> $modifiedBy$personId
@@ -75,7 +75,7 @@ form_meta
 #> [1] "Athanasia Monika Mowinckel"
 #> 
 #> $modifiedBy$email
-#> [1] "athanasm@uio.no"
+#> [1] "a.m.mowinckel@psykologi.uio.no"
 #> 
 #> $modifiedBy$type
 #> [1] "LOCAL"
@@ -115,7 +115,7 @@ form_meta
 #> NULL
 #> 
 #> attr(,"class")
-#> [1] "nskj_meta" "list"
+#> [1] "ns_meta" "list"
 ```
 
 The metadata object includes various details about the form, such as the title, number of submissions, and whether the codebook is valid.
@@ -150,10 +150,10 @@ print(paste("Is the form open?:", is_open))
 #> [1] "Is the form open?: FALSE"
 ```
 
-# Saving Metadata to a File: `nskj_write_meta`
+# Saving Metadata to a File: `ns_write_meta`
 
-The metadata retrieved using `nskj_get_meta` can be saved to a file for safe keeping or further use.
-The `nskj_write_meta` function writes the metadata into a JSON file, preserving all its information in a structured format.
+The metadata retrieved using `ns_get_meta` can be saved to a file for safe keeping or further use.
+The `ns_write_meta` function writes the metadata into a JSON file, preserving all its information in a structured format.
 
 ## Example: Save Metadata as a JSON File
 
@@ -162,7 +162,7 @@ The `nskj_write_meta` function writes the metadata into a JSON file, preserving 
 output_path <- "meta_110000.json"
 
 # Save the metadata to the specified path
-nskj_write_meta(form_meta, output_path)
+ns_write_meta(form_meta, output_path)
 ```
 
 ### Example: Save Metadata to a Custom Path
@@ -171,18 +171,18 @@ If your file doesn’t have a `.json` extension, the function will automatically
 
 ```r
 # Save to a file without .json extension
-nskj_write_meta(form_meta, "meta_file")
+ns_write_meta(form_meta, "meta_file")
 
 # The file will be saved as "meta_file.json"
 ```
 
 ### Example: Use Custom JSON Formatting Options
 
-The `nskj_write_meta` function supports any additional arguments passed to the [jsonlite::write_json](https://cran.r-project.org/package=jsonlite) function.
+The `ns_write_meta` function supports any additional arguments passed to the [jsonlite::write_json](https://cran.r-project.org/package=jsonlite) function.
 For example, you can specify `pretty = TRUE` for a more human-readable format.
 
 ```r
 # Save the metadata in a pretty-printed JSON file
-nskj_write_meta(form_meta, "pretty_meta.json", pretty = TRUE)
+ns_write_meta(form_meta, "pretty_meta.json", pretty = TRUE)
 ```
 

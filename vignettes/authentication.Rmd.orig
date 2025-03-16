@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette explains how to set up authentication with the Nettskjema API using the `nskj_req` and `nskj_auth_token` functions provided in the package.
+This vignette explains how to set up authentication with the Nettskjema API using the `ns_req` and `ns_auth_token` functions provided in the package.
 Authentication is required to connect to the API endpoints and perform operations.
 
 ## Setting Up Authentication
@@ -25,7 +25,7 @@ Before using the functions, you need the following:
 1. **A registered API client** in Nettskjema.
 2. **Your client credentials** (client ID and client secret). These are provided when you register the client.
 
-To register a client go to the [nettskjema API page](https://authorization.nettskjema.no/) or use the `nskj_create_client()` function to open the url.
+To register a client go to the [nettskjema API page](https://authorization.nettskjema.no/) or use the `ns_create_client()` function to open the url.
 Here you will be asked to log in with your user account, so you can create the client.
 
 
@@ -55,14 +55,14 @@ Replace `your_client_id` and `your_client_secret` with the actual values you rec
 
 ### Retrieve the Access Token
 
-Use the `nskj_auth_token` function to retrieve your access token. 
+Use the `ns_auth_token` function to retrieve your access token. 
 This function exchanges your client credentials for a valid token. The token is cached by default for efficiency.
 
 ```{r auth-me}
 library(nettskjemar)
 
 # Try getting your user information
-nskj_get_me()
+ns_get_me()
 ```
 
 If this returns a list of objects, you have successfully retrieved a token from Nettskjema and can use the remaining functions in the package.
@@ -75,7 +75,7 @@ You can configure the caching path using the `cache_path` argument of the functi
 ## Troubleshooting
 
 1. **Invalid Credentials**: Ensure your client ID and client secret are correct and have been properly registered in Nettskjema.
-2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `nskj_auth_token` to refresh the token.
+2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token.
 3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session.
 
 ## More information

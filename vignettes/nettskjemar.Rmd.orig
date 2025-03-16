@@ -33,7 +33,7 @@ You can toggle the codebook for a form by going to the Nettskjema portal and ent
 Then proceed to "Settings" and then "General settings", and make sure "Codebook activated" is set to "Yes".
 Once this is toggled, you will need to setup the codebook, either manually (advised) or by using the pre-filling functionality in Nettskjema.
 
-You can read more about the details around the kodebook on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/kodebok.html) (only available in Norwegian).
+You can read more about the details around the codebook on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/kodebok.html) (only available in Norwegian).
 
 ## [Tidyverse](https://www.tidyverse.org/) compatible
 
@@ -49,7 +49,7 @@ Perhaps at the core of this package is the ability to download submission answer
 library(nettskjemar)
 formid <- 123823
 
-ndata <- nskj_get_data(formid)
+ndata <- ns_get_data(formid)
 ndata
 ```
 
@@ -82,11 +82,11 @@ The data.frame this output will have one column that indicates which question th
 
 ```{r}
 # Fetch raw data
-nskj_get_data(formid, asis = TRUE)
+ns_get_data(formid, asis = TRUE)
 ```
 
 Raw data cannot be labelled, and no other alterations have been made to the data.
-They come axactly as the API returns them, so you may do what you need with them.
+They come exactly as the API returns them, so you may do what you need with them.
 
 
 
@@ -209,7 +209,7 @@ skimr::skim(ndata)
 
 If you want a quick idea of data types and missing values, the `vis_dat()` function from the {visdat} package is a great graphical tool.
 
-```{r nskj_vidat}
+```{r ns_vidat}
 visdat::vis_dat(ndata)
 ```
 

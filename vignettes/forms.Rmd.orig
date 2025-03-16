@@ -34,13 +34,13 @@ library(nettskjemar)
 
 # Retrieving All Available Forms
 
-To see which forms you have access to, use the `nskj_get_forms` function.
+To see which forms you have access to, use the `ns_get_forms` function.
 
 ## Example: Getting Forms
 
 ```{r form-head}
 # Retrieve all forms
-forms <- nskj_get_forms()
+forms <- ns_get_forms()
 
 head(forms)
 ```
@@ -51,7 +51,7 @@ If you prefer to get the raw list format as returned by the API, use `asis = TRU
 
 ```r
 # Retrieve raw form data
-raw_forms <- nskj_get_forms(asis = TRUE)
+raw_forms <- ns_get_forms(asis = TRUE)
 
 # Display the raw response
 print(raw_forms)
@@ -60,7 +60,7 @@ print(raw_forms)
 # Downloading Form Reports
 
 Each form can have reports such as CSV, Excel, or SPSS files associated with it.
-Use the `nskj_get_form_reports` function to download these reports.
+Use the `ns_get_form_reports` function to download these reports.
 
 ## Example: Download a CSV Report
 
@@ -69,7 +69,7 @@ Use the `nskj_get_form_reports` function to download these reports.
 form_id <- 110000
 
 # Download a CSV report to the default path
-nskj_get_form_reports(form_id, type = "csv")
+ns_get_form_reports(form_id, type = "csv")
 
 # The report will be saved as `110000.csv` in your working directory
 ```
@@ -78,7 +78,7 @@ nskj_get_form_reports(form_id, type = "csv")
 
 ```r
 # Download an Excel report
-nskj_get_form_reports(form_id, type = "excel")
+ns_get_form_reports(form_id, type = "excel")
 ```
 
 ## Example: Save SPSS Report to a Custom Path
@@ -88,7 +88,7 @@ nskj_get_form_reports(form_id, type = "excel")
 path <- fs::path_home("Desktop/110000_report.sav")
 
 # Download and save the SPSS report
-nskj_get_form_reports(form_id, type = "spss", path = path)
+ns_get_form_reports(form_id, type = "spss", path = path)
 ```
 
 ## Custom Output Paths

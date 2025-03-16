@@ -10,7 +10,6 @@ Labelled
 Lifebrain
 Lifecycle
 Monika
-Nettskema
 Nettskjema
 Optimising
 Renviron
@@ -36,7 +35,7 @@ jsonlite
 labelled
 ndata
 nettskjema
-nskj
+ns
 pre
 sd
 skimr
@@ -48,3 +47,7 @@ utilisation
 vidat
 visdat
 zenodo
+Nohr
+formid
+ORCID
+Trym

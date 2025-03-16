@@ -43,16 +43,18 @@ Perhaps at the core of this package is the ability to download submission answer
 library(nettskjemar)
 formid <- 123823
 
-ndata <- nskj_get_data(formid)
+ndata <- ns_get_data(formid)
 ndata
-#>   $submission_id                  $created  freetext
-#> 1       27685292 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires checkbox.events
-#> 1     1                       1               1
-#>   checkbox.logs dropdown radio_matrix.1
-#> 1             0        4              1
-#>   radio_matrix.2 radio_matrix.3 checkbox_matrix.1.IT
-#> 1              2              2                    1
+#>   formid $submission_id                  $created
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00
+#>    freetext radio checkbox.questionnaires
+#> 1 some text     1                       1
+#>   checkbox.events checkbox.logs dropdown
+#> 1               1             0        4
+#>   radio_matrix.grants radio_matrix.lecture
+#> 1                   1                    2
+#>   radio_matrix.email checkbox_matrix.1.IT
+#> 1                  2                    1
 #>   checkbox_matrix.1.colleague
 #> 1                           1
 #>   checkbox_matrix.1.admin checkbox_matrix.1.union
@@ -88,34 +90,19 @@ With labelled data, you still see the full question as asked in the labels of th
 library(labelled)
 
 str(ndata)
-#> 'data.frame':	3 obs. of  30 variables:
+#> 'data.frame':	3 obs. of  31 variables:
+#>  $ formid                     : num  123823 123823 123823
 #>  $ $submission_id             : int  27685292 27685302 27685319
 #>  $ $created                   : chr  "2023-06-01T20:57:15+02:00" "2023-06-01T20:58:33+02:00" "2023-06-01T20:59:50+02:00"
 #>  $ freetext                   : chr  "some text" "another answer" ""
-#>   ..- attr(*, "label")= chr "This is a question about something super important, where the user can input free text."
-#>  $ radio                      : int+lbl [1:3]  1, -1, -1
-#>    ..@ label : chr "How happy are we with Nettskjema?"
-#>    ..@ labels: Named int  1 -1
-#>    .. ..- attr(*, "names")= chr [1:2] "Very happy!" "Very unhappy!"
+#>  $ radio                      : int  1 -1 -1
 #>  $ checkbox.questionnaires    : int  1 0 1
 #>  $ checkbox.events            : int  1 0 1
 #>  $ checkbox.logs              : int  0 1 1
-#>  $ dropdown                   : int+lbl [1:3] 4, 9, 4
-#>    ..@ label : chr "Who is responsible with Nettskjema?"
-#>    ..@ labels: Named int  4 9
-#>    .. ..- attr(*, "names")= chr [1:2] "UiO" "OsloMet"
-#>  $ radio_matrix.1             : int+lbl [1:3] 1, 3, 1
-#>    ..@ label : chr "In the last month I have: written some grant applications"
-#>    ..@ labels: Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
-#>  $ radio_matrix.2             : int+lbl [1:3] 2, 3, 1
-#>    ..@ label : chr "In the last month I have: held a lecture"
-#>    ..@ labels: Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
-#>  $ radio_matrix.3             : int+lbl [1:3] 2, 1, 1
-#>    ..@ label : chr "In the last month I have: sent some e-mails"
-#>    ..@ labels: Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
+#>  $ dropdown                   : int  4 9 4
+#>  $ radio_matrix.grants        : int  1 3 1
+#>  $ radio_matrix.lecture       : int  2 3 1
+#>  $ radio_matrix.email         : int  2 1 1
 #>  $ checkbox_matrix.1.IT       : int  1 0 0
 #>  $ checkbox_matrix.1.colleague: int  1 0 1
 #>  $ checkbox_matrix.1.admin    : int  0 0 0
@@ -127,21 +114,13 @@ str(ndata)
 #>  $ checkbox_matrix.2.union    : int  0 1 1
 #>  $ checkbox_matrix.2.internet : int  0 0 0
 #>  $ date                       : chr  "2023-06-01" "2023-02-07" "2022-09-28"
-#>   ..- attr(*, "label")= chr "Choose a random date"
 #>  $ time                       : chr  "12:00" "14:45" "05:11"
-#>   ..- attr(*, "label")= chr "now choose a random time!"
 #>  $ datetime                   : chr  "2023-06-12T13:33" "2024-02-15T08:55" "2022-03-03T07:29"
-#>   ..- attr(*, "label")= chr "Lastly choose a date AND time!"
 #>  $ number_decimal             : chr  "4.5" "2.2" "10"
-#>   ..- attr(*, "label")= chr "Pick a number between 0 and 10!"
 #>  $ number_integer             : int  77 45 98
-#>   ..- attr(*, "label")= chr "Choose an integer between 0 and 100"
 #>  $ slider                     : int  3 1 9
-#>   ..- attr(*, "label")= chr "Choose a point on the slider!"
 #>  $ attachment_1               : chr  "sølvi.png" "" ""
-#>   ..- attr(*, "label")= chr "Upload a fun image!"
 #>  $ attachment_2               : chr  "" "marius.jpeg" ""
-#>   ..- attr(*, "label")= chr "This is an attachment2"
 #>  $ $answer_time_ms            : int  74630 71313 70230
 ```
 
@@ -158,32 +137,8 @@ The data.frame this output will have one column that indicates which question th
 
 ``` r
 # Fetch raw data
-nskj_get_data(formid, asis = TRUE)
-#>   formId submissionId  answerId elementId
-#> 1 123823     27685292 158263133   1641697
-#> 2 123823     27685292 158263124   1641698
-#>   externalElementId textAnswer answerOptionIds
-#> 1          freetext  some text                
-#> 2             radio       <NA>         3879435
-#>   externalAnswerOptionIds elementType
-#> 1                            QUESTION
-#> 2                       1       RADIO
-#>           createdDate        modifiedDate
-#> 1 2023-06-01T20:57:15 2023-06-01T20:57:15
-#> 2 2023-06-01T20:57:15 2023-06-01T20:57:15
-#>   subElementId answerAttachmentId filename mediaType
-#> 1           NA                 NA     <NA>      <NA>
-#> 2           NA                 NA     <NA>      <NA>
-#>   size attachment.answerAttachmentId
-#> 1   NA                            NA
-#> 2   NA                            NA
-#>   attachment.filename attachment.mediaType
-#> 1                <NA>                 <NA>
-#> 2                <NA>                 <NA>
-#>   attachment.size
-#> 1              NA
-#> 2              NA
-#>  [ reached 'max' / getOption("max.print") -- omitted 44 rows ]
+ns_get_data(formid, asis = TRUE)
+#> Error in ns_get_data(formid, asis = TRUE): unused argument (asis = TRUE)
 ```
 
 Raw data cannot be labelled, and no other alterations have been made to the data.
@@ -204,6 +159,20 @@ The default behavior of this package is to return the checkboxes as character st
 ``` r
 # To start inspecting the data more
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following object is masked from 'package:testthat':
+#> 
+#>     matches
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+```
+
+``` r
 
 # These are the defaults, they don't need to be set
 # They are just highlighted here
@@ -326,11 +295,11 @@ Table: Data summary
 |:------------------------|:-----|
 |Name                     |ndata |
 |Number of rows           |3     |
-|Number of columns        |30    |
+|Number of columns        |31    |
 |_______________________  |      |
 |Column type frequency:   |      |
 |character                |8     |
-|numeric                  |22    |
+|numeric                  |23    |
 |________________________ |      |
 |Group variables          |None  |
 
@@ -353,15 +322,16 @@ Table: Data summary
 
 |skim_variable               | n_missing| complete_rate|        mean|      sd|       p0|        p25|      p50|        p75|     p100|hist  |
 |:---------------------------|---------:|-------------:|-----------:|-------:|--------:|----------:|--------:|----------:|--------:|:-----|
+|formid                      |         0|             1|   123823.00|    0.00|   123823|   123823.0|   123823|   123823.0|   123823|▁▁▇▁▁ |
 |$submission_id              |         0|             1| 27685304.33|   13.65| 27685292| 27685297.0| 27685302| 27685310.5| 27685319|▇▇▁▁▇ |
 |radio                       |         0|             1|       -0.33|    1.15|       -1|       -1.0|       -1|        0.0|        1|▇▁▁▁▃ |
 |checkbox.questionnaires     |         0|             1|        0.67|    0.58|        0|        0.5|        1|        1.0|        1|▃▁▁▁▇ |
 |checkbox.events             |         0|             1|        0.67|    0.58|        0|        0.5|        1|        1.0|        1|▃▁▁▁▇ |
 |checkbox.logs               |         0|             1|        0.67|    0.58|        0|        0.5|        1|        1.0|        1|▃▁▁▁▇ |
 |dropdown                    |         0|             1|        5.67|    2.89|        4|        4.0|        4|        6.5|        9|▇▁▁▁▃ |
-|radio_matrix.1              |         0|             1|        1.67|    1.15|        1|        1.0|        1|        2.0|        3|▇▁▁▁▃ |
-|radio_matrix.2              |         0|             1|        2.00|    1.00|        1|        1.5|        2|        2.5|        3|▇▁▇▁▇ |
-|radio_matrix.3              |         0|             1|        1.33|    0.58|        1|        1.0|        1|        1.5|        2|▇▁▁▁▃ |
+|radio_matrix.grants         |         0|             1|        1.67|    1.15|        1|        1.0|        1|        2.0|        3|▇▁▁▁▃ |
+|radio_matrix.lecture        |         0|             1|        2.00|    1.00|        1|        1.5|        2|        2.5|        3|▇▁▇▁▇ |
+|radio_matrix.email          |         0|             1|        1.33|    0.58|        1|        1.0|        1|        1.5|        2|▇▁▁▁▃ |
 |checkbox_matrix.1.IT        |         0|             1|        0.33|    0.58|        0|        0.0|        0|        0.5|        1|▇▁▁▁▃ |
 |checkbox_matrix.1.colleague |         0|             1|        0.67|    0.58|        0|        0.5|        1|        1.0|        1|▃▁▁▁▇ |
 |checkbox_matrix.1.admin     |         0|             1|        0.00|    0.00|        0|        0.0|        0|        0.0|        0|▁▁▇▁▁ |
@@ -385,6 +355,6 @@ If you want a quick idea of data types and missing values, the `vis_dat()` funct
 visdat::vis_dat(ndata)
 ```
 
-![plot of chunk nskj_vidat](figure/nskj_vidat-1.png)
+![plot of chunk ns_vidat](figure/ns_vidat-1.png)
 
 

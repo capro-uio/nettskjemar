@@ -16,9 +16,9 @@ Specifically, you will learn how to:
 1. Get an individual submission answer.
 1. Download an individual submission as a PDF.
 
-# Getting an Individual Submission Answer: `nskj_get_submission`
+# Getting an Individual Submission Answer: `ns_get_submission`
 
-The `nskj_get_submission` function fetches a single submission's answers based on a **submission ID**.
+The `ns_get_submission` function fetches a single submission's answers based on a **submission ID**.
 
 ## Example: Fetch an Individual Submission
 
@@ -29,7 +29,7 @@ To retrieve an individual submission, use the **submission ID** (a unique identi
 submission_id <- 27685292
 
 # Get the submission data
-submission <- nskj_get_submission(submission_id)
+submission <- ns_get_submission(submission_id)
 
 # Display the submission data
 submission
@@ -38,9 +38,9 @@ submission
 This function returns a list containing all answers for the specified submission.
 
 
-# Downloading a Submission as a PDF: `nskj_get_submission_pdf`
+# Downloading a Submission as a PDF: `ns_get_submission_pdf`
 
-The `nskj_get_submission_pdf` function downloads a single submission as a PDF file.
+The `ns_get_submission_pdf` function downloads a single submission as a PDF file.
 By default, the PDF is named using the submission ID and saved in the current working directory.
 
 ## Example: Download Submission PDF
@@ -49,7 +49,7 @@ Here is how you can download a single submission as a PDF:
 
 ```r
 # Download the submission as a PDF
-nskj_get_submission_pdf(submission_id)
+ns_get_submission_pdf(submission_id)
 ```
 
 ### Saving to a Custom Path
@@ -61,5 +61,5 @@ To save the PDF to a specific location, specify the `path` argument:
 custom_path <- "~/Desktop/my_submission.pdf"
 
 # Download and save to the custom path
-nskj_get_submission_pdf(submission_id, path = custom_path)
+ns_get_submission_pdf(submission_id, path = custom_path)
 ```

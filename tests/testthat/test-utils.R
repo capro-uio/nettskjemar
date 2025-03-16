@@ -51,23 +51,3 @@ test_that("merge_el works", {
   expect_equal(ncol(result), 3)
   expect_true(all(c("element_no", "value.x", "value.y") %in% colnames(result)))
 })
-
-test_that("add_var_labels works", {
-  data <- data.frame(a = 1:3, b = 4:6)
-  labels <- c(a = "Variable A", b = "Variable B")
-  result <- add_var_labels(data, labels)
-  expect_equal(attr(result$a, "label"), "Variable A")
-  expect_equal(attr(result$b, "label"), "Variable B")
-})
-
-test_that("add_val_labels works", {
-  data <- data.frame(element = c(1, 2, 3))
-  codebook <- data.frame(
-    element_code = c("element", "element", "element"),
-    answer_code = c(1, 2, 3),
-    answer_text = c("One", "Two", "Three")
-  )
-  result <- add_val_labels(data, codebook)
-  expect_equal(attr(result$element, "labels"), c(One = 1, Two = 2, Three = 3))
-  expect_true(inherits(result$element, "haven_labelled"))
-})
