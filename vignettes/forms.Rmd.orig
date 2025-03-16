@@ -24,7 +24,7 @@ In this vignette, we demonstrate how to interact with the Nettskjema API to perf
 ## Prerequisites
 
 Before you begin, ensure that you have already set up authentication.
-If you haven’t, refer to the vignette on authentication setup: `setup_authentication.Rmd`.
+If you haven’t, refer to the vignette on [authentication setup](authentication.html).
 
 Additionally, load the required package:
 

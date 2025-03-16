@@ -13,7 +13,7 @@ editor_options:
 
 
 Nettskjemar connects to version 3 of the [nettskjema api](https://api.nettskjema.no/v3/swagger-ui/index.html), and the main functionality here is to download data from a form into R.
-Once you have [created a nettskjema client](setup_authentication.html), and set up your Renvironment locally, you can start accessing your forms.
+Once you have [created a nettskjema client](authentication.html), and set up your Renvironment locally, you can start accessing your forms.
 
 ## General recommendations
 
@@ -75,7 +75,7 @@ ndata
 ```
 
 You will notice three columns that are prefixed with `$`.
-These are columns automatically added by the Nettskema backend to your data, and the prefix is used to denote exactly this.
+These are columns automatically added by the Nettskjema backend to your data, and the prefix is used to denote exactly this.
 
 ### Fetching Labelled Data
 
@@ -159,20 +159,6 @@ The default behavior of this package is to return the checkboxes as character st
 ``` r
 # To start inspecting the data more
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following object is masked from 'package:testthat':
-#> 
-#>     matches
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-```
-
-``` r
 
 # These are the defaults, they don't need to be set
 # They are just highlighted here

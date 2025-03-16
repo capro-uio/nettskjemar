@@ -19,7 +19,7 @@ In this vignette, we demonstrate how to interact with the Nettskjema API to perf
 ## Prerequisites
 
 Before you begin, ensure that you have already set up authentication.
-If you haven’t, refer to the vignette on authentication setup: `setup_authentication.Rmd`.
+If you haven’t, refer to the vignette on [authentication setup](authentication.html).
 
 Additionally, load the required package:
 
@@ -43,44 +43,27 @@ head(forms)
 #> 1  79061                BRIEF (with key)
 #> 2 269507            Bakgrunnsinformasjon
 #> 3 268183 Bakgrunnsinformasjon (2022) TMR
-#> 4 379170        Becks Depresjon Inventar
-#> 5 205056         Dagliglivets hukommelse
-#> 6 205057 Edinburgh Hendthetsskala (2022)
 #>              openFrom              openTo
 #> 1 2017-02-13T14:24:01 2021-08-19T15:06:21
 #> 2 2022-05-16T13:50:07                <NA>
 #> 3                <NA>                <NA>
-#> 4 2023-11-10T18:10:11 2026-11-01T00:00:00
-#> 5 2022-03-18T13:38:25                <NA>
-#> 6 2022-05-10T11:22:46                <NA>
 #>    lastSubmissionDate        modifiedDate
 #> 1                <NA> 2023-11-23T10:58:39
 #> 2 2025-03-13T07:20:43 2025-03-11T09:56:21
 #> 3 2024-10-01T14:44:42 2025-03-11T09:58:05
-#> 4 2025-03-13T07:22:06 2024-04-28T18:38:58
-#> 5 2025-03-13T07:34:13 2024-04-28T17:48:38
-#> 6 2024-12-03T11:30:30 2024-04-09T10:24:22
 #>   personalDataErasedDate deliveryDestination
 #> 1                   <NA>            DATABASE
 #> 2                   <NA>                 TSD
 #> 3                   <NA>                 TSD
-#> 4                   <NA>                 TSD
-#> 5                   <NA>                 TSD
-#> 6                   <NA>                 TSD
 #>   anonymous numberOfDeliveredSubmissions owners
 #> 1     FALSE                            0      2
 #> 2     FALSE                          834      2
 #> 3     FALSE                           99      2
-#> 4     FALSE                          434      2
-#> 5     FALSE                         1063      2
-#> 6     FALSE                          507      2
 #>   isDictaphone myFormsFormListingGroup  open
 #> 1        FALSE                      MY FALSE
 #> 2        FALSE                      MY  TRUE
 #> 3        FALSE                      MY FALSE
-#> 4        FALSE                      MY  TRUE
-#> 5        FALSE                      MY  TRUE
-#> 6        FALSE                      MY  TRUE
+#>  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
 ```
 
 ### Retrieving Raw Form Data
