@@ -20,7 +20,9 @@ ns_write_codebook(codebook, path, ...)
 
 \item{path}{filename or path}
 
-\item{...}{arguments to \code{\link[jsonlite]{write_json}} or \code{\link[utils]{write.table}}}
+\item{...}{arguments to
+\code{\link[jsonlite]{write_json}} or
+\code{\link[utils]{write.table}}}
 
 \item{sep}{character. If writing text table, column delimiter.}
 }

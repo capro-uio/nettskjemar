@@ -1,13 +1,22 @@
 #' Alter checkbox matrix variables in a dataset
 #'
-#' This function processes checkbox matrix variables in a dataset, transforming their representations into one of the specified formats.
+#' This function processes checkbox matrix
+#' variables in a dataset, transforming their
+#' representations into one of the specified formats.
 #'
-#' @param data A `data.frame` containing the dataset to modify.
-#' @param to A character string specifying the output format for checkbox matrix variables. Must be one of "character" or "list".
-#' @param sep A character string used as a separator when `to = "character"`. Defaults to `","`.
-#' @param cb An optional codebook (`data.frame`) to identify checkbox matrix variables. If `NULL`, the codebook is generated using `ns_get_codebook()`.
+#' @param data A `data.frame` containing the
+#'     dataset to modify.
+#' @param to A character string specifying
+#'     the output format for checkbox matrix
+#'     variables. Must be one of "character" or "list".
+#' @param sep A character string used as a separator
+#'     when `to = "character"`. Defaults to `","`.
+#' @param cb An optional codebook (`data.frame`) to
+#'     identify checkbox matrix variables. If `NULL`,
+#'     the codebook is generated using `ns_get_codebook()`.
 #'
-#' @return A modified `data.frame` with processed checkbox matrix variables.
+#' @return A modified `data.frame` with processed
+#'     checkbox matrix variables.
 #' @export
 #'
 #' @examples
@@ -32,7 +41,7 @@ ns_alter_checkbox <- function(
     character = checkbox_character(data, check_cols, sep)
   )
 
-  if (is.ns_data(data)) {
+  if (is_ns_data(data)) {
     for (i in 2:ncol(dt)) {
       cb_var <- subset(
         check_cols,
@@ -52,11 +61,15 @@ ns_alter_checkbox <- function(
 
 #' Identify Checkbox Matrix Variables in a Dataset
 #'
-#' This function identifies variables in a dataset that belong to the "MATRIX_CHECKBOX" type.
-#' If no codebook is supplied, it generates one using `ns_get_codebook()`.
+#' This function identifies variables in a dataset
+#'  that belong to the "MATRIX_CHECKBOX" type.
+#' If no codebook is supplied, it generates one
+#'  using `ns_get_codebook()`.
 #'
 #' @param data A `data.frame` containing the dataset.
-#' @param cb An optional codebook (`data.frame`) to identify checkbox matrix variables. Defaults to `NULL`.
+#' @param cb An optional codebook (`data.frame`) to
+#'     identify checkbox matrix variables. Defaults
+#'      to `NULL`.
 #'
 #' @return A `data.frame` with additional columns:
 #'   * `element_code`: The checkbox matrix variable codes.
@@ -95,33 +108,42 @@ find_checkbox_matrix <- function(data, cb) {
 checkbox_list <- function(data, columns) {
   checkbox2long(data, columns) |>
     cbm_aggr(
-      FUN = list
+      fun = list
     )
 }
 
-checkbox_character <- function(data, columns, sep = ",") {
+checkbox_character <- function(
+  data,
+  columns,
+  sep = ","
+) {
   checkbox2long(data, columns) |>
     cbm_aggr(
-      FUN = paste,
+      fun = paste,
       collapse = sep
     )
 }
 
 #' Aggregate Checkbox Matrix Variable Values
 #'
-#' This function aggregates checkbox matrix variable values using a specified function.
+#' This function aggregates checkbox matrix variable
+#'  values using a specified function.
 #'
-#' @param data A `data.frame` in long format with checkbox matrix variables.
-#' @param FUN The aggregation function to apply (e.g., `list`, `paste`).
-#' @param ... Additional arguments passed to the aggregation function.
+#' @param data A `data.frame` in long format with
+#'     checkbox matrix variables.
+#' @param fun The aggregation function to apply
+#'     (e.g., `list`, `paste`).
+#' @param ... Additional arguments passed to the
+#'     aggregation function.
 #'
-#' @return A `data.frame` where each column represents an aggregated checkbox matrix variable.
+#' @return A `data.frame` where each column represents
+#'   an aggregated checkbox matrix variable.
 #' @noRd
-cbm_aggr <- function(data, FUN, ...) {
+cbm_aggr <- function(data, fun, ...) {
   aggr <- stats::aggregate(
     value ~ `$submission_id` + X2,
     data = data,
-    FUN = FUN,
+    FUN = fun,
     ...
   )
 
@@ -141,15 +163,20 @@ cbm_aggr <- function(data, FUN, ...) {
 
 #' Convert Checkbox Matrix Variables to Long Format
 #'
-#' This function reshapes checkbox matrix variables from wide format to long format.
+#' This function reshapes checkbox matrix variables
+#'  from wide format to long format.
 #'
-#' @param data A `data.frame` containing the dataset with checkbox matrix variables.
-#' @param columns A `data.frame` specifying details of checkbox matrix variables, including their names and groupings.
+#' @param data A `data.frame` containing the dataset
+#'      with checkbox matrix variables.
+#' @param columns A `data.frame` specifying details
+#'     of checkbox matrix variables, including their
+#'     names and groupings.
 #'
 #' @return A `data.frame` in long format with columns:
 #'   * `$submission_id`: Unique submission ID.
 #'   * `value`: The selected checkbox option.
-#'   * `X2`: Grouping variable indicating the checkbox matrix.
+#'   * `X2`: Grouping variable indicating the
+#'      checkbox matrix.
 #' @noRd
 checkbox2long <- function(data, columns) {
   ret_dat <- list()
@@ -189,14 +216,16 @@ checkbox2long <- function(data, columns) {
 
 #' Identify Checkbox Matrix Variables
 #'
-#' This function checks whether a variable is a "MATRIX_CHECKBOX" type based on its attributes.
+#' This function checks whether a variable is a
+#'  "MATRIX_CHECKBOX" type based on its attributes.
 #'
 #' @param x An object to check.
 #'
-#' @return A logical value: `TRUE` if the variable is a "MATRIX_CHECKBOX" type, otherwise `FALSE`.
+#' @return A logical value: `TRUE` if the variable
+#'     is a "MATRIX_CHECKBOX" type, otherwise `FALSE`.
 #'
 #' @noRd
-is.checkbox_matrix <- function(x) {
+is_checkbox_matrix <- function(x) {
   a <- attributes(x)$ns_type
   if (length(a) == 0) return(FALSE)
 
@@ -206,20 +235,26 @@ is.checkbox_matrix <- function(x) {
 
 #' Split the checkbox matrix elements
 #'
-#' This function splits elements of a checkbox matrix into their respective components
+#' This function splits elements of a checkbox
+#'  matrix into their respective components
 #' based on a specified separator.
 #'
-#' @param x A character vector containing the elements to split.
-#' @param sep A character string specifying the separator to use for splitting. Defaults to `"\\."`.
+#' @param x A character vector containing the
+#'     elements to split.
+#' @param sep A character string specifying the
+#'     separator to use for splitting. Defaults
+#'     to `"\\."`.
 #'
 #' @return A `data.frame` with three columns:
 #'   * The full element name.
-#'   * The first two components of the element name joined by the separator.
+#'   * The first two components of the element
+#'     name joined by the separator.
 #'   * The third component of the element name.
 #'
 #' @examples
-#' # Example usage:
-#' split_checkbox_matrix(c("form1.var1.opt1", "form2.var2.opt2"))
+#' split_checkbox_matrix(
+#'   c("form1.var1.opt1", "form2.var2.opt2")
+#' )
 #' @noRd
 split_checkbox_matrix <- function(x, sep = "\\.") {
   k <- lapply(strsplit(x, sep), function(y) {

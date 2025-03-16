@@ -9,7 +9,7 @@
 #' ns_get_submission(1100)
 #' }
 ns_get_submission <- function(submission_id) {
-  resp <- ns_req() |>
+  ns_req() |>
     httr2::req_url_path_append(
       "form",
       "submission",
@@ -17,8 +17,6 @@ ns_get_submission <- function(submission_id) {
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
-
-  return(resp)
 }
 
 #' Get an individual submission answer as a pdf

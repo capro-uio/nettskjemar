@@ -129,7 +129,9 @@ print.ns_codebook_raw <- function(x, ...) {
 #' @param codebook object of class ns_codebook
 #' @param sep character. If writing text table, column delimiter.
 #' @param path filename or path
-#' @param ... arguments to \code{\link[jsonlite]{write_json}} or \code{\link[utils]{write.table}}
+#' @param ... arguments to
+#'     \code{\link[jsonlite]{write_json}} or
+#'     \code{\link[utils]{write.table}}
 #' @return no return value. Writes a file to path.
 #' @export
 #' @examples
@@ -212,7 +214,10 @@ has_codebook <- function(form_id) {
     element_desc = element$description %||% NA
   )
 
-  if (length(element$subElements) == 0 & length(element$answerOptions) == 0) {
+  if (
+    length(element$subElements) == 0 &&
+      length(element$answerOptions) == 0
+  ) {
     answ <- data.frame(
       subelement_text = NA,
       subelement_code = NA,
@@ -299,6 +304,5 @@ has_codebook <- function(form_id) {
       paste(els$element_text, els$subelement_text, sep = ": ")
     )
   }
-
-  return(els)
+  els
 }

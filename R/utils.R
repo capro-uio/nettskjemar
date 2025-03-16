@@ -15,14 +15,13 @@ rm_ext <- function(path) {
 #' @noRd
 `%||%` <- function(a, b) {
   if (length(a) == 0) return(b)
-  if (is.na(a) | is.null(a) | a == "") return(b)
+  if (is.na(a) || is.null(a) || a == "") return(b)
   a
 }
 
 merge_el <- function(df1, df2) {
   merge(df1, df2, by = "element_no", all = TRUE)
 }
-
 
 
 list2df <- function(x) {

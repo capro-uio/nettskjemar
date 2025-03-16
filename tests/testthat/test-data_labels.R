@@ -1,8 +1,7 @@
-# Simple sample data and codebook for testing
 sample_data <- data.frame(
   var1 = c("1", "2", "3"),
   var2 = c("A", "B", "C"),
-  var3 = c(NA, "Yes", "No") # Variable with missing values
+  var3 = c(NA, "Yes", "No")
 )
 
 sample_codebook <- data.frame(
@@ -27,28 +26,37 @@ sample_codebook <- data.frame(
   )
 )
 
-test_that("add_labels correctly applies value labels based on codebook", {
+test_that("Applies value labels based on codebook", {
   # Apply the function
-  labelled_data <- add_labels(sample_data, sample_codebook)
+  labelled_data <- add_labels(
+    sample_data,
+    sample_codebook
+  )
 
   # Check overall structure
-  expect_true(is.data.frame(labelled_data)) # Output should still be a data frame
+  # Output should still be a data frame
+  expect_true(is.data.frame(labelled_data))
 
-  # Tests for var1
-  expect_true(inherits(labelled_data$var1, "haven_labelled")) # Check if var1 is correctly converted
-  expect_equal(attr(labelled_data$var1, "label"), "Variable 1") # Check variable label
+  # Check if var1 is correctly converted
+  # Check variable label
+  expect_true(inherits(labelled_data$var1, "haven_labelled"))
+  expect_equal(attr(labelled_data$var1, "label"), "Variable 1")
+  # Check value labels
   expect_equal(
     attr(labelled_data$var1, "labels"),
     c(Label1 = 1, Label2 = 2, Label3 = 3)
-  ) # Check value labels
+  )
 
-  # Tests for var2
-  expect_true(!inherits(labelled_data$var2, "haven_labelled")) # var2 should not have value labels, as it's NA in the codebook
-  expect_equal(attr(labelled_data$var2, "label"), "Variable 2") # Check variable label
+  # var2 should not have value labels,
+  # as it's NA in the codebook
+  expect_true(!inherits(labelled_data$var2, "haven_labelled"))
+  # Check variable label
+  expect_equal(attr(labelled_data$var2, "label"), "Variable 2")
 
-  # Tests for var3
-  expect_true(!inherits(labelled_data$var3, "haven_labelled")) # var3 has no value labels due to only NA answer_code
-  expect_equal(attr(labelled_data$var3, "label"), "Variable 3") # Check variable label
+  # var3 has no value labels due to only NA answer_code
+  expect_true(!inherits(labelled_data$var3, "haven_labelled"))
+  # Check variable label
+  expect_equal(attr(labelled_data$var3, "label"), "Variable 3")
 })
 
 test_that("add_labels handles missing values gracefully", {

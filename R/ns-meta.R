@@ -17,8 +17,7 @@ ns_get_meta <- function(form_id) {
     httr2::req_perform() |>
     httr2::resp_body_json()
 
-  meta <- meta_raw(c("form_id" = form_id, resp))
-  return(meta)
+  meta_raw(c("form_id" = form_id, resp))
 }
 
 #' @noRd

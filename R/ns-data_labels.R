@@ -51,6 +51,6 @@ add_labels <- function(data, codebook) {
   )
 }
 
-is.ns_data <- function(x) {
+is_ns_data <- function(x) {
   inherits(x, "ns-data")
 }

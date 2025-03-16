@@ -7,19 +7,28 @@
 ns_alter_checkbox(data, to = c("character", "list"), sep = ",", cb = NULL)
 }
 \arguments{
-\item{data}{A `data.frame` containing the dataset to modify.}
+\item{data}{A `data.frame` containing the
+dataset to modify.}
 
-\item{to}{A character string specifying the output format for checkbox matrix variables. Must be one of "character" or "list".}
+\item{to}{A character string specifying
+the output format for checkbox matrix
+variables. Must be one of "character" or "list".}
 
-\item{sep}{A character string used as a separator when `to = "character"`. Defaults to `","`.}
+\item{sep}{A character string used as a separator
+when `to = "character"`. Defaults to `","`.}
 
-\item{cb}{An optional codebook (`data.frame`) to identify checkbox matrix variables. If `NULL`, the codebook is generated using `ns_get_codebook()`.}
+\item{cb}{An optional codebook (`data.frame`) to
+identify checkbox matrix variables. If `NULL`,
+the codebook is generated using `ns_get_codebook()`.}
 }
 \value{
-A modified `data.frame` with processed checkbox matrix variables.
+A modified `data.frame` with processed
+    checkbox matrix variables.
 }
 \description{
-This function processes checkbox matrix variables in a dataset, transforming their representations into one of the specified formats.
+This function processes checkbox matrix
+variables in a dataset, transforming their
+representations into one of the specified formats.
 }
 \examples{
 \dontrun{

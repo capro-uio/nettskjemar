@@ -20,13 +20,3 @@ test_that("ns_get_submission retrieves individual submission", {
     expect_gt(length(result), 0) # Ensure the result is not empty
   })
 })
-
-test_that("ns_get_submission_pdf saves a PDF file", {
-  vcr::use_cassette("ns_get_submission_pdf", {
-    temp_file <- tempfile(fileext = ".pdf")
-    message("Remember to test submission pdf once that works again")
-    # expect_silent(ns_get_submission_pdf(submission_id, path = temp_file))
-    # expect_true(file.exists(temp_file))
-    # unlink(temp_file) # Clean up
-  })
-})

@@ -75,7 +75,7 @@ ns_list_form_attachments <- function(form_id) {
     ids$submissionId,
     FUN = seq_along
   )
-  return(ids)
+  ids
 }
 
 #' Retrieve all attachments associated with a Nettskjema
@@ -183,7 +183,7 @@ ns_list_submission_attachments <- function(submission_id) {
   ats <- do.call(rbind, ats)
   ats <- as.data.frame(ats)
   ats$counter <- seq_along(nrow(ats))
-  return(ats)
+  ats
 }
 
 #' Get Nettskjema attachments for a submission

@@ -84,7 +84,8 @@ ns_get_data <- function(
 
   if (type == "labelled" && !has_codebook(form_id)) {
     cli::cli_alert_warning(
-      "labels can only be used on data with a valid codebook, ignoring {code labelled = TRUE}"
+      "labels can only be used on data with a valid
+      codebook, ignoring {code labelled = TRUE}"
     )
     return(dt)
   }
