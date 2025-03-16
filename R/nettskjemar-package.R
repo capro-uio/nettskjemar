@@ -11,7 +11,6 @@ if (getRversion() >= "2.15.1") {
 # nocov start
 release_bullets <- function() {
   # Pre-compiled vignettes that depend on API key
-  # Must manually move image files from eia/ to eia/vignettes/ after knit
   proc <- list.files(
     "vignettes",
     "orig$",

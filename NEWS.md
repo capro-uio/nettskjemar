@@ -1,3 +1,12 @@
+# nettskjemar 1.0.0
+
+- Port to Nettskjema API v3
+- improved function names, with shorter `ns` prefix
+- Add support for Haven labelled data
+- Improved vignettes
+- Adds tests
+
+
 # nettskjemar 0.1.4.008
 
 - add functions to download attachments

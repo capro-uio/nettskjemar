@@ -1,5 +1,4 @@
 
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # nettskjemar <img src='man/figures/logo.png' align="right" height="138.5" />
@@ -11,7 +10,9 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/nettskjemar.png)](https://CRAN.R-project.org/package=nettskjemar)
+status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
+[![Codecov test
+coverage](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg)](https://app.codecov.io/gh/capro-uio/nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form
@@ -46,13 +47,6 @@ Install the development version from [GitHub](https://github.com/) with:
 remotes::install_github("CAPRO-UIO/nettskjemar")
 ```
 
-## Setting up the authentication
-
-There is a tutorial on [how to create an API
-client](https://CAPRO-UIO.github.io/nettskjemar/articles/authentication.html)
-needed to work with the api. This will need to be completed before you
-can access any other features of this package.
-
 ## Example
 
 Currently, the package contains functions to download data from forms,
@@ -70,15 +64,15 @@ nettskjema_get_data(nettskjema_id)
 ## Documentation
 
 Package documentation can be found on the associated [GitHub
-pages](https://CAPRO-UIO.github.io/nettskjemar/), where there are 6
-tutorials.
+pages](https://www.capro.dev/nettskjemar/), where there are 6 tutorials.
 
 # Citation
 
 To cite nettskjemar in publications use:
 
 Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar:
-v0.1.04 (Version v0.1.04). Zenodo. http://doi.org/10.5281/zenodo.4745481
+v0.1.04 (Version v0.1.04). Zenodo.
+<http://doi.org/10.5281/zenodo.4745481>
 
 A BibTeX entry for LaTeX users is
 

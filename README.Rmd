@@ -53,10 +53,6 @@ Install the development version from [GitHub](https://github.com/) with:
 remotes::install_github("CAPRO-UIO/nettskjemar")
 ```
 
-## Setting up the authentication
-There is a tutorial on [how to create an API client](https://CAPRO-UIO.github.io/nettskjemar/articles/authentication.html) needed to work with the api.
-This will need to be completed before you can access any other features of this package.
-
 ## Example
 
 Currently, the package contains functions to download data from forms, including submission answers, meta-data, and codebook information.
@@ -78,7 +74,8 @@ urls <- gsub("vignettes", "https://CAPRO-UIO.github.io/nettskjemar", vigs)
 urls <- gsub("Rmd", "html", urls)
 names(urls) <- sapply(vigs, function(x) rmarkdown::yaml_front_matter(x)$title)
 ```
-Package documentation can be found on the associated [GitHub pages](https://CAPRO-UIO.github.io/nettskjemar/), where there are `r length(vigs)` tutorials.
+
+Package documentation can be found on the associated [GitHub pages](https://www.capro.dev/nettskjemar/), where there are `r length(vigs)` tutorials.
 
 # Citation
 ```{r echo = FALSE, results='asis'}

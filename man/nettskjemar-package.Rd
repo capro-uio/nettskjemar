@@ -15,7 +15,8 @@ Useful links:
 \itemize{
   \item \url{https://github.com/CAPRO-UiO/nettskjemar}
   \item \url{https://zenodo.org/badge/latestdoi/206264675}
-  \item Report bugs at \url{https://github.com/CAPRO-UiO/nettskjemar/issues}
+  \item \url{https://github.com/capro-uio/nettskjemar}
+  \item Report bugs at \url{https://github.com/capro-uio/nettskjemar/issues}
 }
 
 }
