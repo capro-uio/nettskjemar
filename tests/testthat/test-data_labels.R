@@ -71,7 +71,7 @@ test_that("ns_add_labels handles missing values gracefully", {
   expect_true(is.na(labelled_data$var1[3]))
 })
 
-test_that("ns_add_labels does not modify variables not present in the codebook", {
+test_that("dont modify non-codebook", {
   # Add a variable not in the codebook
   data_extra_var <- sample_data
   data_extra_var$var4 <- c(1, 2, 3)

@@ -41,5 +41,5 @@ release_bullets <- function() {
     covr::coverage_to_list(cov)$totalcoverage,
     sep = ""
   )
-  #covr::zero_coverage(cov)
+  #covr::zero_coverage(cov) #nolint
 } # nocov end
