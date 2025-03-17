@@ -5,3 +5,4 @@
 * This is a new release.
 * Implements functions to new API V3 endpoints.
 * Deprecates V2 endpoints.
+* Local note comes from inability to verify current time

@@ -13,3 +13,5 @@
 ^man-roxygen$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^CRAN-SUBMISSION$
+.lintr
