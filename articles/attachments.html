@@ -40,12 +40,18 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/attachments.html">Nettskjema Attachments: Download and Save</a></li>
-    <li><a class="dropdown-item" href="../articles/authentication.html">Authentication Setup for Nettskjema API</a></li>
-    <li><a class="dropdown-item" href="../articles/forms.html">Fetching Information on Forms</a></li>
-    <li><a class="dropdown-item" href="../articles/labelled_data.html">Enhanced Workflow with Labelled Data</a></li>
-    <li><a class="dropdown-item" href="../articles/metadata.html">Working with Nettskjema Form Metadata</a></li>
-    <li><a class="dropdown-item" href="../articles/submissions.html">Handling Submissions with the Nettskjema API</a></li>
+<li><h6 class="dropdown-header" data-toc-skip>Working with data</h6></li>
+    <li><a class="dropdown-item" href="../articles/nettskjemar.html">Retrieving all form submissions</a></li>
+    <li><a class="dropdown-item" href="../articles/labelled_data.html">Labelled data</a></li>
+    <li><a class="dropdown-item" href="../articles/submissions.html">Single submissions</a></li>
+    <li><a class="dropdown-item" href="../articles/attachments.html">Retrieving attachments</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>User auth and information</h6></li>
+    <li><a class="dropdown-item" href="../articles/authentication.html">Authentication setup</a></li>
+    <li><a class="dropdown-item" href="../articles/forms.html">Vieweing all forms</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Working with meta-data</h6></li>
+    <li><a class="dropdown-item" href="../articles/metadata.html">Retrieving form meta-data</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -131,21 +137,18 @@ the attachment ID, original filename, and standardized filename.</p>
 <span><span class="co">#&gt;    externalAnswerOptionIds elementType</span></span>
 <span><span class="co">#&gt; 16                          ATTACHMENT</span></span>
 <span><span class="co">#&gt; 32                          ATTACHMENT</span></span>
-<span><span class="co">#&gt;            createdDate        modifiedDate</span></span>
-<span><span class="co">#&gt; 16 2023-06-01T20:57:15 2023-06-01T20:57:15</span></span>
-<span><span class="co">#&gt; 32 2023-06-01T20:58:33 2023-06-01T20:58:33</span></span>
-<span><span class="co">#&gt;    subElementId answerAttachmentId    filename</span></span>
-<span><span class="co">#&gt; 16           NA             538819   sølvi.png</span></span>
-<span><span class="co">#&gt; 32           NA             538820 marius.jpeg</span></span>
-<span><span class="co">#&gt;     mediaType   size attachment.answerAttachmentId</span></span>
-<span><span class="co">#&gt; 16  image/png 628613                        538819</span></span>
-<span><span class="co">#&gt; 32 image/jpeg  89494                        538820</span></span>
-<span><span class="co">#&gt;    attachment.filename attachment.mediaType</span></span>
-<span><span class="co">#&gt; 16           sølvi.png            image/png</span></span>
-<span><span class="co">#&gt; 32         marius.jpeg           image/jpeg</span></span>
-<span><span class="co">#&gt;    attachment.size counter</span></span>
-<span><span class="co">#&gt; 16          628613       1</span></span>
-<span><span class="co">#&gt; 32           89494       1</span></span></code></pre></div>
+<span><span class="co">#&gt;            createdDate        modifiedDate subElementId</span></span>
+<span><span class="co">#&gt; 16 2023-06-01T20:57:15 2023-06-01T20:57:15           NA</span></span>
+<span><span class="co">#&gt; 32 2023-06-01T20:58:33 2023-06-01T20:58:33           NA</span></span>
+<span><span class="co">#&gt;    answerAttachmentId    filename  mediaType   size</span></span>
+<span><span class="co">#&gt; 16             538819   sølvi.png  image/png 628613</span></span>
+<span><span class="co">#&gt; 32             538820 marius.jpeg image/jpeg  89494</span></span>
+<span><span class="co">#&gt;    attachment.answerAttachmentId attachment.filename</span></span>
+<span><span class="co">#&gt; 16                        538819           sølvi.png</span></span>
+<span><span class="co">#&gt; 32                        538820         marius.jpeg</span></span>
+<span><span class="co">#&gt;    attachment.mediaType attachment.size counter</span></span>
+<span><span class="co">#&gt; 16            image/png          628613       1</span></span>
+<span><span class="co">#&gt; 32           image/jpeg           89494       1</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

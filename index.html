@@ -43,12 +43,18 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/attachments.html">Nettskjema Attachments: Download and Save</a></li>
-    <li><a class="dropdown-item" href="articles/authentication.html">Authentication Setup for Nettskjema API</a></li>
-    <li><a class="dropdown-item" href="articles/forms.html">Fetching Information on Forms</a></li>
-    <li><a class="dropdown-item" href="articles/labelled_data.html">Enhanced Workflow with Labelled Data</a></li>
-    <li><a class="dropdown-item" href="articles/metadata.html">Working with Nettskjema Form Metadata</a></li>
-    <li><a class="dropdown-item" href="articles/submissions.html">Handling Submissions with the Nettskjema API</a></li>
+<li><h6 class="dropdown-header" data-toc-skip>Working with data</h6></li>
+    <li><a class="dropdown-item" href="articles/nettskjemar.html">Retrieving all form submissions</a></li>
+    <li><a class="dropdown-item" href="articles/labelled_data.html">Labelled data</a></li>
+    <li><a class="dropdown-item" href="articles/submissions.html">Single submissions</a></li>
+    <li><a class="dropdown-item" href="articles/attachments.html">Retrieving attachments</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>User auth and information</h6></li>
+    <li><a class="dropdown-item" href="articles/authentication.html">Authentication setup</a></li>
+    <li><a class="dropdown-item" href="articles/forms.html">Vieweing all forms</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Working with meta-data</h6></li>
+    <li><a class="dropdown-item" href="articles/metadata.html">Retrieving form meta-data</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -96,12 +102,37 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">nettskjema_get_data</span><span class="op">(</span><span class="va">nettskjema_id</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   formid $submission_id                  $created</span></span>
+<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00</span></span>
+<span><span class="co">#&gt;    freetext radio checkbox.questionnaires</span></span>
+<span><span class="co">#&gt; 1 some text     1                       1</span></span>
+<span><span class="co">#&gt;   checkbox.events checkbox.logs dropdown</span></span>
+<span><span class="co">#&gt; 1               1             0        4</span></span>
+<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture</span></span>
+<span><span class="co">#&gt; 1                   1                    2</span></span>
+<span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
+<span><span class="co">#&gt; 1                  2                    1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                           1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
+<span><span class="co">#&gt; 1                       0                          0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
+<span><span class="co">#&gt; 1                    0                           0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
+<span><span class="co">#&gt; 1                       1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
+<span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
+<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
+<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
+<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>Package documentation can be found on the associated <a href="https://www.capro.dev/nettskjemar/" class="external-link">GitHub pages</a>, where there are 6 tutorials.</p>
+<p>Package documentation can be found on the associated <a href="https://www.capro.dev/nettskjemar/" class="external-link">GitHub pages</a>, where there are 7 tutorials.</p>
 </div>
 </div>
 <div class="section level1">

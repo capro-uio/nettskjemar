@@ -40,12 +40,18 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/attachments.html">Nettskjema Attachments: Download and Save</a></li>
-    <li><a class="dropdown-item" href="../articles/authentication.html">Authentication Setup for Nettskjema API</a></li>
-    <li><a class="dropdown-item" href="../articles/forms.html">Fetching Information on Forms</a></li>
-    <li><a class="dropdown-item" href="../articles/labelled_data.html">Enhanced Workflow with Labelled Data</a></li>
-    <li><a class="dropdown-item" href="../articles/metadata.html">Working with Nettskjema Form Metadata</a></li>
-    <li><a class="dropdown-item" href="../articles/submissions.html">Handling Submissions with the Nettskjema API</a></li>
+<li><h6 class="dropdown-header" data-toc-skip>Working with data</h6></li>
+    <li><a class="dropdown-item" href="../articles/nettskjemar.html">Retrieving all form submissions</a></li>
+    <li><a class="dropdown-item" href="../articles/labelled_data.html">Labelled data</a></li>
+    <li><a class="dropdown-item" href="../articles/submissions.html">Single submissions</a></li>
+    <li><a class="dropdown-item" href="../articles/attachments.html">Retrieving attachments</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>User auth and information</h6></li>
+    <li><a class="dropdown-item" href="../articles/authentication.html">Authentication setup</a></li>
+    <li><a class="dropdown-item" href="../articles/forms.html">Vieweing all forms</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Working with meta-data</h6></li>
+    <li><a class="dropdown-item" href="../articles/metadata.html">Retrieving form meta-data</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -111,22 +117,20 @@ and manipulate labels.</p>
 <span><span class="co">#&gt; 1                   1                    2</span></span>
 <span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
 <span><span class="co">#&gt; 1                  2                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.colleague</span></span>
-<span><span class="co">#&gt; 1                           1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.admin checkbox_matrix.1.union</span></span>
-<span><span class="co">#&gt; 1                       0                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.internet checkbox_matrix.2.IT</span></span>
-<span><span class="co">#&gt; 1                          0                    0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; 1                           0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                           1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
+<span><span class="co">#&gt; 1                       0                          0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
+<span><span class="co">#&gt; 1                    0                           0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
 <span><span class="co">#&gt; 1                       1                       0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
 <span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
-<span><span class="co">#&gt;           datetime number_decimal number_integer</span></span>
-<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77</span></span>
-<span><span class="co">#&gt;   slider attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1      3    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
+<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
+<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
 <p>Here we have our example data, displayed as a standard data.frame.
 There is nothing particularly special about it. To continue, we also
@@ -177,22 +181,20 @@ using both the unlabelled data and the codebook.</p>
 <span><span class="co">#&gt; 1                   1                    2</span></span>
 <span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
 <span><span class="co">#&gt; 1                  2                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.colleague</span></span>
-<span><span class="co">#&gt; 1                           1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.admin checkbox_matrix.1.union</span></span>
-<span><span class="co">#&gt; 1                       0                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.internet checkbox_matrix.2.IT</span></span>
-<span><span class="co">#&gt; 1                          0                    0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; 1                           0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                           1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
+<span><span class="co">#&gt; 1                       0                          0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
+<span><span class="co">#&gt; 1                    0                           0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
 <span><span class="co">#&gt; 1                       1                       0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
 <span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
-<span><span class="co">#&gt;           datetime number_decimal number_integer</span></span>
-<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77</span></span>
-<span><span class="co">#&gt;   slider attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1      3    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
+<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
+<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
 <p>You will notice that this does on the surface look completely normal,
 with no added extras. Inspecting the data with the <code>str</code>
@@ -375,105 +377,13 @@ provides functionalities to inspect and manipulate labels with ease.</p>
 <p>Use <code>var_label()</code> to extract variable-level labels and
 <code>val_labels()</code> to extract value-level labels:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Variable labels</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $formid</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$submission_id`</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$created`</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $freetext</span></span>
-<span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio</span></span>
-<span><span class="co">#&gt; [1] "How happy are we with Nettskjema?"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Questionnaires"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.events</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Event sign-ups"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.logs</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Data logging"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $dropdown</span></span>
-<span><span class="co">#&gt; [1] "Who is responsible with Nettskjema?"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.grants</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: written some grant applications"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.lecture</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: held a lecture"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.email</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: sent some e-mails"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.IT</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: IT"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.colleague</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: A colleague"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Administration"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.union</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Union"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.internet</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Internet"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.IT</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: IT"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: A colleague"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.admin</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Administration"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Union"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.internet</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Internet"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $date</span></span>
-<span><span class="co">#&gt; [1] "Choose a random date"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $time</span></span>
-<span><span class="co">#&gt; [1] "now choose a random time!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $datetime</span></span>
-<span><span class="co">#&gt; [1] "Lastly choose a date AND time!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $number_decimal</span></span>
-<span><span class="co">#&gt; [1] "Pick a number between 0 and 10!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $number_integer</span></span>
-<span><span class="co">#&gt; [1] "Choose an integer between 0 and 100"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $slider</span></span>
-<span><span class="co">#&gt; [1] "Choose a point on the slider!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $attachment_1</span></span>
-<span><span class="co">#&gt; [1] "Upload a fun image!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $attachment_2</span></span>
-<span><span class="co">#&gt; [1] "This is an attachment2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$answer_time_ms`</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Value labels for 'radio'</span></span>
+<code class="sourceCode R"><span><span class="co"># Variable labels</span></span>
+<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Value labels for 'radio'</span></span>
 <span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Very happy! Very unhappy! </span></span>
 <span><span class="co">#&gt;             1            -1</span></span></code></pre></div>
@@ -486,17 +396,16 @@ Nettskjema codebook setup. However, if you are working on a form that is
 no longer available in Nettskjema, and you have downloaded and saved
 both the data and the codebook (or the labelled data), labels can be
 modified using <a href="https://haven.tidyverse.org" class="external-link">haven</a>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetex</span></span>
-<span><span class="co">#&gt; [1] "some text"      "another answer"</span></span>
-<span><span class="co">#&gt; [3] ""              </span></span>
+<span><span class="co">#&gt; [1] "some text"      "another answer" ""              </span></span>
 <span><span class="co">#&gt; attr(,"label")</span></span>
 <span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span>
 <span><span class="co">#&gt; attr(,"ns_type")</span></span>
 <span><span class="co">#&gt; [1] "QUESTION"</span></span>
 <span><span class="co">#&gt; attr(,"class")</span></span>
 <span><span class="co">#&gt; [1] "character"</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Update variable-level label for 'freetext'</span></span>
 <span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Important freetext comment"</span></span>
 <span></span>
@@ -508,105 +417,14 @@ modified using <a href="https://haven.tidyverse.org" class="external-link">haven
 <span><span class="co">#&gt;  value         label</span></span>
 <span><span class="co">#&gt;      1   Very happy!</span></span>
 <span><span class="co">#&gt;     -1 Very unhappy!</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Update value labels for 'radio'</span></span>
 <span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Unhappy <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, Happy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Check updated labels</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $formid</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$submission_id`</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$created`</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $freetext</span></span>
-<span><span class="co">#&gt; [1] "Important freetext comment"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio</span></span>
-<span><span class="co">#&gt; [1] "How happy are we with Nettskjema?"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Questionnaires"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.events</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Event sign-ups"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox.logs</span></span>
-<span><span class="co">#&gt; [1] "What do we use it for?:: Data logging"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $dropdown</span></span>
-<span><span class="co">#&gt; [1] "Who is responsible with Nettskjema?"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.grants</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: written some grant applications"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.lecture</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: held a lecture"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $radio_matrix.email</span></span>
-<span><span class="co">#&gt; [1] "In the last month I have: sent some e-mails"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.IT</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: IT"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.colleague</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: A colleague"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Administration"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.union</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Union"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.1.internet</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: sought help from :: Internet"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.IT</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: IT"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: A colleague"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.admin</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Administration"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Union"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $checkbox_matrix.2.internet</span></span>
-<span><span class="co">#&gt; [1] "In the last year, I have :: received e-mails from :: Internet"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $date</span></span>
-<span><span class="co">#&gt; [1] "Choose a random date"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $time</span></span>
-<span><span class="co">#&gt; [1] "now choose a random time!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $datetime</span></span>
-<span><span class="co">#&gt; [1] "Lastly choose a date AND time!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $number_decimal</span></span>
-<span><span class="co">#&gt; [1] "Pick a number between 0 and 10!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $number_integer</span></span>
-<span><span class="co">#&gt; [1] "Choose an integer between 0 and 100"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $slider</span></span>
-<span><span class="co">#&gt; [1] "Choose a point on the slider!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $attachment_1</span></span>
-<span><span class="co">#&gt; [1] "Upload a fun image!"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $attachment_2</span></span>
-<span><span class="co">#&gt; [1] "This is an attachment2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`$answer_time_ms`</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Important freetext comment"</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Unhappy   Happy </span></span>
 <span><span class="co">#&gt;      -1       1</span></span></code></pre></div>
