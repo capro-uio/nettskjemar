@@ -59,10 +59,10 @@ Currently, the package contains functions to download data from forms, including
 The most important, is the function that will download nettskjema submission data and return them as a data.frame. 
 This needs only the _id_ of a nettskjema.
 
-```{r example, eval=FALSE}
+```{r example}
 library(nettskjemar)
 
-nettskjema_get_data(nettskjema_id)
+ns_get_data(123823)
 ```
 
 

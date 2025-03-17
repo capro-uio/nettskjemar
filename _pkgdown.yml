@@ -5,8 +5,6 @@ template:
     primary: "#CC4C4C"
     link-color: "#85bfbf"
     code-bg: "#2A2F36"
-navbar:
-  bg: dark
 
 reference:
 - title: "Retrieveing data and working with data"
@@ -47,3 +45,29 @@ reference:
   desc: "Function for creating custom resuests towards the API, used with httr2."
   contents:
   - ns_req
+
+navbar:
+  bg: dark
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Working with data
+      - text: Retrieving all form submissions
+        href: articles/nettskjemar.html
+      - text: Labelled data
+        href: articles/labelled_data.html
+      - text: Single submissions
+        href: articles/submissions.html
+      - text: Retrieving attachments
+        href: articles/attachments.html
+      - text: -------
+      - text: "User auth and information"
+      - text: Authentication setup
+        href: articles/authentication.html
+      - text: Vieweing all forms
+        href: articles/forms.html
+      - text: -------
+      - text: "Working with meta-data"
+      - text: Retrieving form meta-data
+        href: articles/metadata.html

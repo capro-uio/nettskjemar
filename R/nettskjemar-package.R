@@ -10,7 +10,13 @@ if (getRversion() >= "2.15.1") {
 
 # nocov start
 release_bullets <- function() {
-  # Pre-compiled vignettes that depend on API key
+  # Pre-compiled Rmd that depend on API key
+
+  knitr::knit(
+    "README.Rmd",
+    "README.md"
+  )
+
   proc <- list.files(
     "vignettes",
     "orig$",

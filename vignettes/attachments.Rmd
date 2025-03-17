@@ -59,21 +59,18 @@ ns_list_form_attachments(formid)
 #>    externalAnswerOptionIds elementType
 #> 16                          ATTACHMENT
 #> 32                          ATTACHMENT
-#>            createdDate        modifiedDate
-#> 16 2023-06-01T20:57:15 2023-06-01T20:57:15
-#> 32 2023-06-01T20:58:33 2023-06-01T20:58:33
-#>    subElementId answerAttachmentId    filename
-#> 16           NA             538819   sølvi.png
-#> 32           NA             538820 marius.jpeg
-#>     mediaType   size attachment.answerAttachmentId
-#> 16  image/png 628613                        538819
-#> 32 image/jpeg  89494                        538820
-#>    attachment.filename attachment.mediaType
-#> 16           sølvi.png            image/png
-#> 32         marius.jpeg           image/jpeg
-#>    attachment.size counter
-#> 16          628613       1
-#> 32           89494       1
+#>            createdDate        modifiedDate subElementId
+#> 16 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
+#> 32 2023-06-01T20:58:33 2023-06-01T20:58:33           NA
+#>    answerAttachmentId    filename  mediaType   size
+#> 16             538819   sølvi.png  image/png 628613
+#> 32             538820 marius.jpeg image/jpeg  89494
+#>    attachment.answerAttachmentId attachment.filename
+#> 16                        538819           sølvi.png
+#> 32                        538820         marius.jpeg
+#>    attachment.mediaType attachment.size counter
+#> 16            image/png          628613       1
+#> 32           image/jpeg           89494       1
 ```
 
 # Downloading Attachments

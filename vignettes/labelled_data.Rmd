@@ -44,22 +44,20 @@ data
 #> 1                   1                    2
 #>   radio_matrix.email checkbox_matrix.1.IT
 #> 1                  2                    1
-#>   checkbox_matrix.1.colleague
-#> 1                           1
-#>   checkbox_matrix.1.admin checkbox_matrix.1.union
-#> 1                       0                       0
-#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
-#> 1                          0                    0
-#>   checkbox_matrix.2.colleague
-#> 1                           0
+#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
+#> 1                           1                       0
+#>   checkbox_matrix.1.union checkbox_matrix.1.internet
+#> 1                       0                          0
+#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
+#> 1                    0                           0
 #>   checkbox_matrix.2.admin checkbox_matrix.2.union
 #> 1                       1                       0
 #>   checkbox_matrix.2.internet       date  time
 #> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer
-#> 1 2023-06-12T13:33            4.5             77
-#>   slider attachment_1 attachment_2 $answer_time_ms
-#> 1      3    sølvi.png                        74630
+#>           datetime number_decimal number_integer slider
+#> 1 2023-06-12T13:33            4.5             77      3
+#>   attachment_1 attachment_2 $answer_time_ms
+#> 1    sølvi.png                        74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
@@ -116,22 +114,20 @@ lab_data
 #> 1                   1                    2
 #>   radio_matrix.email checkbox_matrix.1.IT
 #> 1                  2                    1
-#>   checkbox_matrix.1.colleague
-#> 1                           1
-#>   checkbox_matrix.1.admin checkbox_matrix.1.union
-#> 1                       0                       0
-#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
-#> 1                          0                    0
-#>   checkbox_matrix.2.colleague
-#> 1                           0
+#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
+#> 1                           1                       0
+#>   checkbox_matrix.1.union checkbox_matrix.1.internet
+#> 1                       0                          0
+#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
+#> 1                    0                           0
 #>   checkbox_matrix.2.admin checkbox_matrix.2.union
 #> 1                       1                       0
 #>   checkbox_matrix.2.internet       date  time
 #> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer
-#> 1 2023-06-12T13:33            4.5             77
-#>   slider attachment_1 attachment_2 $answer_time_ms
-#> 1      3    sølvi.png                        74630
+#>           datetime number_decimal number_integer slider
+#> 1 2023-06-12T13:33            4.5             77      3
+#>   attachment_1 attachment_2 $answer_time_ms
+#> 1    sølvi.png                        74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
@@ -319,106 +315,18 @@ Use `var_label()` to extract variable-level labels and `val_labels()` to extract
 
 
 ``` r
-library(haven)
-
-# Variable labels
-var_label(lab_data)
-#> $formid
-#> NULL
-#> 
-#> $`$submission_id`
-#> NULL
-#> 
-#> $`$created`
-#> NULL
-#> 
-#> $freetext
-#> [1] "This is a question about something super important, where the user can input free text."
-#> 
-#> $radio
-#> [1] "How happy are we with Nettskjema?"
-#> 
-#> $checkbox.questionnaires
-#> [1] "What do we use it for?:: Questionnaires"
-#> 
-#> $checkbox.events
-#> [1] "What do we use it for?:: Event sign-ups"
-#> 
-#> $checkbox.logs
-#> [1] "What do we use it for?:: Data logging"
-#> 
-#> $dropdown
-#> [1] "Who is responsible with Nettskjema?"
-#> 
-#> $radio_matrix.grants
-#> [1] "In the last month I have: written some grant applications"
-#> 
-#> $radio_matrix.lecture
-#> [1] "In the last month I have: held a lecture"
-#> 
-#> $radio_matrix.email
-#> [1] "In the last month I have: sent some e-mails"
-#> 
-#> $checkbox_matrix.1.IT
-#> [1] "In the last year, I have :: sought help from :: IT"
-#> 
-#> $checkbox_matrix.1.colleague
-#> [1] "In the last year, I have :: sought help from :: A colleague"
-#> 
-#> $checkbox_matrix.1.admin
-#> [1] "In the last year, I have :: sought help from :: Administration"
-#> 
-#> $checkbox_matrix.1.union
-#> [1] "In the last year, I have :: sought help from :: Union"
-#> 
-#> $checkbox_matrix.1.internet
-#> [1] "In the last year, I have :: sought help from :: Internet"
-#> 
-#> $checkbox_matrix.2.IT
-#> [1] "In the last year, I have :: received e-mails from :: IT"
-#> 
-#> $checkbox_matrix.2.colleague
-#> [1] "In the last year, I have :: received e-mails from :: A colleague"
-#> 
-#> $checkbox_matrix.2.admin
-#> [1] "In the last year, I have :: received e-mails from :: Administration"
-#> 
-#> $checkbox_matrix.2.union
-#> [1] "In the last year, I have :: received e-mails from :: Union"
-#> 
-#> $checkbox_matrix.2.internet
-#> [1] "In the last year, I have :: received e-mails from :: Internet"
-#> 
-#> $date
-#> [1] "Choose a random date"
-#> 
-#> $time
-#> [1] "now choose a random time!"
-#> 
-#> $datetime
-#> [1] "Lastly choose a date AND time!"
-#> 
-#> $number_decimal
-#> [1] "Pick a number between 0 and 10!"
-#> 
-#> $number_integer
-#> [1] "Choose an integer between 0 and 100"
-#> 
-#> $slider
-#> [1] "Choose a point on the slider!"
-#> 
-#> $attachment_1
-#> [1] "Upload a fun image!"
-#> 
-#> $attachment_2
-#> [1] "This is an attachment2"
-#> 
-#> $`$answer_time_ms`
-#> NULL
+library(labelled)
 ```
 
-``` r
 
+``` r
+# Variable labels
+var_label(lab_data$freetext)
+#> [1] "This is a question about something super important, where the user can input free text."
+```
+
+
+``` r
 # Value labels for 'radio'
 val_labels(lab_data$radio)
 #>   Very happy! Very unhappy! 
@@ -433,8 +341,7 @@ However, if you are working on a form that is no longer available in Nettskjema,
 
 ``` r
 lab_data$freetex
-#> [1] "some text"      "another answer"
-#> [3] ""              
+#> [1] "some text"      "another answer" ""              
 #> attr(,"label")
 #> [1] "This is a question about something super important, where the user can input free text."
 #> attr(,"ns_type")
@@ -462,99 +369,8 @@ lab_data$radio
 val_labels(lab_data$radio) <- c(Unhappy = -1, Happy = 1)
 
 # Check updated labels
-var_label(lab_data)
-#> $formid
-#> NULL
-#> 
-#> $`$submission_id`
-#> NULL
-#> 
-#> $`$created`
-#> NULL
-#> 
-#> $freetext
+var_label(lab_data$freetext)
 #> [1] "Important freetext comment"
-#> 
-#> $radio
-#> [1] "How happy are we with Nettskjema?"
-#> 
-#> $checkbox.questionnaires
-#> [1] "What do we use it for?:: Questionnaires"
-#> 
-#> $checkbox.events
-#> [1] "What do we use it for?:: Event sign-ups"
-#> 
-#> $checkbox.logs
-#> [1] "What do we use it for?:: Data logging"
-#> 
-#> $dropdown
-#> [1] "Who is responsible with Nettskjema?"
-#> 
-#> $radio_matrix.grants
-#> [1] "In the last month I have: written some grant applications"
-#> 
-#> $radio_matrix.lecture
-#> [1] "In the last month I have: held a lecture"
-#> 
-#> $radio_matrix.email
-#> [1] "In the last month I have: sent some e-mails"
-#> 
-#> $checkbox_matrix.1.IT
-#> [1] "In the last year, I have :: sought help from :: IT"
-#> 
-#> $checkbox_matrix.1.colleague
-#> [1] "In the last year, I have :: sought help from :: A colleague"
-#> 
-#> $checkbox_matrix.1.admin
-#> [1] "In the last year, I have :: sought help from :: Administration"
-#> 
-#> $checkbox_matrix.1.union
-#> [1] "In the last year, I have :: sought help from :: Union"
-#> 
-#> $checkbox_matrix.1.internet
-#> [1] "In the last year, I have :: sought help from :: Internet"
-#> 
-#> $checkbox_matrix.2.IT
-#> [1] "In the last year, I have :: received e-mails from :: IT"
-#> 
-#> $checkbox_matrix.2.colleague
-#> [1] "In the last year, I have :: received e-mails from :: A colleague"
-#> 
-#> $checkbox_matrix.2.admin
-#> [1] "In the last year, I have :: received e-mails from :: Administration"
-#> 
-#> $checkbox_matrix.2.union
-#> [1] "In the last year, I have :: received e-mails from :: Union"
-#> 
-#> $checkbox_matrix.2.internet
-#> [1] "In the last year, I have :: received e-mails from :: Internet"
-#> 
-#> $date
-#> [1] "Choose a random date"
-#> 
-#> $time
-#> [1] "now choose a random time!"
-#> 
-#> $datetime
-#> [1] "Lastly choose a date AND time!"
-#> 
-#> $number_decimal
-#> [1] "Pick a number between 0 and 10!"
-#> 
-#> $number_integer
-#> [1] "Choose an integer between 0 and 100"
-#> 
-#> $slider
-#> [1] "Choose a point on the slider!"
-#> 
-#> $attachment_1
-#> [1] "Upload a fun image!"
-#> 
-#> $attachment_2
-#> [1] "This is an attachment2"
-#> 
-#> $`$answer_time_ms`
-#> NULL
 ```
 
 ``` r

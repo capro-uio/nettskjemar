@@ -51,18 +51,18 @@ head(forms)
 #> 1                <NA> 2023-11-23T10:58:39
 #> 2 2025-03-17T13:09:52 2025-03-11T09:56:21
 #> 3 2024-10-01T14:44:42 2025-03-11T09:58:05
-#>   personalDataErasedDate deliveryDestination
-#> 1                   <NA>            DATABASE
-#> 2                   <NA>                 TSD
-#> 3                   <NA>                 TSD
-#>   anonymous numberOfDeliveredSubmissions owners
-#> 1     FALSE                            0      2
-#> 2     FALSE                          835      2
-#> 3     FALSE                           99      2
-#>   isDictaphone myFormsFormListingGroup  open
-#> 1        FALSE                      MY FALSE
-#> 2        FALSE                      MY  TRUE
-#> 3        FALSE                      MY FALSE
+#>   personalDataErasedDate deliveryDestination anonymous
+#> 1                   <NA>            DATABASE     FALSE
+#> 2                   <NA>                 TSD     FALSE
+#> 3                   <NA>                 TSD     FALSE
+#>   numberOfDeliveredSubmissions owners isDictaphone
+#> 1                            0      2        FALSE
+#> 2                          835      2        FALSE
+#> 3                           99      2        FALSE
+#>   myFormsFormListingGroup  open
+#> 1                      MY FALSE
+#> 2                      MY  TRUE
+#> 3                      MY FALSE
 #>  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
 ```
 
