@@ -1,0 +1,100 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Sun, 16 Mar 2025 22:01:26 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=NjUzOWRjMTktMjBkMS00MDVlLWI0YzQtMzJiY2U3MjMyMGEw; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MjE2MjQ4NiwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQyMjQ4ODg2LCJpYXQiOjE3NDIxNjI0ODYsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI0NzVmYTY0Zi1iZGMxLTQzYzUtYjY0NC0zMGUwZWQ4ZjkyNTUiLCJlbWFpbCI6ImEubS5tb3dpbmNrZWxAcHN5a29sb2dpLnVpby5ubyJ9.R-jzPGkovveOunc0mBJJ6x8sxLxhNKYtoziwUKaxBhIOauwjoVAqjVFDhb1XYNgKPaV_u5xOEHU_ly-BjwJSWtDnRNvEobsgNejjf65VuQ7vMOdSqF7EFuJCZGLZ4Oh9K34f-VzACO-yUT31j6WQFyg8rnV598Taa_1hM4WLxWvzjqGC_R1cB7eQFIpaOpVJpKXObYe9Z5E_NJysAMKpANX5CD-FKJDYJNnEZUfEnztlB1W4RJNuvgM659Law9oHTCM8zfSg2kDpwsYBL2DG-Kur6ZBhSymY0XQZHuUQuAoElslQZzLE_mBE3ABmuCBhBMz9B2gbDrFbwCeifWZV7ZMLB141bK3OkClLD6mPBNfSzny4Ne36xuopA3DfROh8JzdE9kZ9HkycRy_J7ufmXgimGNBqzgPhEYsFh0HyWEUoYeMlCJjZ_-hy2H5ze3yAc6AVC-Na2ImhEK7YD51O96v5r0B-tUwpRyDPV4Vf9bd3UzU5H5Dj9gs03h8pTRrG","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-03-16 22:01:27 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://api.nettskjema.no/v3/form/123823/info
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MjE2MjQ4NiwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQyMjQ4ODg2LCJpYXQiOjE3NDIxNjI0ODYsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI0NzVmYTY0Zi1iZGMxLTQzYzUtYjY0NC0zMGUwZWQ4ZjkyNTUiLCJlbWFpbCI6ImEubS5tb3dpbmNrZWxAcHN5a29sb2dpLnVpby5ubyJ9.R-jzPGkovveOunc0mBJJ6x8sxLxhNKYtoziwUKaxBhIOauwjoVAqjVFDhb1XYNgKPaV_u5xOEHU_ly-BjwJSWtDnRNvEobsgNejjf65VuQ7vMOdSqF7EFuJCZGLZ4Oh9K34f-VzACO-yUT31j6WQFyg8rnV598Taa_1hM4WLxWvzjqGC_R1cB7eQFIpaOpVJpKXObYe9Z5E_NJysAMKpANX5CD-FKJDYJNnEZUfEnztlB1W4RJNuvgM659Law9oHTCM8zfSg2kDpwsYBL2DG-Kur6ZBhSymY0XQZHuUQuAoElslQZzLE_mBE3ABmuCBhBMz9B2gbDrFbwCeifWZV7ZMLB141bK3OkClLD6mPBNfSzny4Ne36xuopA3DfROh8JzdE9kZ9HkycRy_J7ufmXgimGNBqzgPhEYsFh0HyWEUoYeMlCJjZ_-hy2H5ze3yAc6AVC-Na2ImhEK7YD51O96v5r0B-tUwpRyDPV4Vf9bd3UzU5H5Dj9gs03h8pTRrG
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Sun, 16 Mar 2025 22:01:26 GMT
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
+      set-cookie: JSESSIONID=E6D328456E6F0E4D2D1FB1B3ABBF9157; Path=/v3; Secure; HttpOnly;
+        SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-frame-options: DENY
+      referrer-policy: same-origin
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+    body:
+      encoding: ''
+      file: no
+      string: '{"title":"API test form","canEditForm":true,"isCodebookValid":true,"hasSubmissions":true,"modifiedDate":"2025-03-13T19:27:18","modifiedBy":{"personId":58096,"username":"athanasm@uio.no","name":"Athanasia
+        Monika Mowinckel","email":"a.m.mowinckel@psykologi.uio.no","type":"LOCAL"},"isOpen":false,"deliveryDestination":"DATABASE","projectName":null,"numberOfPostponedSubmissions":0,"numberOfSubmissions":3,"numberOfInvitations":0,"editorsContactEmail":"a.m.mowinckel@psykologi.uio.no","editorsContactUrl":null,"lastSubmissionDate":"2023-06-01T20:59:50","markedForDeletionDate":null,"deleteDate":null}'
+  recorded_at: 2025-03-16 22:01:27 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0

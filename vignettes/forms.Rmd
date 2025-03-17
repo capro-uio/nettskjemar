@@ -1,0 +1,118 @@
+---
+title: "Fetching Information on Forms"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the Nettskjema API: Fetching Data and Forms}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+# Overview
+
+In this vignette, we demonstrate how to interact with the Nettskjema API to perform the following tasks:
+1. Retrieve a list of all forms you have access to.
+1. Download reports associated with a form.
+
+
+## Prerequisites
+
+Before you begin, ensure that you have already set up authentication.
+If you haven’t, refer to the vignette on [authentication setup](authentication.html).
+
+Additionally, load the required package:
+
+```r
+library(nettskjemar)
+```
+
+# Retrieving All Available Forms
+
+To see which forms you have access to, use the `ns_get_forms` function.
+
+## Example: Getting Forms
+
+
+``` r
+# Retrieve all forms
+forms <- ns_get_forms()
+
+head(forms)
+#>   formId                           title
+#> 1  79061                BRIEF (with key)
+#> 2 269507            Bakgrunnsinformasjon
+#> 3 268183 Bakgrunnsinformasjon (2022) TMR
+#>              openFrom              openTo
+#> 1 2017-02-13T14:24:01 2021-08-19T15:06:21
+#> 2 2022-05-16T13:50:07                <NA>
+#> 3                <NA>                <NA>
+#>    lastSubmissionDate        modifiedDate
+#> 1                <NA> 2023-11-23T10:58:39
+#> 2 2025-03-17T13:09:52 2025-03-11T09:56:21
+#> 3 2024-10-01T14:44:42 2025-03-11T09:58:05
+#>   personalDataErasedDate deliveryDestination
+#> 1                   <NA>            DATABASE
+#> 2                   <NA>                 TSD
+#> 3                   <NA>                 TSD
+#>   anonymous numberOfDeliveredSubmissions owners
+#> 1     FALSE                            0      2
+#> 2     FALSE                          835      2
+#> 3     FALSE                           99      2
+#>   isDictaphone myFormsFormListingGroup  open
+#> 1        FALSE                      MY FALSE
+#> 2        FALSE                      MY  TRUE
+#> 3        FALSE                      MY FALSE
+#>  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
+```
+
+### Retrieving Raw Form Data
+
+If you prefer to get the raw list format as returned by the API, use `asis = TRUE`.
+
+```r
+# Retrieve raw form data
+raw_forms <- ns_get_forms(asis = TRUE)
+
+# Display the raw response
+print(raw_forms)
+```
+
+# Downloading Form Reports
+
+Each form can have reports such as CSV, Excel, or SPSS files associated with it.
+Use the `ns_get_form_reports` function to download these reports.
+
+## Example: Download a CSV Report
+
+```r
+# Define the form ID
+form_id <- 110000
+
+# Download a CSV report to the default path
+ns_get_form_reports(form_id, type = "csv")
+
+# The report will be saved as `110000.csv` in your working directory
+```
+
+## Example: Download an Excel Report
+
+```r
+# Download an Excel report
+ns_get_form_reports(form_id, type = "excel")
+```
+
+## Example: Save SPSS Report to a Custom Path
+
+```r
+# Specify the path you want to save the file
+path <- fs::path_home("Desktop/110000_report.sav")
+
+# Download and save the SPSS report
+ns_get_form_reports(form_id, type = "spss", path = path)
+```
+
+## Custom Output Paths
+
+For custom output locations, make sure to provide the full file path in the `path` argument.
+

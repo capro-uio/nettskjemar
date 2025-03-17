@@ -10,16 +10,10 @@ editor_options:
     wrap: sentence
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  eval = FALSE
-)
-```
 
-Nettskjemar connects to version 2 of the [nettskjema api](https://nettskjema.no/), and the main functionality here is to download data from a form into R.
-Once you have [created a nettskjema api user](auth_setup.html), and set up your Renvironment locally, you can start accessing your forms.
+
+Nettskjemar connects to version 3 of the [nettskjema api](https://api.nettskjema.no/v3/swagger-ui/index.html), and the main functionality here is to download data from a form into R.
+Once you have [created a nettskjema client](authentication.html), and set up your Renvironment locally, you can start accessing your forms.
 
 ## General recommendations
 
@@ -27,251 +21,280 @@ While functions to download data also have the option to turn off the codebook, 
 Working with data in R in this format is very unpredictable, and we cannot guarantee that the functions in this package will act as expected.
 
 Therefore, you are **highly advised** if you are using this package, to turn on the codebook in the Nettskjema portal for your form, and setting up a codebook for the entire form.
+
 You can toggle the codebook for a form by going to the Nettskjema portal and entering your form.
-Then proceed to "Settings" and then "General settings", and make sure §Codebook activated" is set to "Yes".
+Then proceed to "Settings" and then "General settings", and make sure "Codebook activated" is set to "Yes".
+Once this is toggled, you will need to setup the codebook, either manually (advised) or by using the pre-filling functionality in Nettskjema.
+
+You can read more about the details around the codebook on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/kodebok.html) (only available in Norwegian).
 
 ## [Tidyverse](https://www.tidyverse.org/) compatible
 
 The data returns in this package are developed to be tidyverse-compatible.
 This means that those who are familiar with tidyverse, should find working with the data as retrieved from this package fairly easy.
-If you want to learn about the tidyverse and how to use is, there are excellent resources for that on the [Tidyverse webpage](https://www.tidyverse.org/learn/).
+If you want to learn about the tidyverse and how to use it, there are excellent resources for that on the [Tidyverse webpage](https://www.tidyverse.org/learn/).
 
 ## Download submissions
 
-Perhaps at the core of nettskjemar is the ability to download submission answers to a form into a tibble (variation of a data.frame).
+Perhaps at the core of this package is the ability to download submission answers to a form into a tibble (variation of a data.frame).
 
-```{r}
+
+``` r
 library(nettskjemar)
+formid <- 123823
 
-nettskjema_get_data(123823)
+data <- ns_get_data(formid)
+data
+#>   formid $submission_id                  $created
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00
+#>    freetext radio checkbox.questionnaires
+#> 1 some text     1                       1
+#>   checkbox.events checkbox.logs dropdown
+#> 1               1             0        4
+#>   radio_matrix.grants radio_matrix.lecture
+#> 1                   1                    2
+#>   radio_matrix.email checkbox_matrix.1.IT
+#> 1                  2                    1
+#>   checkbox_matrix.1.colleague
+#> 1                           1
+#>   checkbox_matrix.1.admin checkbox_matrix.1.union
+#> 1                       0                       0
+#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
+#> 1                          0                    0
+#>   checkbox_matrix.2.colleague
+#> 1                           0
+#>   checkbox_matrix.2.admin checkbox_matrix.2.union
+#> 1                       1                       0
+#>   checkbox_matrix.2.internet       date  time
+#> 1                          0 2023-06-01 12:00
+#>           datetime number_decimal number_integer
+#> 1 2023-06-12T13:33            4.5             77
+#>   slider attachment_1 attachment_2 $answer_time_ms
+#> 1      3    sølvi.png                        74630
+#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
-    Form 123823 has 4 responses to download.
-    # A tibble: 4 × 18
-      form_id submission_id attachment_1           attachment_2    checkbox checkbox_matrix…
-        <dbl> <chr>         <chr>                  <chr>           <chr>    <chr>           
-    1  123823 16785801      NA                     NA              1;2      1;2             
-    2  123823 16779763      -9j5dzy.jpg            amm_mowinckel_… 2        1               
-    3  123823 16509317      Screenshot 2021-01-22… NA              1        1               
-    4  123823 16508664      marius.jpeg            NA              1        1;2             
-    # … with 12 more variables: checkbox_matrix_2 <chr>, date <chr>, datetime <chr>,
-    #   dropdown <chr>, freetext <chr>, number_decimal <chr>, number_integer <chr>,
-    #   radio <chr>, radio_matrix_1 <chr>, radio_matrix_2 <chr>, slider <chr>, time <chr>
+You will notice three columns that are prefixed with `$`.
+These are columns automatically added by the Nettskjema backend to your data, and the prefix is used to denote exactly this.
 
-There are many arguments that can be set that give you control over the data extraction.
-By default, the data as set by the codebook is retrieved by `use_codebook = TRUE`, this can be set to `FALSE` which would retrieve the full-text information.
-If the codebook has not been set up, initial download will fail because there is none, and the user must toggle this themselves in the nettskjema-portal.
+If you'd like to have labelled data, similar to that of SPSS and Stata, have a look at the [vignette on labelled data](labelled_data.html) for more information about that.
 
-```{r}
-nettskjema_get_data(123823, use_codebook = FALSE)
+### Fetching Raw Data
+
+Raw answers come in a very different format than the data as seen in the codebook and preview in Nettskjema portal.
+The raw data have a timestamped format, per question for each submission.
+This means the data comes in a _tall_ format (many rows per submission) rather than a wide format (one row per submission).
+The raw data may provide those who have keen interest in the time a users spent between each question.
+The data.frame this output will have one column that indicates which question the row is for, and another which is the response to that question.
+
+
+``` r
+# Fetch raw data
+ns_get_data(formid, type = "long")
+#>   formid formId submissionId  answerId elementId
+#> 1 123823 123823     27685292 158263133   1641697
+#> 2 123823 123823     27685292 158263124   1641698
+#>   externalElementId textAnswer answerOptionIds
+#> 1          freetext  some text                
+#> 2             radio       <NA>         3879435
+#>   externalAnswerOptionIds elementType
+#> 1                            QUESTION
+#> 2                       1       RADIO
+#>           createdDate        modifiedDate
+#> 1 2023-06-01T20:57:15 2023-06-01T20:57:15
+#> 2 2023-06-01T20:57:15 2023-06-01T20:57:15
+#>   subElementId answerAttachmentId filename mediaType
+#> 1           NA                 NA     <NA>      <NA>
+#> 2           NA                 NA     <NA>      <NA>
+#>   size attachment.answerAttachmentId
+#> 1   NA                            NA
+#> 2   NA                            NA
+#>   attachment.filename attachment.mediaType
+#> 1                <NA>                 <NA>
+#> 2                <NA>                 <NA>
+#>   attachment.size
+#> 1              NA
+#> 2              NA
+#>  [ reached 'max' / getOption("max.print") -- omitted 44 rows ]
 ```
 
-    Form 123823 has 3 responses to download.
-     Error: `select()` doesn't handle lists.
-    Run `rlang::last_error()` to see where the error occurred. 
+Raw data cannot be labelled, and no other alterations have been made to the data.
+They come exactly as the API returns them, so you may do what you need with them.
 
-This specific test form includes attachments, which we know currently cannot be accessed without a codebook.
-
-### Incremental downloads
-
-#### By date
-
-If you are incrementally checking the data from your form, you don't have to download the entire catalogue at the same time.
-While in most cases, the data requests are very fast, for forms with a large number of responses, incremental downloads might be more efficient.
-
-```{r}
-nettskjema_get_data(123823, from_date = "2021-10-20")
-```
-
-    Form 123823 has 2 responses to download.
-    # A tibble: 2 × 18
-      form_id submission_id attachment_1 attachment_2          checkbox checkbox_matrix_1
-        <dbl> <chr>         <chr>        <chr>                 <chr>    <chr>            
-    1  123823 16785801      NA           NA                    1;2      1;2              
-    2  123823 16779763      -9j5dzy.jpg  amm_mowinckel_300.png 2        1                
-    # … with 12 more variables: checkbox_matrix_2 <chr>, date <chr>, datetime <chr>,
-    #   dropdown <chr>, freetext <chr>, number_decimal <chr>, number_integer <chr>,
-    #   radio <chr>, radio_matrix_1 <chr>, radio_matrix_2 <chr>, slider <chr>, time <chr>
-
-#### By submission id
-
-Another way to incrementally get data is by submission id.
-In a similar way as with `from_date`, `from_submission` allows you to specify from which submission ID on the data should be retrieved.
-
-```{r}
-nettskjema_get_data(123823, from_submission = 16779763)
-```
-
-    Form 123823 has 1 responses to download.
-    # A tibble: 1 × 16
-      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2 date       datetime
-        <dbl> <chr>         <chr>    <chr>             <chr>             <chr>      <chr>   
-    1  123823 16785801      1;2      1;2               1;2               07.10.2021 15.10.2…
-    # … with 9 more variables: dropdown <chr>, freetext <chr>, number_decimal <chr>,
-    #   number_integer <chr>, radio <chr>, radio_matrix_1 <chr>, radio_matrix_2 <chr>,
-    #   slider <chr>, time <chr>
 
 ### Controlling checkbox output
 
-The Nettskjema survey tool includes the possibility to create checkboxes, i.e. giving the respondents the ability to select several options within a question.
-How this returned as data is not clear cut.
-The default behavior of Nettskjema portal is to create one enumerated column per checkbox, with the context of the column cells being the codebook value.
-The default behavior of this package is to return the checkboxes as character strings with options selected separated by semi-colon (`;`).
+The Nettskjema survey tool includes the possibility to create a matrix of checkboxes, i.e. giving the respondents the ability to select several options within a question.
+Checkboxes are returned as binary columns, one columns per checkbox where 1 indicates that the checkbox was ticked.
 
-```{r}
-# To start inspecting the data more
+We provide some extra functionality to help work with these data. 
+Currently we only support working with the checkbox matrix questions, but are working on a solution for all checkboxes.
+
+
+``` r
+ns_get_data(formid) |>
+  ns_alter_checkbox(
+    to = "list"
+  )
+#>   $submission_id formid                  $created
+#> 1       27685292 123823 2023-06-01T20:57:15+02:00
+#> 2       27685302 123823 2023-06-01T20:58:33+02:00
+#>         freetext radio checkbox.questionnaires
+#> 1      some text     1                       1
+#> 2 another answer    -1                       0
+#>   checkbox.events checkbox.logs dropdown
+#> 1               1             0        4
+#> 2               0             1        9
+#>   radio_matrix.grants radio_matrix.lecture
+#> 1                   1                    2
+#> 2                   3                    3
+#>   radio_matrix.email       date  time
+#> 1                  2 2023-06-01 12:00
+#> 2                  1 2023-02-07 14:45
+#>           datetime number_decimal number_integer
+#> 1 2023-06-12T13:33            4.5             77
+#> 2 2024-02-15T08:55            2.2             45
+#>   slider attachment_1 attachment_2 $answer_time_ms
+#> 1      3    sølvi.png                        74630
+#> 2      1               marius.jpeg           71313
+#>   checkbox_matrix.1 checkbox_matrix.2
+#> 1     colleague, IT             admin
+#> 2          internet      admin, union
+#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
+```
+
+These can be separated into rows if wanted, using tidyverse syntax.
+
+
+``` r
+library(tidyr)
 library(dplyr)
 
-# These are the defaults, they don't need to be set
-# They are just highlighted here
-nettskjema_get_data(123823, 
-                    checkbox_type = "string", 
-                    checkbox_delim = ";") %>% 
-  # this data has all checkbox questions coded with names like "checkbox"
-  select(form_id, submission_id, starts_with("checkbox"))
+# As list column
+ns_get_data(formid) |>
+  ns_alter_checkbox(
+    to = "list"
+  ) |>
+  relocate(checkbox_matrix.1, .after = 2)
+#>   $submission_id formid checkbox_matrix.1
+#> 1       27685292 123823     colleague, IT
+#> 2       27685302 123823          internet
+#>                    $created       freetext radio
+#> 1 2023-06-01T20:57:15+02:00      some text     1
+#> 2 2023-06-01T20:58:33+02:00 another answer    -1
+#>   checkbox.questionnaires checkbox.events
+#> 1                       1               1
+#> 2                       0               0
+#>   checkbox.logs dropdown radio_matrix.grants
+#> 1             0        4                   1
+#> 2             1        9                   3
+#>   radio_matrix.lecture radio_matrix.email       date
+#> 1                    2                  2 2023-06-01
+#> 2                    3                  1 2023-02-07
+#>    time         datetime number_decimal
+#> 1 12:00 2023-06-12T13:33            4.5
+#> 2 14:45 2024-02-15T08:55            2.2
+#>   number_integer slider attachment_1 attachment_2
+#> 1             77      3    sølvi.png             
+#> 2             45      1               marius.jpeg
+#>   $answer_time_ms checkbox_matrix.2
+#> 1           74630             admin
+#> 2           71313      admin, union
+#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
 ```
 
-    Form 123823 has 4 responses to download.
-    # A tibble: 4 × 5
-      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
-        <dbl> <chr>         <chr>    <chr>             <chr>            
-    1  123823 16785801      1;2      1;2               1;2              
-    2  123823 16779763      2        1                 NA               
-    3  123823 16509317      1        1                 1                
-    4  123823 16508664      1        1;2               1    
+``` r
 
-these can be separated into rows if wanted, using tidyverse syntax.
 
-```{r}
-nettskjema_get_data(123823, 
-                    checkbox_type = "string", 
-                    checkbox_delim = ";") %>% 
-  select(form_id, submission_id, starts_with("checkbox")) %>% 
-  separate_rows(checkbox)
+# Turns list column, into rows 
+ns_get_data(formid) |>
+  ns_alter_checkbox(
+    to = "list"
+  ) |>
+  unnest(checkbox_matrix.1) |>
+  relocate(checkbox_matrix.1, .after = 2)
+#> # A tibble: 5 × 23
+#>   `$submission_id` formid checkbox_matrix.1
+#>              <int>  <dbl> <chr>            
+#> 1         27685292 123823 colleague        
+#> 2         27685292 123823 IT               
+#> 3         27685302 123823 internet         
+#> 4         27685319 123823 colleague        
+#> 5         27685319 123823 internet         
+#> # ℹ 20 more variables: `$created` <chr>,
+#> #   freetext <chr>, radio <int>,
+#> #   checkbox.questionnaires <int>,
+#> #   checkbox.events <int>, checkbox.logs <int>,
+#> #   dropdown <int>, radio_matrix.grants <int>,
+#> #   radio_matrix.lecture <int>,
+#> #   radio_matrix.email <int>, date <chr>, …
 ```
 
-    Form 123823 has 4 responses to download.
-    # A tibble: 5 × 5
-      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
-        <dbl> <chr>         <chr>    <chr>             <chr>            
-    1  123823 16785801      1        1;2               1;2              
-    2  123823 16785801      2        1;2               1;2              
-    3  123823 16779763      2        1                 NA               
-    4  123823 16509317      1        1                 1                
-    5  123823 16508664      1        1;2               1       
+If you are not used to working with list columns,
+another option is to work with delimited strings in columns.
+In this procedure, you can turn the checkboxes into a character column, where each option in separated by a character of your choosing.
 
-Another way is to request the checkbox data returned as list columns
 
-```{r}
-nettskjema_get_data(123823, 
-                    checkbox_type = "list") %>% 
-  select(form_id, submission_id, starts_with("checkbox")) 
+``` r
+# As delimited string column
+ns_get_data(formid) |>
+  ns_alter_checkbox(
+    to = "character",
+    sep = ";"
+  ) |>
+  relocate(checkbox_matrix.1, .after = 2)
+#>   $submission_id formid checkbox_matrix.1
+#> 1       27685292 123823      colleague;IT
+#> 2       27685302 123823          internet
+#>                    $created       freetext radio
+#> 1 2023-06-01T20:57:15+02:00      some text     1
+#> 2 2023-06-01T20:58:33+02:00 another answer    -1
+#>   checkbox.questionnaires checkbox.events
+#> 1                       1               1
+#> 2                       0               0
+#>   checkbox.logs dropdown radio_matrix.grants
+#> 1             0        4                   1
+#> 2             1        9                   3
+#>   radio_matrix.lecture radio_matrix.email       date
+#> 1                    2                  2 2023-06-01
+#> 2                    3                  1 2023-02-07
+#>    time         datetime number_decimal
+#> 1 12:00 2023-06-12T13:33            4.5
+#> 2 14:45 2024-02-15T08:55            2.2
+#>   number_integer slider attachment_1 attachment_2
+#> 1             77      3    sølvi.png             
+#> 2             45      1               marius.jpeg
+#>   $answer_time_ms checkbox_matrix.2
+#> 1           74630             admin
+#> 2           71313       admin;union
+#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
 ```
 
-    Form 123823 has 4 responses to download.
-    # A tibble: 4 × 5
-      form_id submission_id checkbox  checkbox_matrix_1 checkbox_matrix_2
-        <dbl> <chr>         <list>    <list>            <list>           
-    1  123823 16785801      <chr [2]> <chr [2]>         <chr [2]>        
-    2  123823 16779763      <chr [1]> <chr [1]>         <chr [1]>        
-    3  123823 16509317      <chr [1]> <chr [1]>         <chr [1]>        
-    4  123823 16508664      <chr [1]> <chr [2]>         <chr [1]>       
-
-Similar type action for list columns as for string with `separate_rows` is to `unnest` the list column.
-
-```{r}
-nettskjema_get_data(123823, 
-                    checkbox_type = "list") %>% 
-  select(form_id, submission_id, starts_with("checkbox")) %>% 
-  unnest(checkbox)
+``` r
+  
+# Turns string column, into rows 
+ns_get_data(formid) |>
+  ns_alter_checkbox(
+    to = "character",
+    sep = ";"
+  ) |>
+  relocate(checkbox_matrix.1, .after = 2) |>
+  separate_rows(checkbox_matrix.1)
+#> # A tibble: 5 × 23
+#>   `$submission_id` formid checkbox_matrix.1
+#>              <int>  <dbl> <chr>            
+#> 1         27685292 123823 colleague        
+#> 2         27685292 123823 IT               
+#> 3         27685302 123823 internet         
+#> 4         27685319 123823 colleague        
+#> 5         27685319 123823 internet         
+#> # ℹ 20 more variables: `$created` <chr>,
+#> #   freetext <chr>, radio <int>,
+#> #   checkbox.questionnaires <int>,
+#> #   checkbox.events <int>, checkbox.logs <int>,
+#> #   dropdown <int>, radio_matrix.grants <int>,
+#> #   radio_matrix.lecture <int>,
+#> #   radio_matrix.email <int>, date <chr>, …
 ```
 
-    Form 123823 has 4 responses to download.
-    # A tibble: 5 × 5
-      form_id submission_id checkbox checkbox_matrix_1 checkbox_matrix_2
-        <dbl> <chr>         <chr>    <list>            <list>           
-    1  123823 16785801      1        <chr [2]>         <chr [2]>        
-    2  123823 16785801      2        <chr [2]>         <chr [2]>        
-    3  123823 16779763      2        <chr [1]>         <chr [1]>        
-    4  123823 16509317      1        <chr [1]>         <chr [1]>        
-    5  123823 16508664      1        <chr [2]>         <chr [1]>         
-
-The last option is to return the data where each checkbox is a column, with a binary indicator showing if the option was selected (`1`) or not (`0`).
-
-```{r}
-nettskjema_get_data(123823, 
-                    checkbox_type = "columns") %>% 
-  select(form_id, submission_id, starts_with("checkbox"))
-```
-
-    Form 123823 has 4 responses to download.
-    # A tibble: 4 × 8
-      form_id submission_id checkbox_1 checkbox_2 checkbox_matrix_1_1 checkbox_matrix_1_2
-        <dbl> <chr>              <int>      <int>               <int>               <int>
-    1  123823 16785801               1          1                   1                   1
-    2  123823 16779763               0          1                   1                   0
-    3  123823 16509317               1          0                   1                   0
-    4  123823 16508664               1          0                   1                   1
-    # … with 2 more variables: checkbox_matrix_2_1 <int>, checkbox_matrix_2_2 <int>    
-
-There is a gotcha with this last option.
-Currently, there is no way to indicate values that should actually be `NA`, i.e. if the question is optional there is no way to know if lack of selection means the item was explicitly not selected or someone just skipped the question.
-
-
-## Getting an overview of responses
-
-If you want a quick idea of what your data contains, we recommend using the `skim()` function from the {skimr} package.
-
-```{r}
-dt <- nettskjema_get_data(123823)
-skimr::skim(dt)
-```
-```
-── Data Summary ────────────────────────
-                           Values
-Name                       dt    
-Number of rows             4     
-Number of columns          18    
-_______________________          
-Column type frequency:           
-  character                17    
-  numeric                  1     
-________________________         
-Group variables            None  
-
-── Variable type: character ─────────────────────────────────────────────────────────────
-   skim_variable     n_missing complete_rate   min   max empty n_unique whitespace
- 1 submission_id             0          1        8     8     0        4          0
- 2 attachment_1              1          0.75    11    37     0        3          0
- 3 attachment_2              3          0.25    21    21     0        1          0
- 4 checkbox                  0          1        1     3     0        3          0
- 5 checkbox_matrix_1         0          1        1     3     0        2          0
- 6 checkbox_matrix_2         1          0.75     1     3     0        2          0
- 7 date                      1          0.75    10    10     0        2          0
- 8 datetime                  1          0.75    16    16     0        2          0
- 9 dropdown                  0          1        1     1     0        2          0
-10 freetext                  0          1        3     9     0        4          0
-11 number_decimal            1          0.75     3     5     0        2          0
-12 number_integer            1          0.75     1     2     0        3          0
-13 radio                     0          1        1     1     0        2          0
-14 radio_matrix_1            0          1        1     1     0        2          0
-15 radio_matrix_2            0          1        1     1     0        2          0
-16 slider                    1          0.75     1     1     0        3          0
-17 time                      1          0.75     5     5     0        1          0
-
-── Variable type: numeric ───────────────────────────────────────────────────────────────
-  skim_variable n_missing complete_rate   mean    sd     p0    p25    p50    p75   p100
-1 form_id               0             1 123823     0 123823 123823 123823 123823 123823
-  hist 
-1 ▁▁▇▁▁
-```
-
-If you want a quick idea of data types and missing values, the `vis_dat()` function from the {visdat} package is a great graphical tool.
-
-```{r}
-visdat::vis_dat(dt)
-```
-```{r eval = TRUE, echo = FALSE, out.width="100%", fig.alt="Image of the data where observations are on y, and clumns on x. This is a tile plot, where colours of the tiles corresponds to data types. In this plot, grey is NA, red is character of blue is integer."}
-knitr::include_graphics("static/vis_dat.png")
-```
 

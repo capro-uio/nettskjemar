@@ -1,0 +1,72 @@
+---
+title: "Handling Submissions with the Nettskjema API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Handling Submissions with the Nettskjema API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  error = FALSE,
+  fig.path="static"
+)
+```
+
+# Overview
+
+This vignette demonstrates how to handle form submissions and answers using the Nettskjema API.
+Specifically, you will learn how to:
+1. Get an individual submission answer.
+1. Download an individual submission as a PDF.
+
+# Getting an Individual Submission Answer: `ns_get_submission`
+
+The `ns_get_submission` function fetches a single submission's answers based on a **submission ID**.
+
+## Example: Fetch an Individual Submission
+
+To retrieve an individual submission, use the **submission ID** (a unique identifier for each submission).
+
+```r
+# Replace with your submission ID
+submission_id <- 27685292
+
+# Get the submission data
+submission <- ns_get_submission(submission_id)
+
+# Display the submission data
+submission
+```
+
+This function returns a list containing all answers for the specified submission.
+
+
+# Downloading a Submission as a PDF: `ns_get_submission_pdf`
+
+The `ns_get_submission_pdf` function downloads a single submission as a PDF file.
+By default, the PDF is named using the submission ID and saved in the current working directory.
+
+## Example: Download Submission PDF
+
+Here is how you can download a single submission as a PDF:
+
+```r
+# Download the submission as a PDF
+ns_get_submission_pdf(submission_id)
+```
+
+### Saving to a Custom Path
+
+To save the PDF to a specific location, specify the `path` argument:
+
+```r
+# Custom location for saving the PDF
+custom_path <- "~/Desktop/my_submission.pdf"
+
+# Download and save to the custom path
+ns_get_submission_pdf(submission_id, path = custom_path)
+```

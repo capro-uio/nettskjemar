@@ -1,0 +1,107 @@
+---
+title: "Authentication Setup for Nettskjema API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Authentication Setup for Nettskjema API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+This vignette explains how to set up authentication with the Nettskjema API using the `ns_req` and `ns_auth_token` functions provided in the package.
+Authentication is required to connect to the API endpoints and perform operations.
+
+## Setting Up Authentication
+
+## Setting up a client
+
+Before using the functions, you need the following:
+1. **A registered API client** in Nettskjema.
+2. **Your client credentials** (client ID and client secret). These are provided when you register the client.
+
+To register a client go to the [nettskjema API page](https://authorization.nettskjema.no/) or use the `ns_create_client()` function to open the url.
+Here you will be asked to log in with your user account, so you can create the client.
+
+
+### Add Credentials to Your `.Renviron` File
+
+To prevent hardcoding your credentials in your scripts, add the following entries to your `.Renviron` file. 
+The `.Renviron` file is a hidden file in your home directory that R reads on startup.
+
+1. Open your `.Renviron` file. You can create or edit it with:
+
+```r
+file.edit(fs::path_home(".Renviron"))
+```
+
+2. Add your credentials:
+
+```
+NETTSKJEMA_CLIENT_ID=your_client_id
+NETTSKJEMA_CLIENT_SECRET=your_client_secret
+```
+
+Replace `your_client_id` and `your_client_secret` with the actual values you received from Nettskjema.
+
+3. Save and close the file.
+
+4. Restart your R session to the load changes.
+
+### Retrieve the Access Token
+
+Use the `ns_auth_token` function to retrieve your access token. 
+This function exchanges your client credentials for a valid token. The token is cached by default for efficiency.
+
+
+``` r
+library(nettskjemar)
+
+# Try getting your user information
+ns_get_me()
+#> $isPersonalDataResponsible
+#> [1] FALSE
+#> 
+#> $displayName
+#> [1] "athanasm@uio.no"
+#> 
+#> $logoutLink
+#> [1] "/signout"
+#> 
+#> $isSuperUser
+#> [1] FALSE
+#> 
+#> $isAuthenticated
+#> [1] TRUE
+#> 
+#> $userType
+#> [1] "FEIDE_USER"
+#> 
+#> $hasAcceptedTos
+#> [1] TRUE
+#> 
+#> $isSupportUser
+#> [1] FALSE
+#> 
+#> $isAdministrativeUser
+#> [1] TRUE
+#> 
+#> $isInLdapGroupUioTils
+#> [1] TRUE
+```
+
+If this returns a list of objects, you have successfully retrieved a token from Nettskjema and can use the remaining functions in the package.
+
+By default, the token is stored in your home directory as `.nettskjema_token.rds` with a 24-hour validity period (max validity of a token).
+The token is automatically refreshed after the 24--hour period is over, and you as a user should not even notice that this happens.
+
+You can configure the caching path using the `cache_path` argument of the function, if you are comfortable doing that.
+
+## Troubleshooting
+
+1. **Invalid Credentials**: Ensure your client ID and client secret are correct and have been properly registered in Nettskjema.
+2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token.
+3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session.
+
+## More information
+You can find more information about the Nettskjema v3 API on the [official UiO documentation pages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md).

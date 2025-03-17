@@ -1,0 +1,321 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=Yjg2YmUzNTgtNjUxNS00MmM3LTk0NmYtODJiYmU4NTJmNGE1; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI0ODJlOTgyNy1jZTQzLTQyMjktYTdiNC02M2ZlMjNkNjE4NjYiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.nfbOP5to8KfKUFfR9W5xRHsSBlhLt7laQCu5I-9eUmWMrAyrz8Wn-0jpq17dfyep9MnpBWpizGmcAGpmrJII7VSXWsOG-NsqV8gH5CRDyRzsnHE5C3gL8eSI0eKG6zeKA5AueUGH7Fa-KYikexEw3MXPfl6Y9R3FlTnzI7C1MS806o58v62ABLu6CY4YuPnsrX5yVANLx8_rlQ5wwg-874hHf32W2A43s2qXTVsHuiFZo1GqNXlY0ud8W_iU9eygcUG2NrAUNNbGGJnBAaKRyk-6iZSGAy8BeD63Y3N1Z18fcKe8-2kTQsfXDFjqL4WlTe_jOIog49buIbMzbpKHxtK4sUzHARpDZE2tmiOL6Rr46Nhuh-lPToutpoRY5vky2h7RFYZmwsEmujTeK0XA5ASEXxNSmh79pD2N5x1PdXMqfVebbw1N-XVqqgvXM3XdLkuNfJtspzp7n0X_yK0_wthrm2IFr3UqMDz_aWhceKngAgR7U89cnUFdUyMz4fWM","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://api.nettskjema.no/v3/form/123823/csv-report
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI0ODJlOTgyNy1jZTQzLTQyMjktYTdiNC02M2ZlMjNkNjE4NjYiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.nfbOP5to8KfKUFfR9W5xRHsSBlhLt7laQCu5I-9eUmWMrAyrz8Wn-0jpq17dfyep9MnpBWpizGmcAGpmrJII7VSXWsOG-NsqV8gH5CRDyRzsnHE5C3gL8eSI0eKG6zeKA5AueUGH7Fa-KYikexEw3MXPfl6Y9R3FlTnzI7C1MS806o58v62ABLu6CY4YuPnsrX5yVANLx8_rlQ5wwg-874hHf32W2A43s2qXTVsHuiFZo1GqNXlY0ud8W_iU9eygcUG2NrAUNNbGGJnBAaKRyk-6iZSGAy8BeD63Y3N1Z18fcKe8-2kTQsfXDFjqL4WlTe_jOIog49buIbMzbpKHxtK4sUzHARpDZE2tmiOL6Rr46Nhuh-lPToutpoRY5vky2h7RFYZmwsEmujTeK0XA5ASEXxNSmh79pD2N5x1PdXMqfVebbw1N-XVqqgvXM3XdLkuNfJtspzp7n0X_yK0_wthrm2IFr3UqMDz_aWhceKngAgR7U89cnUFdUyMz4fWM
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      content-type: text/plain
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      set-cookie: JSESSIONID=2D51F682D006508BE8440481BCFC4C5B; Path=/v3; Secure; HttpOnly;
+        SameSite=Lax
+      content-disposition: attachment; filename="data-123823-2025-03-12-1632.txt"
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      encoding: ''
+      file: no
+      string: |
+        "$submission_id";"$created";"freetext";"radio";"checkbox.questionnaires";"checkbox.events";"checkbox.logs";"dropdown";"radio_matrix.1";"radio_matrix.2";"radio_matrix.3";"checkbox_matrix.1.IT";"checkbox_matrix.1.colleague";"checkbox_matrix.1.admin";"checkbox_matrix.1.union";"checkbox_matrix.1.internet";"checkbox_matrix.2.IT";"checkbox_matrix.2.colleague";"checkbox_matrix.2.admin";"checkbox_matrix.2.union";"checkbox_matrix.2.internet";"date";"time";"datetime";"number_decimal";"number_integer";"slider";"attachment_1";"attachment_2";"$answer_time_ms"
+        "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77";"3";"sølvi.png";"";"74630"
+        "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45";"1";"";"marius.jpeg";"71313"
+        "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10";"98";"9";"";"";"70230"
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=YWM5MWQzZDktMGQ1Yi00MjQ4LWE1NTUtN2ZjNmZkYmVlMzE0; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI2NWI3ZDcxMC1hMjBjLTRhZTQtODM3ZS02NWFhYzFjYWJlOWMiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.eH4lNe3lthMPrD39-EE3F_Xc648IHaRKorOjB1IVwbNimbeEyURP2cxh7QLppR7zrHHDeOtBT7hpThHXEIpz3vM_wCwmgcKWqXVZgcbBOXFHVubqKhEYtqxH8aO1vg0KolvHix9LTOPMuNM2caTtaKljzrcbKfcCBYgG7uwxOzKojTLFmpIr88dxlK_fKe7n52BJbro3V88s3VuUWN9rhjpyhom_g0WvvNGODsGFeuZPbP8JxrdHVrPmvW4lJ2oCViA6tT1mQYjCC0ojhb6E52eSxcl9w8dX7tHJqJkFW1wRbb2r40UjFrxgRIaSieHFF__mc1zyK0OUM1ITO4cEH6xAIu0uLZg1s-Xp6Tr_wmbR_ellQVQEXivHAtHygDy8yiSMqiQ2owlxZen9AodikrPrLTfxC40c0wG6CCaNtEX6DVtkyfayArr1hZ1fKWFk3O_Hv5EpjDUcS8S3a1-IdgT4t-_3JVuH2Di2jxurq_vK7cuEH0-TIVJVKD9sxzgg","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://api.nettskjema.no/v3/form/123823/info
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI2NWI3ZDcxMC1hMjBjLTRhZTQtODM3ZS02NWFhYzFjYWJlOWMiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.eH4lNe3lthMPrD39-EE3F_Xc648IHaRKorOjB1IVwbNimbeEyURP2cxh7QLppR7zrHHDeOtBT7hpThHXEIpz3vM_wCwmgcKWqXVZgcbBOXFHVubqKhEYtqxH8aO1vg0KolvHix9LTOPMuNM2caTtaKljzrcbKfcCBYgG7uwxOzKojTLFmpIr88dxlK_fKe7n52BJbro3V88s3VuUWN9rhjpyhom_g0WvvNGODsGFeuZPbP8JxrdHVrPmvW4lJ2oCViA6tT1mQYjCC0ojhb6E52eSxcl9w8dX7tHJqJkFW1wRbb2r40UjFrxgRIaSieHFF__mc1zyK0OUM1ITO4cEH6xAIu0uLZg1s-Xp6Tr_wmbR_ellQVQEXivHAtHygDy8yiSMqiQ2owlxZen9AodikrPrLTfxC40c0wG6CCaNtEX6DVtkyfayArr1hZ1fKWFk3O_Hv5EpjDUcS8S3a1-IdgT4t-_3JVuH2Di2jxurq_vK7cuEH0-TIVJVKD9sxzgg
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
+      set-cookie: JSESSIONID=0A96722A4E936CAC4605FF02AC8E71A8; Path=/v3; Secure; HttpOnly;
+        SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-frame-options: DENY
+      referrer-policy: same-origin
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+    body:
+      encoding: ''
+      file: no
+      string: '{"title":"API test form","canEditForm":true,"isCodebookValid":true,"hasSubmissions":true,"modifiedDate":"2025-03-10T21:08:26","modifiedBy":{"personId":58096,"username":"athanasm@uio.no","name":"Athanasia
+        Monika Mowinckel","email":"athanasm@uio.no","type":"LOCAL"},"isOpen":false,"deliveryDestination":"DATABASE","projectName":null,"numberOfPostponedSubmissions":0,"numberOfSubmissions":3,"numberOfInvitations":0,"editorsContactEmail":"a.m.mowinckel@psykologi.uio.no","editorsContactUrl":null,"lastSubmissionDate":"2023-06-01T20:59:50","markedForDeletionDate":null,"deleteDate":null}'
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=ZjIzYzg0ZmMtZmI4YS00ZjY4LWJkNGQtMDQwMTY4YTBkMjkz; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJkMjQyODJiOC1hZjFmLTRiNGEtYmZkNC0zZWNkMDliMDRmMzgiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.D4_qdIc44ML6QrgggNpu3lSgbtPRvnSnKnNEyAqQYohcfnuBA6KjSVY8T9ReYyfvv_CfBJ1sl6I2ykhT5MBgELeNfwvRd_dUMovMIWaTaoZjR1M7X1DNrVkRinxi-ieU1P9UJVH354xgM57tUyiXYeusQXYWn0gWZ6_tnIS1kMCn25Vru5slrUmL2NO8OgEMlf8GsHV6bKOtKVMJ8j-w8fcaJ2nVN6sqvifEANCuwxO1dS8Ftr-rcLueyxuK7QSRwyFt3NpeYYiW0uYeXjXGyTINbJlWp5Kdq2sChTAynlIdRQZpqaYAAGXTHFpL81BgZj9O2VE7TWQG23vYJ6_4ugzC51ICxWA63iA0_8ORMZNyhXt7BFCGvLZjDOLyMggAhjtJl6RQBACFHVASiR19iaNHrxG6U2gV3Otrhret4q1QWrCfUSIDZ6ZM87AswGrivhJWNE1qWLe-zOj8RhzyHgWmkXFQe_93qP-5DJ57ZaYSX9cOt3AmcMNO6PEpJaFz","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://api.nettskjema.no/v3/form/123823/elements
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MSwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUxLCJpYXQiOjE3NDE3OTM1NTEsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJkMjQyODJiOC1hZjFmLTRiNGEtYmZkNC0zZWNkMDliMDRmMzgiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.D4_qdIc44ML6QrgggNpu3lSgbtPRvnSnKnNEyAqQYohcfnuBA6KjSVY8T9ReYyfvv_CfBJ1sl6I2ykhT5MBgELeNfwvRd_dUMovMIWaTaoZjR1M7X1DNrVkRinxi-ieU1P9UJVH354xgM57tUyiXYeusQXYWn0gWZ6_tnIS1kMCn25Vru5slrUmL2NO8OgEMlf8GsHV6bKOtKVMJ8j-w8fcaJ2nVN6sqvifEANCuwxO1dS8Ftr-rcLueyxuK7QSRwyFt3NpeYYiW0uYeXjXGyTINbJlWp5Kdq2sChTAynlIdRQZpqaYAAGXTHFpL81BgZj9O2VE7TWQG23vYJ6_4ugzC51ICxWA63iA0_8ORMZNyhXt7BFCGvLZjDOLyMggAhjtJl6RQBACFHVASiR19iaNHrxG6U2gV3Otrhret4q1QWrCfUSIDZ6ZM87AswGrivhJWNE1qWLe-zOj8RhzyHgWmkXFQe_93qP-5DJ57ZaYSX9cOt3AmcMNO6PEpJaFz
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Wed, 12 Mar 2025 15:32:31 GMT
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
+      set-cookie: JSESSIONID=989810C293B87D23D3A9F929FB9BFDEF; Path=/v3; Secure; HttpOnly;
+        SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-frame-options: DENY
+      referrer-policy: same-origin
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+    body:
+      encoding: ''
+      file: no
+      string: '[{"elementId":1641694,"questionId":null,"text":"Let talk about Nettskjema!
+        This is a subheading!","description":null,"elementType":"HEADING","dateFormat":null,"sequence":1,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":null,"minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641695,"questionId":null,"text":null,"description":"<p>This
+        is some text in the form, not a question but a descriptive text.</p>\n\n<p> </p>\n","elementType":"TEXT","dateFormat":null,"sequence":2,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":null,"minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641696,"questionId":null,"text":null,"description":null,"elementType":"IMAGE","dateFormat":null,"sequence":3,"maxSelectedAnswerOptions":null,"imageUrl":"http://svalbardflora.no/graphics/logos/uio.gif","altText":"This
+        is the UiO seal as an image","linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":null,"minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":null,"questionId":null,"text":null,"description":null,"elementType":"PAGE_BREAK","dateFormat":null,"sequence":null,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":null,"minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641697,"questionId":1649730,"text":"This
+        is a question about something super important, where the user can input free
+        text.","description":"<p>With a description field giving details on what should
+        be answered.</p>\n\n<p> </p>\n","elementType":"QUESTION","dateFormat":null,"sequence":1,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"freetext","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641698,"questionId":1649731,"text":"How
+        happy are we with Nettskjema?","description":"<p>This is a question with radio
+        buttons.</p>\n\n<p> </p>\n","elementType":"RADIO","dateFormat":null,"sequence":2,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"radio","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[{"answerOptionId":3879435,"sequence":1,"text":"Very
+        happy!","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"1","image":null,"imageUrl":null,"altText":null,"externalElementId":"radio","textOrAltText":"Very
+        happy!"},{"answerOptionId":3879436,"sequence":2,"text":"Very unhappy!","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"-1","image":null,"imageUrl":null,"altText":null,"externalElementId":"radio","textOrAltText":"Very
+        unhappy!"}],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641699,"questionId":1649732,"text":"What
+        do we use it for?","description":"<p>This is a checkbox question, where respondents
+        can choose several options.</p>\n","elementType":"CHECKBOX","dateFormat":null,"sequence":3,"maxSelectedAnswerOptions":0,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":true,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"checkbox","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[{"answerOptionId":3879437,"sequence":1,"text":"Questionnaires","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"questionnaires","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Questionnaires"},{"answerOptionId":3879438,"sequence":2,"text":"Event
+        sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
+        sign-ups"},{"answerOptionId":13309366,"sequence":3,"text":"Data logging","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"logs","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Data
+        logging"}],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641700,"questionId":1649733,"text":"Who
+        is responsible with Nettskjema?","description":"<p>This is a dropdown list</p>\n\n<p> </p>\n","elementType":"SELECT","dateFormat":null,"sequence":4,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"dropdown","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[{"answerOptionId":3879439,"sequence":1,"text":"UiO","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"4","image":null,"imageUrl":null,"altText":null,"externalElementId":"dropdown","textOrAltText":"UiO"},{"answerOptionId":3879440,"sequence":2,"text":"OsloMet","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"9","image":null,"imageUrl":null,"altText":null,"externalElementId":"dropdown","textOrAltText":"OsloMet"}],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641701,"questionId":null,"text":"In
+        the last month I have","description":null,"elementType":"MATRIX_RADIO","dateFormat":null,"sequence":5,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"radio_matrix","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[{"answerOptionId":3879441,"sequence":1,"text":"yes","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"1","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"yes"},{"answerOptionId":3879442,"sequence":2,"text":"no","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"2","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"no"},{"answerOptionId":13309369,"sequence":3,"text":"not
+        applicable","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"3","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"not
+        applicable"}],"answerOptionsVisibilityFilter":[],"subElements":[{"subElementId":1649734,"questionId":1649734,"sequence":1,"description":null,"text":"written
+        some grant applications","isMandatory":false,"externalElementId":"1","sendAdditionalRecipientEmail":false},{"subElementId":1649735,"questionId":1649735,"sequence":2,"description":null,"text":"held
+        a lecture","isMandatory":false,"externalElementId":"2","sendAdditionalRecipientEmail":false},{"subElementId":5973024,"questionId":5973024,"sequence":3,"description":null,"text":"sent
+        some e-mails","isMandatory":false,"externalElementId":"3","sendAdditionalRecipientEmail":false}],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641702,"questionId":null,"text":"In
+        the last year, I have","description":null,"elementType":"MATRIX_CHECKBOX","dateFormat":null,"sequence":6,"maxSelectedAnswerOptions":0,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"checkbox_matrix","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[{"answerOptionId":3879443,"sequence":1,"text":"IT","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"IT","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"IT"},{"answerOptionId":3879444,"sequence":2,"text":"A
+        colleague","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"colleague","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"A
+        colleague"},{"answerOptionId":13309370,"sequence":3,"text":"Administration","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"admin","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"Administration"},{"answerOptionId":13309371,"sequence":4,"text":"Union","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"union","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"Union"},{"answerOptionId":13309372,"sequence":5,"text":"Internet","redirectToForm":null,"isPreselected":false,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"internet","image":null,"imageUrl":null,"altText":null,"externalElementId":null,"textOrAltText":"Internet"}],"answerOptionsVisibilityFilter":[],"subElements":[{"subElementId":1649736,"questionId":1649736,"sequence":1,"description":null,"text":"sought
+        help from","isMandatory":false,"externalElementId":"1","sendAdditionalRecipientEmail":false},{"subElementId":1649737,"questionId":1649737,"sequence":2,"description":null,"text":"received
+        e-mails from","isMandatory":false,"externalElementId":"2","sendAdditionalRecipientEmail":false}],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641703,"questionId":1649738,"text":"Choose
+        a random date","description":"<p>Choose whatever date you want!</p>\n","elementType":"DATE","dateFormat":"DATE","sequence":7,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"date","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641704,"questionId":1649739,"text":"now
+        choose a random time!","description":"<p> </p>\n\n<p> </p>\n","elementType":"DATE","dateFormat":"TIME","sequence":8,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"time","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641705,"questionId":1649740,"text":"Lastly
+        choose a date AND time!","description":"<p> </p>\n\n<p> </p>\n","elementType":"DATE","dateFormat":"DATE_TIME","sequence":9,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"datetime","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641706,"questionId":1649741,"text":"Pick
+        a number between 0 and 10!","description":"<p>with description</p>\n\n<p></p>\n","elementType":"NUMBER","dateFormat":null,"sequence":10,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"number_decimal","minimumValue":0,"maximumValue":10,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641707,"questionId":1649742,"text":"Choose
+        an integer between 0 and 100","description":"<p>as an integer</p>\n\n<p></p>\n","elementType":"NUMBER","dateFormat":null,"sequence":11,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"number_integer","minimumValue":0,"maximumValue":100,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":0,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3472259,"questionId":3725941,"text":"Choose
+        a point on the slider!","description":null,"elementType":"LINEAR_SCALE","dateFormat":null,"sequence":12,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":"ALL","nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":true,"isRangeMarksShown":true,"externalElementId":"slider","minimumValue":0,"maximumValue":10,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641713,"questionId":1649745,"text":"Upload
+        a fun image!","description":"<p> </p>\n\n<p> </p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":13,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_1","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[{"answerOptionId":3879437,"sequence":1,"text":"Questionnaires","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"questionnaires","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Questionnaires"},{"answerOptionId":3879438,"sequence":2,"text":"Event
+        sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
+        sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
+        is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
+  recorded_at: 2025-03-12 15:32:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
