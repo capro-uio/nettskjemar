@@ -1,0 +1,49 @@
+template:
+  bootstrap: 5
+  bootswatch: darkly
+  bslib:
+    primary: "#CC4C4C"
+    link-color: "#85bfbf"
+    code-bg: "#2A2F36"
+navbar:
+  bg: dark
+
+reference:
+- title: "Retrieveing data and working with data"
+  desc: >
+    Functions for retrieving answers to forms
+  contents: 
+  - ns_get_data
+  - ns_get_submission
+  - ns_alter_checkbox
+  - ns_add_labels
+- title: "Working with the codebooks"
+  desc: "Functions for retrieveing and writing codebook information"
+  contents:
+  - contains("codebook")
+- title: "Finding all meta-data"
+  desc: "Functions for retrieveing and writing all meta-data associated with a form"
+  contents:
+  - contains("meta")
+- title: "Inspecting accessible forms"
+  desc: "Functions for finding forms you have access to"
+  contents:
+  - contains("form")
+- title: "Attachments"
+  desc: "Functions for listing and downloading uploaded attachments"
+  contents:
+  - contains("attachment")
+- title: "User verification and inspection"
+  desc: "Functions for authenticating and inspecting the user"
+  contents:
+  - ns_auth_token
+  - ns_get_me
+- title: "Open online urls"
+  desc: "Functions for easy opening of relevant URLs"
+  contents:
+  - ns_api_docs
+  - ns_create_client
+- title: "Base request function"
+  desc: "Function for creating custom resuests towards the API, used with httr2."
+  contents:
+  - ns_req

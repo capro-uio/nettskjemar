@@ -4,7 +4,6 @@
 #' @return list of all answers
 #' @export
 #' @examples
-#' # example code
 #' \dontrun{
 #' ns_get_submission(1100)
 #' }
@@ -24,8 +23,8 @@ ns_get_submission <- function(submission_id) {
 #' @template submission_id
 #' @template path
 #' @return nothing, writes file to path
+#' @noRd
 #' @examples
-#' # example code
 #' \dontrun{
 #' ns_get_submission_pdf(1100)
 #' ns_get_submission_pdf(1100, "~/Desktop/1100.pdf")

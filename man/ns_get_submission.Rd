@@ -16,7 +16,6 @@ list of all answers
 Get an individual submission answer
 }
 \examples{
-# example code
 \dontrun{
 ns_get_submission(1100)
 }
