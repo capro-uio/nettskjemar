@@ -16,7 +16,6 @@ This vignette demonstrates how to use functions to:
 1. Retrieve metadata for a specific form.
 2. Save metadata to a file for safe keeping.
 
----
 ## Prerequisites
 
 Before executing any function, ensure you are authenticated.

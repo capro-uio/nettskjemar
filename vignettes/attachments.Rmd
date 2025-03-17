@@ -27,14 +27,12 @@ library(nettskjemar)
 # Example: List attachments for a specific submission
 submission_id <- 27685292
 ns_list_submission_attachments(submission_id)
-#>   submissionId  answerId elementId
-#> 1     27685292 158263134   1641713
-#>   externalElementId textAnswer answerAttachmentId
-#> 1      attachment_1  sølvi.png             538819
-#>    filename mediaType   size elementType
-#> 1 sølvi.png image/png 628613  ATTACHMENT
-#>   attachment.answerAttachmentId
-#> 1                        538819
+#>   submissionId  answerId elementId externalElementId
+#> 1     27685292 158263134   1641713      attachment_1
+#>   textAnswer answerAttachmentId  filename mediaType
+#> 1  sølvi.png             538819 sølvi.png image/png
+#>     size elementType attachment.answerAttachmentId
+#> 1 628613  ATTACHMENT                        538819
 #>   attachment.filename attachment.mediaType
 #> 1           sølvi.png            image/png
 #>   attachment.size counter

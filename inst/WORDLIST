@@ -33,7 +33,7 @@ httr
 json
 jsonlite
 labelled
-ndata
+data
 nettskjema
 ns
 pre
@@ -52,3 +52,4 @@ formid
 ORCID
 Trym
 Codecov
+unlabelled

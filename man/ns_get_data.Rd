@@ -12,13 +12,10 @@ ns_get_submissions(form_id, type = NULL)
 \arguments{
 \item{form_id}{integer. Number of the form to retrieve}
 
-\item{type}{Character or NULL. One of either "original",
-"labelled" or "long". If NULL, will return "labelled" data
-if the form has the codebook set up, else will return
-"original."}
+\item{type}{Character or NULL. One of either "original" or "long".}
 }
 \value{
-tibble data.frame
+data.frame
 }
 \description{
 This function connects to a specific form and fetches all answers.
@@ -28,9 +25,6 @@ The responses are placed in a data.frame for easy use.
 \describe{
  \item{"original"}{ - Returns data in the same tabular format
      as delivered by Nettskjema.}
-\item{"labelled"}{ - Returns labelled data, where the
-     codebook is minimally integrated into the data,
-     similar to SPSS or Stata.}
 \item{"long"}{ - Returns the data in tall format, where
      there are multiple rows per participant (one per question)
      and each choice is timestamped.}

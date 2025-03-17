@@ -24,7 +24,6 @@ ns_get_submission <- function(submission_id) {
 #' @template submission_id
 #' @template path
 #' @return nothing, writes file to path
-#' @export
 #' @examples
 #' # example code
 #' \dontrun{

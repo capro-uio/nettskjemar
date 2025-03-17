@@ -1,42 +1,40 @@
-Package: nettskjemar
 Type: Package
+Package: nettskjemar
 Title: Connect to the 'nettskjema.no' API of the University of Oslo
 Version: 0.1.5
 Authors@R: c(
-            person("Athanasia Mo", "Mowinckel", 
-                    email = "a.m.mowinckel@psykologi.uio.no", 
-                    role = c("aut", "cre"),
-                    comment = c(ORCID = "0000-0002-5756-0223")),
-            person("Trym Nohr", "Fjørtoft", 
-                    email = "t.n.fjortoft@arena.uio.no",
-                    role = c("ctb"),
-                    comment = c(ORCID = "0000-0002-7654-4587"))
-            )
-Description: Enables users to retrieve data, meta-data, and codebooks 
-    from <https://nettskjema.no/>. The data from the API is richer than from the
-    online data portal. Mowinckel (2021) <doi:10.5281/zenodo.4745481>.
+    person("Athanasia Mo", "Mowinckel", , "a.m.mowinckel@psykologi.uio.no", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5756-0223")),
+    person("Trym Nohr", "Fjørtoft", , "t.n.fjortoft@arena.uio.no", role = "ctb",
+           comment = c(ORCID = "0000-0002-7654-4587"))
+  )
+Description: Enables users to retrieve data, meta-data, and codebooks from
+    <https://nettskjema.no/>. The data from the API is richer than from
+    the online data portal. Mowinckel (2021) <doi:10.5281/zenodo.4745481>.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Depends: R (>= 4.1.0)
+URL: https://github.com/CAPRO-UiO/nettskjemar,
+    https://zenodo.org/badge/latestdoi/206264675,
+    https://github.com/capro-uio/nettskjemar
+BugReports: https://github.com/capro-uio/nettskjemar/issues
+Depends: 
+    R (>= 4.1.0)
 Imports: 
     cli,
     fs,
     httr2,
     jsonlite
 Suggests: 
-    knitr,
-    labelled,
-    janitor,
-    rmarkdown,
-    usethis,
-    skimr,
-    visdat,
-    testthat (>= 2.1.0),
     covr,
+    janitor,
+    knitr,
+    haven,
+    rmarkdown,
     spelling,
+    testthat (>= 2.1.0),
+    usethis,
     vcr (>= 0.6.0)
-RoxygenNote: 7.3.2
-URL: https://github.com/CAPRO-UiO/nettskjemar, https://zenodo.org/badge/latestdoi/206264675, https://github.com/capro-uio/nettskjemar
-BugReports: https://github.com/capro-uio/nettskjemar/issues
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
 Language: en-US
+RoxygenNote: 7.3.2

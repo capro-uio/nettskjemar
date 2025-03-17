@@ -6,21 +6,15 @@
 #' \describe{
 #'  \item{"original"}{ - Returns data in the same tabular format
 #'      as delivered by Nettskjema.}
-#' \item{"labelled"}{ - Returns labelled data, where the
-#'      codebook is minimally integrated into the data,
-#'      similar to SPSS or Stata.}
 #' \item{"long"}{ - Returns the data in tall format, where
 #'      there are multiple rows per participant (one per question)
 #'      and each choice is timestamped.}
 #' }
 #'
 #' @template form_id
-#' @param type Character or NULL. One of either "original",
-#'      "labelled" or "long". If NULL, will return "labelled" data
-#'      if the form has the codebook set up, else will return
-#'      "original."
+#' @param type Character or NULL. One of either "original" or "long".
 #'
-#' @return tibble data.frame
+#' @return data.frame
 #' @export
 #' @examples
 #' \dontrun{
@@ -33,14 +27,7 @@ ns_get_data <- function(
   form_id,
   type = NULL
 ) {
-  type <- match.arg(type, c("original", "labelled", "long"))
-  if (is.null(type)) {
-    type <- ifelse(
-      !has_codebook(form_id),
-      "original",
-      "labelled"
-    )
-  }
+  type <- match.arg(type, c("original", "long"))
 
   if (type == "long") {
     resp <- ns_req() |>
@@ -75,22 +62,10 @@ ns_get_data <- function(
     textConnection(dt_csv),
     check.names = FALSE
   )
-  dt <- cbind(
+  cbind(
     formid = rep(form_id, nrow(dt)),
     dt
   )
-
-  if (type == "original") return(dt)
-
-  if (type == "labelled" && !has_codebook(form_id)) {
-    cli::cli_alert_warning(
-      "labels can only be used on data with a valid
-      codebook, ignoring {code labelled = TRUE}"
-    )
-    return(dt)
-  }
-
-  add_labels(dt, ns_get_codebook(form_id))
 }
 
 #' @export

@@ -28,7 +28,7 @@ sample_codebook <- data.frame(
 
 test_that("Applies value labels based on codebook", {
   # Apply the function
-  labelled_data <- add_labels(
+  labelled_data <- ns_add_labels(
     sample_data,
     sample_codebook
   )
@@ -59,35 +59,35 @@ test_that("Applies value labels based on codebook", {
   expect_equal(attr(labelled_data$var3, "label"), "Variable 3")
 })
 
-test_that("add_labels handles missing values gracefully", {
+test_that("ns_add_labels handles missing values gracefully", {
   # Modify data to include more NAs
   data_with_na <- sample_data
   data_with_na$var1[3] <- NA
 
   # Apply the function
-  labelled_data <- add_labels(data_with_na, sample_codebook)
+  labelled_data <- ns_add_labels(data_with_na, sample_codebook)
 
   # Check if missing values in var1 are preserved without issues
   expect_true(is.na(labelled_data$var1[3]))
 })
 
-test_that("add_labels does not modify variables not present in the codebook", {
+test_that("ns_add_labels does not modify variables not present in the codebook", {
   # Add a variable not in the codebook
   data_extra_var <- sample_data
   data_extra_var$var4 <- c(1, 2, 3)
 
   # Apply the function
-  labelled_data <- add_labels(data_extra_var, sample_codebook)
+  labelled_data <- ns_add_labels(data_extra_var, sample_codebook)
 
   # Check if var4 remains unmodified
   expect_null(attr(labelled_data$var4, "label"))
   expect_null(attr(labelled_data$var4, "labels"))
 })
 
-test_that("add_labels works with an empty dataset", {
+test_that("ns_add_labels works with an empty dataset", {
   # Apply the function on an empty dataset
   empty_data <- data.frame()
-  result <- add_labels(empty_data, sample_codebook)
+  result <- ns_add_labels(empty_data, sample_codebook)
 
   # Result should also be an empty data frame
   expect_true(is.data.frame(result))

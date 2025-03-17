@@ -1,6 +1,31 @@
-#' Add value labels
-#' @noRd
-add_labels <- function(data, codebook) {
+#' Add Labels to Dataset
+#'
+#' The `ns_add_labels` function applies
+#'  labels to variables in a dataset
+#' based on a provided codebook. It
+#'  assigns variable labels, value
+#' labels,
+#' and metadata required for the
+#' "ns-data" class.
+#'
+#' @param data data from \code{ns_get_data}
+#' @param codebook object from
+#'     \code{ns_get_codebook}
+#' @return A data frame with the same
+#'   structure as `data`, but with
+#'   variable and value labels applied.
+#'   The resulting object is assigned
+#'   the class `"ns-data"`.
+#'
+#' @examples
+#' \dontrun{
+#' data <- ns_get_data(11000)
+#' cb <- ns_get_codebook(11000)
+#' labeled_data <- ns_add_labels(data, cb)
+#' }
+#'
+#' @export
+ns_add_labels <- function(data, codebook) {
   cb <- subset(codebook, codebook$element_code %in% names(data))
 
   for (var in cb$element_code) {

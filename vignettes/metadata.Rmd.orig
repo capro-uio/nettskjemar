@@ -7,11 +7,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r meta-1, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = TRUE
+  eval = TRUE,
+  error = FALSE,
+  fig.path="static"
 )
 options(max.print=50)
 ```
@@ -23,7 +25,6 @@ This vignette demonstrates how to use functions to:
 1. Retrieve metadata for a specific form.
 2. Save metadata to a file for safe keeping.
 
----
 ## Prerequisites
 
 Before executing any function, ensure you are authenticated.
@@ -63,7 +64,7 @@ You can directly access individual fields in the metadata object as you would wi
 
 ### Example: Access Specific Metadata Fields
 
-```{r}
+```{r meta-2}
 # Access the title of the form
 form_meta$title
 

@@ -174,7 +174,7 @@ ns_write_codebook.ns_codebook_raw <- function(codebook, path, ...) {
 ns_write_codebook.ns_codebook <- function(codebook, path, sep = "\t", ...) {
   utils::write.table(
     codebook,
-    path = path,
+    file = path,
     sep = sep,
     row.names = FALSE,
     ...
