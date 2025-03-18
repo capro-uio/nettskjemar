@@ -1,4 +1,4 @@
-# nettskjemar (development version)
+# nettskjemar 1.0.1
 
 # nettskjemar 1.0.1
 
