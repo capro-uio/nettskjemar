@@ -131,17 +131,11 @@ You can directly access individual fields in the metadata object as you would wi
 # Access the title of the form
 form_meta$title
 #> [1] "API test form"
-```
-
-``` r
 
 # Check the number of submissions
 num_submissions <- form_meta$numberOfSubmissions
 print(paste("Number of submissions:", num_submissions))
 #> [1] "Number of submissions: 3"
-```
-
-``` r
 
 # Check if the form is open
 is_open <- form_meta$isOpen

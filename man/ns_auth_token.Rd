@@ -8,7 +8,7 @@ ns_auth_token(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
   cache = TRUE,
-  cache_path = fs::path_home(".nettskjema_token.rds")
+  cache_path = NULL
 )
 }
 \arguments{
@@ -21,8 +21,8 @@ this is stored in .Renviron as "ns_CLIENT_SECRET"}
 \item{cache}{Logical. Should the token be cached?}
 
 \item{cache_path}{Character. File path to where
-the token should be stored. Defaults to user
-home directory}
+the token should be stored. Defaults to system
+cache directory.}
 }
 \description{
 After creating a client in Nettskjema,

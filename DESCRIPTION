@@ -18,11 +18,11 @@ URL: https://github.com/CAPRO-UiO/nettskjemar,
 BugReports: https://github.com/capro-uio/nettskjemar/issues
 Depends: 
     R (>= 4.1.0)
-Imports: 
+Imports:
     cli,
-    fs,
     httr2,
-    jsonlite
+    jsonlite,
+    rappdirs
 Suggests: 
     covr,
     knitr,

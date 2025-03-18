@@ -60,31 +60,30 @@ This needs only the _id_ of a nettskjema.
 library(nettskjemar)
 
 ns_get_data(123823)
-#>   formid $submission_id                  $created
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00
-#>    freetext radio checkbox.questionnaires
-#> 1 some text     1                       1
-#>   checkbox.events checkbox.logs dropdown
-#> 1               1             0        4
-#>   radio_matrix.grants radio_matrix.lecture
-#> 1                   1                    2
-#>   radio_matrix.email checkbox_matrix.1.IT
-#> 1                  2                    1
-#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
-#> 1                           1                       0
-#>   checkbox_matrix.1.union checkbox_matrix.1.internet
-#> 1                       0                          0
-#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
-#> 1                    0                           0
-#>   checkbox_matrix.2.admin checkbox_matrix.2.union
-#> 1                       1                       0
-#>   checkbox_matrix.2.internet       date  time
-#> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer slider
-#> 1 2023-06-12T13:33            4.5             77      3
-#>   attachment_1 attachment_2 $answer_time_ms
-#> 1    sølvi.png                        74630
-#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
+#>   formid $submission_id                  $created       freetext radio checkbox.questionnaires
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00      some text     1                       1
+#> 2 123823       27685302 2023-06-01T20:58:33+02:00 another answer    -1                       0
+#> 3 123823       27685319 2023-06-01T20:59:50+02:00                   -1                       1
+#>   checkbox.events checkbox.logs dropdown radio_matrix.grants radio_matrix.lecture radio_matrix.email
+#> 1               1             0        4                   1                    2                  2
+#> 2               0             1        9                   3                    3                  1
+#> 3               1             1        4                   1                    1                  1
+#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague checkbox_matrix.1.admin checkbox_matrix.1.union
+#> 1                    1                           1                       0                       0
+#> 2                    0                           0                       0                       0
+#> 3                    0                           1                       0                       0
+#>   checkbox_matrix.1.internet checkbox_matrix.2.IT checkbox_matrix.2.colleague checkbox_matrix.2.admin
+#> 1                          0                    0                           0                       1
+#> 2                          1                    0                           0                       1
+#> 3                          1                    1                           1                       1
+#>   checkbox_matrix.2.union checkbox_matrix.2.internet       date  time         datetime number_decimal
+#> 1                       0                          0 2023-06-01 12:00 2023-06-12T13:33            4.5
+#> 2                       1                          0 2023-02-07 14:45 2024-02-15T08:55            2.2
+#> 3                       1                          0 2022-09-28 05:11 2022-03-03T07:29             10
+#>   number_integer slider attachment_1 attachment_2 $answer_time_ms
+#> 1             77      3    sølvi.png                        74630
+#> 2             45      1               marius.jpeg           71313
+#> 3             98      9                                     70230
 ```
 
 
@@ -97,8 +96,7 @@ Package documentation can be found on the associated [GitHub pages](https://www.
 # Citation
 To cite nettskjemar in publications use:
 
-  Athanasia Monika Mowinckel. (2021, May 10).
-  LCBC-UiO/nettskjemar: v0.1.04 (Version v0.1.04).
+  Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar: v0.1.04 (Version v0.1.04).
   Zenodo. http://doi.org/10.5281/zenodo.4745481
 
 A BibTeX entry for LaTeX users is

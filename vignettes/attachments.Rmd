@@ -27,16 +27,12 @@ library(nettskjemar)
 # Example: List attachments for a specific submission
 submission_id <- 27685292
 ns_list_submission_attachments(submission_id)
-#>   submissionId  answerId elementId externalElementId
-#> 1     27685292 158263134   1641713      attachment_1
-#>   textAnswer answerAttachmentId  filename mediaType
-#> 1  sølvi.png             538819 sølvi.png image/png
-#>     size elementType attachment.answerAttachmentId
-#> 1 628613  ATTACHMENT                        538819
-#>   attachment.filename attachment.mediaType
-#> 1           sølvi.png            image/png
-#>   attachment.size counter
-#> 1          628613       1
+#>   submissionId  answerId elementId externalElementId textAnswer answerAttachmentId  filename mediaType
+#> 1     27685292 158263134   1641713      attachment_1  sølvi.png             538819 sølvi.png image/png
+#>     size elementType attachment.answerAttachmentId attachment.filename attachment.mediaType attachment.size
+#> 1 628613  ATTACHMENT                        538819           sølvi.png            image/png          628613
+#>   counter
+#> 1       1
 ```
 
 This function returns a `data.frame` with details such as the attachment ID, original filename, and standardized filename.
@@ -50,24 +46,15 @@ To list all attachments across multiple submissions for a form, use `ns_list_for
 # Example: List attachments for an entire form
 formid <- 123823
 ns_list_form_attachments(formid)
-#>    formid formId submissionId  answerId elementId
-#> 16 123823 123823     27685292 158263134   1641713
-#> 32 123823 123823     27685302 158263185   3525020
-#>    externalElementId  textAnswer answerOptionIds
-#> 16      attachment_1   sølvi.png                
-#> 32      attachment_2 marius.jpeg                
-#>    externalAnswerOptionIds elementType
-#> 16                          ATTACHMENT
-#> 32                          ATTACHMENT
-#>            createdDate        modifiedDate subElementId
-#> 16 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
-#> 32 2023-06-01T20:58:33 2023-06-01T20:58:33           NA
-#>    answerAttachmentId    filename  mediaType   size
-#> 16             538819   sølvi.png  image/png 628613
-#> 32             538820 marius.jpeg image/jpeg  89494
-#>    attachment.answerAttachmentId attachment.filename
-#> 16                        538819           sølvi.png
-#> 32                        538820         marius.jpeg
+#>    formid formId submissionId  answerId elementId externalElementId  textAnswer answerOptionIds
+#> 16 123823 123823     27685292 158263134   1641713      attachment_1   sølvi.png                
+#> 32 123823 123823     27685302 158263185   3525020      attachment_2 marius.jpeg                
+#>    externalAnswerOptionIds elementType         createdDate        modifiedDate subElementId
+#> 16                          ATTACHMENT 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
+#> 32                          ATTACHMENT 2023-06-01T20:58:33 2023-06-01T20:58:33           NA
+#>    answerAttachmentId    filename  mediaType   size attachment.answerAttachmentId attachment.filename
+#> 16             538819   sølvi.png  image/png 628613                        538819           sølvi.png
+#> 32             538820 marius.jpeg image/jpeg  89494                        538820         marius.jpeg
 #>    attachment.mediaType attachment.size counter
 #> 16            image/png          628613       1
 #> 32           image/jpeg           89494       1
