@@ -44,9 +44,9 @@ jobs:
             any::vidat
             any:skimr
           needs: |
-            coverage
+            check
       
       - name: Build vignettes
         run: |
-          nettskjemar:::release_notes()
+          nettskjemar:::knit_vignettes()
         shell: Rscript {0}
