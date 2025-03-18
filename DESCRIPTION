@@ -22,9 +22,12 @@ Imports:
     cli,
     httr2,
     jsonlite,
-    rappdirs
+    tools
 Suggests: 
     covr,
+    fs,
+    haven,
+    labelled,
     knitr,
     rmarkdown,
     spelling,

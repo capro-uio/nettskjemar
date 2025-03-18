@@ -1,5 +1,10 @@
 # nettskjemar (development version)
 
+# nettskjemar 1.0.1
+
+- Uses user cache directory for storing nettskjema token.
+- ns_get_submission_pdf removed while awaiting fix from UiO IT on its stability.
+
 # nettskjemar 1.0.0
 
 - Port to Nettskjema API v3

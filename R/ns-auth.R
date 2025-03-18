@@ -63,7 +63,7 @@ ns_auth_token <- function(
   if (cache) {
     if (is.null(cache_path))
       cache_path <- file.path(
-        rappdirs::user_cache_dir(),
+        tools::R_user_dir("nettskjemar", "cache"),
         ".nettskjema-token.rds"
       )
     req <- req |>
