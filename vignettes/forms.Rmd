@@ -39,31 +39,27 @@ To see which forms you have access to, use the `ns_get_forms` function.
 forms <- ns_get_forms()
 
 head(forms)
-#>   formId                           title
-#> 1  79061                BRIEF (with key)
-#> 2 269507            Bakgrunnsinformasjon
-#> 3 268183 Bakgrunnsinformasjon (2022) TMR
-#>              openFrom              openTo
-#> 1 2017-02-13T14:24:01 2021-08-19T15:06:21
-#> 2 2022-05-16T13:50:07                <NA>
-#> 3                <NA>                <NA>
-#>    lastSubmissionDate        modifiedDate
-#> 1                <NA> 2023-11-23T10:58:39
-#> 2 2025-03-17T13:09:52 2025-03-11T09:56:21
-#> 3 2024-10-01T14:44:42 2025-03-11T09:58:05
-#>   personalDataErasedDate deliveryDestination anonymous
-#> 1                   <NA>            DATABASE     FALSE
-#> 2                   <NA>                 TSD     FALSE
-#> 3                   <NA>                 TSD     FALSE
-#>   numberOfDeliveredSubmissions owners isDictaphone
-#> 1                            0      2        FALSE
-#> 2                          835      2        FALSE
-#> 3                           99      2        FALSE
-#>   myFormsFormListingGroup  open
-#> 1                      MY FALSE
-#> 2                      MY  TRUE
-#> 3                      MY FALSE
-#>  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
+#>   formId                           title            openFrom              openTo  lastSubmissionDate
+#> 1  79061                BRIEF (with key) 2017-02-13T14:24:01 2021-08-19T15:06:21                <NA>
+#> 2 269507            Bakgrunnsinformasjon 2022-05-16T13:50:07                <NA> 2025-03-17T13:09:52
+#> 3 268183 Bakgrunnsinformasjon (2022) TMR                <NA>                <NA> 2024-10-01T14:44:42
+#> 4 379170        Becks Depresjon Inventar 2023-11-10T18:10:11 2026-11-01T00:00:00 2025-03-17T20:21:35
+#> 5 205056         Dagliglivets hukommelse 2022-03-18T13:38:25                <NA> 2025-03-17T20:36:28
+#> 6 205057 Edinburgh Hendthetsskala (2022) 2022-05-10T11:22:46                <NA> 2024-12-03T11:30:30
+#>          modifiedDate personalDataErasedDate deliveryDestination anonymous numberOfDeliveredSubmissions
+#> 1 2023-11-23T10:58:39                   <NA>            DATABASE     FALSE                            0
+#> 2 2025-03-11T09:56:21                   <NA>                 TSD     FALSE                          835
+#> 3 2025-03-11T09:58:05                   <NA>                 TSD     FALSE                           99
+#> 4 2024-04-28T18:38:58                   <NA>                 TSD     FALSE                          437
+#> 5 2024-04-28T17:48:38                   <NA>                 TSD     FALSE                         1065
+#> 6 2024-04-09T10:24:22                   <NA>                 TSD     FALSE                          507
+#>   owners isDictaphone myFormsFormListingGroup  open
+#> 1      2        FALSE                      MY FALSE
+#> 2      2        FALSE                      MY  TRUE
+#> 3      2        FALSE                      MY FALSE
+#> 4      2        FALSE                      MY  TRUE
+#> 5      2        FALSE                      MY  TRUE
+#> 6      2        FALSE                      MY  TRUE
 ```
 
 ### Retrieving Raw Form Data

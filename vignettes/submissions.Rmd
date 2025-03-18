@@ -37,29 +37,3 @@ submission
 
 This function returns a list containing all answers for the specified submission.
 
-
-# Downloading a Submission as a PDF: `ns_get_submission_pdf`
-
-The `ns_get_submission_pdf` function downloads a single submission as a PDF file.
-By default, the PDF is named using the submission ID and saved in the current working directory.
-
-## Example: Download Submission PDF
-
-Here is how you can download a single submission as a PDF:
-
-```r
-# Download the submission as a PDF
-ns_get_submission_pdf(submission_id)
-```
-
-### Saving to a Custom Path
-
-To save the PDF to a specific location, specify the `path` argument:
-
-```r
-# Custom location for saving the PDF
-custom_path <- "~/Desktop/my_submission.pdf"
-
-# Download and save to the custom path
-ns_get_submission_pdf(submission_id, path = custom_path)
-```
