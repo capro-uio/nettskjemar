@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,31 +103,38 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   formid $submission_id                  $created</span></span>
-<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00</span></span>
-<span><span class="co">#&gt;    freetext radio checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; 1 some text     1                       1</span></span>
-<span><span class="co">#&gt;   checkbox.events checkbox.logs dropdown</span></span>
-<span><span class="co">#&gt; 1               1             0        4</span></span>
-<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture</span></span>
-<span><span class="co">#&gt; 1                   1                    2</span></span>
-<span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
-<span><span class="co">#&gt; 1                  2                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; 1                           1                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
-<span><span class="co">#&gt; 1                       0                          0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; 1                    0                           0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; 1                       1                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
-<span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
-<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
-<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
-<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
-<span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
+<span><span class="co">#&gt;   formid $submission_id                  $created       freetext radio</span></span>
+<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00      some text     1</span></span>
+<span><span class="co">#&gt; 2 123823       27685302 2023-06-01T20:58:33+02:00 another answer    -1</span></span>
+<span><span class="co">#&gt; 3 123823       27685319 2023-06-01T20:59:50+02:00                   -1</span></span>
+<span><span class="co">#&gt;   checkbox.questionnaires checkbox.events checkbox.logs dropdown</span></span>
+<span><span class="co">#&gt; 1                       1               1             0        4</span></span>
+<span><span class="co">#&gt; 2                       0               0             1        9</span></span>
+<span><span class="co">#&gt; 3                       1               1             1        4</span></span>
+<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture radio_matrix.email</span></span>
+<span><span class="co">#&gt; 1                   1                    2                  2</span></span>
+<span><span class="co">#&gt; 2                   3                    3                  1</span></span>
+<span><span class="co">#&gt; 3                   1                    1                  1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.IT checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                    1                           1                       0</span></span>
+<span><span class="co">#&gt; 2                    0                           0                       0</span></span>
+<span><span class="co">#&gt; 3                    0                           1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet checkbox_matrix.2.IT</span></span>
+<span><span class="co">#&gt; 1                       0                          0                    0</span></span>
+<span><span class="co">#&gt; 2                       0                          1                    0</span></span>
+<span><span class="co">#&gt; 3                       0                          1                    1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.colleague checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
+<span><span class="co">#&gt; 1                           0                       1                       0</span></span>
+<span><span class="co">#&gt; 2                           0                       1                       1</span></span>
+<span><span class="co">#&gt; 3                           1                       1                       1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time         datetime number_decimal</span></span>
+<span><span class="co">#&gt; 1                          0 2023-06-01 12:00 2023-06-12T13:33            4.5</span></span>
+<span><span class="co">#&gt; 2                          0 2023-02-07 14:45 2024-02-15T08:55            2.2</span></span>
+<span><span class="co">#&gt; 3                          0 2022-09-28 05:11 2022-03-03T07:29             10</span></span>
+<span><span class="co">#&gt;   number_integer slider attachment_1 attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1             77      3    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt; 2             45      1               marius.jpeg           71313</span></span>
+<span><span class="co">#&gt; 3             98      9                                     70230</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>

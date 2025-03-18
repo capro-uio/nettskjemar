@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Nettskjema Attachments: Download and Save</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/attachments.Rmd" class="external-link"><code>vignettes/attachments.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.1/vignettes/attachments.Rmd" class="external-link"><code>vignettes/attachments.Rmd</code></a></small>
       <div class="d-none name"><code>attachments.Rmd</code></div>
     </div>
 
@@ -106,12 +106,14 @@ about the available attachments.</p>
 <span><span class="co"># Example: List attachments for a specific submission</span></span>
 <span><span class="va">submission_id</span> <span class="op">&lt;-</span> <span class="fl">27685292</span></span>
 <span><span class="fu"><a href="../reference/ns_list_submission_attachments.html">ns_list_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   submissionId  answerId elementId externalElementId</span></span>
-<span><span class="co">#&gt; 1     27685292 158263134   1641713      attachment_1</span></span>
-<span><span class="co">#&gt;   textAnswer answerAttachmentId  filename mediaType</span></span>
-<span><span class="co">#&gt; 1  sølvi.png             538819 sølvi.png image/png</span></span>
-<span><span class="co">#&gt;     size elementType attachment.answerAttachmentId</span></span>
-<span><span class="co">#&gt; 1 628613  ATTACHMENT                        538819</span></span>
+<span><span class="co">#&gt;   submissionId  answerId elementId</span></span>
+<span><span class="co">#&gt; 1     27685292 158263134   1641713</span></span>
+<span><span class="co">#&gt;   externalElementId textAnswer</span></span>
+<span><span class="co">#&gt; 1      attachment_1  sølvi.png</span></span>
+<span><span class="co">#&gt;   answerAttachmentId  filename mediaType   size</span></span>
+<span><span class="co">#&gt; 1             538819 sølvi.png image/png 628613</span></span>
+<span><span class="co">#&gt;   elementType attachment.answerAttachmentId</span></span>
+<span><span class="co">#&gt; 1  ATTACHMENT                        538819</span></span>
 <span><span class="co">#&gt;   attachment.filename attachment.mediaType</span></span>
 <span><span class="co">#&gt; 1           sølvi.png            image/png</span></span>
 <span><span class="co">#&gt;   attachment.size counter</span></span>
@@ -128,27 +130,33 @@ the attachment ID, original filename, and standardized filename.</p>
 <code class="sourceCode R"><span><span class="co"># Example: List attachments for an entire form</span></span>
 <span><span class="va">formid</span> <span class="op">&lt;-</span> <span class="fl">123823</span></span>
 <span><span class="fu"><a href="../reference/ns_list_form_attachments.html">ns_list_form_attachments</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    formid formId submissionId  answerId elementId</span></span>
-<span><span class="co">#&gt; 16 123823 123823     27685292 158263134   1641713</span></span>
-<span><span class="co">#&gt; 32 123823 123823     27685302 158263185   3525020</span></span>
-<span><span class="co">#&gt;    externalElementId  textAnswer answerOptionIds</span></span>
-<span><span class="co">#&gt; 16      attachment_1   sølvi.png                </span></span>
-<span><span class="co">#&gt; 32      attachment_2 marius.jpeg                </span></span>
-<span><span class="co">#&gt;    externalAnswerOptionIds elementType</span></span>
-<span><span class="co">#&gt; 16                          ATTACHMENT</span></span>
-<span><span class="co">#&gt; 32                          ATTACHMENT</span></span>
-<span><span class="co">#&gt;            createdDate        modifiedDate subElementId</span></span>
-<span><span class="co">#&gt; 16 2023-06-01T20:57:15 2023-06-01T20:57:15           NA</span></span>
-<span><span class="co">#&gt; 32 2023-06-01T20:58:33 2023-06-01T20:58:33           NA</span></span>
-<span><span class="co">#&gt;    answerAttachmentId    filename  mediaType   size</span></span>
-<span><span class="co">#&gt; 16             538819   sølvi.png  image/png 628613</span></span>
-<span><span class="co">#&gt; 32             538820 marius.jpeg image/jpeg  89494</span></span>
-<span><span class="co">#&gt;    attachment.answerAttachmentId attachment.filename</span></span>
-<span><span class="co">#&gt; 16                        538819           sølvi.png</span></span>
-<span><span class="co">#&gt; 32                        538820         marius.jpeg</span></span>
-<span><span class="co">#&gt;    attachment.mediaType attachment.size counter</span></span>
-<span><span class="co">#&gt; 16            image/png          628613       1</span></span>
-<span><span class="co">#&gt; 32           image/jpeg           89494       1</span></span></code></pre></div>
+<span><span class="co">#&gt;    formid formId submissionId  answerId</span></span>
+<span><span class="co">#&gt; 16 123823 123823     27685292 158263134</span></span>
+<span><span class="co">#&gt; 32 123823 123823     27685302 158263185</span></span>
+<span><span class="co">#&gt;    elementId externalElementId  textAnswer</span></span>
+<span><span class="co">#&gt; 16   1641713      attachment_1   sølvi.png</span></span>
+<span><span class="co">#&gt; 32   3525020      attachment_2 marius.jpeg</span></span>
+<span><span class="co">#&gt;    answerOptionIds externalAnswerOptionIds</span></span>
+<span><span class="co">#&gt; 16                                        </span></span>
+<span><span class="co">#&gt; 32                                        </span></span>
+<span><span class="co">#&gt;    elementType         createdDate</span></span>
+<span><span class="co">#&gt; 16  ATTACHMENT 2023-06-01T20:57:15</span></span>
+<span><span class="co">#&gt; 32  ATTACHMENT 2023-06-01T20:58:33</span></span>
+<span><span class="co">#&gt;           modifiedDate subElementId</span></span>
+<span><span class="co">#&gt; 16 2023-06-01T20:57:15           NA</span></span>
+<span><span class="co">#&gt; 32 2023-06-01T20:58:33           NA</span></span>
+<span><span class="co">#&gt;    answerAttachmentId    filename  mediaType</span></span>
+<span><span class="co">#&gt; 16             538819   sølvi.png  image/png</span></span>
+<span><span class="co">#&gt; 32             538820 marius.jpeg image/jpeg</span></span>
+<span><span class="co">#&gt;      size attachment.answerAttachmentId</span></span>
+<span><span class="co">#&gt; 16 628613                        538819</span></span>
+<span><span class="co">#&gt; 32  89494                        538820</span></span>
+<span><span class="co">#&gt;    attachment.filename attachment.mediaType</span></span>
+<span><span class="co">#&gt; 16           sølvi.png            image/png</span></span>
+<span><span class="co">#&gt; 32         marius.jpeg           image/jpeg</span></span>
+<span><span class="co">#&gt;    attachment.size counter</span></span>
+<span><span class="co">#&gt; 16          628613       1</span></span>
+<span><span class="co">#&gt; 32           89494       1</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Handling Submissions with the Nettskjema API</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/submissions.Rmd" class="external-link"><code>vignettes/submissions.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.1/vignettes/submissions.Rmd" class="external-link"><code>vignettes/submissions.Rmd</code></a></small>
       <div class="d-none name"><code>submissions.Rmd</code></div>
     </div>
 
@@ -112,34 +112,6 @@ ID</strong> (a unique identifier for each submission).</p>
 <span><span class="va">submission</span></span></code></pre></div>
 <p>This function returns a list containing all answers for the specified
 submission.</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="downloading-a-submission-as-a-pdf-ns_get_submission_pdf">Downloading a Submission as a PDF:
-<code>ns_get_submission_pdf</code><a class="anchor" aria-label="anchor" href="#downloading-a-submission-as-a-pdf-ns_get_submission_pdf"></a>
-</h2>
-<p>The <code>ns_get_submission_pdf</code> function downloads a single
-submission as a PDF file. By default, the PDF is named using the
-submission ID and saved in the current working directory.</p>
-<div class="section level3">
-<h3 id="example-download-submission-pdf">Example: Download Submission PDF<a class="anchor" aria-label="anchor" href="#example-download-submission-pdf"></a>
-</h3>
-<p>Here is how you can download a single submission as a PDF:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download the submission as a PDF</span></span>
-<span><span class="fu">ns_get_submission_pdf</span><span class="op">(</span><span class="va">submission_id</span><span class="op">)</span></span></code></pre></div>
-<div class="section level4">
-<h4 id="saving-to-a-custom-path">Saving to a Custom Path<a class="anchor" aria-label="anchor" href="#saving-to-a-custom-path"></a>
-</h4>
-<p>To save the PDF to a specific location, specify the <code>path</code>
-argument:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Custom location for saving the PDF</span></span>
-<span><span class="va">custom_path</span> <span class="op">&lt;-</span> <span class="st">"~/Desktop/my_submission.pdf"</span></span>
-<span></span>
-<span><span class="co"># Download and save to the custom path</span></span>
-<span><span class="fu">ns_get_submission_pdf</span><span class="op">(</span><span class="va">submission_id</span>, path <span class="op">=</span> <span class="va">custom_path</span><span class="op">)</span></span></code></pre></div>
-</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

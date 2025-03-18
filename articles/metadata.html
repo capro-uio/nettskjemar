@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Working with Nettskjema Form Metadata</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/metadata.Rmd" class="external-link"><code>vignettes/metadata.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.1/vignettes/metadata.Rmd" class="external-link"><code>vignettes/metadata.Rmd</code></a></small>
       <div class="d-none name"><code>metadata.Rmd</code></div>
     </div>
 
@@ -205,15 +205,13 @@ metadata object as you would with any list.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Access the title of the form</span></span>
 <span><span class="va">form_meta</span><span class="op">$</span><span class="va">title</span></span>
-<span><span class="co">#&gt; [1] "API test form"</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [1] "API test form"</span></span>
+<span></span>
 <span><span class="co"># Check the number of submissions</span></span>
 <span><span class="va">num_submissions</span> <span class="op">&lt;-</span> <span class="va">form_meta</span><span class="op">$</span><span class="va">numberOfSubmissions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Number of submissions:"</span>, <span class="va">num_submissions</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Number of submissions: 3"</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [1] "Number of submissions: 3"</span></span>
+<span></span>
 <span><span class="co"># Check if the form is open</span></span>
 <span><span class="va">is_open</span> <span class="op">&lt;-</span> <span class="va">form_meta</span><span class="op">$</span><span class="va">isOpen</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Is the form open?:"</span>, <span class="va">is_open</span><span class="op">)</span><span class="op">)</span></span>
@@ -230,7 +228,7 @@ information in a structured format.</p>
 <div class="section level3">
 <h3 id="example-save-metadata-as-a-json-file">Example: Save Metadata as a JSON File<a class="anchor" aria-label="anchor" href="#example-save-metadata-as-a-json-file"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace with your desired file path</span></span>
 <span><span class="va">output_path</span> <span class="op">&lt;-</span> <span class="st">"meta_110000.json"</span></span>
 <span></span>
@@ -241,7 +239,7 @@ information in a structured format.</p>
 </h4>
 <p>If your file doesn’t have a <code>.json</code> extension, the
 function will automatically append it to the file name.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save to a file without .json extension</span></span>
 <span><span class="fu"><a href="../reference/ns_write_meta.html">ns_write_meta</a></span><span class="op">(</span><span class="va">form_meta</span>, <span class="st">"meta_file"</span><span class="op">)</span></span>
 <span></span>
@@ -254,7 +252,7 @@ function will automatically append it to the file name.</p>
 arguments passed to the <a href="https://cran.r-project.org/package=jsonlite" class="external-link">jsonlite::write_json</a>
 function. For example, you can specify <code>pretty = TRUE</code> for a
 more human-readable format.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the metadata in a pretty-printed JSON file</span></span>
 <span><span class="fu"><a href="../reference/ns_write_meta.html">ns_write_meta</a></span><span class="op">(</span><span class="va">form_meta</span>, <span class="st">"pretty_meta.json"</span>, pretty <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>

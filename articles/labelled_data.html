@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Enhanced Workflow with Labelled Data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/labelled_data.Rmd" class="external-link"><code>vignettes/labelled_data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.1/vignettes/labelled_data.Rmd" class="external-link"><code>vignettes/labelled_data.Rmd</code></a></small>
       <div class="d-none name"><code>labelled_data.Rmd</code></div>
     </div>
 
@@ -107,30 +107,42 @@ and manipulate labels.</p>
 <span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span>
 <span><span class="va">data</span></span>
-<span><span class="co">#&gt;   formid $submission_id                  $created</span></span>
-<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00</span></span>
-<span><span class="co">#&gt;    freetext radio checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; 1 some text     1                       1</span></span>
-<span><span class="co">#&gt;   checkbox.events checkbox.logs dropdown</span></span>
-<span><span class="co">#&gt; 1               1             0        4</span></span>
-<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture</span></span>
-<span><span class="co">#&gt; 1                   1                    2</span></span>
-<span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
-<span><span class="co">#&gt; 1                  2                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; 1                           1                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
-<span><span class="co">#&gt; 1                       0                          0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; 1                    0                           0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; 1                       1                       0</span></span>
+<span><span class="co">#&gt;   formid $submission_id</span></span>
+<span><span class="co">#&gt; 1 123823       27685292</span></span>
+<span><span class="co">#&gt;                    $created  freetext radio</span></span>
+<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00 some text     1</span></span>
+<span><span class="co">#&gt;   checkbox.questionnaires checkbox.events</span></span>
+<span><span class="co">#&gt; 1                       1               1</span></span>
+<span><span class="co">#&gt;   checkbox.logs dropdown radio_matrix.grants</span></span>
+<span><span class="co">#&gt; 1             0        4                   1</span></span>
+<span><span class="co">#&gt;   radio_matrix.lecture radio_matrix.email</span></span>
+<span><span class="co">#&gt; 1                    2                  2</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.IT</span></span>
+<span><span class="co">#&gt; 1                    1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.colleague</span></span>
+<span><span class="co">#&gt; 1                           1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.internet</span></span>
+<span><span class="co">#&gt; 1                          0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.IT</span></span>
+<span><span class="co">#&gt; 1                    0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.colleague</span></span>
+<span><span class="co">#&gt; 1                           0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.admin</span></span>
+<span><span class="co">#&gt; 1                       1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.union</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
 <span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
-<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
-<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
-<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt;           datetime number_decimal</span></span>
+<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5</span></span>
+<span><span class="co">#&gt;   number_integer slider attachment_1</span></span>
+<span><span class="co">#&gt; 1             77      3    sølvi.png</span></span>
+<span><span class="co">#&gt;   attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1                        74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
 <p>Here we have our example data, displayed as a standard data.frame.
 There is nothing particularly special about it. To continue, we also
@@ -157,12 +169,18 @@ labels.</p>
 <span><span class="co">#&gt; 3                                                                                       &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 4                                                                                       &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 5   &lt;p&gt;With a description field giving details on what should be answered.&lt;/p&gt;\n\n&lt;p&gt; &lt;/p&gt;\n</span></span>
-<span><span class="co">#&gt;   subelement_seq answer_text answer_code answer_seq</span></span>
-<span><span class="co">#&gt; 1             NA        &lt;NA&gt;        &lt;NA&gt;         NA</span></span>
-<span><span class="co">#&gt; 2             NA        &lt;NA&gt;        &lt;NA&gt;         NA</span></span>
-<span><span class="co">#&gt; 3             NA        &lt;NA&gt;        &lt;NA&gt;         NA</span></span>
-<span><span class="co">#&gt; 4             NA        &lt;NA&gt;        &lt;NA&gt;         NA</span></span>
-<span><span class="co">#&gt; 5             NA        &lt;NA&gt;        &lt;NA&gt;         NA</span></span>
+<span><span class="co">#&gt;   subelement_seq answer_text answer_code</span></span>
+<span><span class="co">#&gt; 1             NA        &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2             NA        &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3             NA        &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4             NA        &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5             NA        &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   answer_seq</span></span>
+<span><span class="co">#&gt; 1         NA</span></span>
+<span><span class="co">#&gt; 2         NA</span></span>
+<span><span class="co">#&gt; 3         NA</span></span>
+<span><span class="co">#&gt; 4         NA</span></span>
+<span><span class="co">#&gt; 5         NA</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 34 rows ]</span></span></code></pre></div>
 <p>To add the labels, we use the <code>ns_add_labels</code> function,
 using both the unlabelled data and the codebook.</p>
@@ -171,30 +189,42 @@ using both the unlabelled data and the codebook.</p>
 <span>  <span class="fu"><a href="../reference/ns_add_labels.html">ns_add_labels</a></span><span class="op">(</span><span class="va">cb</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lab_data</span></span>
-<span><span class="co">#&gt;   formid $submission_id                  $created</span></span>
-<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00</span></span>
-<span><span class="co">#&gt;    freetext radio checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; 1 some text     1                       1</span></span>
-<span><span class="co">#&gt;   checkbox.events checkbox.logs dropdown</span></span>
-<span><span class="co">#&gt; 1               1             0        4</span></span>
-<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture</span></span>
-<span><span class="co">#&gt; 1                   1                    2</span></span>
-<span><span class="co">#&gt;   radio_matrix.email checkbox_matrix.1.IT</span></span>
-<span><span class="co">#&gt; 1                  2                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; 1                           1                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet</span></span>
-<span><span class="co">#&gt; 1                       0                          0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.IT checkbox_matrix.2.colleague</span></span>
-<span><span class="co">#&gt; 1                    0                           0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; 1                       1                       0</span></span>
+<span><span class="co">#&gt;   formid $submission_id</span></span>
+<span><span class="co">#&gt; 1 123823       27685292</span></span>
+<span><span class="co">#&gt;                    $created  freetext radio</span></span>
+<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00 some text     1</span></span>
+<span><span class="co">#&gt;   checkbox.questionnaires checkbox.events</span></span>
+<span><span class="co">#&gt; 1                       1               1</span></span>
+<span><span class="co">#&gt;   checkbox.logs dropdown radio_matrix.grants</span></span>
+<span><span class="co">#&gt; 1             0        4                   1</span></span>
+<span><span class="co">#&gt;   radio_matrix.lecture radio_matrix.email</span></span>
+<span><span class="co">#&gt; 1                    2                  2</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.IT</span></span>
+<span><span class="co">#&gt; 1                    1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.colleague</span></span>
+<span><span class="co">#&gt; 1                           1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.admin</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.union</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.1.internet</span></span>
+<span><span class="co">#&gt; 1                          0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.IT</span></span>
+<span><span class="co">#&gt; 1                    0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.colleague</span></span>
+<span><span class="co">#&gt; 1                           0</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.admin</span></span>
+<span><span class="co">#&gt; 1                       1</span></span>
+<span><span class="co">#&gt;   checkbox_matrix.2.union</span></span>
+<span><span class="co">#&gt; 1                       0</span></span>
 <span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time</span></span>
 <span><span class="co">#&gt; 1                          0 2023-06-01 12:00</span></span>
-<span><span class="co">#&gt;           datetime number_decimal number_integer slider</span></span>
-<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5             77      3</span></span>
-<span><span class="co">#&gt;   attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1    sølvi.png                        74630</span></span>
+<span><span class="co">#&gt;           datetime number_decimal</span></span>
+<span><span class="co">#&gt; 1 2023-06-12T13:33            4.5</span></span>
+<span><span class="co">#&gt;   number_integer slider attachment_1</span></span>
+<span><span class="co">#&gt; 1             77      3    sølvi.png</span></span>
+<span><span class="co">#&gt;   attachment_2 $answer_time_ms</span></span>
+<span><span class="co">#&gt; 1                        74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
 <p>You will notice that this does on the surface look completely normal,
 with no added extras. Inspecting the data with the <code>str</code>
@@ -232,9 +262,8 @@ function will however expose what lies beneath the surface.</p>
 <span><span class="co">#&gt;  $ slider                     : int  3 1 9</span></span>
 <span><span class="co">#&gt;  $ attachment_1               : chr  "sølvi.png" "" ""</span></span>
 <span><span class="co">#&gt;  $ attachment_2               : chr  "" "marius.jpeg" ""</span></span>
-<span><span class="co">#&gt;  $ $answer_time_ms            : int  74630 71313 70230</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  $ $answer_time_ms            : int  74630 71313 70230</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Classes 'ns-data' and 'data.frame':  3 obs. of  31 variables:</span></span>
 <span><span class="co">#&gt;  $ formid                     : num  123823 123823 123823</span></span>
 <span><span class="co">#&gt;  $ $submission_id             : int  27685292 27685302 27685319</span></span>
@@ -374,17 +403,17 @@ provides functionalities to inspect and manipulate labels with ease.</p>
 <div class="section level3">
 <h3 id="inspecting-labels">Inspecting Labels<a class="anchor" aria-label="anchor" href="#inspecting-labels"></a>
 </h3>
-<p>Use <code>var_label()</code> to extract variable-level labels and
-<code>val_labels()</code> to extract value-level labels:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Use <code><a href="https://larmarange.github.io/labelled/reference/var_label.html" class="external-link">var_label()</a></code> to extract variable-level labels and
+<code><a href="https://larmarange.github.io/labelled/reference/val_labels.html" class="external-link">val_labels()</a></code> to extract value-level labels:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Variable labels</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/var_label.html" class="external-link">var_label</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Value labels for 'radio'</span></span>
-<span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/val_labels.html" class="external-link">val_labels</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   Very happy! Very unhappy! </span></span>
 <span><span class="co">#&gt;             1            -1</span></span></code></pre></div>
 </div>
@@ -396,18 +425,18 @@ Nettskjema codebook setup. However, if you are working on a form that is
 no longer available in Nettskjema, and you have downloaded and saved
 both the data and the codebook (or the labelled data), labels can be
 modified using <a href="https://haven.tidyverse.org" class="external-link">haven</a>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetex</span></span>
-<span><span class="co">#&gt; [1] "some text"      "another answer" ""              </span></span>
+<span><span class="co">#&gt; [1] "some text"      "another answer"</span></span>
+<span><span class="co">#&gt; [3] ""              </span></span>
 <span><span class="co">#&gt; attr(,"label")</span></span>
 <span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span>
 <span><span class="co">#&gt; attr(,"ns_type")</span></span>
 <span><span class="co">#&gt; [1] "QUESTION"</span></span>
 <span><span class="co">#&gt; attr(,"class")</span></span>
-<span><span class="co">#&gt; [1] "character"</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Update variable-level label for 'freetext'</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Important freetext comment"</span></span>
+<span><span class="co">#&gt; [1] "character"</span></span>
+<span><span class="co"># Update variable-level label for 'freetext'</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/var_label.html" class="external-link">var_label</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Important freetext comment"</span></span>
 <span></span>
 <span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span></span>
 <span><span class="co">#&gt; &lt;labelled&lt;integer&gt;[3]&gt;: How happy are we with Nettskjema?</span></span>
@@ -416,16 +445,14 @@ modified using <a href="https://haven.tidyverse.org" class="external-link">haven
 <span><span class="co">#&gt; Labels:</span></span>
 <span><span class="co">#&gt;  value         label</span></span>
 <span><span class="co">#&gt;      1   Very happy!</span></span>
-<span><span class="co">#&gt;     -1 Very unhappy!</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Update value labels for 'radio'</span></span>
-<span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Unhappy <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, Happy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     -1 Very unhappy!</span></span>
+<span><span class="co"># Update value labels for 'radio'</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/val_labels.html" class="external-link">val_labels</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Unhappy <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, Happy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Check updated labels</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Important freetext comment"</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">val_labels</span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/var_label.html" class="external-link">var_label</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetext</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Important freetext comment"</span></span>
+<span><span class="fu"><a href="https://larmarange.github.io/labelled/reference/val_labels.html" class="external-link">val_labels</a></span><span class="op">(</span><span class="va">lab_data</span><span class="op">$</span><span class="va">radio</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Unhappy   Happy </span></span>
 <span><span class="co">#&gt;      -1       1</span></span></code></pre></div>
 </div>
