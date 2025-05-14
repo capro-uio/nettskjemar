@@ -27,7 +27,7 @@ knit_vignettes <- function() {
     full.names = TRUE
   )
 
-  k <- lapply(proc, function(x) {
+  lapply(proc, function(x) {
     fig_path <- "static"
     knitr::knit(
       x,
