@@ -46,6 +46,6 @@ knit_vignettes <- function() {
 
   list(
     "Knit vignettes",
-    lapply(proc, basename)
+    sapply(proc, basename)
   )
 } # nocov end
