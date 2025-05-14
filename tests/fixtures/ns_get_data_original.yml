@@ -6,21 +6,23 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+      Authorization: Basic Y2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmOnFnRDA5UkNhMWtobkd4dVpfMXJTajBHM2FyeEExUWRTSTYwOFVueVhUYnhmeWhCUEp5WTVvYkxHcS0zdlFuM25fN05Mb2FEdQ==
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 12 Mar 2025 15:32:30 GMT
+      date: Wed, 14 May 2025 19:17:07 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=MmM1ODIxYjgtZTY3YS00N2E1LWI5NDEtMDQwNDcwZmJiNTA2; Path=/;
+      set-cookie: SESSION=ODZiZmJkOWEtOGJlYS00MjdjLTk2MDgtODZjNGU1ZjMzMTA0; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
       x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
       x-permitted-cross-domain-policies: none
       x-download-options: noopen
       x-xss-protection: '0'
@@ -30,7 +32,7 @@ http_interactions:
       permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
         run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
         autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
-        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
         legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
         payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
         speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
@@ -45,42 +47,45 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MCwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUwLCJpYXQiOjE3NDE3OTM1NTAsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJjMWFhOWFiZS00NTE5LTRjYWItOWZhNy0xN2Q2NTRhNjk0YzkiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.jj5nmNK6Yvq2OyBabulnyZcH-19xe7ii44amLYoH-jvSu3IO20yPl9OUIFg4dyE0RzhlaARrZvebhlwhy3wT3NGNu0ePVuyL6U9RB9U1uzXHhfFs40BQxlPLqPEXtxREPog18p27bAW4xRWUvSwdvHdQvbnPOtT5nSOsJcw-U7fdwd1DPeL9xSr44xBCQUpvtO98bN-a60gTizF9p1Y808D9p12TWUE2X7b4RCa26bPQzZzN6qP02rKv-TUFJ-7Nmon94MUA1xixfF5SAjwCIiX_cnRENBhfR3b1Ryhd-gn492PBuirPzsWDPy-dqCdlYYOIyJ3CIHMTo35kwTECVKhxy_XUVv7LWaIPRsaXcpZwMkLztxomr54co_tfmcRG4_XWI_mKIRMenll3bF-iHA-9ZmHWAqrjTNLuqGm5h9lPj5ef7i-7jY6-NrtI13QkrWSi5cG0BbNf8XeKr8S8yPPVB9nlKAkpR7c4cjTTBERDG5tLMRhKq_zg8jK_G3GL","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-03-12 15:32:30 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNywiaWF0IjoxNzQ3MjUwMjI3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImYyMzM0MGZhLTBlZDQtNDNiNy05YzcxLTNkNTE3YmNlNTVjMCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.WRjSSU1sMVqZ6VU29pMmNxpPtGDzyxvfn6dwHZp4KXJWtVu_Kwt_dEf4953lRxGyxS2Q8pg2c8cwVxX1K1YMEMJWWHUkQ4hCjVR3tegUQ2KGXYgVcte_DDS_Unlqld1fKIBsMX0nkjB0idNWwx79mpkGHIZoJAN4ebvHRbeU-oVjoj4ytev4xfEBLZbRpFOJPqeYWcEaL5vkUxtNMww2TSi0TGRVhKgBLF01Vj2iZjQC97QEEqHyUX1K1R1pdgZEW6LLnPEhkjHN1ZVxXgF-XyinxaQY8KMuTsEHRb91QPxtkmS12_bpD3sFG0_k2yO_azZ2f7oJEXNKpX2x-d4QtQHO4YVecEsWivQuM9ywenAf1FWUXxrxwdyMvulqtkVQIQUW_Xs4pzvsACr326wQA8K--FajiakX8GhVLYAJ70-FevzHNuV1byXZwUJNfDAV7FeOfwJDN4OVZz5ztLdMULnsnHzz9Rja3vpYMeW28xMIR-cc2jyGC0OYdtFJYQUQ","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 19:17:07 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
-    uri: https://api.nettskjema.no/v3/form/123823/csv-report
+    uri: https://nettskjema.no/api/v3/form/123823/csv-report
     body:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU1MCwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTUwLCJpYXQiOjE3NDE3OTM1NTAsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJjMWFhOWFiZS00NTE5LTRjYWItOWZhNy0xN2Q2NTRhNjk0YzkiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.jj5nmNK6Yvq2OyBabulnyZcH-19xe7ii44amLYoH-jvSu3IO20yPl9OUIFg4dyE0RzhlaARrZvebhlwhy3wT3NGNu0ePVuyL6U9RB9U1uzXHhfFs40BQxlPLqPEXtxREPog18p27bAW4xRWUvSwdvHdQvbnPOtT5nSOsJcw-U7fdwd1DPeL9xSr44xBCQUpvtO98bN-a60gTizF9p1Y808D9p12TWUE2X7b4RCa26bPQzZzN6qP02rKv-TUFJ-7Nmon94MUA1xixfF5SAjwCIiX_cnRENBhfR3b1Ryhd-gn492PBuirPzsWDPy-dqCdlYYOIyJ3CIHMTo35kwTECVKhxy_XUVv7LWaIPRsaXcpZwMkLztxomr54co_tfmcRG4_XWI_mKIRMenll3bF-iHA-9ZmHWAqrjTNLuqGm5h9lPj5ef7i-7jY6-NrtI13QkrWSi5cG0BbNf8XeKr8S8yPPVB9nlKAkpR7c4cjTTBERDG5tLMRhKq_zg8jK_G3GL
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNywiaWF0IjoxNzQ3MjUwMjI3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImYyMzM0MGZhLTBlZDQtNDNiNy05YzcxLTNkNTE3YmNlNTVjMCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.WRjSSU1sMVqZ6VU29pMmNxpPtGDzyxvfn6dwHZp4KXJWtVu_Kwt_dEf4953lRxGyxS2Q8pg2c8cwVxX1K1YMEMJWWHUkQ4hCjVR3tegUQ2KGXYgVcte_DDS_Unlqld1fKIBsMX0nkjB0idNWwx79mpkGHIZoJAN4ebvHRbeU-oVjoj4ytev4xfEBLZbRpFOJPqeYWcEaL5vkUxtNMww2TSi0TGRVhKgBLF01Vj2iZjQC97QEEqHyUX1K1R1pdgZEW6LLnPEhkjHN1ZVxXgF-XyinxaQY8KMuTsEHRb91QPxtkmS12_bpD3sFG0_k2yO_azZ2f7oJEXNKpX2x-d4QtQHO4YVecEsWivQuM9ywenAf1FWUXxrxwdyMvulqtkVQIQUW_Xs4pzvsACr326wQA8K--FajiakX8GhVLYAJ70-FevzHNuV1byXZwUJNfDAV7FeOfwJDN4OVZz5ztLdMULnsnHzz9Rja3vpYMeW28xMIR-cc2jyGC0OYdtFJYQUQ
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 12 Mar 2025 15:32:30 GMT
+      date: Wed, 14 May 2025 19:17:07 GMT
       content-type: text/plain
-      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
-      set-cookie: JSESSIONID=1070E01D8A9A173F9439E50E9944DA23; Path=/v3; Secure; HttpOnly;
-        SameSite=Lax
-      content-disposition: attachment; filename="data-123823-2025-03-12-1632.txt"
+      content-length: '464'
+      content-disposition: attachment; filename="data-123823-2025-05-14-2117.txt"
+      content-encoding: gzip
+      set-cookie: JSESSIONID=665F72FBA070D815014D0F30588AB482; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
-      content-encoding: gzip
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
       x-content-type-options: nosniff
+      timing-allow-origin: '*'
       cache-control: private, max-age=0, no-cache, no-store
       tdm-reservation: '1'
     body:
       encoding: ''
       file: no
       string: |
-        "$submission_id";"$created";"freetext";"radio";"checkbox.questionnaires";"checkbox.events";"checkbox.logs";"dropdown";"radio_matrix.1";"radio_matrix.2";"radio_matrix.3";"checkbox_matrix.1.IT";"checkbox_matrix.1.colleague";"checkbox_matrix.1.admin";"checkbox_matrix.1.union";"checkbox_matrix.1.internet";"checkbox_matrix.2.IT";"checkbox_matrix.2.colleague";"checkbox_matrix.2.admin";"checkbox_matrix.2.union";"checkbox_matrix.2.internet";"date";"time";"datetime";"number_decimal";"number_integer";"slider";"attachment_1";"attachment_2";"$answer_time_ms"
-        "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77";"3";"sølvi.png";"";"74630"
-        "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45";"1";"";"marius.jpeg";"71313"
-        "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10";"98";"9";"";"";"70230"
-  recorded_at: 2025-03-12 15:32:30 GMT
+        "$submission_id";"$created";"freetext";"radio";"checkbox.questionnaires";"checkbox.events";"checkbox.logs";"dropdown";"radio_matrix.grants";"radio_matrix.lecture";"radio_matrix.email";"checkbox_matrix.1.IT";"checkbox_matrix.1.colleague";"checkbox_matrix.1.admin";"checkbox_matrix.1.union";"checkbox_matrix.1.internet";"checkbox_matrix.2.IT";"checkbox_matrix.2.colleague";"checkbox_matrix.2.admin";"checkbox_matrix.2.union";"checkbox_matrix.2.internet";"date";"time";"datetime";"number_decimal";"number_integer";"slider";"attachment_1";"attachment_2";"$answer_time_ms"
+        "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77.0";"3";"sølvi.png";"";"74630"
+        "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45.0";"1";"";"marius.jpeg";"71313"
+        "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10.0";"98.0";"9";"";"";"70230"
+  recorded_at: 2025-05-14 19:17:07 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
