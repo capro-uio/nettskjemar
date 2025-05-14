@@ -26,6 +26,6 @@ test_that("test user information", {
   expect_is(me$displayName, "character")
   expect_match(
     me$displayName,
-    "^[[:alnum:].-_]+@[[:alnum:].-]+$"
+    "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}@apiclient$"
   )
 })

@@ -11,11 +11,11 @@ if (getRversion() >= "2.15.1") {
 # nocov start
 release_bullets <- function() {
   c(
-    "Run `knit_vignettes()`",
     sprintf(
-      "Coverage is at: %s%",
-      covr::coverage_to_list(cov)$totalcoverage
-    )
+      "Coverage is at: %s",
+      covr::coverage_to_list(covr::package_coverage())$totalcoverage
+    ),
+    knit_vignettes()
   )
 } # nocov end
 
@@ -27,7 +27,7 @@ knit_vignettes <- function() {
     full.names = TRUE
   )
 
-  lapply(proc, function(x) {
+  k <- lapply(proc, function(x) {
     fig_path <- "static"
     knitr::knit(
       x,
@@ -43,4 +43,9 @@ knit_vignettes <- function() {
     })
     invisible(unlink(fig_path, recursive = TRUE))
   })
+
+  list(
+    "Knit vignettes",
+    lapply(proc, basename)
+  )
 } # nocov end

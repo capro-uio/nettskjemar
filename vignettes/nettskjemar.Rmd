@@ -45,30 +45,30 @@ formid <- 123823
 
 data <- ns_get_data(formid)
 data
-#>   formid $submission_id                  $created
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00
-#>    freetext radio checkbox.questionnaires
-#> 1 some text     1                       1
-#>   checkbox.events checkbox.logs dropdown
-#> 1               1             0        4
-#>   radio_matrix.grants radio_matrix.lecture
-#> 1                   1                    2
-#>   radio_matrix.email checkbox_matrix.1.IT
-#> 1                  2                    1
-#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
-#> 1                           1                       0
-#>   checkbox_matrix.1.union checkbox_matrix.1.internet
+#>   formid $submission_id                  $created  freetext
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00 some text
+#>   radio checkbox.questionnaires checkbox.events
+#> 1     1                       1               1
+#>   checkbox.logs dropdown radio_matrix.grants
+#> 1             0        4                   1
+#>   radio_matrix.lecture radio_matrix.email
+#> 1                    2                  2
+#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague
+#> 1                    1                           1
+#>   checkbox_matrix.1.admin checkbox_matrix.1.union
+#> 1                       0                       0
+#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
+#> 1                          0                    0
+#>   checkbox_matrix.2.colleague checkbox_matrix.2.admin
+#> 1                           0                       1
+#>   checkbox_matrix.2.union checkbox_matrix.2.internet
 #> 1                       0                          0
-#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
-#> 1                    0                           0
-#>   checkbox_matrix.2.admin checkbox_matrix.2.union
-#> 1                       1                       0
-#>   checkbox_matrix.2.internet       date  time
-#> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer slider
-#> 1 2023-06-12T13:33            4.5             77      3
-#>   attachment_1 attachment_2 $answer_time_ms
-#> 1    sølvi.png                        74630
+#>         date  time         datetime number_decimal
+#> 1 2023-06-01 12:00 2023-06-12T13:33            4.5
+#>   number_integer slider attachment_1 attachment_2
+#> 1           77.0      3    sølvi.png             
+#>   $answer_time_ms
+#> 1           74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
@@ -95,21 +95,18 @@ ns_get_data(formid, type = "long")
 #>   externalElementId textAnswer answerOptionIds
 #> 1          freetext  some text                
 #> 2             radio       <NA>         3879435
-#>   externalAnswerOptionIds elementType
-#> 1                            QUESTION
-#> 2                       1       RADIO
-#>           createdDate        modifiedDate subElementId
-#> 1 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
-#> 2 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
-#>   answerAttachmentId filename mediaType size
-#> 1                 NA     <NA>      <NA>   NA
-#> 2                 NA     <NA>      <NA>   NA
-#>   attachment.answerAttachmentId attachment.filename
-#> 1                            NA                <NA>
-#> 2                            NA                <NA>
-#>   attachment.mediaType attachment.size
-#> 1                 <NA>              NA
-#> 2                 <NA>              NA
+#>   externalAnswerOptionIds elementType         createdDate
+#> 1                            QUESTION 2023-06-01T20:57:15
+#> 2                       1       RADIO 2023-06-01T20:57:15
+#>          modifiedDate subElementId answerAttachmentId
+#> 1 2023-06-01T20:57:15           NA                 NA
+#> 2 2023-06-01T20:57:15           NA                 NA
+#>   filename mediaType size attachment.answerAttachmentId
+#> 1     <NA>      <NA>   NA                            NA
+#> 2     <NA>      <NA>   NA                            NA
+#>   attachment.filename attachment.mediaType attachment.size
+#> 1                <NA>                 <NA>              NA
+#> 2                <NA>                 <NA>              NA
 #>  [ reached 'max' / getOption("max.print") -- omitted 44 rows ]
 ```
 
@@ -147,8 +144,8 @@ ns_get_data(formid) |>
 #> 1                  2 2023-06-01 12:00 2023-06-12T13:33
 #> 2                  1 2023-02-07 14:45 2024-02-15T08:55
 #>   number_decimal number_integer slider attachment_1
-#> 1            4.5             77      3    sølvi.png
-#> 2            2.2             45      1             
+#> 1            4.5           77.0      3    sølvi.png
+#> 2            2.2           45.0      1             
 #>   attachment_2 $answer_time_ms checkbox_matrix.1
 #> 1                        74630     colleague, IT
 #> 2  marius.jpeg           71313          internet
@@ -187,8 +184,8 @@ ns_get_data(formid) |>
 #> 1                  2 2023-06-01 12:00 2023-06-12T13:33
 #> 2                  1 2023-02-07 14:45 2024-02-15T08:55
 #>   number_decimal number_integer slider attachment_1
-#> 1            4.5             77      3    sølvi.png
-#> 2            2.2             45      1             
+#> 1            4.5           77.0      3    sølvi.png
+#> 2            2.2           45.0      1             
 #>   attachment_2 $answer_time_ms checkbox_matrix.2
 #> 1                        74630             admin
 #> 2  marius.jpeg           71313      admin, union
@@ -203,20 +200,20 @@ ns_get_data(formid) |>
   unnest(checkbox_matrix.1) |>
   relocate(checkbox_matrix.1, .after = 2)
 #> # A tibble: 5 × 23
-#>   `$submission_id` formid checkbox_matrix.1 `$created`  
-#>              <int>  <dbl> <chr>             <chr>       
-#> 1         27685292 123823 colleague         2023-06-01T…
-#> 2         27685292 123823 IT                2023-06-01T…
-#> 3         27685302 123823 internet          2023-06-01T…
-#> 4         27685319 123823 colleague         2023-06-01T…
-#> 5         27685319 123823 internet          2023-06-01T…
+#>   `$submission_id` formid checkbox_matrix.1 `$created`      
+#>              <int>  <dbl> <chr>             <chr>           
+#> 1         27685292 123823 colleague         2023-06-01T20:5…
+#> 2         27685292 123823 IT                2023-06-01T20:5…
+#> 3         27685302 123823 internet          2023-06-01T20:5…
+#> 4         27685319 123823 colleague         2023-06-01T20:5…
+#> 5         27685319 123823 internet          2023-06-01T20:5…
 #> # ℹ 19 more variables: freetext <chr>, radio <int>,
-#> #   checkbox.questionnaires <int>,
-#> #   checkbox.events <int>, checkbox.logs <int>,
-#> #   dropdown <int>, radio_matrix.grants <int>,
-#> #   radio_matrix.lecture <int>,
+#> #   checkbox.questionnaires <int>, checkbox.events <int>,
+#> #   checkbox.logs <int>, dropdown <int>,
+#> #   radio_matrix.grants <int>, radio_matrix.lecture <int>,
 #> #   radio_matrix.email <int>, date <chr>, time <chr>,
-#> #   datetime <chr>, number_decimal <chr>, …
+#> #   datetime <chr>, number_decimal <chr>,
+#> #   number_integer <chr>, slider <int>, …
 ```
 
 If you are not used to working with list columns,
@@ -248,8 +245,8 @@ ns_get_data(formid) |>
 #> 1                  2 2023-06-01 12:00 2023-06-12T13:33
 #> 2                  1 2023-02-07 14:45 2024-02-15T08:55
 #>   number_decimal number_integer slider attachment_1
-#> 1            4.5             77      3    sølvi.png
-#> 2            2.2             45      1             
+#> 1            4.5           77.0      3    sølvi.png
+#> 2            2.2           45.0      1             
 #>   attachment_2 $answer_time_ms checkbox_matrix.2
 #> 1                        74630             admin
 #> 2  marius.jpeg           71313       admin;union
@@ -264,20 +261,20 @@ ns_get_data(formid) |>
   relocate(checkbox_matrix.1, .after = 2) |>
   separate_rows(checkbox_matrix.1)
 #> # A tibble: 5 × 23
-#>   `$submission_id` formid checkbox_matrix.1 `$created`  
-#>              <int>  <dbl> <chr>             <chr>       
-#> 1         27685292 123823 colleague         2023-06-01T…
-#> 2         27685292 123823 IT                2023-06-01T…
-#> 3         27685302 123823 internet          2023-06-01T…
-#> 4         27685319 123823 colleague         2023-06-01T…
-#> 5         27685319 123823 internet          2023-06-01T…
+#>   `$submission_id` formid checkbox_matrix.1 `$created`      
+#>              <int>  <dbl> <chr>             <chr>           
+#> 1         27685292 123823 colleague         2023-06-01T20:5…
+#> 2         27685292 123823 IT                2023-06-01T20:5…
+#> 3         27685302 123823 internet          2023-06-01T20:5…
+#> 4         27685319 123823 colleague         2023-06-01T20:5…
+#> 5         27685319 123823 internet          2023-06-01T20:5…
 #> # ℹ 19 more variables: freetext <chr>, radio <int>,
-#> #   checkbox.questionnaires <int>,
-#> #   checkbox.events <int>, checkbox.logs <int>,
-#> #   dropdown <int>, radio_matrix.grants <int>,
-#> #   radio_matrix.lecture <int>,
+#> #   checkbox.questionnaires <int>, checkbox.events <int>,
+#> #   checkbox.logs <int>, dropdown <int>,
+#> #   radio_matrix.grants <int>, radio_matrix.lecture <int>,
 #> #   radio_matrix.email <int>, date <chr>, time <chr>,
-#> #   datetime <chr>, number_decimal <chr>, …
+#> #   datetime <chr>, number_decimal <chr>,
+#> #   number_integer <chr>, slider <int>, …
 ```
 
 

@@ -5,7 +5,7 @@ test_that("test get forms list", {
   })
 
   expect_is(formslist, "data.frame")
-  expect_equal(nrow(formslist), 191)
+  expect_equal(nrow(formslist), 1)
   expect_equal(ncol(formslist), 14)
   expect_equal(
     names(formslist),

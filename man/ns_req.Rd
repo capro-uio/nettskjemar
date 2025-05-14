@@ -24,7 +24,7 @@ build from.
 \examples{
 \dontrun{
 ns_req() |>
- httr2::req_url_path_append("form", "me") |>
+ httr2::req_url_path_append("me") |>
  httr2::req_perform() |>
  httr2::resp_body_json()
 }

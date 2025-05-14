@@ -13,7 +13,7 @@ vcr::use_cassette("ns_get_meta_valid", {
     expect_equal(meta$numberOfSubmissions, 3)
     expect_equal(
       meta$modifiedDate,
-      "2025-03-13T19:27:18"
+      "2025-05-14T19:47:03"
     )
   })
 })

@@ -29,14 +29,14 @@ submission_id <- 27685292
 ns_list_submission_attachments(submission_id)
 #>   submissionId  answerId elementId externalElementId
 #> 1     27685292 158263134   1641713      attachment_1
-#>   textAnswer answerAttachmentId  filename mediaType
-#> 1  sølvi.png             538819 sølvi.png image/png
-#>     size elementType attachment.answerAttachmentId
-#> 1 628613  ATTACHMENT                        538819
-#>   attachment.filename attachment.mediaType
-#> 1           sølvi.png            image/png
-#>   attachment.size counter
-#> 1          628613       1
+#>   textAnswer answerAttachmentId  filename mediaType   size
+#> 1  sølvi.png             538819 sølvi.png image/png 628613
+#>   elementType attachment.answerAttachmentId
+#> 1  ATTACHMENT                        538819
+#>   attachment.filename attachment.mediaType attachment.size
+#> 1           sølvi.png            image/png          628613
+#>   counter
+#> 1       1
 ```
 
 This function returns a `data.frame` with details such as the attachment ID, original filename, and standardized filename.
@@ -56,15 +56,15 @@ ns_list_form_attachments(formid)
 #>    externalElementId  textAnswer answerOptionIds
 #> 16      attachment_1   sølvi.png                
 #> 32      attachment_2 marius.jpeg                
-#>    externalAnswerOptionIds elementType
-#> 16                          ATTACHMENT
-#> 32                          ATTACHMENT
-#>            createdDate        modifiedDate subElementId
-#> 16 2023-06-01T20:57:15 2023-06-01T20:57:15           NA
-#> 32 2023-06-01T20:58:33 2023-06-01T20:58:33           NA
-#>    answerAttachmentId    filename  mediaType   size
-#> 16             538819   sølvi.png  image/png 628613
-#> 32             538820 marius.jpeg image/jpeg  89494
+#>    externalAnswerOptionIds elementType         createdDate
+#> 16                          ATTACHMENT 2023-06-01T20:57:15
+#> 32                          ATTACHMENT 2023-06-01T20:58:33
+#>           modifiedDate subElementId answerAttachmentId
+#> 16 2023-06-01T20:57:15           NA             538819
+#> 32 2023-06-01T20:58:33           NA             538820
+#>       filename  mediaType   size
+#> 16   sølvi.png  image/png 628613
+#> 32 marius.jpeg image/jpeg  89494
 #>    attachment.answerAttachmentId attachment.filename
 #> 16                        538819           sølvi.png
 #> 32                        538820         marius.jpeg

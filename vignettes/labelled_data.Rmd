@@ -34,30 +34,30 @@ formid <- 123823
 
 data <- ns_get_data(formid)
 data
-#>   formid $submission_id                  $created
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00
-#>    freetext radio checkbox.questionnaires
-#> 1 some text     1                       1
-#>   checkbox.events checkbox.logs dropdown
-#> 1               1             0        4
-#>   radio_matrix.grants radio_matrix.lecture
-#> 1                   1                    2
-#>   radio_matrix.email checkbox_matrix.1.IT
-#> 1                  2                    1
-#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
-#> 1                           1                       0
-#>   checkbox_matrix.1.union checkbox_matrix.1.internet
+#>   formid $submission_id                  $created  freetext
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00 some text
+#>   radio checkbox.questionnaires checkbox.events
+#> 1     1                       1               1
+#>   checkbox.logs dropdown radio_matrix.grants
+#> 1             0        4                   1
+#>   radio_matrix.lecture radio_matrix.email
+#> 1                    2                  2
+#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague
+#> 1                    1                           1
+#>   checkbox_matrix.1.admin checkbox_matrix.1.union
+#> 1                       0                       0
+#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
+#> 1                          0                    0
+#>   checkbox_matrix.2.colleague checkbox_matrix.2.admin
+#> 1                           0                       1
+#>   checkbox_matrix.2.union checkbox_matrix.2.internet
 #> 1                       0                          0
-#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
-#> 1                    0                           0
-#>   checkbox_matrix.2.admin checkbox_matrix.2.union
-#> 1                       1                       0
-#>   checkbox_matrix.2.internet       date  time
-#> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer slider
-#> 1 2023-06-12T13:33            4.5             77      3
-#>   attachment_1 attachment_2 $answer_time_ms
-#> 1    sølvi.png                        74630
+#>         date  time         datetime number_decimal
+#> 1 2023-06-01 12:00 2023-06-12T13:33            4.5
+#>   number_integer slider attachment_1 attachment_2
+#> 1           77.0      3    sølvi.png             
+#>   $answer_time_ms
+#> 1           74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
@@ -104,30 +104,30 @@ lab_data <- data |>
   ns_add_labels(cb)
 
 lab_data
-#>   formid $submission_id                  $created
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00
-#>    freetext radio checkbox.questionnaires
-#> 1 some text     1                       1
-#>   checkbox.events checkbox.logs dropdown
-#> 1               1             0        4
-#>   radio_matrix.grants radio_matrix.lecture
-#> 1                   1                    2
-#>   radio_matrix.email checkbox_matrix.1.IT
-#> 1                  2                    1
-#>   checkbox_matrix.1.colleague checkbox_matrix.1.admin
-#> 1                           1                       0
-#>   checkbox_matrix.1.union checkbox_matrix.1.internet
+#>   formid $submission_id                  $created  freetext
+#> 1 123823       27685292 2023-06-01T20:57:15+02:00 some text
+#>   radio checkbox.questionnaires checkbox.events
+#> 1     1                       1               1
+#>   checkbox.logs dropdown radio_matrix.grants
+#> 1             0        4                   1
+#>   radio_matrix.lecture radio_matrix.email
+#> 1                    2                  2
+#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague
+#> 1                    1                           1
+#>   checkbox_matrix.1.admin checkbox_matrix.1.union
+#> 1                       0                       0
+#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
+#> 1                          0                    0
+#>   checkbox_matrix.2.colleague checkbox_matrix.2.admin
+#> 1                           0                       1
+#>   checkbox_matrix.2.union checkbox_matrix.2.internet
 #> 1                       0                          0
-#>   checkbox_matrix.2.IT checkbox_matrix.2.colleague
-#> 1                    0                           0
-#>   checkbox_matrix.2.admin checkbox_matrix.2.union
-#> 1                       1                       0
-#>   checkbox_matrix.2.internet       date  time
-#> 1                          0 2023-06-01 12:00
-#>           datetime number_decimal number_integer slider
-#> 1 2023-06-12T13:33            4.5             77      3
-#>   attachment_1 attachment_2 $answer_time_ms
-#> 1    sølvi.png                        74630
+#>         date  time         datetime number_decimal
+#> 1 2023-06-01 12:00 2023-06-12T13:33            4.5
+#>   number_integer slider attachment_1 attachment_2
+#> 1           77.0      3    sølvi.png             
+#>   $answer_time_ms
+#> 1           74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
@@ -164,8 +164,8 @@ str(data)
 #>  $ date                       : chr  "2023-06-01" "2023-02-07" "2022-09-28"
 #>  $ time                       : chr  "12:00" "14:45" "05:11"
 #>  $ datetime                   : chr  "2023-06-12T13:33" "2024-02-15T08:55" "2022-03-03T07:29"
-#>  $ number_decimal             : chr  "4.5" "2.2" "10"
-#>  $ number_integer             : int  77 45 98
+#>  $ number_decimal             : chr  "4.5" "2.2" "10.0"
+#>  $ number_integer             : chr  "77.0" "45.0" "98.0"
 #>  $ slider                     : int  3 1 9
 #>  $ attachment_1               : chr  "sølvi.png" "" ""
 #>  $ attachment_2               : chr  "" "marius.jpeg" ""
@@ -277,10 +277,10 @@ str(lab_data)
 #>  $ datetime                   : 'character' chr  "2023-06-12T13:33" "2024-02-15T08:55" "2022-03-03T07:29"
 #>   ..- attr(*, "label")= chr "Lastly choose a date AND time!"
 #>   ..- attr(*, "ns_type")= chr "DATE"
-#>  $ number_decimal             : 'numeric' chr  "4.5" "2.2" "10"
+#>  $ number_decimal             : 'numeric' chr  "4.5" "2.2" "10.0"
 #>   ..- attr(*, "label")= chr "Pick a number between 0 and 10!"
 #>   ..- attr(*, "ns_type")= chr "NUMBER"
-#>  $ number_integer             : int  77 45 98
+#>  $ number_integer             : 'numeric' chr  "77.0" "45.0" "98.0"
 #>   ..- attr(*, "label")= chr "Choose an integer between 0 and 100"
 #>   ..- attr(*, "ns_type")= chr "NUMBER"
 #>  $ slider                     : int  3 1 9

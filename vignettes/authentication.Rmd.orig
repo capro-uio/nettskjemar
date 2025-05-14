@@ -21,13 +21,13 @@ Authentication is required to connect to the API endpoints and perform operation
 
 ## Setting Up Authentication
 
-## Setting up a client
+### Setting up a client
 
 Before using the functions, you need the following:
 1. **A registered API client** in Nettskjema.
 2. **Your client credentials** (client ID and client secret). These are provided when you register the client.
 
-To register a client go to the [nettskjema API page](https://authorization.nettskjema.no/) or use the `ns_create_client()` function to open the url.
+To register a client go to the [nettskjema authorization portal](https://authorization.nettskjema.no/) or use the `ns_create_client()` function to open the url.
 Here you will be asked to log in with your user account, so you can create the client.
 
 
@@ -67,18 +67,42 @@ library(nettskjemar)
 ns_get_me()
 ```
 
-If this returns a list of objects, you have successfully retrieved a token from Nettskjema and can use the remaining functions in the package.
+If this returns a data.frame of all the forms this client has access to.
 
 By default, the token is stored in your home directory as `.nettskjema_token.rds` with a 24-hour validity period (max validity of a token).
 The token is automatically refreshed after the 24--hour period is over, and you as a user should not even notice that this happens.
 
 You can configure the caching path using the `cache_path` argument of the function, if you are comfortable doing that.
 
+### Accessing forms
+
+To access forms, you need to add the client to each form you want it to have access to.
+This is similar to the procedures necessary in api v2, for those who had experience with that.
+
+![Screenshot of the Nettskjema AUthorization portal. There is a table with "My clients", with the header row: Client Id, Username, Client Name, Created and Expires, with three dots at the end for more options. The client id is a SHA hash, and the username is the same SHA has appended with @apiclient.](static/client_overview.png)
+
+You will need to go to each Nettskjema forms `Settings -> Permissions -> Editing permissions` and add the client id in the username format `<cliendId>@apiclient` to every form you want this specific client to have access to.
+
+This means you can create custom clients with specific user access to particular forms, rather than having a single client with overall access to everything you have access to.
+While this creates an initial burden of set up, it also allows more control and granularity for security.
+
+### Renewing the client
+
+The client is valid for one year, at which point you will need to renew it for it to continue working.
+Reneweing means getting a new secret, not a whole new client, meaning the client will retain access to all the forms you have added it to, and you won't need to re-do that part of the work.
+
+To renew the client, go to the [authorization portal](https://authorization.nettskjema.no/), and click the three dots next to the client you want to renew, and choose "Renew".
+You will then get a new secret, which you will need to add to you .Renviron file, [like before](#add-credentials-to-your--renviron-file), by replacing the one you already have there.
+
+![Screenshot of the Nettskjema Authorization portal. The three dots in the My clients table have been clicked for a client row, and a menu is opened showing the options: Edit, Renew, Delete, Editors.](static/client_renew.png)
+
 ## Troubleshooting
 
 1. **Invalid Credentials**: Ensure your client ID and client secret are correct and have been properly registered in Nettskjema.
-2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token.
-3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session.
+2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token, though this should generally not be necessary, as it is run in the background.
+3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session, the last part is necessary for R to access the new information. 
 
 ## More information
+More information about the client authentication can be found on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md).
+
 You can find more information about the Nettskjema v3 API on the [official UiO documentation pages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md).

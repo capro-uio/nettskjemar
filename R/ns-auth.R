@@ -14,15 +14,21 @@
 #' @examples
 #' \dontrun{
 #' ns_req() |>
-#'  httr2::req_url_path_append("form", "me") |>
+#'  httr2::req_url_path_append("me") |>
 #'  httr2::req_perform() |>
 #'  httr2::resp_body_json()
 #' }
 ns_req <- function(...) {
-  httr2::request("https://api.nettskjema.no/v3") |>
+  httr2::request(ns_url()) |>
     httr2::req_auth_bearer_token(
       ns_auth_token(...)$access_token
     )
+}
+
+#' Set general nettskjema api URL.
+#' @noRd
+ns_url <- function() {
+  "https://nettskjema.no/api/v3/"
 }
 
 #' Retrieve access token
@@ -63,7 +69,10 @@ ns_auth_token <- function(
   if (cache) {
     if (is.null(cache_path))
       cache_path <- file.path(
-        tools::R_user_dir("nettskjemar", "cache"),
+        tools::R_user_dir(
+          "nettskjemar",
+          "cache"
+        ),
         ".nettskjema-token.rds"
       )
     req <- req |>
