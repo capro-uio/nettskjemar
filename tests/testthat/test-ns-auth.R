@@ -18,7 +18,7 @@ test_that("test request setup", {
     )
   )
   expect_null(auth$body)
-  expect_match(auth$url, "https://api.nettskjema.no/v3")
+  expect_match(auth$url, "https://nettskjema.no/api/v3/")
   expect_match(names(auth$headers), "Authorization")
 })
 

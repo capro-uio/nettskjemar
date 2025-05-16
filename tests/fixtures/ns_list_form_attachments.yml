@@ -6,21 +6,23 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 12 Mar 2025 15:32:24 GMT
+      date: Wed, 14 May 2025 21:29:03 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=MzQyY2M3YzctMmQ0MC00MjRiLThiOTMtNzAwNzViNDcyMTNj; Path=/;
+      set-cookie: SESSION=NzlkYWI1YjAtNDcyMS00YTM2LTk3OTYtMWJjMWExZmM5ZmEx; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
       x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
       x-permitted-cross-domain-policies: none
       x-download-options: noopen
       x-xss-protection: '0'
@@ -30,7 +32,7 @@ http_interactions:
       permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
         run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
         autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
-        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
         legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
         payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
         speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
@@ -45,30 +47,32 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU0NCwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTQ0LCJpYXQiOjE3NDE3OTM1NDQsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJlYTRiMjgyYi0wYjEyLTQyMjctODgzOS02ZTI2ZmZmMWQwNzIiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.KB0hkL9umlJ10T_AhRz8w_rLVW1jiQy_l3G_UdRkMScZO_wjTi4XwWOur8fRtSK6I_u4MgL-bRamfIJpA81m1FHzLpOUdsafRJRlSRkKXliB8vvqUkEOBdFRoo9B_ikjSjlvo_A_0PqOchpWJ5E3RH2d4jJDVWurDOp7HxWsNSd2kocAmGQbgeke5f0jgtaHWEf9zTN2ci2zWdpNkQPDdYwOfm6iZsPB66MGlzTxrwYF_NQryXSgFMSgsTofBJz1Xc-xDCW8xlz3Qsw57qvuym-y9CyhwI44nbwxWPXnwF5FFsdP4y0tKoE0E-dAuG4PDlHUSqrnfG1DuHW3OFZLvGHSDefFVjkPo_StjP-wWvVJuZtlAp2jgK6B_3x4dO8LphjN93Lvfx5bDSywiCGzegXU8fJCNapplv94dPqspzsakcB39yiU_R6xXbEhJU2ZBfUg7kNqvT_-EsfrIv4aL0eVuoYecxcm7ZSKFGxKhYnsJtgaD2TWxvKAwJHBTR8k","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-03-12 15:32:24 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0MywiaWF0IjoxNzQ3MjU4MTQzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjM3MDhhYTZhLTk3OGMtNDFlYy1iZTJiLTZmNzgwMTE2MDVlOSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.csTKPr70o1o_5aSHp6p38M7s5L1Lq_0_gwutXCd7ok-IOPj4d2oTX-G4XxO6RjMxNEREoxQWsBPwUqeywpR6CVJQPjhUKLvxDtUVJntvsgn6KtV2NymXQLqHCrnDpsnbykOWnqiBou0V7IlgEOVDNgq8HmQNPYckzkJkCAvubFob3raTD91BuWX-U1UfoEI2RHsGGq3ihviobMXG480BshcPkv0Dh_WThPObT-bMETh-w5Pk6lkAj_YbQJvrurURYuodCEiBO34KzKWuQuhjl9NMs8GTmQqtlNbG8LCklhBzXqhrnDkrDFcXZO4aOa-QKMG_xLRrYHQKJUfYyQgoAiwXfQMemjH7Ma7YE7bN7FNf9mKaiueQtNS3i-M3C7XOHVMUi_K86UBClDDISk0i-OE934PkpBYULORf2kpYLgjR-x94P0h2hmrm06Jc_azOrpec3h8vxHiOy3gFEWYFh3SnqIBoWU7MZKpt51j9QhcwFWZIwQIzevsFP9xa39XX","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 21:29:03 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
-    uri: https://api.nettskjema.no/v3/form/123823/answers
+    uri: https://nettskjema.no/api/v3/form/123823/answers
     body:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MTc5MzU0NCwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQxODc5OTQ0LCJpYXQiOjE3NDE3OTM1NDQsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiJlYTRiMjgyYi0wYjEyLTQyMjctODgzOS02ZTI2ZmZmMWQwNzIiLCJlbWFpbCI6ImF0aGFuYXNtQHVpby5ubyJ9.KB0hkL9umlJ10T_AhRz8w_rLVW1jiQy_l3G_UdRkMScZO_wjTi4XwWOur8fRtSK6I_u4MgL-bRamfIJpA81m1FHzLpOUdsafRJRlSRkKXliB8vvqUkEOBdFRoo9B_ikjSjlvo_A_0PqOchpWJ5E3RH2d4jJDVWurDOp7HxWsNSd2kocAmGQbgeke5f0jgtaHWEf9zTN2ci2zWdpNkQPDdYwOfm6iZsPB66MGlzTxrwYF_NQryXSgFMSgsTofBJz1Xc-xDCW8xlz3Qsw57qvuym-y9CyhwI44nbwxWPXnwF5FFsdP4y0tKoE0E-dAuG4PDlHUSqrnfG1DuHW3OFZLvGHSDefFVjkPo_StjP-wWvVJuZtlAp2jgK6B_3x4dO8LphjN93Lvfx5bDSywiCGzegXU8fJCNapplv94dPqspzsakcB39yiU_R6xXbEhJU2ZBfUg7kNqvT_-EsfrIv4aL0eVuoYecxcm7ZSKFGxKhYnsJtgaD2TWxvKAwJHBTR8k
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0MywiaWF0IjoxNzQ3MjU4MTQzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjM3MDhhYTZhLTk3OGMtNDFlYy1iZTJiLTZmNzgwMTE2MDVlOSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.csTKPr70o1o_5aSHp6p38M7s5L1Lq_0_gwutXCd7ok-IOPj4d2oTX-G4XxO6RjMxNEREoxQWsBPwUqeywpR6CVJQPjhUKLvxDtUVJntvsgn6KtV2NymXQLqHCrnDpsnbykOWnqiBou0V7IlgEOVDNgq8HmQNPYckzkJkCAvubFob3raTD91BuWX-U1UfoEI2RHsGGq3ihviobMXG480BshcPkv0Dh_WThPObT-bMETh-w5Pk6lkAj_YbQJvrurURYuodCEiBO34KzKWuQuhjl9NMs8GTmQqtlNbG8LCklhBzXqhrnDkrDFcXZO4aOa-QKMG_xLRrYHQKJUfYyQgoAiwXfQMemjH7Ma7YE7bN7FNf9mKaiueQtNS3i-M3C7XOHVMUi_K86UBClDDISk0i-OE934PkpBYULORf2kpYLgjR-x94P0h2hmrm06Jc_azOrpec3h8vxHiOy3gFEWYFh3SnqIBoWU7MZKpt51j9QhcwFWZIwQIzevsFP9xa39XX
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 12 Mar 2025 15:32:24 GMT
+      date: Wed, 14 May 2025 21:29:03 GMT
       content-type: application/x-ndjson
-      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
-      set-cookie: JSESSIONID=7605FF4F7E50A07A241B245B46B7AF14; Path=/v3; Secure; HttpOnly;
-        SameSite=Lax
+      set-cookie: JSESSIONID=918EABF7730C08952C6B1411C6721ED7; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
       x-content-type-options: nosniff
+      timing-allow-origin: '*'
       cache-control: private, max-age=0, no-cache, no-store
       tdm-reservation: '1'
     body:
@@ -121,5 +125,5 @@ http_interactions:
         {"formId":123823,"submissionId":27685319,"answerId":158263287,"elementId":1641706,"externalElementId":"number_decimal","textAnswer":"10","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263286,"elementId":1641707,"externalElementId":"number_integer","textAnswer":"98","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263292,"elementId":3472259,"externalElementId":"slider","textAnswer":"9","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"LINEAR_SCALE","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
-  recorded_at: 2025-03-12 15:32:24 GMT
+  recorded_at: 2025-05-14 21:29:03 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

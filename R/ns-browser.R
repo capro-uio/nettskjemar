@@ -10,7 +10,9 @@
 #' ns_api_docs()
 #' }
 ns_api_docs <- function() {
-  open_browser("https://api.nettskjema.no/v3/swagger-ui/index.html")
+  open_browser(
+    file.path(ns_url(), "swagger-ui/index.html")
+  )
 }
 
 
