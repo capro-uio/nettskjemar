@@ -32,7 +32,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
-    vcr (>= 0.6.0)
+    vcr (>= 0.6.0),
+    openssl
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

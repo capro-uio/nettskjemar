@@ -6,17 +6,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic Y2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmOnFnRDA5UkNhMWtobkd4dVpfMXJTajBHM2FyeEExUWRTSTYwOFVueVhUYnhmeWhCUEp5WTVvYkxHcS0zdlFuM25fN05Mb2FEdQ==
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:04 GMT
+      date: Wed, 14 May 2025 21:29:06 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=YmVkZTY0ZTgtYjNlNC00ODg2LTliYjktOWQ3MDUyMzY5OTI0; Path=/;
+      set-cookie: SESSION=OTY4YjMwZGItNGMzZi00ZjU1LWIyNjUtZTEwYjA1MTkxMjdi; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,6 +47,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjQsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNCwiaWF0IjoxNzQ3MjUwMjI0LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjVkMmI5ZDE3LTZjMTgtNDBlYS04MjdmLWRhMWQ3MWQ3OTJkNSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.In1bMZ8S17uLQ8Y57nShI5jW1YzZRx-YS7VeMg8smkGDKStLDRN429LX_bwz5k-9HfSGbdOf_lfktlMVeKxRL8q37Ky8tz3JHAI_6ky5j5hrQW1mLWdMEXlwk8qOqPti5v8gNLBdBkD85Joa7DNERlBgZrEgCvve0nZ9PRO6-i1XUskGB982TJMOQp5XWKKbx8TEYVYrK2DVRiE0fGI9Rbm8o9jMdj_-EK4uyH7pJiYm6WZYBnyEqDu4sEqsPW4YxKvs5Krcr-m0dtCjTlNP7YN5jev9YiHHmQw0aswcw6E3mu3omJRmzqEDW0zD3jJOEn_R4Crb7ZEIECjssd6c76HQOwhGCmwHA_1GhOXkOKC0z2EoLVl3A0cpCYptbwCEgB0dNLW4I7eOn8IHxb4wzcR97i5sydyR1Ai8hRE165zg_LGWwPhj83GFAyoF6OM_7fTpBgqiV7TiwG7xhca4ToZkLAR0twcOefftPW2hB4rpxFh_Fg0rf_VhHm4YPYjk","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-14 19:17:04 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDYsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0NiwiaWF0IjoxNzQ3MjU4MTQ2LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImUwMjRkYWE3LWYzYjctNDQzYy1hYjlkLWFiNGJhNzg0ZTdkNSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.sRhr_b0J2hKMd7WoyZbhaqZGWMBYnJmo9Uho7b_JFYyJheGCwz_3_RZAfc6bCycXVAA4Cj9SwqyzWC9RE2Qrv8Z6So9VIhfsh17g7cVR9DiWAtFAIVNKXdqXDh4IoiFP3R0hLfML-quJsOQbCo_p_-zlIbJdqZPRp7T06Adk7sBcICOEZkAgVW-d7D9HrQDYegJuK3agKqVXXUbCiuS6Z__Bb7PU35Ezb14veKParT6A9qyVNWhvX05tZ_Y3rqrV8_-bzLv5h91Au3ckHuJjEZg6Db6eZBCI0XiPEj0XomLpb_oH8dCBDJNzTZITjDihSZwanpUqkWoZOkyfAoNYMFxGbi-q_0CajqlMa2M-PW5I0ka1YvKXjcAKNmiFdeYV7gLgbU1jvATWi0lxMhv4PL-AS9dc6MeMEEARyZntuZLHEOiEn0pUaLp_u6auwQhP1aelY57GPOhac-qD_fSlSxdcmvOCZs18vG4EnpEWvcylFRo1vtVc4XmPcrqQ-1Jz","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 21:29:06 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

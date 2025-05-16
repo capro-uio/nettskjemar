@@ -6,17 +6,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic Y2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmOnFnRDA5UkNhMWtobkd4dVpfMXJTajBHM2FyeEExUWRTSTYwOFVueVhUYnhmeWhCUEp5WTVvYkxHcS0zdlFuM25fN05Mb2FEdQ==
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:07 GMT
+      date: Wed, 14 May 2025 21:29:09 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=NDIzMTYyOWUtNTQ5MC00MzIzLTlkYmQtMjQ4OGFhY2I4ODI4; Path=/;
+      set-cookie: SESSION=ZjUzMjE1ZGMtNzZlZC00NDMzLTlhMDctZWNmYTkxMjAyOGVj; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,8 +47,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNywiaWF0IjoxNzQ3MjUwMjI3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjY2Yzg1YjRhLTcyNTgtNGUwNS1iYjZkLWFlYTkwY2NlMzA0ZCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.I8IsUtTUGGbnRXk0xVP8CwrG-XDqTx0c-xP0UZRD2QnhB3yLInLLG6j4xtGarCYdUVVw9Zxvkok53aV9UcGcStnmm1vxcVQvIWsI9KSxSFqrQBG44ywybg-kc-V3HXupmZ43k7jZ6bZzH8zKhdYQsw_efEfea_7SLPsxQn6jF_6cDG4D_WQHxF61J7ncUyBVOHGnKvW8xnqH-7xqiuvTgYrR8WBHufhUft0Z63php5N41QoLNq9rZSjfxNQ7TPdOERgF6-dcXNvScxmt6KWwAmnUsClrX95C71_6B5FPnrd1e3WO1I03ROV0HiL8B5uBYkVjccQ-Ghi20xcICMNUeNXISV_8QLimZ3dalgKqowZvR7x3ejzm7YGmb6YuMTJ_B9fooUZFRSbE7hhINoaKlKVYksjl26RmECLvZTes9qabG87hkWkkXJOwl817V-VBBR3augBpyFf7LbDkrdnY29W86_OasWng8eRaQTebpfFQtKicbqUwl6hNaivoteW8","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-14 19:17:07 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDksIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OSwiaWF0IjoxNzQ3MjU4MTQ5LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjkwMzZkNWM3LTI3ZGQtNDdkYS04YTQ4LWZjMDJkMzhlNmYzNCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.lQ4IryYcpQq40Fj_-fgfE_yWHwn6pXkJExNopG-hdrXzmp0TIkQLWm6YXdJUv5IrLzrph9UVKUNFeUikSCWZux1r2cDq1fSmdt3scDZRgOSKiWCdxvH-i5K-eqJzhxT1XA6hq4pAUyHFIFSKCMbhjb-LA2oqB4Y3Mpt7ItZH0Z8ozuJXDDM8nt1KMPrNgIPrrofHiEAqiTUFkR00UljYRGg8APjttlbJiDJZlv9pyk5Yygn973OaLff2uSWIJL1YvP2yXVsxi2i62lbwPrzXF-yXvcEZ3a76fkOrfgHKMZVv-Gw494yrwD1e3Z7bQmMERo90Gm5nYZ1D_KJCuGfmRfgiiQ1FkEC0z0YByKSd7l-gdwXIIdiQFuNRXO-lfPYTNQ-7C4Gs4tvmIFFKesgpChS7eFGlVpzGz4v5cWWIRiPzEzntxIsC6e6mCFqjoMZKB7ECsS6gLv_cw6NpsIY6J6CM4R1wyJNmLXZquRdLGk-jNy6P5EWN60wwUAAuSNFW","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 21:29:09 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
@@ -57,18 +57,18 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNywiaWF0IjoxNzQ3MjUwMjI3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjY2Yzg1YjRhLTcyNTgtNGUwNS1iYjZkLWFlYTkwY2NlMzA0ZCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.I8IsUtTUGGbnRXk0xVP8CwrG-XDqTx0c-xP0UZRD2QnhB3yLInLLG6j4xtGarCYdUVVw9Zxvkok53aV9UcGcStnmm1vxcVQvIWsI9KSxSFqrQBG44ywybg-kc-V3HXupmZ43k7jZ6bZzH8zKhdYQsw_efEfea_7SLPsxQn6jF_6cDG4D_WQHxF61J7ncUyBVOHGnKvW8xnqH-7xqiuvTgYrR8WBHufhUft0Z63php5N41QoLNq9rZSjfxNQ7TPdOERgF6-dcXNvScxmt6KWwAmnUsClrX95C71_6B5FPnrd1e3WO1I03ROV0HiL8B5uBYkVjccQ-Ghi20xcICMNUeNXISV_8QLimZ3dalgKqowZvR7x3ejzm7YGmb6YuMTJ_B9fooUZFRSbE7hhINoaKlKVYksjl26RmECLvZTes9qabG87hkWkkXJOwl817V-VBBR3augBpyFf7LbDkrdnY29W86_OasWng8eRaQTebpfFQtKicbqUwl6hNaivoteW8
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDksIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OSwiaWF0IjoxNzQ3MjU4MTQ5LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjkwMzZkNWM3LTI3ZGQtNDdkYS04YTQ4LWZjMDJkMzhlNmYzNCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.lQ4IryYcpQq40Fj_-fgfE_yWHwn6pXkJExNopG-hdrXzmp0TIkQLWm6YXdJUv5IrLzrph9UVKUNFeUikSCWZux1r2cDq1fSmdt3scDZRgOSKiWCdxvH-i5K-eqJzhxT1XA6hq4pAUyHFIFSKCMbhjb-LA2oqB4Y3Mpt7ItZH0Z8ozuJXDDM8nt1KMPrNgIPrrofHiEAqiTUFkR00UljYRGg8APjttlbJiDJZlv9pyk5Yygn973OaLff2uSWIJL1YvP2yXVsxi2i62lbwPrzXF-yXvcEZ3a76fkOrfgHKMZVv-Gw494yrwD1e3Z7bQmMERo90Gm5nYZ1D_KJCuGfmRfgiiQ1FkEC0z0YByKSd7l-gdwXIIdiQFuNRXO-lfPYTNQ-7C4Gs4tvmIFFKesgpChS7eFGlVpzGz4v5cWWIRiPzEzntxIsC6e6mCFqjoMZKB7ECsS6gLv_cw6NpsIY6J6CM4R1wyJNmLXZquRdLGk-jNy6P5EWN60wwUAAuSNFW
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:07 GMT
+      date: Wed, 14 May 2025 21:29:09 GMT
       content-length: '769'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=8B470F912D78D82F0A62EEC36383F60B; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=A60E573CD6F401C0A09FAA4B972BF623; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -103,5 +103,5 @@ http_interactions:
       string: '{"submissionMetadata":{"formId":123823,"submissionId":27685292,"answerTime":74630,"createdDate":"2023-06-01T20:57:15","modifiedDate":"2023-06-01T20:57:15","anonymous":false,"deliveryDestination":"DATABASE","person":{"name":null,"email":null}},"answers":[{"submissionId":27685292,"answerId":158263133,"elementId":1641697,"externalElementId":"freetext","textAnswer":"some
         text","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"QUESTION"},{"submissionId":27685292,"answerId":158263124,"elementId":1641698,"externalElementId":"radio","answerOptionIds":[3879435],"externalAnswerOptionIds":["1"],"elementType":"RADIO"},{"submissionId":27685292,"answerId":158263127,"elementId":1641699,"externalElementId":"checkbox","answerOptionIds":[3879437,3879438],"externalAnswerOptionIds":["questionnaires","events"],"elementType":"CHECKBOX"},{"submissionId":27685292,"answerId":158263135,"elementId":1641700,"externalElementId":"dropdown","answerOptionIds":[3879439],"externalAnswerOptionIds":["4"],"elementType":"SELECT"},{"submissionId":27685292,"answerId":158263130,"elementId":1641701,"externalElementId":"radio_matrix","answerOptionIds":[3879441],"externalAnswerOptionIds":["1"],"elementType":"MATRIX_RADIO","subElementId":1649734},{"submissionId":27685292,"answerId":158263132,"elementId":1641701,"externalElementId":"radio_matrix","answerOptionIds":[3879442],"externalAnswerOptionIds":["2"],"elementType":"MATRIX_RADIO","subElementId":1649735},{"submissionId":27685292,"answerId":158263128,"elementId":1641701,"externalElementId":"radio_matrix","answerOptionIds":[3879442],"externalAnswerOptionIds":["2"],"elementType":"MATRIX_RADIO","subElementId":5973024},{"submissionId":27685292,"answerId":158263121,"elementId":1641702,"externalElementId":"checkbox_matrix","answerOptionIds":[3879443,3879444],"externalAnswerOptionIds":["IT","colleague"],"elementType":"MATRIX_CHECKBOX","subElementId":1649736},{"submissionId":27685292,"answerId":158263125,"elementId":1641702,"externalElementId":"checkbox_matrix","answerOptionIds":[13309370],"externalAnswerOptionIds":["admin"],"elementType":"MATRIX_CHECKBOX","subElementId":1649737},{"submissionId":27685292,"answerId":158263122,"elementId":1641703,"externalElementId":"date","textAnswer":"01.06.2023","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"DATE"},{"submissionId":27685292,"answerId":158263123,"elementId":1641704,"externalElementId":"time","textAnswer":"12:00","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"DATE"},{"submissionId":27685292,"answerId":158263136,"elementId":1641705,"externalElementId":"datetime","textAnswer":"12.06.2023
         13:33","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"DATE"},{"submissionId":27685292,"answerId":158263126,"elementId":1641706,"externalElementId":"number_decimal","textAnswer":"4,5","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER"},{"submissionId":27685292,"answerId":158263131,"elementId":1641707,"externalElementId":"number_integer","textAnswer":"77","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER"},{"submissionId":27685292,"answerId":158263129,"elementId":3472259,"externalElementId":"slider","textAnswer":"3","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"LINEAR_SCALE"},{"submissionId":27685292,"answerId":158263134,"elementId":1641713,"externalElementId":"attachment_1","textAnswer":"sølvi.png","answerOptionIds":[],"externalAnswerOptionIds":[],"answerAttachmentId":538819,"filename":"sølvi.png","mediaType":"image/png","size":628613,"elementType":"ATTACHMENT","attachment":{"answerAttachmentId":538819,"filename":"sølvi.png","mediaType":"image/png","size":628613}}]}'
-  recorded_at: 2025-05-14 19:17:07 GMT
+  recorded_at: 2025-05-14 21:29:09 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

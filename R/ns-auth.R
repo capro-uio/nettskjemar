@@ -67,22 +67,30 @@ ns_auth_token <- function(
     )
 
   if (cache) {
-    if (is.null(cache_path))
+    if (is.null(cache_path)) {
       cache_path <- file.path(
         tools::R_user_dir(
           "nettskjemar",
           "cache"
         ),
-        ".nettskjema-token.rds"
+        client_id
       )
+      dir.create(
+        dirname(cache_path),
+        showWarnings = FALSE,
+        recursive = TRUE
+      )
+    }
     req <- req |>
       httr2::req_cache(
-        cache_path,
-        max_age = 24 * 60 * 60
+        tempfile(),
+        max_age = 24 * 60 * 60,
+        debug = TRUE
       )
   }
 
-  req |>
-    httr2::req_perform() |>
-    httr2::resp_body_json()
+  resp <- req |>
+    httr2::req_perform(path = cache_path)
+
+  httr2::resp_body_json(resp)
 }

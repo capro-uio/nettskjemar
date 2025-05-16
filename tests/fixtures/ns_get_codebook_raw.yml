@@ -6,17 +6,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic Y2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmOnFnRDA5UkNhMWtobkd4dVpfMXJTajBHM2FyeEExUWRTSTYwOFVueVhUYnhmeWhCUEp5WTVvYkxHcS0zdlFuM25fN05Mb2FEdQ==
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:05 GMT
+      date: Wed, 14 May 2025 21:29:07 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=YTBkY2E2YWUtYWY2Ny00NmE1LWFiY2MtYWEzNzNiM2RhNDRj; Path=/;
+      set-cookie: SESSION=OTY0OGYwZjAtMjFiYi00YmQ2LTgzYWEtOGQ3YjY2YWJmZThj; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,8 +47,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjUsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNSwiaWF0IjoxNzQ3MjUwMjI1LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6Ijg4NTBlYWZjLWExYjgtNDY4OC05NjYwLWQ2YzE5MzdhYzc0ZCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SwdgyVaAorY4PQ313Uy8bzGUFdqbl-uj7LvT9dYXkBGklTm7p4c1LTY1ub2hqueYZfjiU-w5V7MGi1t7irMgEuxVHrUrYLO_jteerIRoXWuox373FfT1QG7dBWGwAg-xZapWgtxbinxIXuZItyVtNUaIPMSTV5udEzjtUAsUqNHH5py9FAP4DUFWJc09iWfQzaLkcu9sr2PLc2vy_bH0WH1qpProkot7YfqOWlx7fpI3uYz0EegqwqqVo6xv90wiXe2hfko8LZUU65ebSBFRtvigbJYzvV5acCryZCbl6mMc34xPhFuLQtnL6SIsXY-MLA55I9MJ6IEE8M6bjHxHy-3E8H6KiBvOE8r2BrkX4yzQQLJXwa3X08X6fbWUrty0c4tcf-8fgA8aubq1ScoIZmMhlqn-i4w_zAYyatjq-i6_AqhPP2Xa-25yQ5lPP8NNXIAJzoSk4qTg9mtuSwwUP64UNkpo7XkhCoe0Ova3BNCNP99JXrdbuyYzmYAGDhlu","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-14 19:17:05 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0NywiaWF0IjoxNzQ3MjU4MTQ3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImU4MWNkM2FkLTA0NTctNDEzMy04MjMwLTE5ZjcyNTZjZjhjMSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.Hys0uQKlrf68aRWFvl6e3aWgR4wiKLiuih1a9mGX51usfeWYufwlbiquce4zhl4ksN4wcF-lXI-XUL---bGVjWFpu5wzP4g2cGgj16bVMluLjGipZfXqNbq5nZSGFNWsbdEvj9bmdil3xrfAVKVuvsFyU6252i95hOPura5V2uMiE4C5Nzv9yHMMgCSyY1059O09I4wrWKQHiBT0-3avqEpb4uZtuUDwIXW4wuMkDW4gWbS7pns4VhrzcnM2sn1FBt80cablNo1VVvVJ3OPNyWWAwBC3En47IQBthUtKq-SLOjgsYQgGlzf6AmAx44p5eQIbE-tREaJPHP189G6kYEAI22dQZrcz0ONUvirvQiCBcOt-fhC0MqtuzvtkUd-ffc2Veg8U26k_NyCmZ-wfRencdXKsTFtBAYbN1D2JiiBWE_bwarSHFdsAEou-6JW0EUzbhmHn6R0EoRtSmBT5qbMGSWf_XN982hSKTYajje7tavdLJFv7aYXpC7eDDc5Y","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 21:29:07 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
@@ -57,17 +57,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjUsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNSwiaWF0IjoxNzQ3MjUwMjI1LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6Ijg4NTBlYWZjLWExYjgtNDY4OC05NjYwLWQ2YzE5MzdhYzc0ZCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SwdgyVaAorY4PQ313Uy8bzGUFdqbl-uj7LvT9dYXkBGklTm7p4c1LTY1ub2hqueYZfjiU-w5V7MGi1t7irMgEuxVHrUrYLO_jteerIRoXWuox373FfT1QG7dBWGwAg-xZapWgtxbinxIXuZItyVtNUaIPMSTV5udEzjtUAsUqNHH5py9FAP4DUFWJc09iWfQzaLkcu9sr2PLc2vy_bH0WH1qpProkot7YfqOWlx7fpI3uYz0EegqwqqVo6xv90wiXe2hfko8LZUU65ebSBFRtvigbJYzvV5acCryZCbl6mMc34xPhFuLQtnL6SIsXY-MLA55I9MJ6IEE8M6bjHxHy-3E8H6KiBvOE8r2BrkX4yzQQLJXwa3X08X6fbWUrty0c4tcf-8fgA8aubq1ScoIZmMhlqn-i4w_zAYyatjq-i6_AqhPP2Xa-25yQ5lPP8NNXIAJzoSk4qTg9mtuSwwUP64UNkpo7XkhCoe0Ova3BNCNP99JXrdbuyYzmYAGDhlu
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDcsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0NywiaWF0IjoxNzQ3MjU4MTQ3LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImU4MWNkM2FkLTA0NTctNDEzMy04MjMwLTE5ZjcyNTZjZjhjMSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.Hys0uQKlrf68aRWFvl6e3aWgR4wiKLiuih1a9mGX51usfeWYufwlbiquce4zhl4ksN4wcF-lXI-XUL---bGVjWFpu5wzP4g2cGgj16bVMluLjGipZfXqNbq5nZSGFNWsbdEvj9bmdil3xrfAVKVuvsFyU6252i95hOPura5V2uMiE4C5Nzv9yHMMgCSyY1059O09I4wrWKQHiBT0-3avqEpb4uZtuUDwIXW4wuMkDW4gWbS7pns4VhrzcnM2sn1FBt80cablNo1VVvVJ3OPNyWWAwBC3En47IQBthUtKq-SLOjgsYQgGlzf6AmAx44p5eQIbE-tREaJPHP189G6kYEAI22dQZrcz0ONUvirvQiCBcOt-fhC0MqtuzvtkUd-ffc2Veg8U26k_NyCmZ-wfRencdXKsTFtBAYbN1D2JiiBWE_bwarSHFdsAEou-6JW0EUzbhmHn6R0EoRtSmBT5qbMGSWf_XN982hSKTYajje7tavdLJFv7aYXpC7eDDc5Y
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:05 GMT
+      date: Wed, 14 May 2025 21:29:07 GMT
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=8FA63FE63C5C4CDC1BEB989BBBB03105; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=97D8377A530B46A664704DFD55ADFDD0; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -138,5 +138,5 @@ http_interactions:
         sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
         sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
         is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
-  recorded_at: 2025-05-14 19:17:05 GMT
+  recorded_at: 2025-05-14 21:29:07 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

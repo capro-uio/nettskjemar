@@ -79,7 +79,7 @@ You can configure the caching path using the `cache_path` argument of the functi
 To access forms, you need to add the client to each form you want it to have access to.
 This is similar to the procedures necessary in api v2, for those who had experience with that.
 
-![Screenshot of the Nettskjema AUthorization portal. There is a table with "My clients", with the header row: Client Id, Username, Client Name, Created and Expires, with three dots at the end for more options. The client id is a SHA hash, and the username is the same SHA has appended with @apiclient.](static/client_overview.png)
+![Screenshot of the Nettskjema Authorization portal. There is a table with "My clients", with the header row: Client Id, Username, Client Name, Created and Expires, with three dots at the end for more options. The client id is a SHA hash, and the username is the same SHA has appended with @apiclient.](static/client_overview.png)
 
 You will need to go to each Nettskjema forms `Settings -> Permissions -> Editing permissions` and add the client id in the username format `<cliendId>@apiclient` to every form you want this specific client to have access to.
 
@@ -105,7 +105,7 @@ This will create a new client secret, and render the old invalid.
 ### Renewing the client secret
 
 The client is valid for one year, at which point you will need to renew it for it to continue working.
-Reneweing means getting a new secret, not a whole new client, meaning the client will retain access to all the forms you have added it to, and you won't need to re-do that part of the work.
+Renewing means getting a new secret, not a whole new client, meaning the client will retain access to all the forms you have added it to, and you won't need to re-do that part of the work.
 
 To renew the client, go to the [authorization portal](https://authorization.nettskjema.no/), and click the three dots next to the client you want to renew, and choose "Renew".
 You will then get a new secret, which you will need to add to you .Renviron file, [like before](#add-credentials-to-your--renviron-file), by replacing the one you already have there.
@@ -115,7 +115,7 @@ You will then get a new secret, which you will need to add to you .Renviron file
 You can give colleagues administrative access to the client by adding them as an "Editor".
 **Note that** adding someone as an editor does not grant them direct access to forms through their user, only to the credentials needed to access specific forms through the API.
 
-By having more editors to a client, means sharing the responsibility of keeping the client up-to-date and reneweing it when needed. 
+By having more editors to a client, means sharing the responsibility of keeping the client up-to-date and renewing it when needed. 
 This is advised so that more people can act quickly if the secret has been leaked by mistake by other team members.
 Having a couple of editors is a good idea for redundancy, but make sure to limit to only necessary team members.
 

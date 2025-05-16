@@ -6,17 +6,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Basic Y2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmOnFnRDA5UkNhMWtobkd4dVpfMXJTajBHM2FyeEExUWRTSTYwOFVueVhUYnhmeWhCUEp5WTVvYkxHcS0zdlFuM25fN05Mb2FEdQ==
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:06 GMT
+      date: Wed, 14 May 2025 21:29:09 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=ZDBiMDUzM2UtNTQzYi00YzFiLWE3YmUtYTZjYTgxOTI0Yjc4; Path=/;
+      set-cookie: SESSION=MWNhNmExZDMtYTNkYS00OTRlLWFhYjUtM2Q0MGI0MDljMzA3; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,8 +47,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjYsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNiwiaWF0IjoxNzQ3MjUwMjI2LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjRlY2NkZmQ5LThhMmQtNDQwZC1iY2FiLTE0MTMwMjZiYTliMSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.FenjR1n9W6lvDp1JL4gjU1T6llpMM6wHkF6uBKKNEIuJ04rshLGV5tKo-Qt9ofaDpW9sdqTupF_5DHnmq4J39l6PKxVTFYgwCfmnRYj-qQeq5vUzkbuR--NeZcmPWqjfrM2-8ZT6G1SkMlFAouH7ea_BqTHa9UUWDgqTl3oi8M1-1my-HR2BqtLe5RfXG5sdAuZu-QzXcZ2hbkZd0GHqrXW2Ns7mNYlcsLq4I2GZpOSk4BLv9aU3e4LvbRomj9XexG9GSb4HRjESSqCZQ9oJ1PeGiHRakVNU38tMLKB6F7C9aIU-Bj0Ga80J-1XJhXRDC1WNkv3RG9rxIngyTNlZpgXudxgtC-CCzitddI0lsX3lV-saBjeaPgfUyO66pH4me12T8HKzXj9uMMQezsPuqEQU-Mcy0VG32egqQU7AKHSj92SHuhkscLHP9-vcu18XMPbkFlqkqsCDnJC3mReJ93jnDSDbyzfMJ85m651qEmgUaXtDY5tgFFwAZ5LBLR67","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-14 19:17:06 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDksIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OSwiaWF0IjoxNzQ3MjU4MTQ5LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImY2OGVlOWQwLTBhNzctNDdkYS04YjNkLTI0MjU5M2E0ZjQ0MCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.ezFYFBR4J4XM-HL11TlugluHthelfah-fOb5I7g8s9mC-aTJyb6lI6lbpjDtBixhF5-r0B_SkYbqbLd-jSPwsiDMMtlcNq0OTPllGlWzXxkcasajt3AvM3iFglA-FNnAAUga-NrBFultEO6qilr1D1KM-sMw-Wl1BcirC8rqD9uj0IIoC611GYr8mMe96che0rKIceM2uTs4kcj-f13ufkqN69S74LplLW4SMt096jNSCfCatV6TYU8kidXKOQix0MMs42Q307rd_HsBoVDsQPjig3l3BPHrPwMWKPC_sceLr1aTnsRGl0WbkAsK_8GFxZU6BM-TKiAZNMvC4t8pwJKhFZc2K8nJauUjbcm47xZ7hWehToO-NABY4rvxbQ7z03l6I-IZPbTPot9Ot1VPamRzADjN818OdPCbL8O_YWDXTy8SeFMaPCqG3RrhzsM6GWxnX17LaD9d6miO__nTM0K8S-nTP_0OADxi7ZMZ41vCMjjkCxYcMWHIEci0nqDp","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-14 21:29:09 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
@@ -57,17 +57,17 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTAyMjYsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzMzNjYyNiwiaWF0IjoxNzQ3MjUwMjI2LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjRlY2NkZmQ5LThhMmQtNDQwZC1iY2FiLTE0MTMwMjZiYTliMSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.FenjR1n9W6lvDp1JL4gjU1T6llpMM6wHkF6uBKKNEIuJ04rshLGV5tKo-Qt9ofaDpW9sdqTupF_5DHnmq4J39l6PKxVTFYgwCfmnRYj-qQeq5vUzkbuR--NeZcmPWqjfrM2-8ZT6G1SkMlFAouH7ea_BqTHa9UUWDgqTl3oi8M1-1my-HR2BqtLe5RfXG5sdAuZu-QzXcZ2hbkZd0GHqrXW2Ns7mNYlcsLq4I2GZpOSk4BLv9aU3e4LvbRomj9XexG9GSb4HRjESSqCZQ9oJ1PeGiHRakVNU38tMLKB6F7C9aIU-Bj0Ga80J-1XJhXRDC1WNkv3RG9rxIngyTNlZpgXudxgtC-CCzitddI0lsX3lV-saBjeaPgfUyO66pH4me12T8HKzXj9uMMQezsPuqEQU-Mcy0VG32egqQU7AKHSj92SHuhkscLHP9-vcu18XMPbkFlqkqsCDnJC3mReJ93jnDSDbyzfMJ85m651qEmgUaXtDY5tgFFwAZ5LBLR67
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDksIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OSwiaWF0IjoxNzQ3MjU4MTQ5LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImY2OGVlOWQwLTBhNzctNDdkYS04YjNkLTI0MjU5M2E0ZjQ0MCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.ezFYFBR4J4XM-HL11TlugluHthelfah-fOb5I7g8s9mC-aTJyb6lI6lbpjDtBixhF5-r0B_SkYbqbLd-jSPwsiDMMtlcNq0OTPllGlWzXxkcasajt3AvM3iFglA-FNnAAUga-NrBFultEO6qilr1D1KM-sMw-Wl1BcirC8rqD9uj0IIoC611GYr8mMe96che0rKIceM2uTs4kcj-f13ufkqN69S74LplLW4SMt096jNSCfCatV6TYU8kidXKOQix0MMs42Q307rd_HsBoVDsQPjig3l3BPHrPwMWKPC_sceLr1aTnsRGl0WbkAsK_8GFxZU6BM-TKiAZNMvC4t8pwJKhFZc2K8nJauUjbcm47xZ7hWehToO-NABY4rvxbQ7z03l6I-IZPbTPot9Ot1VPamRzADjN818OdPCbL8O_YWDXTy8SeFMaPCqG3RrhzsM6GWxnX17LaD9d6miO__nTM0K8S-nTP_0OADxi7ZMZ41vCMjjkCxYcMWHIEci0nqDp
   response:
     status:
       status_code: 404
       message: Not Found
     headers:
       server: nginx
-      date: Wed, 14 May 2025 19:17:06 GMT
+      date: Wed, 14 May 2025 21:29:09 GMT
       content-length: '71'
       content-encoding: gzip
-      set-cookie: JSESSIONID=10592C0D1DC6AB83EEFBCE6BECE35503; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=C61492ADCBEC7ED5988E20709DE76EEC; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -79,5 +79,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"message":"Skjemaet med id 100 finnes ikke"}'
-  recorded_at: 2025-05-14 19:17:06 GMT
+  recorded_at: 2025-05-14 21:29:09 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
