@@ -21,7 +21,7 @@ submission_id <- 27685292
 attachment_id <- 538819
 
 skip_if_no_auth <- function(skip = TRUE) {
-  if (ns_has_auth(verbose = FALSE)) {
+  if (ns_has_auth()) {
     testthat::skip("No authentication available")
   }
 }

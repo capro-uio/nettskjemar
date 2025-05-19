@@ -49,8 +49,13 @@ ns_auth_token <- function(
 ) {
   if (!ns_has_auth()) {
     cli::cli_abort(c(
-      "System variables {.code NETTSKJEMA_CLIENT_ID} and {.code NETTSKJEMA_CLIENT_SECRET} are not set up.",
-      "Please read {.url https://www.capro.dev/nettskjemar/articles/authentication.html} on how to set your credentials correctly."
+      "System variables ",
+      "{.code NETTSKJEMA_CLIENT_ID} and ",
+      "{.code NETTSKJEMA_CLIENT_SECRET} ",
+      "are not set up.",
+      "Please read ",
+      "{.url https://www.capro.dev/nettskjemar/articles/authentication.html}",
+      " on how to set your credentials correctly."
     ))
   }
 
@@ -76,35 +81,24 @@ ns_auth_token <- function(
         ),
         paste0(Sys.getenv("NETTSKJEMA_CLIENT_ID"), ".rda")
       )
-      # dir.create(
-      #   dirname(cache_path),
-      #   showWarnings = FALSE,
-      #   recursive = TRUE
-      # )
+      dir.create(
+        dirname(cache_path),
+        showWarnings = FALSE,
+        recursive = TRUE
+      )
     }
 
-    if (file.exists(cache_path)) {
-      token <- readRDS(cache_path)
-      if (Sys.time() < token$expire_time) return(token)
-    }
-    # req <- req |>
-    #   httr2::req_cache(
-    #     tempfile(),
-    #     max_age = (24 * 60 * 60) - 1,
-    #     debug = TRUE
-    #   )
+    req <- req |>
+      httr2::req_cache(
+        tempfile(),
+        max_age = (24 * 60 * 60) - 1,
+        debug = TRUE
+      )
   }
 
-  token <- req |>
+  req |>
     httr2::req_perform() |>
     httr2::resp_body_json()
-
-  token$expire_time <- Sys.time() + (24 * 60 * 60) - 5
-
-  if (cache) {
-    saveRDS(token, file = cache_path)
-  }
-  token
 }
 
 #' Check Environment Variables for Nettskjema Authentication
@@ -132,5 +126,5 @@ ns_has_auth <- function() {
   cs <- Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
   if (ci == "" || cs == "") return(FALSE)
 
-  return(TRUE)
+  TRUE
 }

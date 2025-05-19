@@ -32,31 +32,29 @@ test_that("ns_auth_token uses cached token if valid", {
 })
 
 test_that("ns_auth_token fetches new token", {
-  {
-    # Create a temporary cache file with an expired token
-    temp_cache <- tempfile(fileext = ".rda")
-    expired_token <- list(
-      access_token = "expired_access_token",
-      expire_time = Sys.time() - 3600
-    )
-    saveRDS(expired_token, file = temp_cache)
+  # Create a temporary cache file with an expired token
+  temp_cache <- tempfile(fileext = ".rda")
+  expired_token <- list(
+    access_token = "expired_access_token",
+    expire_time = Sys.time() - 3600
+  )
+  saveRDS(expired_token, file = temp_cache)
 
-    vcr::use_cassette("ns_auth_token_fetch_new", {
-      token <- ns_auth_token(
-        cache = TRUE,
-        cache_path = temp_cache
-      )
-    })
-
-    # Assertions on token: should fetch a new token
-    expect_type(token, "list")
-    expect_true(token$access_token != "expired_access_token")
-    expect_true(!is.null(token$expire_time))
-    expect_gt(
-      as.numeric(token$expire_time - Sys.time()),
-      0
+  vcr::use_cassette("ns_auth_token_fetch_new", {
+    token <- ns_auth_token(
+      cache = TRUE,
+      cache_path = temp_cache
     )
-  }
+  })
+
+  # Assertions on token: should fetch a new token
+  expect_type(token, "list")
+  expect_true(token$access_token != "expired_access_token")
+  expect_true(!is.null(token$expire_time))
+  expect_gt(
+    as.numeric(token$expire_time - Sys.time()),
+    0
+  )
 })
 
 test_that("test token setup", {

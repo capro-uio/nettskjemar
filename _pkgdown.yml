@@ -34,7 +34,7 @@ reference:
 - title: "User verification and inspection"
   desc: "Functions for authenticating and inspecting the user"
   contents:
-  - ns_auth_token
+  - contains("auth")
   - ns_get_me
 - title: "Open online urls"
   desc: "Functions for easy opening of relevant URLs"
