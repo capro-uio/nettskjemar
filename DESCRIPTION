@@ -27,13 +27,14 @@ Suggests:
     covr,
     fs,
     haven,
-    labelled,
     knitr,
+    labelled,
+    openssl,
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
     vcr (>= 0.6.0),
-    openssl
+    withr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

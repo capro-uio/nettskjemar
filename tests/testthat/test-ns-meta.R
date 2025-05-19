@@ -1,21 +1,22 @@
 vcr::use_cassette("ns_get_meta_valid", {
   test_that("ns_get_meta for valid input", {
     meta <- ns_get_meta(form_id)
-    expect_s3_class(meta, "ns_meta")
-    expect_equal(meta$form_id, form_id)
-    expect_equal(meta$title, "API test form")
-    expect_equal(
-      meta$editorsContactEmail,
-      "a.m.mowinckel@psykologi.uio.no"
-    )
-    expect_false(meta$isOpen)
-    expect_true(meta$isCodebookValid)
-    expect_equal(meta$numberOfSubmissions, 3)
-    expect_equal(
-      meta$modifiedDate,
-      "2025-05-14T19:47:03"
-    )
   })
+
+  expect_s3_class(meta, "ns_meta")
+  expect_equal(meta$form_id, form_id)
+  expect_equal(meta$title, "API test form")
+  expect_equal(
+    meta$editorsContactEmail,
+    "a.m.mowinckel@psykologi.uio.no"
+  )
+  expect_false(meta$isOpen)
+  expect_true(meta$isCodebookValid)
+  expect_equal(meta$numberOfSubmissions, 3)
+  expect_equal(
+    meta$modifiedDate,
+    "2025-05-14T19:47:03"
+  )
 })
 
 vcr::use_cassette("ns_get_meta_invalid", {

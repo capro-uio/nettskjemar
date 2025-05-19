@@ -1,74 +1,23 @@
 http_interactions:
 - request:
-    method: post
-    uri: https://authorization.nettskjema.no/oauth2/token
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Authorization: Basic <<BASIC_AUTH>>
-  response:
-    status:
-      status_code: 200
-      message: OK
-    headers:
-      server: nginx
-      date: Wed, 14 May 2025 21:29:08 GMT
-      strict-transport-security: max-age=31536000 ; includeSubDomains
-      x-frame-options: DENY
-      set-cookie: SESSION=M2QwYTQxZjYtMWNmNC00MWY3LTgxZWItMGI0MzVlMTgyNTlh; Path=/;
-        Secure; HttpOnly; SameSite=None
-      vary: accept-encoding
-      content-encoding: gzip
-      x-content-type-options: nosniff
-      x-dns-prefetch-control: 'off'
-      origin-agent-cluster: ?1
-      x-permitted-cross-domain-policies: none
-      x-download-options: noopen
-      x-xss-protection: '0'
-      referrer-policy: strict-origin-when-cross-origin
-      content-type: application/json
-      cache-control: private, max-age=0, no-cache, no-store
-      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
-        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
-        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
-        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
-        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
-        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
-        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
-        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
-        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
-        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
-        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
-        window-management=(), storage-access=()
-      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
-      tdm-reservation: '1'
-      x-robots-tag: noai, noml, SPC, noimageai
-    body:
-      encoding: ''
-      file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDgsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OCwiaWF0IjoxNzQ3MjU4MTQ4LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjhiMmI2MTM0LWRjMGUtNGU3Ny1iODg2LWUyZTQxNmFhYTUxOCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.QIbeH5wt_Dk42NRlMD6cDYgaG8qpDrcK6iUIfqZEuWqh8sL_P25fvCYOnN7A9XUNNvNBsuprijoNBrSaN_yQa4Vm2LguQvhODN5_FNdYua7VK9BHKQw0T6QjlsGmAFxX7I-iZORzcpQW4DY4bZIKRBOHUP_87V5eO22oU-8tYFDRWhevaRib5F643iCifLgDsHthfWzuG9tOUjySlkuUAPDkXmqlJckwPa-DnjjOL3ks3P8bfezaobCvR905IZ66tfpbc-u4w2u9D1AHlo63WBc4yJMPX6ZsZMa_o6bR9zONqwiNZuRlzlWsYdxH6o6resck2LEnB1bQgN-vBSA1Mgt1XP2qlkrrX-ZrwF9FnbT8C93-G_cNWyrKnuoRk38q_rbgBsV4gS97GJ4KDVDKmiWsNKLHOuXUDohNZGs-oj6JchpjDxRiVA3N8ZC0668JJ1QPHL-hp11gEMmrMN1hAeIwcUEi1Kc_jt7lzLHKQnH5c9d2jAiuQA9LRN5c_iIp","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-14 21:29:08 GMT
-  recorded_with: vcr/1.6.0, webmockr/2.0.0
-- request:
     method: get
     uri: https://nettskjema.no/api/v3/me
     body:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDcyNTgxNDgsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzM0NDU0OCwiaWF0IjoxNzQ3MjU4MTQ4LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjhiMmI2MTM0LWRjMGUtNGU3Ny1iODg2LWUyZTQxNmFhYTUxOCIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.QIbeH5wt_Dk42NRlMD6cDYgaG8qpDrcK6iUIfqZEuWqh8sL_P25fvCYOnN7A9XUNNvNBsuprijoNBrSaN_yQa4Vm2LguQvhODN5_FNdYua7VK9BHKQw0T6QjlsGmAFxX7I-iZORzcpQW4DY4bZIKRBOHUP_87V5eO22oU-8tYFDRWhevaRib5F643iCifLgDsHthfWzuG9tOUjySlkuUAPDkXmqlJckwPa-DnjjOL3ks3P8bfezaobCvR905IZ66tfpbc-u4w2u9D1AHlo63WBc4yJMPX6ZsZMa_o6bR9zONqwiNZuRlzlWsYdxH6o6resck2LEnB1bQgN-vBSA1Mgt1XP2qlkrrX-ZrwF9FnbT8C93-G_cNWyrKnuoRk38q_rbgBsV4gS97GJ4KDVDKmiWsNKLHOuXUDohNZGs-oj6JchpjDxRiVA3N8ZC0668JJ1QPHL-hp11gEMmrMN1hAeIwcUEi1Kc_jt7lzLHKQnH5c9d2jAiuQA9LRN5c_iIp
+      Authorization: Bearer <<ACCESS_TOKEN>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Wed, 14 May 2025 21:29:08 GMT
+      date: Mon, 19 May 2025 14:44:21 GMT
       content-length: '234'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=76B3271B61FF292D2BBDA4E3BD65A3DA; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=9C7936AE19982F1CD051AC76CAF2C7AD; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -100,6 +49,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"isPersonalDataResponsible":false,"displayName":"<<CLIENT_ID>>@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
-  recorded_at: 2025-05-14 21:29:08 GMT
+      string: '{"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
+  recorded_at: 2025-05-19 14:44:21 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

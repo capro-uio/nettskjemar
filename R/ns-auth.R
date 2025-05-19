@@ -39,20 +39,21 @@ ns_url <- function() {
 #' in the package. Automatically caches the
 #' token for more efficient API usage.
 #'
-#' @param client_id Character. Default assumes
-#'  this is stored in .Renviron as "ns_CLIENT_ID"
-#' @param client_secret Character. Default assumes
-#'  this is stored in .Renviron as "ns_CLIENT_SECRET"
 #' @param cache Logical. Should the token be cached?
 #' @param cache_path Character. File path to where
 #'   the token should be stored. Defaults to system
 #'   cache directory.
 ns_auth_token <- function(
-  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
-  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
   cache = TRUE,
   cache_path = NULL
 ) {
+  if (!ns_has_auth()) {
+    cli::cli_abort(c(
+      "System variables {.code NETTSKJEMA_CLIENT_ID} and {.code NETTSKJEMA_CLIENT_SECRET} are not set up.",
+      "Please read {.url https://www.capro.dev/nettskjemar/articles/authentication.html} on how to set your credentials correctly."
+    ))
+  }
+
   req <- httr2::request(
     "https://authorization.nettskjema.no/oauth2/token"
   ) |>
@@ -62,8 +63,8 @@ ns_auth_token <- function(
       "application/x-www-form-urlencoded"
     ) |>
     httr2::req_auth_basic(
-      client_id,
-      client_secret
+      Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+      Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
     )
 
   if (cache) {
@@ -73,24 +74,63 @@ ns_auth_token <- function(
           "nettskjemar",
           "cache"
         ),
-        client_id
+        paste0(Sys.getenv("NETTSKJEMA_CLIENT_ID"), ".rda")
       )
-      dir.create(
-        dirname(cache_path),
-        showWarnings = FALSE,
-        recursive = TRUE
-      )
+      # dir.create(
+      #   dirname(cache_path),
+      #   showWarnings = FALSE,
+      #   recursive = TRUE
+      # )
     }
-    req <- req |>
-      httr2::req_cache(
-        tempfile(),
-        max_age = 24 * 60 * 60,
-        debug = TRUE
-      )
+
+    if (file.exists(cache_path)) {
+      token <- readRDS(cache_path)
+      if (Sys.time() < token$expire_time) return(token)
+    }
+    # req <- req |>
+    #   httr2::req_cache(
+    #     tempfile(),
+    #     max_age = (24 * 60 * 60) - 1,
+    #     debug = TRUE
+    #   )
   }
 
-  resp <- req |>
-    httr2::req_perform(path = cache_path)
+  token <- req |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 
-  httr2::resp_body_json(resp)
+  token$expire_time <- Sys.time() + (24 * 60 * 60) - 5
+
+  if (cache) {
+    saveRDS(token, file = cache_path)
+  }
+  token
+}
+
+#' Check Environment Variables for Nettskjema Authentication
+#'
+#' This function verifies whether the required system
+#' variables (`NETTSKJEMA_CLIENT_ID` and
+#' `NETTSKJEMA_CLIENT_SECRET`) are set to enable
+#' authentication with the Nettskjema API. It provides
+#' feedback on the setup status and returns whether the
+#' system is correctly configured.
+#'
+#' @return Logical. Returns `TRUE` if both environment
+#'    variables are set, otherwise `FALSE`.
+#'
+#' @examples
+#' ns_has_auth()
+#'
+#' @references
+#' For more information about authentication setup, see:
+#' https://www.capro.dev/nettskjemar/articles/authentication.html
+#'
+#' @export
+ns_has_auth <- function() {
+  ci <- Sys.getenv("NETTSKJEMA_CLIENT_ID")
+  cs <- Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
+  if (ci == "" || cs == "") return(FALSE)
+
+  return(TRUE)
 }
