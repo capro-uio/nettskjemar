@@ -1,21 +1,72 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://nettskjema.no/api/v3/form/123823/answers
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
     body:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer <<ACCESS_TOKEN>>
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Mon, 19 May 2025 14:44:19 GMT
+      date: Tue, 20 May 2025 10:16:36 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=NGViYWM1NDQtOGFkOS00ZGE5LWFmZjAtYTVkYmFmZTY3OWRk; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3MzYxOTYsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgyMjU5NiwiaWF0IjoxNzQ3NzM2MTk2LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjQyNDc2NjM5LTIzMjQtNDA1NS1iYjYwLTY2MmZhNjRiODNmOSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.CpLUOd2D_xXJHmI7kxXl8jKquA72h7Vb9v1yuXMdIBuE-N1DIIfsYRSL02n5tnt3etXERzzKksUlAsGJNy6u861b4KJ48mDFLqkpp0zqPrcknD8jvUuDbvQI5iQKi--TcWOgOGkpidDSu4jgK9tjFlie6srw2WL5RXfKrM87b0lWzINvZ33yGbq71PJqHQ8ChZzzxXQGQV5MnPROKNKUT1gmoADf06eCEHlshC9xR-v8fylwVdC3-PGeW1qiZCjDZtyicNV1LYUrw8gHjDElkamSHv7F1djXLNqSU2h027Z4N5HRqLgO4ABJWytc-R1ZXjKSKhErUKN8xPs3dQjuaEW7qfsUtXVAkKkKPoiIgVB1CSqFrLkBssOHBl9TIRzz2btEaYyp1gDjjh4FqyGRcepp_NRUdHty9rns9s96imv-axpirs4ANVpmjo5X7lqDpfcQwzwNYz8IrDnB2Xpe-LmE4H0-uYcSxkgJV16ATONAAl_yY9KatTT8rGOajzC_","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-20 10:16:36 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://nettskjema.no/api/v3/form/123823/answers
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3MzYxOTYsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgyMjU5NiwiaWF0IjoxNzQ3NzM2MTk2LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjQyNDc2NjM5LTIzMjQtNDA1NS1iYjYwLTY2MmZhNjRiODNmOSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.CpLUOd2D_xXJHmI7kxXl8jKquA72h7Vb9v1yuXMdIBuE-N1DIIfsYRSL02n5tnt3etXERzzKksUlAsGJNy6u861b4KJ48mDFLqkpp0zqPrcknD8jvUuDbvQI5iQKi--TcWOgOGkpidDSu4jgK9tjFlie6srw2WL5RXfKrM87b0lWzINvZ33yGbq71PJqHQ8ChZzzxXQGQV5MnPROKNKUT1gmoADf06eCEHlshC9xR-v8fylwVdC3-PGeW1qiZCjDZtyicNV1LYUrw8gHjDElkamSHv7F1djXLNqSU2h027Z4N5HRqLgO4ABJWytc-R1ZXjKSKhErUKN8xPs3dQjuaEW7qfsUtXVAkKkKPoiIgVB1CSqFrLkBssOHBl9TIRzz2btEaYyp1gDjjh4FqyGRcepp_NRUdHty9rns9s96imv-axpirs4ANVpmjo5X7lqDpfcQwzwNYz8IrDnB2Xpe-LmE4H0-uYcSxkgJV16ATONAAl_yY9KatTT8rGOajzC_
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Tue, 20 May 2025 10:16:36 GMT
       content-type: application/x-ndjson
-      set-cookie: JSESSIONID=FCB3EA229B0F5651015964098513FF82; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=04133C50D84F807F494975492CA18853; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       x-application-gateway-proxy: api-own-auth
@@ -74,5 +125,5 @@ http_interactions:
         {"formId":123823,"submissionId":27685319,"answerId":158263287,"elementId":1641706,"externalElementId":"number_decimal","textAnswer":"10","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263286,"elementId":1641707,"externalElementId":"number_integer","textAnswer":"98","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263292,"elementId":3472259,"externalElementId":"slider","textAnswer":"9","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"LINEAR_SCALE","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
-  recorded_at: 2025-05-19 14:44:19 GMT
+  recorded_at: 2025-05-20 10:16:36 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

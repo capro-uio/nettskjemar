@@ -1,23 +1,74 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://nettskjema.no/api/v3/me
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
     body:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer <<ACCESS_TOKEN>>
+      Authorization: Basic <<BASIC_AUTH>>
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Mon, 19 May 2025 14:44:21 GMT
+      date: Tue, 20 May 2025 10:16:44 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=ZmM0MjkzZWUtNzNjYy00MmU0LWIxM2ItOWRlMzExZGQyNjE3; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3MzYyMDQsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgyMjYwNCwiaWF0IjoxNzQ3NzM2MjA0LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImY2ZmQ0YmI2LWNhZTYtNDAyZS05ODMzLTUxOTJlYzA2Y2U4MiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SmqKWWxVSe97_HdGtr4d6trizpwDY1NTmTmWio2VjwcRKfBqrAWbjTXHyhANGni3PUc59T6YF3wl0XFrhJz5dYdY8NfwAkin2ltlEMbNBArTJa7cm_ECokTYueAZNKoQYdzIHvAgVLl8BNoE5pqai5cL6admAwwciFTh38j4SLK05C29MCACt2xW3Q1AeGOmRED_iPZqunfNR0lItxdWnz20wUdT6g8pe5apEh9EJJhIMDdlShdxDlUnfO0NuOWm0rmzPeYayP9dHQll8VEh8rBzdK6Vx8H86jBgGF1UzXnqzX1i9yiNwNhtdxsXffBhNE-idkAWB8j5fsFj3jyXTPPoAuUY-BdkPS6PJnQ-lQcqZZuxCdnE6rGwGG68IISm15e1WKpnwehJqpn6m0Uf5IEIyhYwWQ4u2BZ74rpmfzdFuS1LnN3y-dfLuoFDBAS3lKfVktaCx6LXwNHiKWLfe3HX61-B6sml6qyYXEdFNlWaqMwMPzoj8mESoEeLaiT6","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-20 10:16:44 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://nettskjema.no/api/v3/me
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3MzYyMDQsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgyMjYwNCwiaWF0IjoxNzQ3NzM2MjA0LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImY2ZmQ0YmI2LWNhZTYtNDAyZS05ODMzLTUxOTJlYzA2Y2U4MiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SmqKWWxVSe97_HdGtr4d6trizpwDY1NTmTmWio2VjwcRKfBqrAWbjTXHyhANGni3PUc59T6YF3wl0XFrhJz5dYdY8NfwAkin2ltlEMbNBArTJa7cm_ECokTYueAZNKoQYdzIHvAgVLl8BNoE5pqai5cL6admAwwciFTh38j4SLK05C29MCACt2xW3Q1AeGOmRED_iPZqunfNR0lItxdWnz20wUdT6g8pe5apEh9EJJhIMDdlShdxDlUnfO0NuOWm0rmzPeYayP9dHQll8VEh8rBzdK6Vx8H86jBgGF1UzXnqzX1i9yiNwNhtdxsXffBhNE-idkAWB8j5fsFj3jyXTPPoAuUY-BdkPS6PJnQ-lQcqZZuxCdnE6rGwGG68IISm15e1WKpnwehJqpn6m0Uf5IEIyhYwWQ4u2BZ74rpmfzdFuS1LnN3y-dfLuoFDBAS3lKfVktaCx6LXwNHiKWLfe3HX61-B6sml6qyYXEdFNlWaqMwMPzoj8mESoEeLaiT6
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Tue, 20 May 2025 10:16:44 GMT
       content-length: '234'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=9C7936AE19982F1CD051AC76CAF2C7AD; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=F4E12305FBCB2BF32173DB734075EF31; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -50,5 +101,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
-  recorded_at: 2025-05-19 14:44:21 GMT
+  recorded_at: 2025-05-20 10:16:44 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

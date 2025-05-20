@@ -9,7 +9,11 @@ invisible(vcr::vcr_configure(
       ":",
       Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
     )),
-    "<<ACCESS_TOKEN>>" = ns_auth_token()$access_token
+    "<<ACCESS_TOKEN>>" = ifelse(
+      ns_has_auth(),
+      ns_auth_token()$access_token,
+      ""
+    )
   ),
   dir = vcr::vcr_test_path("fixtures")
 ))
