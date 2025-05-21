@@ -4,9 +4,18 @@
 \alias{ns_auth_token}
 \title{Retrieve access token}
 \usage{
-ns_auth_token(cache = TRUE, cache_path = NULL)
+ns_auth_token(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
+  cache = TRUE,
+  cache_path = NULL
+)
 }
 \arguments{
+\item{client_id}{Character. Retrieved from the Client portal.}
+
+\item{client_secret}{Character. Retrieved from the Client portal.}
+
 \item{cache}{Logical. Should the token be cached?}
 
 \item{cache_path}{Character. File path to where

@@ -1,0 +1,83 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://authorization.nettskjema.no/oauth2/token
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Basic <<BASIC_AUTH>>
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      server: nginx
+      date: Tue, 20 May 2025 14:46:44 GMT
+      strict-transport-security: max-age=31536000 ; includeSubDomains
+      x-frame-options: DENY
+      set-cookie: SESSION=MzE5MjAxYzMtMWMyNy00MTkyLTlmNmYtMGQyMjNkMzRhYmVl; Path=/;
+        Secure; HttpOnly; SameSite=None
+      vary: accept-encoding
+      content-encoding: gzip
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      referrer-policy: strict-origin-when-cross-origin
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+      x-robots-tag: noai, noml, SPC, noimageai
+    body:
+      encoding: ''
+      file: no
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDQsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwNCwiaWF0IjoxNzQ3NzUyNDA0LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImZlNWI1YWVjLTRjOWQtNGNiMS04YjQ2LTM0M2U5MzIzYjg4YyIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.RENLbth5PA9f67FCTNAy_yuUmyM2XRVvjGgozKx4a8gqKECcNp0z6KcL2E7ACf-iH8x2e2G9ylQRRz9MgbrG_bEYN7Zps7YldU4VvWMNSGBesPxp6hVaJQUOdA95wn4lC7Sneq5WxgJl-ggKXJaaGU0CFMAsbkImeVXw-qfPtRv5jP7Y_c2ylm53lsWFxO-u4JB1rjCVfcNZwa_h07mKYD8fxFg7k6oEG_pTfsAWByvp_VaKQEO2rDVRVzFbfuAwu4EL9xfwYDvCKknjtcfrY7gfnoabsOumgbyMcymRVTgVi_psirxkqF_lBdZdHWr0AFPp9QUP3AjuUspizgw3LC19QJOf63H8hOYzNHZQL8jF1x9d4CdaMcko6Mxy1tD5qJsVHADnDeghWI80nTyUKiFknezEucGrq6GhaOfFhapfU_GgUMW5rO_itRCmQgvknL5vgJXnIv5Apdf2Llt9BHnsyrFa9Ew1OsqZPLtaWx_BeiN0UtZE-4Ldtef3hj1T","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-20 14:46:44 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0
+- request:
+    method: get
+    uri: https://nettskjema.no/api/v3/form/100/info
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDQsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwNCwiaWF0IjoxNzQ3NzUyNDA0LCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImZlNWI1YWVjLTRjOWQtNGNiMS04YjQ2LTM0M2U5MzIzYjg4YyIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.RENLbth5PA9f67FCTNAy_yuUmyM2XRVvjGgozKx4a8gqKECcNp0z6KcL2E7ACf-iH8x2e2G9ylQRRz9MgbrG_bEYN7Zps7YldU4VvWMNSGBesPxp6hVaJQUOdA95wn4lC7Sneq5WxgJl-ggKXJaaGU0CFMAsbkImeVXw-qfPtRv5jP7Y_c2ylm53lsWFxO-u4JB1rjCVfcNZwa_h07mKYD8fxFg7k6oEG_pTfsAWByvp_VaKQEO2rDVRVzFbfuAwu4EL9xfwYDvCKknjtcfrY7gfnoabsOumgbyMcymRVTgVi_psirxkqF_lBdZdHWr0AFPp9QUP3AjuUspizgw3LC19QJOf63H8hOYzNHZQL8jF1x9d4CdaMcko6Mxy1tD5qJsVHADnDeghWI80nTyUKiFknezEucGrq6GhaOfFhapfU_GgUMW5rO_itRCmQgvknL5vgJXnIv5Apdf2Llt9BHnsyrFa9Ew1OsqZPLtaWx_BeiN0UtZE-4Ldtef3hj1T
+  response:
+    status:
+      status_code: 404
+      message: Not Found
+    headers:
+      server: nginx
+      date: Tue, 20 May 2025 14:46:44 GMT
+      content-length: '71'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=B77322A4C25FD3359E1B6EFFAD983FDE; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+    body:
+      encoding: ''
+      file: no
+      string: '{"message":"Skjemaet med id 100 finnes ikke"}'
+  recorded_at: 2025-05-20 14:46:44 GMT
+  recorded_with: vcr/1.6.0, webmockr/2.0.0

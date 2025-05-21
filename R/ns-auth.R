@@ -39,19 +39,23 @@ ns_url <- function() {
 #' in the package. Automatically caches the
 #' token for more efficient API usage.
 #'
+#' @param client_id Character. Retrieved from the Client portal.
+#' @param client_secret Character. Retrieved from the Client portal.
 #' @param cache Logical. Should the token be cached?
 #' @param cache_path Character. File path to where
 #'   the token should be stored. Defaults to system
 #'   cache directory.
 ns_auth_token <- function(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
   cache = TRUE,
   cache_path = NULL
 ) {
-  if (!ns_has_auth()) {
+  if (!ns_has_auth(client_id, client_secret)) {
     cli::cli_abort(c(
-      "System variables ",
-      "{.code NETTSKJEMA_CLIENT_ID} and ",
-      "{.code NETTSKJEMA_CLIENT_SECRET} ",
+      "Variables ",
+      "{.code client_id} and ",
+      "{.code client_secret} ",
       "are not set up.",
       "Please read ",
       "{.url https://www.capro.dev/nettskjemar/articles/authentication.html}",
@@ -79,7 +83,7 @@ ns_auth_token <- function(
           "nettskjemar",
           "cache"
         ),
-        paste0(Sys.getenv("NETTSKJEMA_CLIENT_ID"), ".rda")
+        Sys.getenv("NETTSKJEMA_CLIENT_ID")
       )
       dir.create(
         dirname(cache_path),
@@ -110,6 +114,8 @@ ns_auth_token <- function(
 #' feedback on the setup status and returns whether the
 #' system is correctly configured.
 #'
+#' @inheritParams ns_auth_token
+#'
 #' @return Logical. Returns `TRUE` if both environment
 #'    variables are set, otherwise `FALSE`.
 #'
@@ -121,10 +127,11 @@ ns_auth_token <- function(
 #' https://www.capro.dev/nettskjemar/articles/authentication.html
 #'
 #' @export
-ns_has_auth <- function() {
-  ci <- Sys.getenv("NETTSKJEMA_CLIENT_ID")
-  cs <- Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
-  if (ci == "" || cs == "") return(FALSE)
+ns_has_auth <- function(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
+) {
+  if (client_id == "" || client_secret == "") return(FALSE)
 
   TRUE
 }

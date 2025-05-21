@@ -4,7 +4,15 @@
 \alias{ns_has_auth}
 \title{Check Environment Variables for Nettskjema Authentication}
 \usage{
-ns_has_auth()
+ns_has_auth(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
+)
+}
+\arguments{
+\item{client_id}{Character. Retrieved from the Client portal.}
+
+\item{client_secret}{Character. Retrieved from the Client portal.}
 }
 \value{
 Logical. Returns `TRUE` if both environment

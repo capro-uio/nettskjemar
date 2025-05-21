@@ -1,5 +1,5 @@
-vcr::use_cassette("ns_get_meta_valid", {
-  test_that("ns_get_meta for valid input", {
+test_that("ns_get_meta for valid input", {
+  vcr::use_cassette("ns_get_meta_valid", {
     meta <- ns_get_meta(form_id)
   })
 
@@ -19,8 +19,8 @@ vcr::use_cassette("ns_get_meta_valid", {
   )
 })
 
-vcr::use_cassette("ns_get_meta_invalid", {
-  test_that("ns_get_meta invalid form_id", {
+test_that("ns_get_meta invalid form_id", {
+  vcr::use_cassette("ns_get_meta_invalid", {
     expect_error(
       ns_get_meta(100),
       "Not Found"
