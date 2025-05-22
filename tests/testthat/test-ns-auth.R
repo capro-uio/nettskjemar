@@ -1,6 +1,4 @@
 test_that("test request setup", {
-  mockery::stub(ns_auth_token, "ns_has_auth", TRUE)
-
   vcr::use_cassette("ns_auth", {
     with_mocked_nettskjema_auth(
       auth <- ns_req()
