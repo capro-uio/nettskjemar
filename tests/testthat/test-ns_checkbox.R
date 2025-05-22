@@ -80,7 +80,7 @@ test_that("transforms data correctly", {
   expect_true("check.1" %in% names(result))
 })
 
-test_that("iChecks for MATRIX_CHECKBOX attributes", {
+test_that("Checks for MATRIX_CHECKBOX attributes", {
   test_vector <- 1:5
   attr(test_vector, "ns_type") <- "MATRIX_CHECKBOX"
   expect_true(is_checkbox_matrix(test_vector))

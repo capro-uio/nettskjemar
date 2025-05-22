@@ -12,11 +12,9 @@ ns_auth_token(
 )
 }
 \arguments{
-\item{client_id}{Character. Default assumes
-this is stored in .Renviron as "ns_CLIENT_ID"}
+\item{client_id}{Character. Retrieved from the Client portal.}
 
-\item{client_secret}{Character. Default assumes
-this is stored in .Renviron as "ns_CLIENT_SECRET"}
+\item{client_secret}{Character. Retrieved from the Client portal.}
 
 \item{cache}{Logical. Should the token be cached?}
 
