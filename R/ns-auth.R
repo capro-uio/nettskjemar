@@ -72,8 +72,8 @@ ns_auth_token <- function(
       "application/x-www-form-urlencoded"
     ) |>
     httr2::req_auth_basic(
-      Sys.getenv("NETTSKJEMA_CLIENT_ID"),
-      Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
+      client_id,
+      client_secret
     )
 
   if (cache) {
@@ -83,7 +83,7 @@ ns_auth_token <- function(
           "nettskjemar",
           "cache"
         ),
-        Sys.getenv("NETTSKJEMA_CLIENT_ID")
+        client_id
       )
       dir.create(
         dirname(cache_path),
