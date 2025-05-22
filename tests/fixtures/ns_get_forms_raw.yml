@@ -13,10 +13,10 @@ http_interactions:
       message: OK
     headers:
       server: nginx
-      date: Tue, 20 May 2025 14:46:43 GMT
+      date: Thu, 22 May 2025 14:54:10 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=NGRhOWZmOTAtMTZkYi00YTQ5LWFkN2YtNjk0ODM3OGFiOTE5; Path=/;
+      set-cookie: SESSION=M2M2ZjE2YjktZjQwMC00ZjliLWEzMDUtMGQ1N2U0NDIyMjBm; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,8 +47,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwMywiaWF0IjoxNzQ3NzUyNDAzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImEwNTdkNDA0LTBlNTMtNGI4NC05NWM2LTkxNmQ1ZjcxYzc5YiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.GEIg7XKTwwmMxeHn6z459D9IzLzkjdZfWWa_mGm0TbMEiGU6s0QhqhmDQTJoT6P74wHC1rrXzgI7gy5K_kaXvVb_zbndxnXT_IUQ-E2I9vuf9EtTZnjfDvGkydhMYfEe1FIe6_uQwSMrAOv9gYeMS86e7-OoUsVWSyic-AuLLsrAQd67fvItmvWluuzs9dhC8dKzt4ew3s6e7Pd_rdHO93dDXRmDpvUrqpavsFNBiNsbj5WN9WgpsymLIEymQZg-S5chZgiEpDaVsbE3s3ARUb7sQfKGOln1a96Ko68B0o54cAGHpjsXD8QcJcG0CfVn9GwIFwLmvqhk1MrJmlSXaoZqIJtgmSJs-aRaeyyo4nQ2cNS4SWxOcGOg0VYdkQ4dkaN_rCMU5944dDL48GcG13QJaMt6GD1nwSS-ZgtGdJdKja2THYnMA3NNLBSmmGbZXhkF-fB1bgX2ZwgqNLsHKU97HLCxxeewcZyj6qk0RD1iNZq5Z0hBkgtR6aRLOqFl","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-20 14:46:43 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc5MjU2NTAsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0ODAxMjA1MCwiaWF0IjoxNzQ3OTI1NjUwLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjM2NTlmNjE5LWYzYjItNDM4Zi1iYTZkLWYzZmZmY2I5YzI2ZiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.EBETdM-y9Km_3cub6e7S-fm3OqXQ6FrJEyHsSVFXeXeJ17TitB44RQLbR2PbIwOVueR-jBKoTTQXCaLwoPKYJcq5TKNEzMFlGRAlhQBAYodWErJT0RDfeqLM4WAVwtrRlxQ7jhmUctb2qoxVgA-eu1WkE3Itms21f4j9oSUdBq3WG_tAIxV34PlvXq6OzFz9Av3a5YQVlLvN_f7NocQAkpfKe35OvKmjg5c5oYJh2aOW_aUBotTcq4FBDmJRzUbS8plTOehG52EpGRoApSEiQCnEA454OQl8FVtzLAnuWMMsOe4NGzkz4_UdofbmrMqxd6vZH9u7v2aJXTI8AyfNKm3ydy5coASmNJL87p4EfHp5i17cnKVjnGz8DmDAftJdEBFFXdQI8KV98U_rLWDrUaAdsim0Bxu5rtFnBeXbT7FwZGt4dAC94hmZNrbuQRvZF9Tkg_DZZ-qxZSAubTxqMBNMqrvEGO4qdBZP1VNxJv9bZuOCzGF1SwNNFFtB_6XX","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-22 14:54:10 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
@@ -57,18 +57,18 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwMywiaWF0IjoxNzQ3NzUyNDAzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6ImEwNTdkNDA0LTBlNTMtNGI4NC05NWM2LTkxNmQ1ZjcxYzc5YiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.GEIg7XKTwwmMxeHn6z459D9IzLzkjdZfWWa_mGm0TbMEiGU6s0QhqhmDQTJoT6P74wHC1rrXzgI7gy5K_kaXvVb_zbndxnXT_IUQ-E2I9vuf9EtTZnjfDvGkydhMYfEe1FIe6_uQwSMrAOv9gYeMS86e7-OoUsVWSyic-AuLLsrAQd67fvItmvWluuzs9dhC8dKzt4ew3s6e7Pd_rdHO93dDXRmDpvUrqpavsFNBiNsbj5WN9WgpsymLIEymQZg-S5chZgiEpDaVsbE3s3ARUb7sQfKGOln1a96Ko68B0o54cAGHpjsXD8QcJcG0CfVn9GwIFwLmvqhk1MrJmlSXaoZqIJtgmSJs-aRaeyyo4nQ2cNS4SWxOcGOg0VYdkQ4dkaN_rCMU5944dDL48GcG13QJaMt6GD1nwSS-ZgtGdJdKja2THYnMA3NNLBSmmGbZXhkF-fB1bgX2ZwgqNLsHKU97HLCxxeewcZyj6qk0RD1iNZq5Z0hBkgtR6aRLOqFl
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc5MjU2NTAsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0ODAxMjA1MCwiaWF0IjoxNzQ3OTI1NjUwLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjM2NTlmNjE5LWYzYjItNDM4Zi1iYTZkLWYzZmZmY2I5YzI2ZiIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.EBETdM-y9Km_3cub6e7S-fm3OqXQ6FrJEyHsSVFXeXeJ17TitB44RQLbR2PbIwOVueR-jBKoTTQXCaLwoPKYJcq5TKNEzMFlGRAlhQBAYodWErJT0RDfeqLM4WAVwtrRlxQ7jhmUctb2qoxVgA-eu1WkE3Itms21f4j9oSUdBq3WG_tAIxV34PlvXq6OzFz9Av3a5YQVlLvN_f7NocQAkpfKe35OvKmjg5c5oYJh2aOW_aUBotTcq4FBDmJRzUbS8plTOehG52EpGRoApSEiQCnEA454OQl8FVtzLAnuWMMsOe4NGzkz4_UdofbmrMqxd6vZH9u7v2aJXTI8AyfNKm3ydy5coASmNJL87p4EfHp5i17cnKVjnGz8DmDAftJdEBFFXdQI8KV98U_rLWDrUaAdsim0Bxu5rtFnBeXbT7FwZGt4dAC94hmZNrbuQRvZF9Tkg_DZZ-qxZSAubTxqMBNMqrvEGO4qdBZP1VNxJv9bZuOCzGF1SwNNFFtB_6XX
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Tue, 20 May 2025 14:46:43 GMT
+      date: Thu, 22 May 2025 14:54:10 GMT
       content-length: '278'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=6E609BFFDA5DB5A8790BF5D9324F7FA6; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=2B0E5BAF28BF524534AEBEA5FD080D65; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -101,5 +101,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '[{"formId":123823,"title":"API test form","openFrom":"2023-06-01T20:55:49","openTo":"2024-06-02T02:00:02","lastSubmissionDate":"2023-06-01T20:59:50","modifiedDate":"2025-05-14T19:47:03","personalDataErasedDate":null,"deliveryDestination":"DATABASE","anonymous":false,"numberOfDeliveredSubmissions":3,"owners":3,"isDictaphone":false,"myFormsFormListingGroup":"OLD","open":false}]'
-  recorded_at: 2025-05-20 14:46:43 GMT
+  recorded_at: 2025-05-22 14:54:10 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

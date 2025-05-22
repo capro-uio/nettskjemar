@@ -1,9 +1,11 @@
 test_that("ns_get_attachment saves an attachment file", {
   vcr::use_cassette("ns_get_attachment", {
     temp_file <- tempfile(fileext = ".png")
-    result <- ns_get_attachment(
-      attachment_id,
-      path = temp_file
+    with_mocked_nettskjema_auth(
+      result <- ns_get_attachment(
+        attachment_id,
+        path = temp_file
+      )
     )
   })
 
@@ -13,7 +15,9 @@ test_that("ns_get_attachment saves an attachment file", {
 
 test_that("ns_list_form_attachments retrieves metadata", {
   vcr::use_cassette("ns_list_form_attachments", {
-    result <- ns_list_form_attachments(form_id)
+    with_mocked_nettskjema_auth(
+      result <- ns_list_form_attachments(form_id)
+    )
   })
 
   expect_true(is.data.frame(result))
@@ -27,10 +31,12 @@ test_that("ns_get_form_attachments saves attachments", {
   vcr::use_cassette("ns_get_form_attachments", {
     output_dir <- tempfile()
     dir.create(output_dir)
-    result <- ns_get_form_attachments(
-      form_id,
-      filenames = "standardized",
-      output_dir = output_dir
+    with_mocked_nettskjema_auth(
+      result <- ns_get_form_attachments(
+        form_id,
+        filenames = "standardized",
+        output_dir = output_dir
+      )
     )
   })
 
@@ -43,7 +49,9 @@ test_that("ns_get_form_attachments saves attachments", {
 
 test_that("Retrieves submission attachment metadata", {
   vcr::use_cassette("ns_list_submission_attachments", {
-    result <- ns_list_submission_attachments(submission_id)
+    with_mocked_nettskjema_auth(
+      result <- ns_list_submission_attachments(submission_id)
+    )
   })
 
   expect_true(is.data.frame(result))
@@ -56,10 +64,12 @@ test_that("Retrieves submission attachment metadata", {
 test_that("ns_get_submission_attachments saves  sub attch", {
   vcr::use_cassette("ns_get_submission_attachments", {
     output_dir <- tempfile()
-    result <- ns_get_submission_attachments(
-      submission_id,
-      filenames = "original",
-      output_dir = output_dir
+    with_mocked_nettskjema_auth(
+      result <- ns_get_submission_attachments(
+        submission_id,
+        filenames = "original",
+        output_dir = output_dir
+      )
     )
   })
   # Check if files are saved successfully

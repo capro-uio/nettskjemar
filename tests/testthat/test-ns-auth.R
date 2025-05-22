@@ -1,6 +1,10 @@
 test_that("test request setup", {
+  mockery::stub(ns_auth_token, "ns_has_auth", TRUE)
+
   vcr::use_cassette("ns_auth", {
-    auth <- ns_req()
+    with_mocked_nettskjema_auth(
+      auth <- ns_req()
+    )
   })
   expect_is(auth, "httr2_request")
   expect_equal(
@@ -49,7 +53,9 @@ test_that("ns_has_auth identifies variables", {
 # Test ns_auth_token with VCR
 test_that("ns_auth_token caches access token", {
   vcr::use_cassette("ns_auth_token", {
-    token <- ns_auth_token(cache = FALSE)
+    with_mocked_nettskjema_auth(
+      token <- ns_auth_token(cache = FALSE)
+    )
   })
   # Using cache = FALSE for simpler testing
   expect_named(token, c("access_token", "token_type", "expires_in"))
@@ -59,9 +65,11 @@ test_that("ns_auth_token caches access token", {
 # Test ns_req with VCR
 test_that("ns_req creates a valid request", {
   vcr::use_cassette("ns_req", {
-    req <- ns_req() |>
-      httr2::req_url_path_append("me") |>
-      httr2::req_perform()
+    with_mocked_nettskjema_auth(
+      req <- ns_req() |>
+        httr2::req_url_path_append("me") |>
+        httr2::req_perform()
+    )
   })
   expect_s3_class(req, "httr2_response")
   expect_equal(httr2::resp_status(req), 200)

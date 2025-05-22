@@ -1,6 +1,8 @@
 test_that("ns_get_data retrieves data in original format", {
   vcr::use_cassette("ns_get_data_original", {
-    result <- ns_get_data(form_id, type = "original")
+    with_mocked_nettskjema_auth(
+      result <- ns_get_data(form_id, type = "original")
+    )
   })
 
   # Check if the result is a data frame
@@ -11,7 +13,9 @@ test_that("ns_get_data retrieves data in original format", {
 
 test_that("ns_get_submission retrieves individual submission", {
   vcr::use_cassette("ns_get_submission", {
-    result <- ns_get_submission(submission_id)
+    with_mocked_nettskjema_auth(
+      result <- ns_get_submission(submission_id)
+    )
   })
 
   # Check if the result is a list

@@ -1,6 +1,8 @@
 test_that("fetches raw codebook correctly", {
   vcr::use_cassette("get_raw_codebook_valid", {
-    raw_cb <- get_raw_codebook(form_id)
+    with_mocked_nettskjema_auth(
+      raw_cb <- get_raw_codebook(form_id)
+    )
   })
 
   expect_s3_class(raw_cb, "ns_codebook_raw")
@@ -10,14 +12,18 @@ test_that("fetches raw codebook correctly", {
 
 vcr::use_cassette("get_raw_codebook_invalid", {
   test_that("handles invalid form_id gracefully", {
-    expect_error(get_raw_codebook(100), "Not Found")
+    with_mocked_nettskjema_auth(
+      expect_error(get_raw_codebook(100), "Not Found")
+    )
   })
 })
 
 
 test_that("converts raw to structured", {
   vcr::use_cassette("ns_get_codebook_valid", {
-    cb <- ns_get_codebook(form_id)
+    with_mocked_nettskjema_auth(
+      cb <- ns_get_codebook(form_id)
+    )
   })
 
   expect_s3_class(cb, "ns_codebook")
@@ -26,9 +32,11 @@ test_that("converts raw to structured", {
 
 test_that("respects asis flag", {
   vcr::use_cassette("ns_get_codebook_raw", {
-    cb_raw <- ns_get_codebook(
-      form_id,
-      asis = TRUE
+    with_mocked_nettskjema_auth(
+      cb_raw <- ns_get_codebook(
+        form_id,
+        asis = TRUE
+      )
     )
   })
 

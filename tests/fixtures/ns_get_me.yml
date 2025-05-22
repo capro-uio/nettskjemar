@@ -13,10 +13,10 @@ http_interactions:
       message: OK
     headers:
       server: nginx
-      date: Tue, 20 May 2025 14:46:43 GMT
+      date: Thu, 22 May 2025 14:54:10 GMT
       strict-transport-security: max-age=31536000 ; includeSubDomains
       x-frame-options: DENY
-      set-cookie: SESSION=NjMwNTc1Y2ItZDY1OC00OTQzLWFhYmMtZDY1MmQ1YTEyNzQ4; Path=/;
+      set-cookie: SESSION=YjM4OGNjNjktYTAyMC00ZGVjLTkxMGQtMTQwNWExNGIyOTNh; Path=/;
         Secure; HttpOnly; SameSite=None
       vary: accept-encoding
       content-encoding: gzip
@@ -47,8 +47,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwMywiaWF0IjoxNzQ3NzUyNDAzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjRiYzAyNmQ1LWI4YWUtNDkzYi04M2RiLWVmNjdjODEwMzBkMyIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SWzCX5VLgBf1_7GSuKXUjX4JApdpECrvBzVU5M8OrVFLwp4cZAoQ4vV9Elq7JnhQuj25EVkSJ6sVUfjs-ZhTpFajeyPBJWWLdO_h8T2LC2uil-bTY4u9pQNde4iu6DXUAAIOmbs1c8vJjrrO7HECbHgWgUpwu9t7T6qpZz6fGAzoRKf-WrOcpY4Q3g-3tY1LKOioT7MMYKnTIX1WbLOfmWY_aG-kQ6a0leX5ZcMcyJWmb84V_tWFopxkzPZp__qoUrrBb7TabAGr6WzEoDOnfleK77fJYh9LQdISQHTd2kCF7Ar3LYQzMSVWsy9ndjltaHgqwKA9UOLw1FRCC-kSfiwqr40YujYmr9k6mu7K7gD_LbZIabKbHKt3B5nIOHWtYwvh76DnA4eJuK7ZWTDXDqzgkbp38m8Ee1_iv7CpfPHkN1gE_ENxxHZHGQeBgLj59TybYPBIA7H2WmeJP_RqOvDky11I9NOLZPg7NrXN0Fzn5GUx6cOGNJaRwRuPfu0R","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-05-20 14:46:43 GMT
+      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc5MjU2NTAsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0ODAxMjA1MCwiaWF0IjoxNzQ3OTI1NjUwLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6Ijc4MDUyYmZjLTQ2NjctNGM2MC1hN2VhLTg5OGI1Y2VjYTk0ZSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.BB-9cTyPG2Rg1KDF2bIGuG48Cmnrc25Dtn_4HW51qjBMf-5sj__h4c_w85NSjSequDoBP11eALNnV47jv1jE8Bx33mEa-3XyoQuwezUi7N91yLVkEp2xZMJk-OOEjS6jMGFtjmxhJqIN2VSbvupnvbhI2fdad1wEWF20NpbSLatgJQqNffyP4DVUZCB5FwO8DhwUg9ViFysBGH_Pp55udi5yJyJArLS-o21zTiq-TbE3GknoVzWVNMEQ3mgUF-KbkdRp8ZBu-CKnLO43piWnvUMtHEfh4SqnbepQ3HdN9NS37fgV1BXpWEziaNgVxo9glR1MHsIA8Afgqw1ViRoI1yK_oaZjPdKGdxwKwwl2U4hWWdZ3uwnfFadEaXZ52FjjvU0l8JS5vMzkveskzF5snlsPFe97adbIIk98ZBVFykOhAm-Tzu9CuuAwsTX6RxTySr06_12xWmfzyejEWtD8CdZIyKadH1-ur2I8vY4s4joR648sUsYSUmdfY9X3eh_q","token_type":"Bearer","expires_in":86399}'
+  recorded_at: 2025-05-22 14:54:10 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0
 - request:
     method: get
@@ -57,18 +57,18 @@ http_interactions:
       encoding: ''
       string: ''
     headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc3NTI0MDMsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0NzgzODgwMywiaWF0IjoxNzQ3NzUyNDAzLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6IjRiYzAyNmQ1LWI4YWUtNDkzYi04M2RiLWVmNjdjODEwMzBkMyIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.SWzCX5VLgBf1_7GSuKXUjX4JApdpECrvBzVU5M8OrVFLwp4cZAoQ4vV9Elq7JnhQuj25EVkSJ6sVUfjs-ZhTpFajeyPBJWWLdO_h8T2LC2uil-bTY4u9pQNde4iu6DXUAAIOmbs1c8vJjrrO7HECbHgWgUpwu9t7T6qpZz6fGAzoRKf-WrOcpY4Q3g-3tY1LKOioT7MMYKnTIX1WbLOfmWY_aG-kQ6a0leX5ZcMcyJWmb84V_tWFopxkzPZp__qoUrrBb7TabAGr6WzEoDOnfleK77fJYh9LQdISQHTd2kCF7Ar3LYQzMSVWsy9ndjltaHgqwKA9UOLw1FRCC-kSfiwqr40YujYmr9k6mu7K7gD_LbZIabKbHKt3B5nIOHWtYwvh76DnA4eJuK7ZWTDXDqzgkbp38m8Ee1_iv7CpfPHkN1gE_ENxxHZHGQeBgLj59TybYPBIA7H2WmeJP_RqOvDky11I9NOLZPg7NrXN0Fzn5GUx6cOGNJaRwRuPfu0R
+      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjY2RhMjVjZS04MjU2LTRjNmYtYmE3MS03YTQzNTdkYzZjYWYiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfQURNSU5JU1RSQVRJVkVfVVNFUiIsImlzcyI6Imh0dHBzOi8vYXV0aG9yaXphdGlvbi5uZXR0c2tqZW1hLm5vIiwidXNlcnR5cGUiOiJBUElfQ0xJRU5UIiwiYXVkIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmIiwiYWNyIjoyLCJuYmYiOjE3NDc5MjU2NTAsIm5hbWUiOiJuZXR0c2tqZW1hciIsImV4cCI6MTc0ODAxMjA1MCwiaWF0IjoxNzQ3OTI1NjUwLCJ1c2VyIjoiY2NkYTI1Y2UtODI1Ni00YzZmLWJhNzEtN2E0MzU3ZGM2Y2FmQGFwaWNsaWVudCIsImp0aSI6Ijc4MDUyYmZjLTQ2NjctNGM2MC1hN2VhLTg5OGI1Y2VjYTk0ZSIsImVtYWlsIjoiYXRoYW5hc21AdWlvLm5vIn0.BB-9cTyPG2Rg1KDF2bIGuG48Cmnrc25Dtn_4HW51qjBMf-5sj__h4c_w85NSjSequDoBP11eALNnV47jv1jE8Bx33mEa-3XyoQuwezUi7N91yLVkEp2xZMJk-OOEjS6jMGFtjmxhJqIN2VSbvupnvbhI2fdad1wEWF20NpbSLatgJQqNffyP4DVUZCB5FwO8DhwUg9ViFysBGH_Pp55udi5yJyJArLS-o21zTiq-TbE3GknoVzWVNMEQ3mgUF-KbkdRp8ZBu-CKnLO43piWnvUMtHEfh4SqnbepQ3HdN9NS37fgV1BXpWEziaNgVxo9glR1MHsIA8Afgqw1ViRoI1yK_oaZjPdKGdxwKwwl2U4hWWdZ3uwnfFadEaXZ52FjjvU0l8JS5vMzkveskzF5snlsPFe97adbIIk98ZBVFykOhAm-Tzu9CuuAwsTX6RxTySr06_12xWmfzyejEWtD8CdZIyKadH1-ur2I8vY4s4joR648sUsYSUmdfY9X3eh_q
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Tue, 20 May 2025 14:46:43 GMT
+      date: Thu, 22 May 2025 14:54:10 GMT
       content-length: '234'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=F25D360333A6BCE00330184F3871FEA8; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=602D0F0401A25B567912C2A3A42DC123; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -101,5 +101,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
-  recorded_at: 2025-05-20 14:46:43 GMT
+  recorded_at: 2025-05-22 14:54:10 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

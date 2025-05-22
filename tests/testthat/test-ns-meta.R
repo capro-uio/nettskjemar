@@ -1,6 +1,8 @@
 test_that("ns_get_meta for valid input", {
   vcr::use_cassette("ns_get_meta_valid", {
-    meta <- ns_get_meta(form_id)
+    with_mocked_nettskjema_auth(
+      meta <- ns_get_meta(form_id)
+    )
   })
 
   expect_s3_class(meta, "ns_meta")
@@ -21,9 +23,11 @@ test_that("ns_get_meta for valid input", {
 
 test_that("ns_get_meta invalid form_id", {
   vcr::use_cassette("ns_get_meta_invalid", {
-    expect_error(
-      ns_get_meta(100),
-      "Not Found"
+    with_mocked_nettskjema_auth(
+      expect_error(
+        ns_get_meta(100),
+        "Not Found"
+      )
     )
   })
 })

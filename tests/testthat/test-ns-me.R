@@ -1,6 +1,8 @@
 test_that("test user information", {
   vcr::use_cassette("ns_get_me", {
-    me <- ns_get_me()
+    with_mocked_nettskjema_auth(
+      me <- ns_get_me()
+    )
   })
 
   expect_is(me, "list")

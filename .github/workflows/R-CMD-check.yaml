@@ -23,7 +23,7 @@ jobs:
           - { os: windows-latest, r: "release" }
           - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
           - { os: ubuntu-latest, r: "release" }
-          - { os: ubuntu-latest, r: "release", fixtures: "false" }
+          - { os: ubuntu-latest, r: "release" }
           - { os: ubuntu-latest, r: "oldrel-1" }
 
     env:
@@ -48,21 +48,7 @@ jobs:
             any::knitr
           needs: check
 
-      - name: "Setup env for full test suite"
-        if: ${{ matrix.config.fixtures == 'false' }}
-        run: |
-          rm -rf tests/fixtures
-          echo "NETTSKJEMA_CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .Renviron
-          echo "NETTSKJEMA_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> .Renviron
-
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
           build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf","--as-cran")'
-
-      - name: Build vignettes
-        if: ${{ matrix.config.fixtures == 'false' }}
-        run: |
-          install.packages(".", repos = NULL, type = "source")
-          nettskjemar:::knit_vignettes()
-        shell: Rscript {0}

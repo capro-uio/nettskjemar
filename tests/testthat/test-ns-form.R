@@ -1,6 +1,8 @@
 test_that("test get forms list", {
   vcr::use_cassette("ns_get_forms", {
-    formslist <- ns_get_forms()
+    with_mocked_nettskjema_auth(
+      formslist <- ns_get_forms()
+    )
   })
 
   expect_is(formslist, "data.frame")
@@ -31,7 +33,9 @@ test_that("test get forms list", {
 
 test_that("test get raw forms list", {
   vcr::use_cassette("ns_get_forms_raw", {
-    formslist_raw <- ns_get_forms(asis = TRUE)
+    with_mocked_nettskjema_auth(
+      formslist_raw <- ns_get_forms(asis = TRUE)
+    )
   })
 
   expect_is(formslist_raw, "list")

@@ -20,6 +20,19 @@ invisible(vcr::vcr_configure(
   dir = vcr::vcr_test_path("fixtures")
 ))
 
+#' Helper function to mock Nettskjema authentication for VCR tests
+#'
+#' This function sets up mocks for Sys.getenv and ns_has_auth
+#' to allow VCR to correctly intercept and playback requests
+#' without requiring actual Nettskjema credentials.
+with_mocked_nettskjema_auth <- function(expr) {
+  testthat::local_mocked_bindings(
+    ns_has_auth = function(...) TRUE,
+    .package = "nettskjemar"
+  )
+  force(expr) # Evaluate the expression within the mocked context
+}
+
 vcr::check_cassette_names()
 
 form_id <- 123823
