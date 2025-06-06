@@ -86,11 +86,11 @@ ns_get_data(123823)
 #>   checkbox_matrix.2.internet       date  time         datetime number_decimal
 #> 1                          0 2023-06-01 12:00 2023-06-12T13:33            4.5
 #> 2                          0 2023-02-07 14:45 2024-02-15T08:55            2.2
-#> 3                          0 2022-09-28 05:11 2022-03-03T07:29             10
+#> 3                          0 2022-09-28 05:11 2022-03-03T07:29           10.0
 #>   number_integer slider attachment_1 attachment_2 $answer_time_ms
-#> 1             77      3    sølvi.png                        74630
-#> 2             45      1               marius.jpeg           71313
-#> 3             98      9                                     70230
+#> 1           77.0      3    sølvi.png                        74630
+#> 2           45.0      1               marius.jpeg           71313
+#> 3           98.0      9                                     70230
 ```
 
 ## Documentation
