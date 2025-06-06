@@ -37,6 +37,7 @@ ns_url <- function() {
 #' in the package. Automatically caches the
 #' token for more efficient API usage.
 #'
+#' @param req An httr2 request, usually {\code{\link{ns_req}}}
 #' @param client_id Character. Retrieved from the
 #'     Client portal.
 #' @param client_secret Character. Retrieved from the
@@ -131,7 +132,7 @@ ns_client <- function(id, secret, name = "nettskjemar") {
 #' feedback on the setup status and returns whether the
 #' system is correctly configured.
 #'
-#' @inheritParams ns_auth_token
+#' @inheritParams ns_req_auth
 #'
 #' @return Logical. Returns `TRUE` if both environment
 #'    variables are set, otherwise `FALSE`.

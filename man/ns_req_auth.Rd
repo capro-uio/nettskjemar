@@ -12,11 +12,16 @@ ns_req_auth(
 )
 }
 \arguments{
-\item{client_id}{Character. Retrieved from the Client portal.}
+\item{req}{An httr2 request, usually {\code{\link{ns_req}}}}
 
-\item{client_secret}{Character. Retrieved from the Client portal.}
+\item{client_id}{Character. Retrieved from the
+Client portal.}
 
-\item{client_name}{Character. Used to identify who has been running the commands.}
+\item{client_secret}{Character. Retrieved from the
+Client portal.}
+
+\item{client_name}{Character. Used to identify who
+has been running the commands.}
 }
 \description{
 After creating a client in Nettskjema,

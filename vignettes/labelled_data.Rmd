@@ -34,28 +34,48 @@ formid <- 123823
 
 data <- ns_get_data(formid)
 data
-#>   formid $submission_id                  $created  freetext
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires checkbox.events
-#> 1     1                       1               1
-#>   checkbox.logs dropdown radio_matrix.grants
-#> 1             0        4                   1
-#>   radio_matrix.lecture radio_matrix.email
-#> 1                    2                  2
-#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague
-#> 1                    1                           1
-#>   checkbox_matrix.1.admin checkbox_matrix.1.union
-#> 1                       0                       0
-#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
-#> 1                          0                    0
-#>   checkbox_matrix.2.colleague checkbox_matrix.2.admin
-#> 1                           0                       1
-#>   checkbox_matrix.2.union checkbox_matrix.2.internet
-#> 1                       0                          0
-#>         date  time         datetime number_decimal
-#> 1 2023-06-01 12:00 2023-06-12T13:33            4.5
-#>   number_integer slider attachment_1 attachment_2
-#> 1           77.0      3    sølvi.png             
+#>   formid $submission_id
+#> 1 123823       27685292
+#>                    $created
+#> 1 2023-06-01T20:57:15+02:00
+#>    freetext radio
+#> 1 some text     1
+#>   checkbox.questionnaires
+#> 1                       1
+#>   checkbox.events checkbox.logs
+#> 1               1             0
+#>   dropdown radio_matrix.grants
+#> 1        4                   1
+#>   radio_matrix.lecture
+#> 1                    2
+#>   radio_matrix.email
+#> 1                  2
+#>   checkbox_matrix.1.IT
+#> 1                    1
+#>   checkbox_matrix.1.colleague
+#> 1                           1
+#>   checkbox_matrix.1.admin
+#> 1                       0
+#>   checkbox_matrix.1.union
+#> 1                       0
+#>   checkbox_matrix.1.internet
+#> 1                          0
+#>   checkbox_matrix.2.IT
+#> 1                    0
+#>   checkbox_matrix.2.colleague
+#> 1                           0
+#>   checkbox_matrix.2.admin
+#> 1                       1
+#>   checkbox_matrix.2.union
+#> 1                       0
+#>   checkbox_matrix.2.internet
+#> 1                          0
+#>         date  time         datetime
+#> 1 2023-06-01 12:00 2023-06-12T13:33
+#>   number_decimal number_integer
+#> 1            4.5           77.0
+#>   slider attachment_1 attachment_2
+#> 1      3    sølvi.png             
 #>   $answer_time_ms
 #> 1           74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
@@ -69,12 +89,18 @@ To continue, we also need to download the form codebook, as we need this to add 
 ``` r
 cb <- ns_get_codebook(formid)
 cb
-#>   element_no element_type element_code
-#> 1          1      HEADING         <NA>
-#> 2          2         TEXT         <NA>
-#> 3          3        IMAGE         <NA>
-#> 4          4   PAGE_BREAK         <NA>
-#> 5          5     QUESTION     freetext
+#>   element_no element_type
+#> 1          1      HEADING
+#> 2          2         TEXT
+#> 3          3        IMAGE
+#> 4          4   PAGE_BREAK
+#> 5          5     QUESTION
+#>   element_code
+#> 1         <NA>
+#> 2         <NA>
+#> 3         <NA>
+#> 4         <NA>
+#> 5     freetext
 #>                                                                              element_text
 #> 1                                        Let talk about Nettskjema! This is a subheading!
 #> 2                                                                                    <NA>
@@ -87,12 +113,18 @@ cb
 #> 3                                                                                       <NA>
 #> 4                                                                                       <NA>
 #> 5   <p>With a description field giving details on what should be answered.</p>\n\n<p> </p>\n
-#>   subelement_seq answer_text answer_code answer_seq
-#> 1             NA        <NA>        <NA>         NA
-#> 2             NA        <NA>        <NA>         NA
-#> 3             NA        <NA>        <NA>         NA
-#> 4             NA        <NA>        <NA>         NA
-#> 5             NA        <NA>        <NA>         NA
+#>   subelement_seq answer_text
+#> 1             NA        <NA>
+#> 2             NA        <NA>
+#> 3             NA        <NA>
+#> 4             NA        <NA>
+#> 5             NA        <NA>
+#>   answer_code answer_seq
+#> 1        <NA>         NA
+#> 2        <NA>         NA
+#> 3        <NA>         NA
+#> 4        <NA>         NA
+#> 5        <NA>         NA
 #>  [ reached 'max' / getOption("max.print") -- omitted 34 rows ]
 ```
 
@@ -104,28 +136,48 @@ lab_data <- data |>
   ns_add_labels(cb)
 
 lab_data
-#>   formid $submission_id                  $created  freetext
-#> 1 123823       27685292 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires checkbox.events
-#> 1     1                       1               1
-#>   checkbox.logs dropdown radio_matrix.grants
-#> 1             0        4                   1
-#>   radio_matrix.lecture radio_matrix.email
-#> 1                    2                  2
-#>   checkbox_matrix.1.IT checkbox_matrix.1.colleague
-#> 1                    1                           1
-#>   checkbox_matrix.1.admin checkbox_matrix.1.union
-#> 1                       0                       0
-#>   checkbox_matrix.1.internet checkbox_matrix.2.IT
-#> 1                          0                    0
-#>   checkbox_matrix.2.colleague checkbox_matrix.2.admin
-#> 1                           0                       1
-#>   checkbox_matrix.2.union checkbox_matrix.2.internet
-#> 1                       0                          0
-#>         date  time         datetime number_decimal
-#> 1 2023-06-01 12:00 2023-06-12T13:33            4.5
-#>   number_integer slider attachment_1 attachment_2
-#> 1           77.0      3    sølvi.png             
+#>   formid $submission_id
+#> 1 123823       27685292
+#>                    $created
+#> 1 2023-06-01T20:57:15+02:00
+#>    freetext radio
+#> 1 some text     1
+#>   checkbox.questionnaires
+#> 1                       1
+#>   checkbox.events checkbox.logs
+#> 1               1             0
+#>   dropdown radio_matrix.grants
+#> 1        4                   1
+#>   radio_matrix.lecture
+#> 1                    2
+#>   radio_matrix.email
+#> 1                  2
+#>   checkbox_matrix.1.IT
+#> 1                    1
+#>   checkbox_matrix.1.colleague
+#> 1                           1
+#>   checkbox_matrix.1.admin
+#> 1                       0
+#>   checkbox_matrix.1.union
+#> 1                       0
+#>   checkbox_matrix.1.internet
+#> 1                          0
+#>   checkbox_matrix.2.IT
+#> 1                    0
+#>   checkbox_matrix.2.colleague
+#> 1                           0
+#>   checkbox_matrix.2.admin
+#> 1                       1
+#>   checkbox_matrix.2.union
+#> 1                       0
+#>   checkbox_matrix.2.internet
+#> 1                          0
+#>         date  time         datetime
+#> 1 2023-06-01 12:00 2023-06-12T13:33
+#>   number_decimal number_integer
+#> 1            4.5           77.0
+#>   slider attachment_1 attachment_2
+#> 1      3    sølvi.png             
 #>   $answer_time_ms
 #> 1           74630
 #>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
@@ -178,92 +230,92 @@ str(lab_data)
 #>  $ freetext                   : 'character' chr  "some text" "another answer" ""
 #>   ..- attr(*, "label")= chr "This is a question about something super important, where the user can input free text."
 #>   ..- attr(*, "ns_type")= chr "QUESTION"
-#>  $ radio                      : int+lbl [1:3]  1, -1, -1
+#>  $ radio                      : hvn_lbll [1:3]  1, -1, -1
 #>    ..@ labels : Named int  1 -1
 #>    .. ..- attr(*, "names")= chr [1:2] "Very happy!" "Very unhappy!"
 #>    ..@ label  : chr "How happy are we with Nettskjema?"
 #>    ..@ ns_type: chr "RADIO"
-#>  $ checkbox.questionnaires    : int+lbl [1:3] 1, 0, 1
+#>  $ checkbox.questionnaires    : hvn_lbll [1:3] 1, 0, 1
 #>    ..@ labels : Named chr "questionnaires"
 #>    .. ..- attr(*, "names")= chr "Questionnaires"
 #>    ..@ label  : chr "What do we use it for?:: Questionnaires"
 #>    ..@ ns_type: chr "CHECKBOX"
-#>  $ checkbox.events            : int+lbl [1:3] 1, 0, 1
+#>  $ checkbox.events            : hvn_lbll [1:3] 1, 0, 1
 #>    ..@ labels : Named chr "events"
 #>    .. ..- attr(*, "names")= chr "Event sign-ups"
 #>    ..@ label  : chr "What do we use it for?:: Event sign-ups"
 #>    ..@ ns_type: chr "CHECKBOX"
-#>  $ checkbox.logs              : int+lbl [1:3] 0, 1, 1
+#>  $ checkbox.logs              : hvn_lbll [1:3] 0, 1, 1
 #>    ..@ labels : Named chr "logs"
 #>    .. ..- attr(*, "names")= chr "Data logging"
 #>    ..@ label  : chr "What do we use it for?:: Data logging"
 #>    ..@ ns_type: chr "CHECKBOX"
-#>  $ dropdown                   : int+lbl [1:3] 4, 9, 4
+#>  $ dropdown                   : hvn_lbll [1:3] 4, 9, 4
 #>    ..@ labels : Named int  4 9
 #>    .. ..- attr(*, "names")= chr [1:2] "UiO" "OsloMet"
 #>    ..@ label  : chr "Who is responsible with Nettskjema?"
 #>    ..@ ns_type: chr "SELECT"
-#>  $ radio_matrix.grants        : int+lbl [1:3] 1, 3, 1
+#>  $ radio_matrix.grants        : hvn_lbll [1:3] 1, 3, 1
 #>    ..@ labels : Named int  1 2 3
 #>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
 #>    ..@ label  : chr "In the last month I have: written some grant applications"
 #>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ radio_matrix.lecture       : int+lbl [1:3] 2, 3, 1
+#>  $ radio_matrix.lecture       : hvn_lbll [1:3] 2, 3, 1
 #>    ..@ labels : Named int  1 2 3
 #>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
 #>    ..@ label  : chr "In the last month I have: held a lecture"
 #>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ radio_matrix.email         : int+lbl [1:3] 2, 1, 1
+#>  $ radio_matrix.email         : hvn_lbll [1:3] 2, 1, 1
 #>    ..@ labels : Named int  1 2 3
 #>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
 #>    ..@ label  : chr "In the last month I have: sent some e-mails"
 #>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ checkbox_matrix.1.IT       : int+lbl [1:3] 1, 0, 0
+#>  $ checkbox_matrix.1.IT       : hvn_lbll [1:3] 1, 0, 0
 #>    ..@ labels : Named chr "IT"
 #>    .. ..- attr(*, "names")= chr "IT"
 #>    ..@ label  : chr "In the last year, I have :: sought help from :: IT"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.colleague: int+lbl [1:3] 1, 0, 1
+#>  $ checkbox_matrix.1.colleague: hvn_lbll [1:3] 1, 0, 1
 #>    ..@ labels : Named chr "colleague"
 #>    .. ..- attr(*, "names")= chr "A colleague"
 #>    ..@ label  : chr "In the last year, I have :: sought help from :: A colleague"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.admin    : int+lbl [1:3] 0, 0, 0
+#>  $ checkbox_matrix.1.admin    : hvn_lbll [1:3] 0, 0, 0
 #>    ..@ labels : Named chr "admin"
 #>    .. ..- attr(*, "names")= chr "Administration"
 #>    ..@ label  : chr "In the last year, I have :: sought help from :: Administration"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.union    : int+lbl [1:3] 0, 0, 0
+#>  $ checkbox_matrix.1.union    : hvn_lbll [1:3] 0, 0, 0
 #>    ..@ labels : Named chr "union"
 #>    .. ..- attr(*, "names")= chr "Union"
 #>    ..@ label  : chr "In the last year, I have :: sought help from :: Union"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.internet : int+lbl [1:3] 0, 1, 1
+#>  $ checkbox_matrix.1.internet : hvn_lbll [1:3] 0, 1, 1
 #>    ..@ labels : Named chr "internet"
 #>    .. ..- attr(*, "names")= chr "Internet"
 #>    ..@ label  : chr "In the last year, I have :: sought help from :: Internet"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.IT       : int+lbl [1:3] 0, 0, 1
+#>  $ checkbox_matrix.2.IT       : hvn_lbll [1:3] 0, 0, 1
 #>    ..@ labels : Named chr "IT"
 #>    .. ..- attr(*, "names")= chr "IT"
 #>    ..@ label  : chr "In the last year, I have :: received e-mails from :: IT"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.colleague: int+lbl [1:3] 0, 0, 1
+#>  $ checkbox_matrix.2.colleague: hvn_lbll [1:3] 0, 0, 1
 #>    ..@ labels : Named chr "colleague"
 #>    .. ..- attr(*, "names")= chr "A colleague"
 #>    ..@ label  : chr "In the last year, I have :: received e-mails from :: A colleague"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.admin    : int+lbl [1:3] 1, 1, 1
+#>  $ checkbox_matrix.2.admin    : hvn_lbll [1:3] 1, 1, 1
 #>    ..@ labels : Named chr "admin"
 #>    .. ..- attr(*, "names")= chr "Administration"
 #>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Administration"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.union    : int+lbl [1:3] 0, 1, 1
+#>  $ checkbox_matrix.2.union    : hvn_lbll [1:3] 0, 1, 1
 #>    ..@ labels : Named chr "union"
 #>    .. ..- attr(*, "names")= chr "Union"
 #>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Union"
 #>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.internet : int+lbl [1:3] 0, 0, 0
+#>  $ checkbox_matrix.2.internet : hvn_lbll [1:3] 0, 0, 0
 #>    ..@ labels : Named chr "internet"
 #>    .. ..- attr(*, "names")= chr "Internet"
 #>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Internet"
@@ -338,7 +390,9 @@ However, if you are working on a form that is no longer available in Nettskjema,
 
 ``` r
 lab_data$freetex
-#> [1] "some text"      "another answer" ""              
+#> [1] "some text"     
+#> [2] "another answer"
+#> [3] ""              
 #> attr(,"label")
 #> [1] "This is a question about something super important, where the user can input free text."
 #> attr(,"ns_type")

@@ -9,16 +9,19 @@ ns_client(id, secret, name = "nettskjemar")
 \arguments{
 \item{id}{[character] The client ID provided by Nettskjema.}
 
-\item{secret}{[character] The client secret provided by Nettskjema.}
+\item{secret}{[character] The client secret provided
+by Nettskjema.}
 
-\item{name}{[character] An optional name for the client (default = "nettskjemar").}
+\item{name}{[character] An optional name for the
+client (default = "nettskjemar").}
 }
 \value{
 A configured `httr2::oauth_client` object.
 }
 \description{
-This function initializes an OAuth2 client using the `httr2::oauth_client`
-function. It is used to authenticate and interact with the Nettskjema API.
+This function initializes an OAuth2 client using
+ the `httr2::oauth_client` function. It is used to
+authenticate and interact with the Nettskjema API.
 }
 \examples{
 # Example: Initialize an OAuth2 client for Nettskjema
