@@ -1,26 +1,96 @@
-test_that("test request setup", {
-  vcr::use_cassette("ns_auth", {
-    with_mocked_nettskjema_auth(
-      auth <- ns_req()
-    )
-  })
-  expect_is(auth, "httr2_request")
-  expect_equal(
-    names(auth),
-    c(
-      "url",
-      "method",
-      "headers",
-      "body",
-      "fields",
-      "options",
-      "policies",
-      "state"
-    )
+test_that("ns_client creates an OAuth2 client correctly", {
+  # Test case: Valid inputs
+  client <- ns_client(
+    id = "test_id",
+    secret = "test_secret",
+    name = "test_name"
   )
-  expect_null(auth$body)
-  expect_match(auth$url, "https://nettskjema.no/api/v3/")
-  expect_match(names(auth$headers), "Authorization")
+  expect_s3_class(client, "httr2_oauth_client")
+  expect_equal(client$id, "test_id")
+  expect_equal(client$secret, "test_secret")
+  expect_equal(client$name, "test_name")
+  expect_equal(
+    client$token_url,
+    "https://authorization.nettskjema.no/oauth2/token"
+  )
+  expect_equal(
+    client$auth,
+    "oauth_client_req_auth_header"
+  )
+
+  # Test case: Default name
+  client_default_name <- ns_client(
+    id = "test_id",
+    secret = "test_secret"
+  )
+  expect_equal(client_default_name$name, "nettskjemar")
+
+  # Test case: Missing parameters
+  expect_error(
+    ns_client(id = NULL, secret = "test_secret"),
+    "is required"
+  )
+  expect_error(
+    ns_client(id = "test_id", secret = NULL),
+    "is required"
+  )
+})
+
+test_that("ns_req_auth authenticates requests correctly", {
+  # Test case: Valid credentials with environment variables
+  withr::with_envvar(
+    c(
+      NETTSKJEMA_CLIENT_ID = "mock_id",
+      NETTSKJEMA_CLIENT_SECRET = "mock_secret"
+    ),
+    {
+      req <- httr2::request("https://example.com")
+      auth_req <- ns_req_auth(req)
+      expect_s3_class(auth_req, "httr2_request")
+    }
+  )
+
+  # Test case: Missing client_id and client_secret
+  withr::with_envvar(
+    c(
+      NETTSKJEMA_CLIENT_ID = "",
+      NETTSKJEMA_CLIENT_SECRET = ""
+    ),
+    {
+      req <- httr2::request("https://example.com")
+      expect_error(
+        ns_req_auth(req),
+        "are not set up"
+      )
+    }
+  )
+})
+
+test_that("Edge cases are handled for auth", {
+  # Empty strings
+  expect_error(
+    ns_client(id = "", secret = "non_empty"),
+    "is required and cannot"
+  )
+  expect_error(
+    ns_client(id = "non_empty", secret = ""),
+    "is required"
+  )
+
+  # Invalid request object in ns_req_auth
+  withr::with_envvar(
+    c(
+      NETTSKJEMA_CLIENT_ID = "mock_id",
+      NETTSKJEMA_CLIENT_SECRET = "mock_secret"
+    ),
+    {
+      invalid_req <- list() # Not an httr2 request
+      expect_error(
+        ns_req_auth(invalid_req),
+        "must be an HTTP request object, not an empty list."
+      )
+    }
+  )
 })
 
 # Test ns_url
@@ -41,23 +111,14 @@ test_that("ns_has_auth identifies variables", {
   )
 
   withr::with_envvar(
-    c(NETTSKJEMA_CLIENT_ID = "", NETTSKJEMA_CLIENT_SECRET = ""),
+    c(
+      NETTSKJEMA_CLIENT_ID = "",
+      NETTSKJEMA_CLIENT_SECRET = ""
+    ),
     {
       expect_false(ns_has_auth())
     }
   )
-})
-
-# Test ns_auth_token with VCR
-test_that("ns_auth_token caches access token", {
-  vcr::use_cassette("ns_auth_token", {
-    with_mocked_nettskjema_auth(
-      token <- ns_auth_token(cache = FALSE)
-    )
-  })
-  # Using cache = FALSE for simpler testing
-  expect_named(token, c("access_token", "token_type", "expires_in"))
-  expect_type(token$access_token, "character")
 })
 
 # Test ns_req with VCR

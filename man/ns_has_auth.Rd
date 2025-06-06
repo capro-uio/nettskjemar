@@ -9,11 +9,6 @@ ns_has_auth(
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
 )
 }
-\arguments{
-\item{client_id}{Character. Retrieved from the Client portal.}
-
-\item{client_secret}{Character. Retrieved from the Client portal.}
-}
 \value{
 Logical. Returns `TRUE` if both environment
    variables are set, otherwise `FALSE`.

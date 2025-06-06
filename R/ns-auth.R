@@ -20,9 +20,7 @@
 #' }
 ns_req <- function(...) {
   httr2::request(ns_url()) |>
-    httr2::req_auth_bearer_token(
-      ns_auth_token(...)$access_token
-    )
+    ns_req_auth()
 }
 
 #' Set general nettskjema api URL.
@@ -31,7 +29,7 @@ ns_url <- function() {
   "https://nettskjema.no/api/v3/"
 }
 
-#' Retrieve access token
+#' Authenticate Nettskjema request
 #'
 #' After creating a client in Nettskjema,
 #' this function will retrieve the access
@@ -39,17 +37,17 @@ ns_url <- function() {
 #' in the package. Automatically caches the
 #' token for more efficient API usage.
 #'
-#' @param client_id Character. Retrieved from the Client portal.
-#' @param client_secret Character. Retrieved from the Client portal.
-#' @param cache Logical. Should the token be cached?
-#' @param cache_path Character. File path to where
-#'   the token should be stored. Defaults to system
-#'   cache directory.
-ns_auth_token <- function(
+#' @param client_id Character. Retrieved from the
+#'     Client portal.
+#' @param client_secret Character. Retrieved from the
+#'     Client portal.
+#' @param client_name Character. Used to identify who
+#'     has been running the commands.
+ns_req_auth <- function(
+  req,
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
-  cache = TRUE,
-  cache_path = NULL
+  client_name = "nettskjemar"
 ) {
   if (!ns_has_auth(client_id, client_secret)) {
     cli::cli_abort(c(
@@ -63,46 +61,65 @@ ns_auth_token <- function(
     ))
   }
 
-  req <- httr2::request(
-    "https://authorization.nettskjema.no/oauth2/token"
-  ) |>
-    httr2::req_method("POST") |>
-    httr2::req_body_raw(
-      "grant_type=client_credentials",
-      "application/x-www-form-urlencoded"
-    ) |>
-    httr2::req_auth_basic(
-      client_id,
-      client_secret
+  httr2::req_oauth_client_credentials(
+    req,
+    client = ns_client(
+      id = client_id,
+      secret = client_secret,
+      name = client_name
     )
+  )
+}
 
-  if (cache) {
-    if (is.null(cache_path)) {
-      cache_path <- file.path(
-        tools::R_user_dir(
-          "nettskjemar",
-          "cache"
-        ),
-        client_id
-      )
-      dir.create(
-        dirname(cache_path),
-        showWarnings = FALSE,
-        recursive = TRUE
-      )
-    }
-
-    req <- req |>
-      httr2::req_cache(
-        tempfile(),
-        max_age = (24 * 60 * 60) - 1,
-        debug = TRUE
-      )
+#' Create an OAuth2 Client for Nettskjema API
+#'
+#' This function initializes an OAuth2 client using
+#'  the `httr2::oauth_client` function. It is used to
+#' authenticate and interact with the Nettskjema API.
+#'
+#' @param id [character] The client ID provided by Nettskjema.
+#' @param secret [character] The client secret provided
+#'     by Nettskjema.
+#' @param name [character] An optional name for the
+#'     client (default = "nettskjemar").
+#'
+#' @return A configured `httr2::oauth_client` object.
+#'
+#' @examples
+#' # Example: Initialize an OAuth2 client for Nettskjema
+#' client <- ns_client(
+#'   id = "your_client_id",
+#'   secret = "your_client_secret"
+#' )
+#'
+#' # Using a custom client name
+#' client <- ns_client(
+#'   id = "your_client_id",
+#'   secret = "your_client_secret",
+#'   name = "custom_client_name"
+#' )
+#'
+#' @export
+ns_client <- function(id, secret, name = "nettskjemar") {
+  # Check for valid id and secret
+  if (is.null(id) || id == "") {
+    cli::cli_abort(
+      "{.code id} is required and cannot be NULL or empty."
+    )
+  }
+  if (is.null(secret) || secret == "") {
+    cli::cli_abort(
+      "{.code secret} is required and cannot be NULL or empty."
+    )
   }
 
-  req |>
-    httr2::req_perform() |>
-    httr2::resp_body_json()
+  httr2::oauth_client(
+    id = id,
+    secret = secret,
+    name = name,
+    token_url = "https://authorization.nettskjema.no/oauth2/token",
+    auth = "header"
+  )
 }
 
 #' Check Environment Variables for Nettskjema Authentication

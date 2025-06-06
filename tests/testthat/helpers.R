@@ -10,11 +10,6 @@ invisible(vcr::vcr_configure(
         ":",
         Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
       )
-    ),
-    "<<ACCESS_TOKEN>>" = ifelse(
-      ns_has_auth(),
-      ns_auth_token()$access_token,
-      ""
     )
   ),
   dir = vcr::vcr_test_path("fixtures")
@@ -30,7 +25,7 @@ with_mocked_nettskjema_auth <- function(expr) {
     ns_has_auth = function(...) TRUE,
     .package = "nettskjemar"
   )
-  force(expr) # Evaluate the expression within the mocked context
+  force(expr)
 }
 
 vcr::check_cassette_names()
