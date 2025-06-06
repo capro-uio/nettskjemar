@@ -36,6 +36,7 @@ reference:
   contents:
   - contains("auth")
   - ns_get_me
+  - ns_client
 - title: "Open online urls"
   desc: "Functions for easy opening of relevant URLs"
   contents:
