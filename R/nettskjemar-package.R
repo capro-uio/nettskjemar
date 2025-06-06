@@ -10,13 +10,17 @@ if (getRversion() >= "2.15.1") {
 
 # nocov start
 release_bullets <- function() {
-  # Pre-compiled Rmd that depend on API key
-
-  knitr::knit(
-    "README.Rmd",
-    "README.md"
+  c(
+    sprintf(
+      "Coverage is at: %s",
+      covr::coverage_to_list(covr::package_coverage())$totalcoverage
+    ),
+    knit_vignettes()
   )
+} # nocov end
 
+# nocov start
+knit_vignettes <- function() {
   proc <- list.files(
     "vignettes",
     "orig$",
@@ -38,14 +42,10 @@ release_bullets <- function() {
       )
     })
     invisible(unlink(fig_path, recursive = TRUE))
-    cat("Updated: ", basename(x), "\n")
   })
 
-  cov <- covr::package_coverage()
-  cat(
-    "Total coverage: ",
-    covr::coverage_to_list(cov)$totalcoverage,
-    sep = ""
+  list(
+    "Knit vignettes",
+    sapply(proc, basename)
   )
-  #covr::zero_coverage(cov) #nolint
 } # nocov end

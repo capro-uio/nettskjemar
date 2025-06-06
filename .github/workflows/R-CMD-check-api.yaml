@@ -4,26 +4,18 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: "30 2 * * 0"
 
-name: R-CMD-check.yaml
+name: Check API endpoints
 
 permissions: read-all
 
 jobs:
   R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ubuntu-latest
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - { os: macos-latest, r: "release" }
-          - { os: windows-latest, r: "release" }
-          - { os: ubuntu-latest, r: "devel", http-user-agent: "release" }
-          - { os: ubuntu-latest, r: "release" }
-          - { os: ubuntu-latest, r: "oldrel-1" }
+    name: Check API responses
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -36,8 +28,8 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
+          r-version: "release"
+          http-user-agent: "release"
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
@@ -47,7 +39,19 @@ jobs:
             any::knitr
           needs: check
 
+      - name: "Setup env for full test suite"
+        run: |
+          echo "NETTSKJEMA_CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .Renviron
+          echo "NETTSKJEMA_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> .Renviron
+          echo "VCR_TURN_OFF=true" >> .Renviron
+
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
           build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf","--as-cran")'
+
+      - name: Build vignettes
+        run: |
+          install.packages(".", repos = NULL, type = "source")
+          nettskjemar:::knit_vignettes()
+        shell: Rscript {0}

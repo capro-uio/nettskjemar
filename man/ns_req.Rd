@@ -7,7 +7,7 @@
 ns_req(...)
 }
 \arguments{
-\item{...}{arguments passed to \code{ns_auth_token}}
+\item{...}{arguments passed to \code{ns_req_auth}}
 }
 \value{
 \code{httr2} request
@@ -24,7 +24,7 @@ build from.
 \examples{
 \dontrun{
 ns_req() |>
- httr2::req_url_path_append("form", "me") |>
+ httr2::req_url_path_append("me") |>
  httr2::req_perform() |>
  httr2::resp_body_json()
 }

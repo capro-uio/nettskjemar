@@ -1,6 +1,11 @@
 # nettskjemar (development version)
 
-# nettskjemar 1.0.1
+# nettskjemar 1.0.2
+
+- Uses OAuth client for managing credentials
+- Updates to new API url as per [official documentation](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md)
+- Adds thorough test suite with fixtures
+-
 
 # nettskjemar 1.0.1
 
@@ -15,7 +20,6 @@
 - Improved vignettes
 - Adds tests
 
-
 # nettskjemar 0.1.4.008
 
 - add functions to download attachments
@@ -24,31 +28,31 @@
 
 # nettskjemar 0.1.4.004
 
-- add linear scale support  
-- fix bugs in codebook and meta data that did not retrieve question data  
-- force writing raw codebook and raw metadata to json extension  
+- add linear scale support
+- fix bugs in codebook and meta data that did not retrieve question data
+- force writing raw codebook and raw metadata to json extension
 - add direct check for if a form has codebook `has_codebook()`
 
 # nettskjemar 0.1.4
 
-* simplification of internal code  
-* added function to find currently IP address   
-* moved CI to github actions from travis (inconsequential for package use)  
+- simplification of internal code
+- added function to find currently IP address
+- moved CI to github actions from travis (inconsequential for package use)
 
 # nettskjemar 0.1.03
 
-* added JOSS submission paper
-* added options for checkbox answers
+- added JOSS submission paper
+- added options for checkbox answers
 
 # nettskjemar 0.1.02
 
-* codebooks improved  
-* Bug fix: all information from checkbox elements now returned
-* automatic incremental download of data happens now at >2000 rather than >1000 responses  
+- codebooks improved
+- Bug fix: all information from checkbox elements now returned
+- automatic incremental download of data happens now at >2000 rather than >1000 responses
 
 # nettskjemar 0.1.01
 
-* Added a `NEWS.md` file to track changes to the package  
-* Codebooks can now be retrieved  
-* new meta-data class added  
-* Can now add additional columns to data based on meta-data and codebook information  
+- Added a `NEWS.md` file to track changes to the package
+- Codebooks can now be retrieved
+- new meta-data class added
+- Can now add additional columns to data based on meta-data and codebook information

@@ -1,6 +1,8 @@
 test_that("test user information", {
   vcr::use_cassette("ns_get_me", {
-    me <- ns_get_me()
+    with_mocked_nettskjema_auth(
+      me <- ns_get_me()
+    )
   })
 
   expect_is(me, "list")
@@ -26,6 +28,6 @@ test_that("test user information", {
   expect_is(me$displayName, "character")
   expect_match(
     me$displayName,
-    "^[[:alnum:].-_]+@[[:alnum:].-]+$"
+    "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}@apiclient$"
   )
 })

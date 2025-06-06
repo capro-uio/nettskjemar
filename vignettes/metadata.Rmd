@@ -61,7 +61,7 @@ form_meta
 #> [1] TRUE
 #> 
 #> $modifiedDate
-#> [1] "2025-03-13T19:27:18"
+#> [1] "2025-05-14T19:47:03"
 #> 
 #> $modifiedBy
 #> $modifiedBy$personId
@@ -74,7 +74,7 @@ form_meta
 #> [1] "Athanasia Monika Mowinckel"
 #> 
 #> $modifiedBy$email
-#> [1] "a.m.mowinckel@psykologi.uio.no"
+#> [1] "athanasm@uio.no"
 #> 
 #> $modifiedBy$type
 #> [1] "LOCAL"

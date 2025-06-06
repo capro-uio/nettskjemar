@@ -1,77 +1,30 @@
 http_interactions:
 - request:
-    method: post
-    uri: https://authorization.nettskjema.no/oauth2/token
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Authorization: Basic ZTExMGYxZWItNGFkNS00NTlmLTgzNzItYjlhNzM0Mjg5NmYxOkU3NHBBcjg0c01OU0xxWjROTEQ1QjJGTE56SEluY3RydGRuSllpYTZuMUxVUjNsVzlJdE91RVJFX1MtS1dlNzl2SElWeWpBWks1b0JpSVNiM0NON1NRPT0=
-  response:
-    status:
-      status_code: 200
-      message: OK
-    headers:
-      server: nginx
-      date: Sun, 16 Mar 2025 22:04:06 GMT
-      strict-transport-security: max-age=31536000 ; includeSubDomains
-      x-frame-options: DENY
-      set-cookie: SESSION=MGUxY2FiYzUtNDYwOS00YTkyLWEzNWEtZjM3ZDU1YTI1ODZi; Path=/;
-        Secure; HttpOnly; SameSite=None
-      vary: accept-encoding
-      content-encoding: gzip
-      x-content-type-options: nosniff
-      x-permitted-cross-domain-policies: none
-      x-download-options: noopen
-      x-xss-protection: '0'
-      referrer-policy: strict-origin-when-cross-origin
-      content-type: application/json
-      cache-control: private, max-age=0, no-cache, no-store
-      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
-        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
-        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
-        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
-        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
-        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
-        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
-        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
-        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
-        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
-        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
-        window-management=(), storage-access=()
-      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
-      tdm-reservation: '1'
-      x-robots-tag: noai, noml, SPC, noimageai
-    body:
-      encoding: ''
-      file: no
-      string: '{"access_token":"eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MjE2MjY0NiwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQyMjQ5MDQ2LCJpYXQiOjE3NDIxNjI2NDYsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI4ZTc3YzhmMy1mMzMzLTQwOTctODU0Zi0wMzc3Yjc5MjczMmUiLCJlbWFpbCI6ImEubS5tb3dpbmNrZWxAcHN5a29sb2dpLnVpby5ubyJ9.c_HYjuhkgJ-thP0DTI0_elLgPz0mswPW13xyjUocQp6SJGOndNOVqYM5ihVypYg0zblz-_NHdGDFIcP4X-iPKbavprCU2axMykVAceMEzmhYEK3M8zNRp_jh2ZlI4Qhh5qQQq_NF7nqqg5lIjYnMAuMzmeQVd3iR5ByETq7FKQoMZzj5BQhBI9T4wTFDxdcZjIQ6sQOOm6s1ye8xLnZw9dGIT6-HDGXA3vlUGsS4HPnc9EdCzCh5myQLPxY10SeKQuOGno8AeuU2keHLRfsFoRdWR_KHtriWjeEDbjfUzyk41WpVs8VJmvI1g1P2ALB3TDN5UVyDqvfk6GRKICYxv3anlpnCEMsvg-ckOq6MRxUpxXQmVohBn6Mi7oJ7C5Y20B42sAE8k50QUstl8e9Cu4dcI_jPPM5uaAIcClbnn_KaPUws74v-OvJE4nlr8SLv5qOQec68qHTm24hvIZNiDr5DdBl6C_5MZ12m1xy8B9KXk-fW9WwICeRaH9sbrmvR","token_type":"Bearer","expires_in":86399}'
-  recorded_at: 2025-03-16 22:04:06 GMT
-  recorded_with: vcr/1.6.0, webmockr/2.0.0
-- request:
     method: get
-    uri: https://api.nettskjema.no/v3/form/123823/elements
+    uri: https://nettskjema.no/api/v3/form/123823/elements
     body:
       encoding: ''
       string: ''
-    headers:
-      Authorization: Bearer eyJraWQiOiJmYjNlMjBmNC03ODFlLTQyMTUtYjVjOS04YWZmNGRlYWQ5ODIiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJyb2xlcyI6IlJPTEVfQVBJX0NMSUVOVF9VU0VSLFJPTEVfRkVJREVfVVNFUixST0xFX0FETUlOSVNUUkFUSVZFX1VTRVIiLCJpc3MiOiJodHRwczovL2F1dGhvcml6YXRpb24ubmV0dHNramVtYS5ubyIsInVzZXJ0eXBlIjoiTE9DQUwiLCJhdWQiOiJlMTEwZjFlYi00YWQ1LTQ1OWYtODM3Mi1iOWE3MzQyODk2ZjEiLCJhY3IiOjIsIm5iZiI6MTc0MjE2MjY0NiwibmFtZSI6IkF0aGFuYXNpYSBNb25pa2EgTW93aW5ja2VsIiwiZXhwIjoxNzQyMjQ5MDQ2LCJpYXQiOjE3NDIxNjI2NDYsInVzZXIiOiJhdGhhbmFzbUB1aW8ubm8iLCJqdGkiOiI4ZTc3YzhmMy1mMzMzLTQwOTctODU0Zi0wMzc3Yjc5MjczMmUiLCJlbWFpbCI6ImEubS5tb3dpbmNrZWxAcHN5a29sb2dpLnVpby5ubyJ9.c_HYjuhkgJ-thP0DTI0_elLgPz0mswPW13xyjUocQp6SJGOndNOVqYM5ihVypYg0zblz-_NHdGDFIcP4X-iPKbavprCU2axMykVAceMEzmhYEK3M8zNRp_jh2ZlI4Qhh5qQQq_NF7nqqg5lIjYnMAuMzmeQVd3iR5ByETq7FKQoMZzj5BQhBI9T4wTFDxdcZjIQ6sQOOm6s1ye8xLnZw9dGIT6-HDGXA3vlUGsS4HPnc9EdCzCh5myQLPxY10SeKQuOGno8AeuU2keHLRfsFoRdWR_KHtriWjeEDbjfUzyk41WpVs8VJmvI1g1P2ALB3TDN5UVyDqvfk6GRKICYxv3anlpnCEMsvg-ckOq6MRxUpxXQmVohBn6Mi7oJ7C5Y20B42sAE8k50QUstl8e9Cu4dcI_jPPM5uaAIcClbnn_KaPUws74v-OvJE4nlr8SLv5qOQec68qHTm24hvIZNiDr5DdBl6C_5MZ12m1xy8B9KXk-fW9WwICeRaH9sbrmvR
+    headers: []
   response:
     status:
       status_code: 200
       message: OK
     headers:
       server: nginx
-      date: Sun, 16 Mar 2025 22:04:06 GMT
-      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
-      set-cookie: JSESSIONID=155F043A7E239A5090997F086BB799A8; Path=/v3; Secure; HttpOnly;
-        SameSite=Lax
-      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
-      x-frame-options: DENY
-      referrer-policy: same-origin
-      vary: accept-encoding
+      date: Fri, 06 Jun 2025 12:11:47 GMT
       content-encoding: gzip
+      referrer-policy: same-origin
+      set-cookie: JSESSIONID=1548CBD5B5420D4F7E3B48A3E0ECA46B; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-frame-options: DENY
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
       x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
       x-permitted-cross-domain-policies: none
       x-download-options: noopen
       x-xss-protection: '0'
@@ -80,10 +33,10 @@ http_interactions:
       permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
         run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
         autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
-        fullscreen=(), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
         legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
         payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
-        speaker-selection=(self), sync-xhr=(self), unoptimized-images=(self), unsized-media=(self),
+        speaker-selection=(self), sync-xhr=(), unoptimized-images=(self), unsized-media=(self),
         usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
         clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
         execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
@@ -133,5 +86,5 @@ http_interactions:
         sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
         sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
         is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":false,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":null,"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
-  recorded_at: 2025-03-16 22:04:06 GMT
+  recorded_at: 2025-06-06 12:11:47 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

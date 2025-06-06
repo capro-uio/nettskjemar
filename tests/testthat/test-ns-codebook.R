@@ -1,34 +1,46 @@
-vcr::use_cassette("get_raw_codebook_valid", {
-  test_that("fetches raw codebook correctly", {
-    raw_cb <- get_raw_codebook(form_id)
-    expect_s3_class(raw_cb, "ns_codebook_raw")
-    expect_equal(raw_cb$form_id, form_id)
-    expect_type(raw_cb$elements, "list")
+test_that("fetches raw codebook correctly", {
+  vcr::use_cassette("get_raw_codebook_valid", {
+    with_mocked_nettskjema_auth(
+      raw_cb <- get_raw_codebook(form_id)
+    )
   })
+
+  expect_s3_class(raw_cb, "ns_codebook_raw")
+  expect_equal(raw_cb$form_id, form_id)
+  expect_type(raw_cb$elements, "list")
 })
 
 vcr::use_cassette("get_raw_codebook_invalid", {
   test_that("handles invalid form_id gracefully", {
-    expect_error(get_raw_codebook(100), "Not Found")
-  })
-})
-
-vcr::use_cassette("ns_get_codebook_valid", {
-  test_that("converts raw to structured", {
-    cb <- ns_get_codebook(form_id)
-    expect_s3_class(cb, "ns_codebook")
-    expect_true(ncol(cb) > 0)
-  })
-})
-
-vcr::use_cassette("ns_get_codebook_raw", {
-  test_that("respects asis flag", {
-    cb_raw <- ns_get_codebook(
-      form_id,
-      asis = TRUE
+    with_mocked_nettskjema_auth(
+      expect_error(get_raw_codebook(100), "Not Found")
     )
-    expect_s3_class(cb_raw, "ns_codebook_raw")
   })
+})
+
+
+test_that("converts raw to structured", {
+  vcr::use_cassette("ns_get_codebook_valid", {
+    with_mocked_nettskjema_auth(
+      cb <- ns_get_codebook(form_id)
+    )
+  })
+
+  expect_s3_class(cb, "ns_codebook")
+  expect_true(ncol(cb) > 0)
+})
+
+test_that("respects asis flag", {
+  vcr::use_cassette("ns_get_codebook_raw", {
+    with_mocked_nettskjema_auth(
+      cb_raw <- ns_get_codebook(
+        form_id,
+        asis = TRUE
+      )
+    )
+  })
+
+  expect_s3_class(cb_raw, "ns_codebook_raw")
 })
 
 test_that("creates long format tibble", {
@@ -70,7 +82,10 @@ test_that("returns formatted string", {
     )
   )
   class(raw_cb) <- "ns_codebook_raw"
-  formatted <- format(raw_cb)
+  formatted <- expect_output(
+    format(raw_cb),
+    "multiple_choice"
+  )
   expect_type(formatted, "character")
   expect_contains(
     formatted,
