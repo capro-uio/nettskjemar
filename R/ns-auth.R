@@ -8,7 +8,7 @@
 #' this is the basis function you can
 #' build from.
 #'
-#' @param ... arguments passed to \code{ns_auth_token}
+#' @param ... arguments passed to \code{ns_req_auth}
 #' @return \code{httr2} request
 #' @export
 #' @examples
@@ -50,6 +50,51 @@ ns_req_auth <- function(
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
   client_name = "nettskjemar"
 ) {
+  httr2::req_oauth_client_credentials(
+    req,
+    client = ns_client(
+      client_id = client_id,
+      client_secret = client_secret,
+      client_name = client_name
+    )
+  )
+}
+
+#' Create an OAuth2 Client for Nettskjema API
+#'
+#' This function initializes an OAuth2 client using
+#'  the `httr2::oauth_client` function. It is used to
+#' authenticate and interact with the Nettskjema API.
+#'
+#' @param client_id [character] The client ID provided by Nettskjema.
+#' @param client_secret [character] The client secret provided
+#'     by Nettskjema.
+#' @param client_name [character] An optional name for the
+#'     client (default = "nettskjemar").
+#'
+#' @return A configured `httr2::oauth_client` object.
+#'
+#' @examples
+#' # Example: Initialize an OAuth2 client for Nettskjema
+#' client <- ns_client(
+#'   client_id = "your_client_id",
+#'   client_secret = "your_client_secret"
+#' )
+#'
+#' # Using a custom client name
+#' client <- ns_client(
+#'   client_id = "your_client_id",
+#'   client_secret = "your_client_secret",
+#'   client_name = "custom_client_name"
+#' )
+#'
+#' @export
+ns_client <- function(
+  client_id,
+  client_secret,
+  client_name = "nettskjemar"
+) {
+  # Check for valid id and secret
   if (!ns_has_auth(client_id, client_secret)) {
     cli::cli_abort(c(
       "Variables ",
@@ -62,62 +107,10 @@ ns_req_auth <- function(
     ))
   }
 
-  httr2::req_oauth_client_credentials(
-    req,
-    client = ns_client(
-      id = client_id,
-      secret = client_secret,
-      name = client_name
-    )
-  )
-}
-
-#' Create an OAuth2 Client for Nettskjema API
-#'
-#' This function initializes an OAuth2 client using
-#'  the `httr2::oauth_client` function. It is used to
-#' authenticate and interact with the Nettskjema API.
-#'
-#' @param id [character] The client ID provided by Nettskjema.
-#' @param secret [character] The client secret provided
-#'     by Nettskjema.
-#' @param name [character] An optional name for the
-#'     client (default = "nettskjemar").
-#'
-#' @return A configured `httr2::oauth_client` object.
-#'
-#' @examples
-#' # Example: Initialize an OAuth2 client for Nettskjema
-#' client <- ns_client(
-#'   id = "your_client_id",
-#'   secret = "your_client_secret"
-#' )
-#'
-#' # Using a custom client name
-#' client <- ns_client(
-#'   id = "your_client_id",
-#'   secret = "your_client_secret",
-#'   name = "custom_client_name"
-#' )
-#'
-#' @export
-ns_client <- function(id, secret, name = "nettskjemar") {
-  # Check for valid id and secret
-  if (is.null(id) || id == "") {
-    cli::cli_abort(
-      "{.code id} is required and cannot be NULL or empty."
-    )
-  }
-  if (is.null(secret) || secret == "") {
-    cli::cli_abort(
-      "{.code secret} is required and cannot be NULL or empty."
-    )
-  }
-
   httr2::oauth_client(
-    id = id,
-    secret = secret,
-    name = name,
+    id = client_id,
+    secret = client_secret,
+    name = client_name,
     token_url = "https://authorization.nettskjema.no/oauth2/token",
     auth = "header"
   )
@@ -132,7 +125,7 @@ ns_client <- function(id, secret, name = "nettskjemar") {
 #' feedback on the setup status and returns whether the
 #' system is correctly configured.
 #'
-#' @inheritParams ns_req_auth
+#' @inheritParams ns_client
 #'
 #' @return Logical. Returns `TRUE` if both environment
 #'    variables are set, otherwise `FALSE`.

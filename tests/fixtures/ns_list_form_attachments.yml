@@ -12,9 +12,9 @@ http_interactions:
       message: OK
     headers:
       server: nginx
-      date: Fri, 06 Jun 2025 11:39:43 GMT
+      date: Fri, 06 Jun 2025 12:11:45 GMT
       content-type: application/x-ndjson
-      set-cookie: JSESSIONID=FF38FFD132CE992213D5BA46A2998F35; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=0349A57FDFCFFBAD3F28598A0AF213FB; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       x-application-gateway-proxy: api-own-auth
@@ -73,5 +73,5 @@ http_interactions:
         {"formId":123823,"submissionId":27685319,"answerId":158263287,"elementId":1641706,"externalElementId":"number_decimal","textAnswer":"10","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263286,"elementId":1641707,"externalElementId":"number_integer","textAnswer":"98","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"NUMBER","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
         {"formId":123823,"submissionId":27685319,"answerId":158263292,"elementId":3472259,"externalElementId":"slider","textAnswer":"9","answerOptionIds":[],"externalAnswerOptionIds":[],"elementType":"LINEAR_SCALE","createdDate":"2023-06-01T20:59:50","modifiedDate":"2023-06-01T20:59:50"}
-  recorded_at: 2025-06-06 11:39:43 GMT
+  recorded_at: 2025-06-06 12:11:45 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

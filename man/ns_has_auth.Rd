@@ -10,11 +10,10 @@ ns_has_auth(
 )
 }
 \arguments{
-\item{client_id}{Character. Retrieved from the
-Client portal.}
+\item{client_id}{[character] The client ID provided by Nettskjema.}
 
-\item{client_secret}{Character. Retrieved from the
-Client portal.}
+\item{client_secret}{[character] The client secret provided
+by Nettskjema.}
 }
 \value{
 Logical. Returns `TRUE` if both environment

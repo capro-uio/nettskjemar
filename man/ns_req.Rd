@@ -7,7 +7,7 @@
 ns_req(...)
 }
 \arguments{
-\item{...}{arguments passed to \code{ns_auth_token}}
+\item{...}{arguments passed to \code{ns_req_auth}}
 }
 \value{
 \code{httr2} request

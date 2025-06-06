@@ -12,11 +12,11 @@ http_interactions:
       message: OK
     headers:
       server: nginx
-      date: Fri, 06 Jun 2025 11:39:46 GMT
+      date: Fri, 06 Jun 2025 12:11:47 GMT
       content-length: '234'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=0C8BDFC1BD2CB74EB0D48A465060F6A0; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=F5AA8CC20BCFE3463BA73D25E04BF01E; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -49,5 +49,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
-  recorded_at: 2025-06-06 11:39:46 GMT
+  recorded_at: 2025-06-06 12:11:47 GMT
   recorded_with: vcr/1.6.0, webmockr/2.0.0

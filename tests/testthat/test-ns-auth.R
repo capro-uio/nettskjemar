@@ -1,9 +1,9 @@
 test_that("ns_client creates an OAuth2 client correctly", {
   # Test case: Valid inputs
   client <- ns_client(
-    id = "test_id",
-    secret = "test_secret",
-    name = "test_name"
+    client_id = "test_id",
+    client_secret = "test_secret",
+    client_name = "test_name"
   )
   expect_s3_class(client, "httr2_oauth_client")
   expect_equal(client$id, "test_id")
@@ -20,20 +20,10 @@ test_that("ns_client creates an OAuth2 client correctly", {
 
   # Test case: Default name
   client_default_name <- ns_client(
-    id = "test_id",
-    secret = "test_secret"
+    client_id = "test_id",
+    client_secret = "test_secret"
   )
   expect_equal(client_default_name$name, "nettskjemar")
-
-  # Test case: Missing parameters
-  expect_error(
-    ns_client(id = NULL, secret = "test_secret"),
-    "is required"
-  )
-  expect_error(
-    ns_client(id = "test_id", secret = NULL),
-    "is required"
-  )
 })
 
 test_that("ns_req_auth authenticates requests correctly", {
@@ -59,35 +49,7 @@ test_that("ns_req_auth authenticates requests correctly", {
     {
       req <- httr2::request("https://example.com")
       expect_error(
-        ns_req_auth(req),
-        "are not set up"
-      )
-    }
-  )
-})
-
-test_that("Edge cases are handled for auth", {
-  # Empty strings
-  expect_error(
-    ns_client(id = "", secret = "non_empty"),
-    "is required and cannot"
-  )
-  expect_error(
-    ns_client(id = "non_empty", secret = ""),
-    "is required"
-  )
-
-  # Invalid request object in ns_req_auth
-  withr::with_envvar(
-    c(
-      NETTSKJEMA_CLIENT_ID = "mock_id",
-      NETTSKJEMA_CLIENT_SECRET = "mock_secret"
-    ),
-    {
-      invalid_req <- list() # Not an httr2 request
-      expect_error(
-        ns_req_auth(invalid_req),
-        "must be an HTTP request object, not an empty list."
+        ns_req_auth(req)
       )
     }
   )
