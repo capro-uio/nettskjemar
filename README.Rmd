@@ -37,9 +37,12 @@ Newer releases can be installed through the authors r-universe:
 
 ```{r, eval = FALSE}
 # Enable this universe
-options(repos = c(
+options(
+  repos = c(
     lcbc_uio = 'https://CAPRO-UIO.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+    CRAN = 'https://cloud.r-project.org'
+  )
+)
 
 # Install some packages
 install.packages('nettskjemar')
@@ -69,7 +72,7 @@ ns_get_data(123823)
 ## Documentation
 
 ```{r include=FALSE}
-vigs <-  list.files("vignettes", "Rmd$", full.names = TRUE)
+vigs <- list.files("vignettes", "Rmd$", full.names = TRUE)
 urls <- gsub("vignettes", "https://CAPRO-UIO.github.io/nettskjemar", vigs)
 urls <- gsub("Rmd", "html", urls)
 names(urls) <- sapply(vigs, function(x) rmarkdown::yaml_front_matter(x)$title)

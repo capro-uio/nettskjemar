@@ -1,4 +1,5 @@
 
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # nettskjemar <img src='man/figures/logo.png' align="right" height="138.5" />
@@ -10,7 +11,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
+status](https://www.r-pkg.org/badges/version/nettskjemar.png)](https://CRAN.R-project.org/package=nettskjemar)
 [![Codecov test
 coverage](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg)](https://app.codecov.io/gh/capro-uio/nettskjemar)
 <!-- badges: end -->
@@ -32,9 +33,12 @@ Newer releases can be installed through the authors r-universe:
 
 ``` r
 # Enable this universe
-options(repos = c(
+options(
+  repos = c(
     lcbc_uio = 'https://CAPRO-UIO.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+    CRAN = 'https://cloud.r-project.org'
+  )
+)
 
 # Install some packages
 install.packages('nettskjemar')
@@ -103,8 +107,7 @@ pages](https://www.capro.dev/nettskjemar/), where there are 7 tutorials.
 To cite nettskjemar in publications use:
 
 Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar:
-v0.1.04 (Version v0.1.04). Zenodo.
-<http://doi.org/10.5281/zenodo.4745481>
+v0.1.04 (Version v0.1.04). Zenodo. http://doi.org/10.5281/zenodo.4745481
 
 A BibTeX entry for LaTeX users is
 

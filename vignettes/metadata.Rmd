@@ -61,23 +61,23 @@ form_meta
 #> [1] TRUE
 #> 
 #> $modifiedDate
-#> [1] "2025-05-14T19:47:03"
+#> [1] "2025-06-12T16:30:22"
 #> 
 #> $modifiedBy
 #> $modifiedBy$personId
-#> [1] 58096
+#> [1] 3439404
 #> 
 #> $modifiedBy$username
-#> [1] "athanasm@uio.no"
+#> [1] "ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient"
 #> 
 #> $modifiedBy$name
-#> [1] "Athanasia Monika Mowinckel"
+#> [1] "nettskjemar"
 #> 
 #> $modifiedBy$email
 #> [1] "athanasm@uio.no"
 #> 
 #> $modifiedBy$type
-#> [1] "LOCAL"
+#> [1] "API_CLIENT"
 #> 
 #> 
 #> $isOpen

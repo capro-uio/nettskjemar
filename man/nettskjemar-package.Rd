@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Enables users to retrieve data, meta-data, and codebooks from \url{https://nettskjema.no/}. The data from the API is richer than from the online data portal. Mowinckel (2021) \doi{10.5281/zenodo.4745481}.
+Enables users to retrieve data, meta-data, and codebooks from \url{https://nettskjema.no/}. The data from the API is richer than from the online data portal. This package is not developed by the University of Oslo IT. Mowinckel (2021) \doi{10.5281/zenodo.4745481}.
 }
 \seealso{
 Useful links:

@@ -39,10 +39,10 @@ ns_list_submission_attachments(submission_id)
 #> 1                        538819
 #>   attachment.filename
 #> 1           sølvi.png
-#>   attachment.mediaType
-#> 1            image/png
-#>   attachment.size counter
-#> 1          628613       1
+#>   attachment.mediaType attachment.size
+#> 1            image/png          628613
+#>   counter
+#> 1       1
 ```
 
 This function returns a `data.frame` with details such as the attachment ID, original filename, and standardized filename.
@@ -68,12 +68,12 @@ ns_list_form_attachments(formid)
 #>    answerOptionIds
 #> 16                
 #> 32                
-#>    externalAnswerOptionIds
-#> 16                        
-#> 32                        
-#>    elementType         createdDate
-#> 16  ATTACHMENT 2023-06-01T20:57:15
-#> 32  ATTACHMENT 2023-06-01T20:58:33
+#>    externalAnswerOptionIds elementType
+#> 16                          ATTACHMENT
+#> 32                          ATTACHMENT
+#>            createdDate
+#> 16 2023-06-01T20:57:15
+#> 32 2023-06-01T20:58:33
 #>           modifiedDate subElementId
 #> 16 2023-06-01T20:57:15           NA
 #> 32 2023-06-01T20:58:33           NA

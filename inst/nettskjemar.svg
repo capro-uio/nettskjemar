@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="69.198341mm"
+   height="79.903366mm"
+   viewBox="0 0 69.198341 79.903366"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   sodipodi:docname="nettskjemar.svg"
+   inkscape:export-filename="/Users/athanasm/nettskjemar.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#717171"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7089916"
+     inkscape:cx="160.79175"
+     inkscape:cy="93.795187"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1064"
+     inkscape:window-height="508"
+     inkscape:window-x="508"
+     inkscape:window-y="137"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(83.143761,-15.327407)">
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#075285;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815"
+       sodipodi:sides="6"
+       sodipodi:cx="49.892857"
+       sodipodi:cy="68.702377"
+       sodipodi:r1="39.893948"
+       sodipodi:r2="34.549175"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.0471976"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 84.442029,88.649351 49.892856,108.59632 15.343684,88.649351 l 1e-6,-39.893948 34.549172,-19.946973 34.549172,19.946974 z"
+       transform="translate(-98.437445,-13.423288)" />
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       sodipodi:sides="6"
+       sodipodi:cx="49.892857"
+       sodipodi:cy="68.702377"
+       sodipodi:r1="39.893948"
+       sodipodi:r2="34.549175"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.0471976"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 84.442029,88.649351 49.892856,108.59632 15.343684,88.649351 l 1e-6,-39.893948 34.549172,-19.946973 34.549172,19.946974 z"
+       transform="matrix(0.9328291,0,0,0.9328291,-95.086097,-8.8084878)" />
+    <g
+       id="g1"
+       transform="matrix(0.85929034,0,0,0.85929034,-88.791828,-4.1005387)">
+      <path
+         d="m 50.693037,68.117467 c -0.584199,1.068387 -2.135187,1.016001 -2.647155,-0.08811 l -2.462214,-5.322096 c -0.20637,-0.44688 -0.881061,-0.19209 -0.741363,0.27939 L 48.1578,74.154712 c 0.388938,1.312863 2.198688,1.440657 2.770188,0.19527 L 65.655225,42.203899 a 0.34925001,0.34925001 0 0 0 0.03174,-0.14526 c 0,-0.36195 -0.482601,-0.484188 -0.655638,-0.16749 z"
+         id="path26"
+         style="fill:#075285;fill-opacity:1;stroke-width:0.793749" />
+      <path
+         fill="#4976ae"
+         d="m 42.886506,56.53348 c 0.579438,-1.067592 2.127249,-1.023936 2.644776,0.07542 l 2.633661,5.587998 c 0.20877,0.444501 0.878682,0.18813 0.738981,-0.28179 L 45.517788,50.505745 C 45.127263,49.192885 43.318305,49.065091 42.7476,50.310475 L 28.020363,82.45735 a 0.31749999,0.31749999 0 0 0 -0.03174,0.14445 c 0,0.359568 0.480219,0.481806 0.652464,0.16509 z"
+         id="path2"
+         style="stroke-width:0.793749" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:0.5;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:start;letter-spacing:1.05833px;word-spacing:-0.0793749px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#075285;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:6.99349, 0.874186"
+       x="-73.122627"
+       y="74.024742"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';letter-spacing:1.05833px;word-spacing:-0.0793749px;stroke:none;stroke-width:3"
+         x="-73.122627"
+         y="74.024742">nettskjemar</tspan></text>
+  </g>
+</svg>
