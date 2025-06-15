@@ -1,0 +1,494 @@
+---
+title: "Creating custom requests"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Custom requests}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+
+
+This package focuses on retrieving information from the Nettskjema API, primarily regarding collected data and meta-data for forms.
+There are, however, several endpoints (functionalities) of the API that are currently not covered here.
+These most often pertain to sending data _to_ the API, either for creating new forms, updating meta-data or even submitting submissions.
+
+In order to facilitate users potential wish to connect to these endpoints too, the base function `ns_req()` is available to build the query you are after.
+This vignette will in short show how you can combine this function, with functionality from the [httr2](https://httr2.r-lib.org/index.html) package to create custom requests to the Nettskjema API.
+
+## Setting up a custom GET request
+
+First, you will need to identify the functionality you want to use in the [Nettskjema API docs](https://nettskjema.no/apidoc).
+
+Let's assume you want to update the settings for a form.
+To do this, we can first retrieve the settings as they are stored, alter the setting we want to alter, then send that back to Nettskjema.
+
+In the API docs, the URL for getting Settings for a form is shown as `/api/v3/form/{formId}/settings`, which is the URL we need to build to access this information.
+The `ns_req()` function, will build the URL up to including `/api/v3` and we need to add the rest.
+
+The `ns_req()` function looks like this
+
+```r
+ns_req <- function(...) {
+  httr2::request("https://nettskjema.no/api/v3/") |>
+    ns_req_auth(...)
+}
+```
+
+where `ns_auth()` is sets up the authentication client as described in the [Authentication vignette](authentication.html). 
+Meaning if we use it, the important parts that make sure you connect to the correct API with the correct credentials.
+
+
+``` r
+library(nettskjemar)
+ns_req()
+#> <httr2_request>
+#> GET https://nettskjema.no/api/v3/
+#> Body: empty
+#> Policies:
+#> • auth_sign : <list>
+#> • auth_oauth: TRUE
+```
+
+As you can see, the output here shows the URL until the `v3` section, and also that there is Authorization added, which the function does in the background for you with the authentication information you have set up as shown in the [Authentication vignette](authentication.html).
+
+From there, we need to use functions from {httr2} to build the remaining url.
+
+
+``` r
+library(httr2)
+formid <- 123823
+
+ns_req() |>
+  req_url_path_append("form", formid, "settings")
+#> <httr2_request>
+#> GET
+#> https://nettskjema.no/api/v3/form/123823/settings
+#> Body: empty
+#> Policies:
+#> • auth_sign : <list>
+#> • auth_oauth: TRUE
+```
+
+Now, you can see that the path is as requested in the API documentation.
+But the request has not been submitted yet!
+So far, we have just been creating the command we want to send to the API.
+To send the request, we need to use the `req_perform` function from httr2.
+
+
+``` r
+response <- ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_perform()
+
+response
+#> <httr2_response>
+#> GET
+#> https://nettskjema.no/api/v3/form/123823/settings
+#> Status: 200 OK
+#> Content-Type: application/json
+#> Body: In memory (2032 bytes)
+```
+
+In this case, we also saved the output from the request to a variable in our environment, so we can work with what we received, without having to send the request more times. 
+
+The `response` object here shows stats `200` which is the standard response when a request has been fulfilled without error.
+If you receive errors, httr2 will show this clearly, and you will need to debug what is wrong.
+
+Now that we have the response, we need to "unpack" it, so we can get the data that was sent with the response, which are all the settings for the form.
+We use httr2 functions to do this.
+In general, most of the Nettskjema API responses come as `json` in the "body" of the response (this is API lingo, just go with it.).
+
+
+``` r
+settings_data <- resp_body_json(response)
+settings_data
+#> $formId
+#> [1] 123823
+#> 
+#> $formType
+#> [1] "DEFAULT"
+#> 
+#> $scoreResultDisplayType
+#> [1] "NONE"
+#> 
+#> $openFrom
+#> [1] "2023-06-01T20:55:49"
+#> 
+#> $openTo
+#> [1] "2024-06-02T02:00:02"
+#> 
+#> $title
+#> [1] "API test form"
+#> 
+#> $titleShort
+#> NULL
+#> 
+#> $editorsContactEmail
+#> [1] "a.m.mowinckel@psykologi.uio.no"
+#> 
+#> $editorsContactUrl
+#> NULL
+#> 
+#> $collectsPersonalData
+#> [1] TRUE
+#> 
+#> $sensitivePersonalDataCollected
+#> [1] FALSE
+#> 
+#> $personalDataSharedOutsideInstitutionWith
+#> NULL
+#> 
+#> $personalDataPurposeTypes
+#> $personalDataPurposeTypes[[1]]
+#> [1] "OTHER"
+#> 
+#> 
+#> $personalDataPurposeDescription
+#> [1] "Testing the API"
+#> 
+#> $languageCode
+#> [1] "nb"
+#> 
+#> $shouldHideProgressBar
+#> [1] TRUE
+#> 
+#> $shouldPreventDataManipulation
+#> [1] FALSE
+#> 
+#> $codebookActivated
+#> [1] TRUE
+#> 
+#> $afterDeliveryForwardFormIds
+#> NULL
+#> 
+#> $maxSubmissionsForm
+#> NULL
+#> 
+#> $maxSubmissionsPerson
+#> [1] 1
+#> 
+#> $canNotAnswerMessage
+#> NULL
+#> 
+#> $respondentGroup
+#> [1] "ALL"
+#> 
+#> $deleteSubmissionsAfterNumberOfDays
+#> NULL
+#> 
+#> $postponable
+#> [1] FALSE
+#> 
+#> $retainRespondentAccessAfterDelivery
+#> [1] FALSE
+#> 
+#> $sendingReceiptToRespondent
+#> [1] FALSE
+#> 
+#> $receiptText
+#> NULL
+#> 
+#> $editorsSubmissionEmailType
+#> [1] "NONE"
+#> 
+#> $editorsSubmissionEmails
+#> NULL
+#> 
+#> $deliveryDestination
+#> [1] "DATABASE"
+#> 
+#> $emailInvitationText
+#> NULL
+#> 
+#> $emailReminderText
+#> NULL
+#> 
+#> $automaticReminderIntervalInDays
+#> NULL
+#> 
+#> $recurringInvitationNumber
+#> NULL
+#> 
+#> $recurringInvitationIntervalInDays
+#> NULL
+#> 
+#> $tsdPgpPublicKeyFingerprint
+#> NULL
+#> 
+#> $editorCryptKeyDatabaseEncrypted
+#> NULL
+#> 
+#> $editorCryptKeyDatabaseEncryptedFingerprint
+#> NULL
+#> 
+#> $editors
+#> $editors[[1]]
+#> $editors[[1]]$personId
+#> [1] 132
+#> 
+#> $editors[[1]]$username
+#> [1] "areg@uio.no"
+#> 
+#> $editors[[1]]$name
+#> [1] "Are Dag Gulbrandsen"
+#> 
+#> $editors[[1]]$email
+#> [1] "areg@uio.no"
+#> 
+#> $editors[[1]]$type
+#> [1] "LOCAL"
+#> 
+#> 
+#> $editors[[2]]
+#> $editors[[2]]$personId
+#> [1] 58096
+#> 
+#> $editors[[2]]$username
+#> [1] "athanasm@uio.no"
+#> 
+#> $editors[[2]]$name
+#> [1] "Athanasia Monika Mowinckel"
+#> 
+#> $editors[[2]]$email
+#> [1] "athanasm@uio.no"
+#> 
+#> $editors[[2]]$type
+#> [1] "LOCAL"
+#> 
+#> 
+#> $editors[[3]]
+#> $editors[[3]]$personId
+#> [1] 3439404
+#> 
+#> $editors[[3]]$username
+#> [1] "ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient"
+#> 
+#> $editors[[3]]$name
+#> [1] "nettskjemar"
+#> 
+#> $editors[[3]]$email
+#> [1] "athanasm@uio.no"
+#> 
+#> $editors[[3]]$type
+#> [1] "API_CLIENT"
+#> 
+#> 
+#> 
+#> $personsWithCopyPermission
+#> list()
+#> 
+#> $netgroupsEditor
+#> list()
+#> 
+#> $netgroupsWithCopyPermission
+#> list()
+#> 
+#> $consentForm
+#> [1] FALSE
+#> 
+#> $randomizedOrder
+#> [1] FALSE
+#> 
+#> $supportuser
+#> $supportuser$theme
+#> [1] "DEFAULT"
+#> 
+#> 
+#> $superuser
+#> $superuser$afterDeliveryForwardUrl
+#> NULL
+#> 
+#> $superuser$afterDeliveryForwardCodebookValues
+#> NULL
+#> 
+#> $superuser$receiptPageScript
+#> NULL
+#> 
+#> 
+#> $isDictaphone
+#> [1] FALSE
+#> 
+#> $globalCopyPermissionEnabled
+#> [1] FALSE
+#> 
+#> $titleForLogging
+#> [1] "\"API test form\" (id: 123823)"
+```
+
+Using the `resp_body_json()` function from httr2, will automatically unpack the `json` into a R list-format, so we can more easily work with it.
+
+There are endpoints in the Nettskjema API that will not send `json`, for instance the ones where you retrieve _files_ from the server (excel, SPSS, PDF), these come in _binary_ form.
+While, this package contains functions to retrieve those specific files for you, we mention this because you will need to pay attention to the format of the response to know how to unpack the data correctly.
+
+## Setting up a custom POST request
+
+So far, we have focused on `GET` requests, which retrieve information from the API.
+A `POST` request sends information _to_ the API for storing, and is a little more work.
+This is because `POST` (or `PUT` or `PATCH`) also send information in the "body" of the request, with the information you want stored.
+You will need to know what format this information should have, and how to set it up to make it work correctly.
+This can require a lot of trial and error to get working correctly.
+
+Since we now have the full settings for a form, let us change a setting so we can see how to achieve this.
+There is an element that controls if the user can postpone the survey as they are answering it.
+
+
+``` r
+settings_data$postponable
+#> [1] FALSE
+```
+
+For this form, it's set to `FALSE` because its just a simple test form I didn't turn this feature on. 
+We will turn it on by setting the value to `TRUE`.
+
+There are several things we need to pay particular attention to in the documentation when we send these types of requests:
+
+1. The METHOD (POST, PUT, PATCH)
+1. The URL endpoint
+1. The information we need to send
+
+
+For altering settings, these are:
+
+1. PATCH
+1. /api/v3/form/{formId}/settings
+1. `additionalProperty = string`
+
+The first two bits were easy enough to figure out, but the last one there might require some trial and error.
+I'm not entirely sure what it's telling me the body contents should be, so I'll be doing some assumptions.
+Since its a `PATCH` method, and the docs is not explicitly saying we need to send all settings, I'm hoping I can send just the property I want to alter in a list (which httr2 will help me turn into a json that API expects).
+Since the URL endpoints is the same as when getting the settings, what we need to do it use the same information, but change the method with httr2.
+
+
+``` r
+ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_method("PATCH")
+#> <httr2_request>
+#> PATCH
+#> https://nettskjema.no/api/v3/form/123823/settings
+#> Body: empty
+#> Policies:
+#> • auth_sign : <list>
+#> • auth_oauth: TRUE
+```
+
+Ok, we can see now that the method is correct, the URL is correct, but the body is empty. 
+
+
+``` r
+ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_method("PATCH") |>
+  req_body_json(
+    list(
+      postponable = TRUE
+    )
+  )
+#> <httr2_request>
+#> PATCH
+#> https://nettskjema.no/api/v3/form/123823/settings
+#> Body: json encoded data
+#> Policies:
+#> • auth_sign : <list>
+#> • auth_oauth: TRUE
+```
+
+Things look kind of correct now, we're still not sure about the body setup, but we will send the request and see what happens.
+
+
+``` r
+ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_method("PATCH") |>
+  req_body_json(
+    list(
+      postponable = TRUE
+    )
+  ) |>
+  req_perform()
+#> Error in `req_perform()`:
+#> ! HTTP 400 Bad Request.
+```
+
+That didn't work, but why?
+We've not got any further error message, but there might be more information in the body of the response, even if it errored.
+Erring API calls like these are actually valid proper responses, so we can explore them just like normal responses.
+If you didn't store the response, like I did, you can still explore it without doing the call again.
+httr2 has functionality to capture the last response even after the fact!
+
+
+``` r
+last_response() |>
+  resp_body_json()
+#> $message
+#> [1] "Valideringsfeil"
+#> 
+#> $errors
+#> $errors$postponable
+#> $errors$postponable[[1]]
+#> [1] "Mellomlagring er bare tillatt for skjemaer med FEIDE-respondenter, er satt til å samle inn personopplysninger og som leverer til Nettskjema"
+#> 
+#> 
+#> 
+#> $confirmForceCleanupErrors
+#> named list()
+```
+
+As we can see, we get a nice clear message about what has errored.
+The form I'm trying to change doesn't meet the pre-requisites for allowing postponing, so we cannot alter that setting!
+
+We can try changing another setting in stead, but we have actually already verified that our calls to the API is working as expected.
+We can try altering two settings at once, and see what happens.
+
+
+
+``` r
+# Show old settings
+settings_data$personalDataPurposeDescription
+#> [1] "Testing the API"
+settings_data$shouldHideProgressBar
+#> [1] TRUE
+
+# Set new settings
+ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_method("PATCH") |>
+  req_body_json(
+    list(
+      personalDataPurposeDescription = "Testing the API",
+      shouldHideProgressBar = TRUE
+    )
+  ) |>
+  req_perform()
+#> <httr2_response>
+#> PATCH
+#> https://nettskjema.no/api/v3/form/123823/settings
+#> Status: 204 No Content
+#> Body: None
+```
+
+Now we are cooking, we are getting a 204 back, which is a positive [status code](https://www.webcron.org/en/http-codes) from an API.
+The response also says there is no content, and nothing in the body, so there is nothing more to inspect here.
+
+Lets retrieve the settings again and see if we can verify our selves that the settings have indeed changed
+
+
+``` r
+settings_new <- ns_req() |>
+  req_url_path_append("form", formid, "settings") |>
+  req_perform() |>
+  resp_body_json()
+
+settings_new$personalDataPurposeDescription
+#> [1] "Testing the API"
+settings_new$shouldHideProgressBar
+#> [1] TRUE
+```
+
+
+We've now confirmed we have altered some settings in the test form.
+Hopefully, this gives an idea of how you can build more custom requests to the API.

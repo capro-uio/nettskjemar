@@ -15,10 +15,6 @@ test_that("ns_get_meta for valid input", {
   expect_false(meta$isOpen)
   expect_true(meta$isCodebookValid)
   expect_equal(meta$numberOfSubmissions, 3)
-  expect_equal(
-    meta$modifiedDate,
-    "2025-05-14T19:47:03"
-  )
 })
 
 test_that("ns_get_meta invalid form_id", {

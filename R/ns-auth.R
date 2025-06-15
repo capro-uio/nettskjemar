@@ -20,7 +20,7 @@
 #' }
 ns_req <- function(...) {
   httr2::request(ns_url()) |>
-    ns_req_auth()
+    ns_req_auth(...)
 }
 
 #' Set general nettskjema api URL.
@@ -142,7 +142,9 @@ ns_has_auth <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
 ) {
-  if (client_id == "" || client_secret == "") return(FALSE)
+  if (client_id == "" || client_secret == "") {
+    return(FALSE)
+  }
 
   TRUE
 }

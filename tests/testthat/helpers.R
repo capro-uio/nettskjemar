@@ -3,14 +3,7 @@ library("vcr")
 
 invisible(vcr::vcr_configure(
   filter_sensitive_data = list(
-    "<<CLIENT_SECRET>>" = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
-    "<<BASIC_AUTH>>" = openssl::base64_encode(
-      paste0(
-        Sys.getenv("NETTSKJEMA_CLIENT_ID"),
-        ":",
-        Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
-      )
-    )
+    "<<CLIENT_SECRET>>" = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
   ),
   dir = vcr::vcr_test_path("fixtures")
 ))

@@ -1,7 +1,7 @@
 Type: Package
 Package: nettskjemar
 Title: Connect to the 'nettskjema.no' API of the University of Oslo
-Version: 1.0.2.9000
+Version: 1.0.2.9002
 Authors@R: c(
     person("Athanasia Mo", "Mowinckel", , "a.m.mowinckel@psykologi.uio.no", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5756-0223")),
@@ -10,7 +10,8 @@ Authors@R: c(
   )
 Description: Enables users to retrieve data, meta-data, and codebooks from
     <https://nettskjema.no/>. The data from the API is richer than from
-    the online data portal. Mowinckel (2021) <doi:10.5281/zenodo.4745481>.
+    the online data portal. This package is not developed
+    by the University of Oslo IT. Mowinckel (2021) <doi:10.5281/zenodo.4745481>.
 License: MIT + file LICENSE
 URL: https://github.com/CAPRO-UiO/nettskjemar,
     https://zenodo.org/badge/latestdoi/206264675,
@@ -29,7 +30,6 @@ Suggests:
     haven,
     knitr,
     labelled,
-    openssl,
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
