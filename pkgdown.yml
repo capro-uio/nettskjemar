@@ -4,9 +4,10 @@ pkgdown_sha: ~
 articles:
   attachments: attachments.html
   authentication: authentication.html
+  custom_requests: custom_requests.html
   forms: forms.html
   labelled_data: labelled_data.html
   metadata: metadata.html
   nettskjemar: nettskjemar.html
   submissions: submissions.html
-last_built: 2025-06-06T14:38Z
+last_built: 2025-06-15T17:40Z

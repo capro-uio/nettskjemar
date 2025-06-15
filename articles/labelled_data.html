@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2.9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,12 +108,10 @@ and manipulate labels.</p>
 <span><span class="va">data</span></span>
 <span><span class="co">#&gt;   formid $submission_id</span></span>
 <span><span class="co">#&gt; 1 123823       27685292</span></span>
-<span><span class="co">#&gt;                    $created</span></span>
-<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00</span></span>
-<span><span class="co">#&gt;    freetext radio</span></span>
-<span><span class="co">#&gt; 1 some text     1</span></span>
-<span><span class="co">#&gt;   checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; 1                       1</span></span>
+<span><span class="co">#&gt;                    $created  freetext</span></span>
+<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00 some text</span></span>
+<span><span class="co">#&gt;   radio checkbox.questionnaires</span></span>
+<span><span class="co">#&gt; 1     1                       1</span></span>
 <span><span class="co">#&gt;   checkbox.events checkbox.logs</span></span>
 <span><span class="co">#&gt; 1               1             0</span></span>
 <span><span class="co">#&gt;   dropdown radio_matrix.grants</span></span>
@@ -144,10 +142,10 @@ and manipulate labels.</p>
 <span><span class="co">#&gt; 1                          0</span></span>
 <span><span class="co">#&gt;         date  time         datetime</span></span>
 <span><span class="co">#&gt; 1 2023-06-01 12:00 2023-06-12T13:33</span></span>
-<span><span class="co">#&gt;   number_decimal number_integer</span></span>
-<span><span class="co">#&gt; 1            4.5           77.0</span></span>
-<span><span class="co">#&gt;   slider attachment_1 attachment_2</span></span>
-<span><span class="co">#&gt; 1      3    sølvi.png             </span></span>
+<span><span class="co">#&gt;   number_decimal number_integer slider</span></span>
+<span><span class="co">#&gt; 1            4.5           77.0      3</span></span>
+<span><span class="co">#&gt;   attachment_1 attachment_2</span></span>
+<span><span class="co">#&gt; 1    sølvi.png             </span></span>
 <span><span class="co">#&gt;   $answer_time_ms</span></span>
 <span><span class="co">#&gt; 1           74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
@@ -158,18 +156,12 @@ labels.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ns_get_codebook.html">ns_get_codebook</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span>
 <span><span class="va">cb</span></span>
-<span><span class="co">#&gt;   element_no element_type</span></span>
-<span><span class="co">#&gt; 1          1      HEADING</span></span>
-<span><span class="co">#&gt; 2          2         TEXT</span></span>
-<span><span class="co">#&gt; 3          3        IMAGE</span></span>
-<span><span class="co">#&gt; 4          4   PAGE_BREAK</span></span>
-<span><span class="co">#&gt; 5          5     QUESTION</span></span>
-<span><span class="co">#&gt;   element_code</span></span>
-<span><span class="co">#&gt; 1         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 2         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 5     freetext</span></span>
+<span><span class="co">#&gt;   element_no element_type element_code</span></span>
+<span><span class="co">#&gt; 1          1      HEADING         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2          2         TEXT         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3          3        IMAGE         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4          4   PAGE_BREAK         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5          5     QUESTION     freetext</span></span>
 <span><span class="co">#&gt;                                                                              element_text</span></span>
 <span><span class="co">#&gt; 1                                        Let talk about Nettskjema! This is a subheading!</span></span>
 <span><span class="co">#&gt; 2                                                                                    &lt;NA&gt;</span></span>
@@ -204,12 +196,10 @@ using both the unlabelled data and the codebook.</p>
 <span><span class="va">lab_data</span></span>
 <span><span class="co">#&gt;   formid $submission_id</span></span>
 <span><span class="co">#&gt; 1 123823       27685292</span></span>
-<span><span class="co">#&gt;                    $created</span></span>
-<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00</span></span>
-<span><span class="co">#&gt;    freetext radio</span></span>
-<span><span class="co">#&gt; 1 some text     1</span></span>
-<span><span class="co">#&gt;   checkbox.questionnaires</span></span>
-<span><span class="co">#&gt; 1                       1</span></span>
+<span><span class="co">#&gt;                    $created  freetext</span></span>
+<span><span class="co">#&gt; 1 2023-06-01T20:57:15+02:00 some text</span></span>
+<span><span class="co">#&gt;   radio checkbox.questionnaires</span></span>
+<span><span class="co">#&gt; 1     1                       1</span></span>
 <span><span class="co">#&gt;   checkbox.events checkbox.logs</span></span>
 <span><span class="co">#&gt; 1               1             0</span></span>
 <span><span class="co">#&gt;   dropdown radio_matrix.grants</span></span>
@@ -240,10 +230,10 @@ using both the unlabelled data and the codebook.</p>
 <span><span class="co">#&gt; 1                          0</span></span>
 <span><span class="co">#&gt;         date  time         datetime</span></span>
 <span><span class="co">#&gt; 1 2023-06-01 12:00 2023-06-12T13:33</span></span>
-<span><span class="co">#&gt;   number_decimal number_integer</span></span>
-<span><span class="co">#&gt; 1            4.5           77.0</span></span>
-<span><span class="co">#&gt;   slider attachment_1 attachment_2</span></span>
-<span><span class="co">#&gt; 1      3    sølvi.png             </span></span>
+<span><span class="co">#&gt;   number_decimal number_integer slider</span></span>
+<span><span class="co">#&gt; 1            4.5           77.0      3</span></span>
+<span><span class="co">#&gt;   attachment_1 attachment_2</span></span>
+<span><span class="co">#&gt; 1    sølvi.png             </span></span>
 <span><span class="co">#&gt;   $answer_time_ms</span></span>
 <span><span class="co">#&gt; 1           74630</span></span>
 <span><span class="co">#&gt;  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</span></span></code></pre></div>
@@ -292,92 +282,92 @@ function will however expose what lies beneath the surface.</p>
 <span><span class="co">#&gt;  $ freetext                   : 'character' chr  "some text" "another answer" ""</span></span>
 <span><span class="co">#&gt;   ..- attr(*, "label")= chr "This is a question about something super important, where the user can input free text."</span></span>
 <span><span class="co">#&gt;   ..- attr(*, "ns_type")= chr "QUESTION"</span></span>
-<span><span class="co">#&gt;  $ radio                      : hvn_lbll [1:3]  1, -1, -1</span></span>
+<span><span class="co">#&gt;  $ radio                      : int+lbl [1:3]  1, -1, -1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named int  1 -1</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr [1:2] "Very happy!" "Very unhappy!"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "How happy are we with Nettskjema?"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "RADIO"</span></span>
-<span><span class="co">#&gt;  $ checkbox.questionnaires    : hvn_lbll [1:3] 1, 0, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox.questionnaires    : int+lbl [1:3] 1, 0, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "questionnaires"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Questionnaires"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "What do we use it for?:: Questionnaires"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox.events            : hvn_lbll [1:3] 1, 0, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox.events            : int+lbl [1:3] 1, 0, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "events"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Event sign-ups"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "What do we use it for?:: Event sign-ups"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox.logs              : hvn_lbll [1:3] 0, 1, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox.logs              : int+lbl [1:3] 0, 1, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "logs"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Data logging"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "What do we use it for?:: Data logging"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ dropdown                   : hvn_lbll [1:3] 4, 9, 4</span></span>
+<span><span class="co">#&gt;  $ dropdown                   : int+lbl [1:3] 4, 9, 4</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named int  4 9</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr [1:2] "UiO" "OsloMet"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "Who is responsible with Nettskjema?"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "SELECT"</span></span>
-<span><span class="co">#&gt;  $ radio_matrix.grants        : hvn_lbll [1:3] 1, 3, 1</span></span>
+<span><span class="co">#&gt;  $ radio_matrix.grants        : int+lbl [1:3] 1, 3, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named int  1 2 3</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last month I have: written some grant applications"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_RADIO"</span></span>
-<span><span class="co">#&gt;  $ radio_matrix.lecture       : hvn_lbll [1:3] 2, 3, 1</span></span>
+<span><span class="co">#&gt;  $ radio_matrix.lecture       : int+lbl [1:3] 2, 3, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named int  1 2 3</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last month I have: held a lecture"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_RADIO"</span></span>
-<span><span class="co">#&gt;  $ radio_matrix.email         : hvn_lbll [1:3] 2, 1, 1</span></span>
+<span><span class="co">#&gt;  $ radio_matrix.email         : int+lbl [1:3] 2, 1, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named int  1 2 3</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last month I have: sent some e-mails"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_RADIO"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.1.IT       : hvn_lbll [1:3] 1, 0, 0</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.1.IT       : int+lbl [1:3] 1, 0, 0</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "IT"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "IT"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: sought help from :: IT"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.1.colleague: hvn_lbll [1:3] 1, 0, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.1.colleague: int+lbl [1:3] 1, 0, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "colleague"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "A colleague"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: sought help from :: A colleague"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.1.admin    : hvn_lbll [1:3] 0, 0, 0</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.1.admin    : int+lbl [1:3] 0, 0, 0</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "admin"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Administration"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: sought help from :: Administration"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.1.union    : hvn_lbll [1:3] 0, 0, 0</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.1.union    : int+lbl [1:3] 0, 0, 0</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "union"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Union"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: sought help from :: Union"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.1.internet : hvn_lbll [1:3] 0, 1, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.1.internet : int+lbl [1:3] 0, 1, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "internet"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Internet"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: sought help from :: Internet"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.2.IT       : hvn_lbll [1:3] 0, 0, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.2.IT       : int+lbl [1:3] 0, 0, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "IT"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "IT"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: received e-mails from :: IT"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.2.colleague: hvn_lbll [1:3] 0, 0, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.2.colleague: int+lbl [1:3] 0, 0, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "colleague"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "A colleague"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: received e-mails from :: A colleague"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.2.admin    : hvn_lbll [1:3] 1, 1, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.2.admin    : int+lbl [1:3] 1, 1, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "admin"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Administration"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: received e-mails from :: Administration"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.2.union    : hvn_lbll [1:3] 0, 1, 1</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.2.union    : int+lbl [1:3] 0, 1, 1</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "union"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Union"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: received e-mails from :: Union"</span></span>
 <span><span class="co">#&gt;    ..@ ns_type: chr "MATRIX_CHECKBOX"</span></span>
-<span><span class="co">#&gt;  $ checkbox_matrix.2.internet : hvn_lbll [1:3] 0, 0, 0</span></span>
+<span><span class="co">#&gt;  $ checkbox_matrix.2.internet : int+lbl [1:3] 0, 0, 0</span></span>
 <span><span class="co">#&gt;    ..@ labels : Named chr "internet"</span></span>
 <span><span class="co">#&gt;    .. ..- attr(*, "names")= chr "Internet"</span></span>
 <span><span class="co">#&gt;    ..@ label  : chr "In the last year, I have :: received e-mails from :: Internet"</span></span>
@@ -448,8 +438,7 @@ both the data and the codebook (or the labelled data), labels can be
 modified using <a href="https://haven.tidyverse.org" class="external-link">haven</a>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lab_data</span><span class="op">$</span><span class="va">freetex</span></span>
-<span><span class="co">#&gt; [1] "some text"     </span></span>
-<span><span class="co">#&gt; [2] "another answer"</span></span>
+<span><span class="co">#&gt; [1] "some text"      "another answer"</span></span>
 <span><span class="co">#&gt; [3] ""              </span></span>
 <span><span class="co">#&gt; attr(,"label")</span></span>
 <span><span class="co">#&gt; [1] "This is a question about something super important, where the user can input free text."</span></span>
