@@ -66,9 +66,11 @@ navbar:
       - text: "User auth and information"
       - text: Authentication setup
         href: articles/authentication.html
-      - text: Vieweing all forms
+      - text: Viewing all forms
         href: articles/forms.html
       - text: -------
-      - text: "Working with meta-data"
+      - text: "Other requests"
       - text: Retrieving form meta-data
         href: articles/metadata.html
+      - text: Running custom requests
+        href: articles/custom_requests.html
