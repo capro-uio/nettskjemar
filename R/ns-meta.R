@@ -83,7 +83,7 @@ ns_write_meta.default <- function(meta, path, ...) {
 ns_write_meta.ns_meta <- function(meta, path, ...) {
   if (!grepl("json$", path)) {
     cli::cli_alert_info("Switching file extension to .json")
-    path <- sprintf("%sjson", rm_ext(path))
+    path <- sprintf("%s.json", rm_ext(path))
   }
   jsonlite::write_json(
     meta,
