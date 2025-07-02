@@ -142,9 +142,5 @@ ns_has_auth <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
 ) {
-  if (client_id == "" || client_secret == "") {
-    return(FALSE)
-  }
-
-  TRUE
+  nzchar(client_id) && nzchar(client_secret)
 }
