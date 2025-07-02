@@ -10,7 +10,20 @@ editor_options:
     wrap: sentence
 ---
 
+```{r}
+#| label: lab-1
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE,
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "lab-")
+```
 
 ## Introduction to using Labelled data
 
@@ -25,8 +38,10 @@ In this vignette, we’ll explore how labelled data works, leveraging key `{have
 ## Getting labelled data from nettskjemar
 
 
+```{r}
+#| label: lab-2
+#| cassette: data
 
-``` r
 library(nettskjemar)
 
 # Replace this with your form ID
@@ -34,307 +49,40 @@ formid <- 123823
 
 data <- ns_get_data(formid)
 data
-#>   formid $submission_id
-#> 1 123823       27685292
-#>                    $created  freetext
-#> 1 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires
-#> 1     1                       1
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#>   radio_matrix.lecture
-#> 1                    2
-#>   radio_matrix.email
-#> 1                  2
-#>   checkbox_matrix.1.IT
-#> 1                    1
-#>   checkbox_matrix.1.colleague
-#> 1                           1
-#>   checkbox_matrix.1.admin
-#> 1                       0
-#>   checkbox_matrix.1.union
-#> 1                       0
-#>   checkbox_matrix.1.internet
-#> 1                          0
-#>   checkbox_matrix.2.IT
-#> 1                    0
-#>   checkbox_matrix.2.colleague
-#> 1                           0
-#>   checkbox_matrix.2.admin
-#> 1                       1
-#>   checkbox_matrix.2.union
-#> 1                       0
-#>   checkbox_matrix.2.internet
-#> 1                          0
-#>         date  time         datetime
-#> 1 2023-06-01 12:00 2023-06-12T13:33
-#>   number_decimal number_integer slider
-#> 1            4.5           77.0      3
-#>   attachment_1 attachment_2
-#> 1    sølvi.png             
-#>   $answer_time_ms
-#> 1           74630
-#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
 Here we have our example data, displayed as a standard data.frame.
 There is nothing particularly special about it.
 To continue, we also need to download the form codebook, as we need this to add the labels.
 
+```{r}
+#| label: lab-3
+#| cassette: cb
 
-``` r
 cb <- ns_get_codebook(formid)
 cb
-#>   element_no element_type element_code
-#> 1          1      HEADING         <NA>
-#> 2          2         TEXT         <NA>
-#> 3          3        IMAGE         <NA>
-#> 4          4   PAGE_BREAK         <NA>
-#> 5          5     QUESTION     freetext
-#>                                                                              element_text
-#> 1                                        Let talk about Nettskjema! This is a subheading!
-#> 2                                                                                    <NA>
-#> 3                                                                                    <NA>
-#> 4                                                                                    <NA>
-#> 5 This is a question about something super important, where the user can input free text.
-#>                                                                                 element_desc
-#> 1                                                                                       <NA>
-#> 2 <p>This is some text in the form, not a question but a descriptive text.</p>\n\n<p> </p>\n
-#> 3                                                                                       <NA>
-#> 4                                                                                       <NA>
-#> 5   <p>With a description field giving details on what should be answered.</p>\n\n<p> </p>\n
-#>   subelement_seq answer_text
-#> 1             NA        <NA>
-#> 2             NA        <NA>
-#> 3             NA        <NA>
-#> 4             NA        <NA>
-#> 5             NA        <NA>
-#>   answer_code answer_seq
-#> 1        <NA>         NA
-#> 2        <NA>         NA
-#> 3        <NA>         NA
-#> 4        <NA>         NA
-#> 5        <NA>         NA
-#>  [ reached 'max' / getOption("max.print") -- omitted 34 rows ]
 ```
 
 To add the labels, we use the `ns_add_labels` function, using both the unlabelled data and the codebook.
 
+```{r}
+#| label: lab-4
 
-``` r
 lab_data <- data |>
   ns_add_labels(cb)
 
 lab_data
-#>   formid $submission_id
-#> 1 123823       27685292
-#>                    $created  freetext
-#> 1 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires
-#> 1     1                       1
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#>   radio_matrix.lecture
-#> 1                    2
-#>   radio_matrix.email
-#> 1                  2
-#>   checkbox_matrix.1.IT
-#> 1                    1
-#>   checkbox_matrix.1.colleague
-#> 1                           1
-#>   checkbox_matrix.1.admin
-#> 1                       0
-#>   checkbox_matrix.1.union
-#> 1                       0
-#>   checkbox_matrix.1.internet
-#> 1                          0
-#>   checkbox_matrix.2.IT
-#> 1                    0
-#>   checkbox_matrix.2.colleague
-#> 1                           0
-#>   checkbox_matrix.2.admin
-#> 1                       1
-#>   checkbox_matrix.2.union
-#> 1                       0
-#>   checkbox_matrix.2.internet
-#> 1                          0
-#>         date  time         datetime
-#> 1 2023-06-01 12:00 2023-06-12T13:33
-#>   number_decimal number_integer slider
-#> 1            4.5           77.0      3
-#>   attachment_1 attachment_2
-#> 1    sølvi.png             
-#>   $answer_time_ms
-#> 1           74630
-#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
 You will notice that this does on the surface look completely normal, with no added extras.
 Inspecting the data with the `str` function will however expose what lies beneath the surface.
 
 
+```{r}
+#| label: lab-5
 
-``` r
 str(data)
-#> 'data.frame':	3 obs. of  31 variables:
-#>  $ formid                     : num  123823 123823 123823
-#>  $ $submission_id             : int  27685292 27685302 27685319
-#>  $ $created                   : chr  "2023-06-01T20:57:15+02:00" "2023-06-01T20:58:33+02:00" "2023-06-01T20:59:50+02:00"
-#>  $ freetext                   : chr  "some text" "another answer" ""
-#>  $ radio                      : int  1 -1 -1
-#>  $ checkbox.questionnaires    : int  1 0 1
-#>  $ checkbox.events            : int  1 0 1
-#>  $ checkbox.logs              : int  0 1 1
-#>  $ dropdown                   : int  4 9 4
-#>  $ radio_matrix.grants        : int  1 3 1
-#>  $ radio_matrix.lecture       : int  2 3 1
-#>  $ radio_matrix.email         : int  2 1 1
-#>  $ checkbox_matrix.1.IT       : int  1 0 0
-#>  $ checkbox_matrix.1.colleague: int  1 0 1
-#>  $ checkbox_matrix.1.admin    : int  0 0 0
-#>  $ checkbox_matrix.1.union    : int  0 0 0
-#>  $ checkbox_matrix.1.internet : int  0 1 1
-#>  $ checkbox_matrix.2.IT       : int  0 0 1
-#>  $ checkbox_matrix.2.colleague: int  0 0 1
-#>  $ checkbox_matrix.2.admin    : int  1 1 1
-#>  $ checkbox_matrix.2.union    : int  0 1 1
-#>  $ checkbox_matrix.2.internet : int  0 0 0
-#>  $ date                       : chr  "2023-06-01" "2023-02-07" "2022-09-28"
-#>  $ time                       : chr  "12:00" "14:45" "05:11"
-#>  $ datetime                   : chr  "2023-06-12T13:33" "2024-02-15T08:55" "2022-03-03T07:29"
-#>  $ number_decimal             : chr  "4.5" "2.2" "10.0"
-#>  $ number_integer             : chr  "77.0" "45.0" "98.0"
-#>  $ slider                     : int  3 1 9
-#>  $ attachment_1               : chr  "sølvi.png" "" ""
-#>  $ attachment_2               : chr  "" "marius.jpeg" ""
-#>  $ $answer_time_ms            : int  74630 71313 70230
 str(lab_data)
-#> Classes 'ns-data' and 'data.frame':	3 obs. of  31 variables:
-#>  $ formid                     : num  123823 123823 123823
-#>  $ $submission_id             : int  27685292 27685302 27685319
-#>  $ $created                   : chr  "2023-06-01T20:57:15+02:00" "2023-06-01T20:58:33+02:00" "2023-06-01T20:59:50+02:00"
-#>  $ freetext                   : 'character' chr  "some text" "another answer" ""
-#>   ..- attr(*, "label")= chr "This is a question about something super important, where the user can input free text."
-#>   ..- attr(*, "ns_type")= chr "QUESTION"
-#>  $ radio                      : int+lbl [1:3]  1, -1, -1
-#>    ..@ labels : Named int  1 -1
-#>    .. ..- attr(*, "names")= chr [1:2] "Very happy!" "Very unhappy!"
-#>    ..@ label  : chr "How happy are we with Nettskjema?"
-#>    ..@ ns_type: chr "RADIO"
-#>  $ checkbox.questionnaires    : int+lbl [1:3] 1, 0, 1
-#>    ..@ labels : Named chr "questionnaires"
-#>    .. ..- attr(*, "names")= chr "Questionnaires"
-#>    ..@ label  : chr "What do we use it for?:: Questionnaires"
-#>    ..@ ns_type: chr "CHECKBOX"
-#>  $ checkbox.events            : int+lbl [1:3] 1, 0, 1
-#>    ..@ labels : Named chr "events"
-#>    .. ..- attr(*, "names")= chr "Event sign-ups"
-#>    ..@ label  : chr "What do we use it for?:: Event sign-ups"
-#>    ..@ ns_type: chr "CHECKBOX"
-#>  $ checkbox.logs              : int+lbl [1:3] 0, 1, 1
-#>    ..@ labels : Named chr "logs"
-#>    .. ..- attr(*, "names")= chr "Data logging"
-#>    ..@ label  : chr "What do we use it for?:: Data logging"
-#>    ..@ ns_type: chr "CHECKBOX"
-#>  $ dropdown                   : int+lbl [1:3] 4, 9, 4
-#>    ..@ labels : Named int  4 9
-#>    .. ..- attr(*, "names")= chr [1:2] "UiO" "OsloMet"
-#>    ..@ label  : chr "Who is responsible with Nettskjema?"
-#>    ..@ ns_type: chr "SELECT"
-#>  $ radio_matrix.grants        : int+lbl [1:3] 1, 3, 1
-#>    ..@ labels : Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
-#>    ..@ label  : chr "In the last month I have: written some grant applications"
-#>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ radio_matrix.lecture       : int+lbl [1:3] 2, 3, 1
-#>    ..@ labels : Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
-#>    ..@ label  : chr "In the last month I have: held a lecture"
-#>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ radio_matrix.email         : int+lbl [1:3] 2, 1, 1
-#>    ..@ labels : Named int  1 2 3
-#>    .. ..- attr(*, "names")= chr [1:3] "yes" "no" "not applicable"
-#>    ..@ label  : chr "In the last month I have: sent some e-mails"
-#>    ..@ ns_type: chr "MATRIX_RADIO"
-#>  $ checkbox_matrix.1.IT       : int+lbl [1:3] 1, 0, 0
-#>    ..@ labels : Named chr "IT"
-#>    .. ..- attr(*, "names")= chr "IT"
-#>    ..@ label  : chr "In the last year, I have :: sought help from :: IT"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.colleague: int+lbl [1:3] 1, 0, 1
-#>    ..@ labels : Named chr "colleague"
-#>    .. ..- attr(*, "names")= chr "A colleague"
-#>    ..@ label  : chr "In the last year, I have :: sought help from :: A colleague"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.admin    : int+lbl [1:3] 0, 0, 0
-#>    ..@ labels : Named chr "admin"
-#>    .. ..- attr(*, "names")= chr "Administration"
-#>    ..@ label  : chr "In the last year, I have :: sought help from :: Administration"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.union    : int+lbl [1:3] 0, 0, 0
-#>    ..@ labels : Named chr "union"
-#>    .. ..- attr(*, "names")= chr "Union"
-#>    ..@ label  : chr "In the last year, I have :: sought help from :: Union"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.1.internet : int+lbl [1:3] 0, 1, 1
-#>    ..@ labels : Named chr "internet"
-#>    .. ..- attr(*, "names")= chr "Internet"
-#>    ..@ label  : chr "In the last year, I have :: sought help from :: Internet"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.IT       : int+lbl [1:3] 0, 0, 1
-#>    ..@ labels : Named chr "IT"
-#>    .. ..- attr(*, "names")= chr "IT"
-#>    ..@ label  : chr "In the last year, I have :: received e-mails from :: IT"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.colleague: int+lbl [1:3] 0, 0, 1
-#>    ..@ labels : Named chr "colleague"
-#>    .. ..- attr(*, "names")= chr "A colleague"
-#>    ..@ label  : chr "In the last year, I have :: received e-mails from :: A colleague"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.admin    : int+lbl [1:3] 1, 1, 1
-#>    ..@ labels : Named chr "admin"
-#>    .. ..- attr(*, "names")= chr "Administration"
-#>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Administration"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.union    : int+lbl [1:3] 0, 1, 1
-#>    ..@ labels : Named chr "union"
-#>    .. ..- attr(*, "names")= chr "Union"
-#>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Union"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ checkbox_matrix.2.internet : int+lbl [1:3] 0, 0, 0
-#>    ..@ labels : Named chr "internet"
-#>    .. ..- attr(*, "names")= chr "Internet"
-#>    ..@ label  : chr "In the last year, I have :: received e-mails from :: Internet"
-#>    ..@ ns_type: chr "MATRIX_CHECKBOX"
-#>  $ date                       : 'character' chr  "2023-06-01" "2023-02-07" "2022-09-28"
-#>   ..- attr(*, "label")= chr "Choose a random date"
-#>   ..- attr(*, "ns_type")= chr "DATE"
-#>  $ time                       : 'character' chr  "12:00" "14:45" "05:11"
-#>   ..- attr(*, "label")= chr "now choose a random time!"
-#>   ..- attr(*, "ns_type")= chr "DATE"
-#>  $ datetime                   : 'character' chr  "2023-06-12T13:33" "2024-02-15T08:55" "2022-03-03T07:29"
-#>   ..- attr(*, "label")= chr "Lastly choose a date AND time!"
-#>   ..- attr(*, "ns_type")= chr "DATE"
-#>  $ number_decimal             : 'numeric' chr  "4.5" "2.2" "10.0"
-#>   ..- attr(*, "label")= chr "Pick a number between 0 and 10!"
-#>   ..- attr(*, "ns_type")= chr "NUMBER"
-#>  $ number_integer             : 'numeric' chr  "77.0" "45.0" "98.0"
-#>   ..- attr(*, "label")= chr "Choose an integer between 0 and 100"
-#>   ..- attr(*, "ns_type")= chr "NUMBER"
-#>  $ slider                     : int  3 1 9
-#>   ..- attr(*, "label")= chr "Choose a point on the slider!"
-#>   ..- attr(*, "ns_type")= chr "LINEAR_SCALE"
-#>  $ attachment_1               : 'character' chr  "sølvi.png" "" ""
-#>   ..- attr(*, "label")= chr "Upload a fun image!"
-#>   ..- attr(*, "ns_type")= chr "ATTACHMENT"
-#>  $ attachment_2               : 'character' chr  "" "marius.jpeg" ""
-#>   ..- attr(*, "label")= chr "This is an attachment2"
-#>   ..- attr(*, "ns_type")= chr "ATTACHMENT"
-#>  $ $answer_time_ms            : int  74630 71313 70230
 ```
 
 You can see there are lots of label attributes attached to `lab_data` that are not there in the `data` object.
@@ -352,24 +100,24 @@ Once your data has been labelled, the `{haven}` package provides functionalities
 
 Use `var_label()` to extract variable-level labels and `val_labels()` to extract value-level labels:
 
+```{r}
+#| label: lab-6
 
-``` r
 library(labelled)
 ```
 
+```{r}
+#| label: lab-7
 
-``` r
 # Variable labels
 var_label(lab_data$freetext)
-#> [1] "This is a question about something super important, where the user can input free text."
 ```
 
+```{r}
+#| label: lab-8
 
-``` r
 # Value labels for 'radio'
 val_labels(lab_data$radio)
-#>   Very happy! Very unhappy! 
-#>             1            -1
 ```
 
 ### Modifying Labels
@@ -377,37 +125,20 @@ val_labels(lab_data$radio)
 If you need to modify labels, we suggest you do this directly in the Nettskjema codebook setup.
 However, if you are working on a form that is no longer available in Nettskjema, and you have downloaded and saved both the data and the codebook (or the labelled data), labels can be modified  using `{haven}`:
 
+```{r}
+#| label: lab-9
 
-``` r
 lab_data$freetex
-#> [1] "some text"      "another answer"
-#> [3] ""              
-#> attr(,"label")
-#> [1] "This is a question about something super important, where the user can input free text."
-#> attr(,"ns_type")
-#> [1] "QUESTION"
-#> attr(,"class")
-#> [1] "character"
 # Update variable-level label for 'freetext'
 var_label(lab_data$freetext) <- "Important freetext comment"
 
 lab_data$radio
-#> <labelled<integer>[3]>: How happy are we with Nettskjema?
-#> [1]  1 -1 -1
-#> 
-#> Labels:
-#>  value         label
-#>      1   Very happy!
-#>     -1 Very unhappy!
 # Update value labels for 'radio'
 val_labels(lab_data$radio) <- c(Unhappy = -1, Happy = 1)
 
 # Check updated labels
 var_label(lab_data$freetext)
-#> [1] "Important freetext comment"
 val_labels(lab_data$radio)
-#> Unhappy   Happy 
-#>      -1       1
 ```
 
 ## Benefits of Using Labelled Data

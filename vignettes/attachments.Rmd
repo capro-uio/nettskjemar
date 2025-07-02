@@ -7,7 +7,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+#| label: atch-1
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "atch-")
+```
 
 # Overview
 
@@ -21,28 +33,14 @@ Before downloading any attachments, it's useful to list the available files.
 
 Each submission ID may have associated attachments. Use `ns_list_submission_attachments()` to retrieve information about the available attachments.
 
+```{r}
+#| label: atch
+#| cassette: sub
 
-``` r
 library(nettskjemar)
 # Example: List attachments for a specific submission
 submission_id <- 27685292
 ns_list_submission_attachments(submission_id)
-#>   submissionId  answerId elementId
-#> 1     27685292 158263134   1641713
-#>   externalElementId textAnswer
-#> 1      attachment_1  sølvi.png
-#>   answerAttachmentId  filename
-#> 1             538819 sølvi.png
-#>   mediaType   size elementType
-#> 1 image/png 628613  ATTACHMENT
-#>   attachment.answerAttachmentId
-#> 1                        538819
-#>   attachment.filename
-#> 1           sølvi.png
-#>   attachment.mediaType attachment.size
-#> 1            image/png          628613
-#>   counter
-#> 1       1
 ```
 
 This function returns a `data.frame` with details such as the attachment ID, original filename, and standardized filename.
@@ -51,50 +49,13 @@ This function returns a `data.frame` with details such as the attachment ID, ori
 
 To list all attachments across multiple submissions for a form, use `ns_list_form_attachments()`.
 
+```{r}
+#| label: atch-all
+#| cassette: all
 
-``` r
 # Example: List attachments for an entire form
 formid <- 123823
 ns_list_form_attachments(formid)
-#>    formid formId submissionId
-#> 16 123823 123823     27685292
-#> 32 123823 123823     27685302
-#>     answerId elementId
-#> 16 158263134   1641713
-#> 32 158263185   3525020
-#>    externalElementId  textAnswer
-#> 16      attachment_1   sølvi.png
-#> 32      attachment_2 marius.jpeg
-#>    answerOptionIds
-#> 16                
-#> 32                
-#>    externalAnswerOptionIds elementType
-#> 16                          ATTACHMENT
-#> 32                          ATTACHMENT
-#>            createdDate
-#> 16 2023-06-01T20:57:15
-#> 32 2023-06-01T20:58:33
-#>           modifiedDate subElementId
-#> 16 2023-06-01T20:57:15           NA
-#> 32 2023-06-01T20:58:33           NA
-#>    answerAttachmentId    filename
-#> 16             538819   sølvi.png
-#> 32             538820 marius.jpeg
-#>     mediaType   size
-#> 16  image/png 628613
-#> 32 image/jpeg  89494
-#>    attachment.answerAttachmentId
-#> 16                        538819
-#> 32                        538820
-#>    attachment.filename
-#> 16           sølvi.png
-#> 32         marius.jpeg
-#>    attachment.mediaType
-#> 16            image/png
-#> 32           image/jpeg
-#>    attachment.size counter
-#> 16          628613       1
-#> 32           89494       1
 ```
 
 # Downloading Attachments
@@ -102,6 +63,8 @@ ns_list_form_attachments(formid)
 Once you have identified the attachments, you can download them using `ns_get_attachment()`.
 
 ```r
+#| label: atch-dl1
+
 # Example: Download a single attachment
 attachment_id <- "12345"
 ns_get_attachment(attachment_id, path = "downloaded_file.pdf")
@@ -116,6 +79,8 @@ If `path` is not provided, the function returns the response object without savi
 Use `ns_get_submission_attachments()` to download and save all attachments associated with a single submission.
 
 ```r
+#| label: atch-dl2
+
 # Example: Save all attachments for a submission
 ns_get_submission_attachments(submission_id)
 ```
@@ -128,12 +93,16 @@ This function supports two filename conventions:
 To save attachments using the original filenames:
 
 ```r
+#| label: atch-dl3
+
 ns_get_submission_attachments(submission_id, filenames = "original")
 ```
 
 You can also specify an output directory:
 
 ```r
+#| label: atch-dl4
+
 ns_get_submission_attachments(submission_id, output_dir = "my_attachments/")
 ```
 
@@ -142,13 +111,21 @@ ns_get_submission_attachments(submission_id, output_dir = "my_attachments/")
 To download and save all attachments from a form:
 
 ```r
+#| label: atch-dl5
+
 ns_get_form_attachments(formid)
 ```
 
 As with submission attachments, you can specify a filename format and output directory:
 
 ```r
-ns_get_form_attachments(formid, filenames = "original", output_dir = "all_attachments/")
+#| label: atch-dl6
+
+ns_get_form_attachments(
+  formid,
+  filenames = "original",
+  output_dir = "all_attachments/"
+)
 ```
 
 # Summary

@@ -7,7 +7,20 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+#| label: sub-1
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE,
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "sub-")
+```
 
 # Overview
 
@@ -24,7 +37,12 @@ The `ns_get_submission` function fetches a single submission's answers based on 
 
 To retrieve an individual submission, use the **submission ID** (a unique identifier for each submission).
 
-```r
+```{r}
+#| label: sub-2
+#| cassette: single
+
+library(nettskjemar)
+
 # Replace with your submission ID
 submission_id <- 27685292
 

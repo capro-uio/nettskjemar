@@ -7,7 +7,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+#| label: auth-1
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "auth-")
+```
 
 This vignette explains how to set up authentication with the Nettskjema API using the `ns_req` and `ns_auth_token` functions provided in the package.
 Authentication is required to connect to the API endpoints and perform operations.
@@ -48,46 +60,33 @@ Replace `your_client_id` and `your_client_secret` with the actual values you rec
 
 4. Restart your R session to the load changes.
 
+### Check your Situation report
+
+Once you have these two environment variables set, you should check your status with connecting to the API by running `ns_sitrep()`. 
+This function should give you a clear report on whether you are ready to connect to the API.
+
+```{r}
+#| label: auth-sitrep
+#| cassette: sitrep
+
+library(nettskjemar)
+
+ns_sitrep()
+
+```
+
+
 ### Retrieve the Access Token
 
 Use the `ns_auth_token` function to retrieve your access token. 
 This function exchanges your client credentials for a valid token. The token is cached by default for efficiency.
 
-
-``` r
-library(nettskjemar)
+```{r}
+#| label: auth-me
+#| cassette: me
 
 # Try getting your user information
 ns_get_me()
-#> $isPersonalDataResponsible
-#> [1] FALSE
-#> 
-#> $displayName
-#> [1] "ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient"
-#> 
-#> $logoutLink
-#> [1] "/signout"
-#> 
-#> $isSuperUser
-#> [1] FALSE
-#> 
-#> $isAuthenticated
-#> [1] TRUE
-#> 
-#> $userType
-#> [1] "UNKNOWN_ROLE"
-#> 
-#> $hasAcceptedTos
-#> [1] TRUE
-#> 
-#> $isSupportUser
-#> [1] FALSE
-#> 
-#> $isAdministrativeUser
-#> [1] TRUE
-#> 
-#> $isInLdapGroupUioTils
-#> [1] FALSE
 ```
 
 If this returns a data.frame of all the forms this client has access to.
@@ -150,6 +149,4 @@ Having a couple of editors is a good idea for redundancy, but make sure to limit
 3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session, the last part is necessary for R to access the new information. 
 
 ## More information
-More information about the client authentication can be found on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md).
-
-You can find more information about the Nettskjema v3 API on the [official UiO documentation pages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md).
+More information about the client authentication can be found on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md), where the remaining API is documented.
