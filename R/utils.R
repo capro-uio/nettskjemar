@@ -7,6 +7,9 @@
 #' @noRd
 rm_ext <- function(path) {
   ex <- file_ext(path)
+  if (!nzchar(ex)) {
+    return(path)
+  }
   ex <- sprintf(".%s$", ex)
   gsub(ex, "", path)
 }
@@ -14,8 +17,12 @@ rm_ext <- function(path) {
 #' assign b if a is nothing
 #' @noRd
 `%||%` <- function(a, b) {
-  if (length(a) == 0) return(b)
-  if (is.na(a) || is.null(a) || a == "") return(b)
+  if (length(a) == 0) {
+    return(b)
+  }
+  if (is.na(a) || is.null(a) || a == "") {
+    return(b)
+  }
   a
 }
 

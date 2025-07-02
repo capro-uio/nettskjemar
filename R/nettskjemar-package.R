@@ -23,7 +23,7 @@ release_bullets <- function() {
 knit_vignettes <- function() {
   proc <- list.files(
     "vignettes",
-    "orig$",
+    "Rmd$",
     full.names = TRUE
   )
 
@@ -31,7 +31,7 @@ knit_vignettes <- function() {
     fig_path <- "static"
     knitr::knit(
       x,
-      gsub("\\.orig$", "", x)
+      gsub("\\.Rmd$", ".html", x)
     )
     imgs <- list.files(fig_path, full.names = TRUE)
     sapply(imgs, function(x) {

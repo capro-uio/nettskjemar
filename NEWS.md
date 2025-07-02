@@ -1,5 +1,11 @@
 # nettskjemar (development version)
 
+# nettskjemar 1.0.2.90003
+
+- Added `ns_sitrep()`
+- Added "Custom requests" vignette
+- Switched to cassettes in vignettes
+
 # nettskjemar 1.0.2
 
 - Uses OAuth client for managing credentials
