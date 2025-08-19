@@ -11,7 +11,7 @@ editor_options:
 ---
 
 ```{r}
-#| label: cr-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -57,7 +57,7 @@ where `ns_auth()` is sets up the authentication client as described in the [Auth
 Meaning if we use it, the important parts that make sure you connect to the correct API with the correct credentials.
 
 ```{r}
-#| label: cr-2
+#| label: req
 
 library(nettskjemar)
 ns_req()
@@ -68,7 +68,7 @@ As you can see, the output here shows the URL until the `v3` section, and also t
 From there, we need to use functions from {httr2} to build the remaining url.
 
 ```{r}
-#| label: cr-3
+#| label: req-2
 
 library(httr2)
 formid <- 123823
@@ -83,7 +83,7 @@ So far, we have just been creating the command we want to send to the API.
 To send the request, we need to use the `req_perform` function from httr2.
 
 ```{r}
-#| label: cr-4
+#| label: settings
 #| cassette: settings
 
 response <- ns_req() |>
@@ -103,7 +103,7 @@ We use httr2 functions to do this.
 In general, most of the Nettskjema API responses come as `json` in the "body" of the response (this is API lingo, just go with it.).
 
 ```{r}
-#| label: cr-5
+#| label: req-body
 
 settings_data <- resp_body_json(response)
 settings_data
@@ -126,7 +126,7 @@ Since we now have the full settings for a form, let us change a setting so we ca
 There is an element that controls if the user can postpone the survey as they are answering it.
 
 ```{r}
-#| label: cr-6
+#| label: req-postpone
 
 settings_data$postponable
 ```
@@ -153,7 +153,7 @@ Since its a `PATCH` method, and the docs is not explicitly saying we need to sen
 Since the URL endpoints is the same as when getting the settings, what we need to do it use the same information, but change the method with httr2.
 
 ```{r}
-#| label: cr-7
+#| label: req-3
 
 ns_req() |>
   req_url_path_append("form", formid, "settings") |>
@@ -163,7 +163,7 @@ ns_req() |>
 Ok, we can see now that the method is correct, the URL is correct, but the body is empty. 
 
 ```{r}
-#| label: cr-8
+#| label: req-4
 
 ns_req() |>
   req_url_path_append("form", formid, "settings") |>
@@ -178,9 +178,9 @@ ns_req() |>
 Things look kind of correct now, we're still not sure about the body setup, but we will send the request and see what happens.
 
 ```{r}
-#| label: cr-9
+#| label: patch-err
 #| error: true
-#| cassette: patch-err
+#| cassette: true
 
 ns_req() |>
   req_url_path_append("form", formid, "settings") |>
@@ -200,7 +200,7 @@ If you didn't store the response, like I did, you can still explore it without d
 httr2 has functionality to capture the last response even after the fact!
 
 ```{r}
-#| label: cr-10
+#| label: last-response
 #| eval: false
 
 last_response() |>
@@ -230,8 +230,8 @@ We can try altering two settings at once, and see what happens.
 
 
 ```{r}
-#| label: cr-11
-#| cassette: settings-change
+#| label: settings-change
+#| cassette: true
 
 # Show old settings
 settings_data$personalDataPurposeDescription
@@ -256,8 +256,8 @@ The response also says there is no content, and nothing in the body, so there is
 Lets retrieve the settings again and see if we can verify our selves that the settings have indeed changed
 
 ```{r}
-#| label: cr-12
-#| cassette: settings-check
+#| label: settings-check
+#| cassette: true
 
 settings_new <- ns_req() |>
   req_url_path_append("form", formid, "settings") |>
@@ -274,9 +274,9 @@ We've now confirmed we have altered some settings in the test form.
 Hopefully, this gives an idea of how you can build more custom requests to the API.
 
 ```{r}
-#| label: cr-reset
+#| label: settings-reset
 #| include: false
-#| cassette: settings-reset
+#| cassette: true
 
 # Set new settings
 ns_req() |>

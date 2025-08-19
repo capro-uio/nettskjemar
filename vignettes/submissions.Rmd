@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r}
-#| label: sub-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -38,8 +38,8 @@ The `ns_get_submission` function fetches a single submission's answers based on 
 To retrieve an individual submission, use the **submission ID** (a unique identifier for each submission).
 
 ```{r}
-#| label: sub-2
-#| cassette: single
+#| label: single
+#| cassette: true
 
 library(nettskjemar)
 

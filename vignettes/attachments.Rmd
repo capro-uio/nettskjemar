@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r}
-#| label: atch-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -35,7 +35,7 @@ Each submission ID may have associated attachments. Use `ns_list_submission_atta
 
 ```{r}
 #| label: atch
-#| cassette: sub
+#| cassette: true
 
 library(nettskjemar)
 # Example: List attachments for a specific submission
@@ -50,8 +50,8 @@ This function returns a `data.frame` with details such as the attachment ID, ori
 To list all attachments across multiple submissions for a form, use `ns_list_form_attachments()`.
 
 ```{r}
-#| label: atch-all
-#| cassette: all
+#| label: all
+#| cassette: true
 
 # Example: List attachments for an entire form
 formid <- 123823
@@ -63,7 +63,7 @@ ns_list_form_attachments(formid)
 Once you have identified the attachments, you can download them using `ns_get_attachment()`.
 
 ```r
-#| label: atch-dl1
+#| label: dl1
 
 # Example: Download a single attachment
 attachment_id <- "12345"
@@ -79,7 +79,7 @@ If `path` is not provided, the function returns the response object without savi
 Use `ns_get_submission_attachments()` to download and save all attachments associated with a single submission.
 
 ```r
-#| label: atch-dl2
+#| label: dl2
 
 # Example: Save all attachments for a submission
 ns_get_submission_attachments(submission_id)
@@ -93,7 +93,7 @@ This function supports two filename conventions:
 To save attachments using the original filenames:
 
 ```r
-#| label: atch-dl3
+#| label: dl3
 
 ns_get_submission_attachments(submission_id, filenames = "original")
 ```
@@ -101,7 +101,7 @@ ns_get_submission_attachments(submission_id, filenames = "original")
 You can also specify an output directory:
 
 ```r
-#| label: atch-dl4
+#| label: dl4
 
 ns_get_submission_attachments(submission_id, output_dir = "my_attachments/")
 ```
@@ -111,7 +111,7 @@ ns_get_submission_attachments(submission_id, output_dir = "my_attachments/")
 To download and save all attachments from a form:
 
 ```r
-#| label: atch-dl5
+#| label: dl5
 
 ns_get_form_attachments(formid)
 ```
@@ -119,7 +119,7 @@ ns_get_form_attachments(formid)
 As with submission attachments, you can specify a filename format and output directory:
 
 ```r
-#| label: atch-dl6
+#| label: dl6
 
 ns_get_form_attachments(
   formid,

@@ -6,12 +6,12 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 19:41:07 GMT
+      date: Tue, 19 Aug 2025 21:26:18 GMT
       content-type: text/plain
       content-length: '464'
-      content-disposition: attachment; filename="data-123823-2025-08-19-2141.txt"
+      content-disposition: attachment; filename="data-123823-2025-08-19-2326.txt"
       content-encoding: gzip
-      set-cookie: JSESSIONID=A15EE895EDB3FBDFB5F6CBFBA6432645; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=ED8E0DB5991D862BADB1B3BBCA7A5EDB; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -27,7 +27,7 @@ http_interactions:
         "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77.0";"3";"sølvi.png";"";"74630"
         "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45.0";"1";"";"marius.jpeg";"71313"
         "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10.0";"98.0";"9";"";"";"70230"
-  recorded_at: 2025-08-19 19:41:07
+  recorded_at: 2025-08-19 21:26:18
 - request:
     method: GET
     uri: https://nettskjema.no/api/v3/form/123823/elements
@@ -35,10 +35,10 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 19:41:07 GMT
+      date: Tue, 19 Aug 2025 21:26:18 GMT
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=FAB96464094E869CB160459663E104CF; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=584DB105C3FA815DF05314B4BA70DA27; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -107,7 +107,7 @@ http_interactions:
         sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
         sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
         is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":null,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":[],"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
-  recorded_at: 2025-08-19 19:41:07
+  recorded_at: 2025-08-19 21:26:18
 - request:
     method: GET
     uri: https://nettskjema.no/api/v3/form/123823/csv-report
@@ -115,12 +115,12 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 19:41:07 GMT
+      date: Tue, 19 Aug 2025 21:26:18 GMT
       content-type: text/plain
       content-length: '464'
-      content-disposition: attachment; filename="data-123823-2025-08-19-2141.txt"
+      content-disposition: attachment; filename="data-123823-2025-08-19-2326.txt"
       content-encoding: gzip
-      set-cookie: JSESSIONID=8328A459EE4DC54406ABE46860674E19; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=8E13B248156FA33AF2B060A8F52FBB8B; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -136,7 +136,7 @@ http_interactions:
         "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77.0";"3";"sølvi.png";"";"74630"
         "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45.0";"1";"";"marius.jpeg";"71313"
         "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10.0";"98.0";"9";"";"";"70230"
-  recorded_at: 2025-08-19 19:41:07
+  recorded_at: 2025-08-19 21:26:18
 - request:
     method: GET
     uri: https://nettskjema.no/api/v3/form/123823/elements
@@ -144,10 +144,10 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 19:41:08 GMT
+      date: Tue, 19 Aug 2025 21:26:18 GMT
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=0714CF1EB8D3E84A6A3832930EE8F53A; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=1E16F3A6395E6015422B6D59CE57B3C7; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -216,5 +216,5 @@ http_interactions:
         sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
         sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
         is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":null,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":[],"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
-  recorded_at: 2025-08-19 19:41:08
+  recorded_at: 2025-08-19 21:26:18
 recorded_with: VCR-vcr/2.0.0

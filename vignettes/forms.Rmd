@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r}
-#| label: forms-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -37,8 +37,8 @@ If you haven’t, refer to the vignette on [authentication setup](authentication
 Additionally, load the required package:
 
 ```{r}
-#| label: forms-sitrep
-#| cassette: sitrep
+#| label: sitrep
+#| cassette: true
 
 library(nettskjemar)
 
@@ -52,8 +52,8 @@ To see which forms you have access to, use the `ns_get_forms` function.
 ## Example: Getting Forms
 
 ```{r}
-#| label: forms-head
-#| cassette: form-s
+#| label: head
+#| cassette: true
 
 # Retrieve all forms
 forms <- ns_get_forms()
@@ -66,8 +66,8 @@ head(forms)
 If you prefer to get the raw list format as returned by the API, use `asis = TRUE`.
 
 ```{r}
-#| label: forms-raw
-#| cassette: form-s-raw
+#| label: raw
+#| cassette: true
 
 # Retrieve raw form data
 raw_forms <- ns_get_forms(asis = TRUE)
@@ -84,7 +84,7 @@ Use the `ns_get_form_reports` function to download these reports.
 ## Example: Download a CSV Report
 
 ```r
-#| label: forms-csv
+#| label: csv
 
 # Define the form ID
 form_id <- 110000
@@ -98,7 +98,7 @@ ns_get_form_reports(form_id, type = "csv")
 ## Example: Download an Excel Report
 
 ```r
-#| label: forms-excel
+#| label: excel
 
 # Download an Excel report
 ns_get_form_reports(form_id, type = "excel")
@@ -107,7 +107,7 @@ ns_get_form_reports(form_id, type = "excel")
 ## Example: Save SPSS Report to a Custom Path
 
 ```r
-#| label: forms-spss
+#| label: spss
 
 # Specify the path you want to save the file
 path <- fs::path_home("Desktop/110000_report.sav")

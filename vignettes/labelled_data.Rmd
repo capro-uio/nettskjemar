@@ -11,7 +11,7 @@ editor_options:
 ---
 
 ```{r}
-#| label: lab-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -39,8 +39,8 @@ In this vignette, we’ll explore how labelled data works, leveraging key `{have
 
 
 ```{r}
-#| label: lab-2
-#| cassette: data
+#| label: data
+#| cassette: true
 
 library(nettskjemar)
 
@@ -56,8 +56,8 @@ There is nothing particularly special about it.
 To continue, we also need to download the form codebook, as we need this to add the labels.
 
 ```{r}
-#| label: lab-3
-#| cassette: cb
+#| label: cb
+#| cassette: true
 
 cb <- ns_get_codebook(formid)
 cb
@@ -66,7 +66,7 @@ cb
 To add the labels, we use the `ns_add_labels` function, using both the unlabelled data and the codebook.
 
 ```{r}
-#| label: lab-4
+#| label: labels
 
 lab_data <- data |>
   ns_add_labels(cb)
@@ -79,7 +79,7 @@ Inspecting the data with the `str` function will however expose what lies beneat
 
 
 ```{r}
-#| label: lab-5
+#| label: labels-str
 
 str(data)
 str(lab_data)
@@ -101,20 +101,20 @@ Once your data has been labelled, the `{haven}` package provides functionalities
 Use `var_label()` to extract variable-level labels and `val_labels()` to extract value-level labels:
 
 ```{r}
-#| label: lab-6
+#| label: load-labelled
 
 library(labelled)
 ```
 
 ```{r}
-#| label: lab-7
+#| label: var-lab
 
 # Variable labels
 var_label(lab_data$freetext)
 ```
 
 ```{r}
-#| label: lab-8
+#| label: var-lab-2
 
 # Value labels for 'radio'
 val_labels(lab_data$radio)
@@ -126,7 +126,7 @@ If you need to modify labels, we suggest you do this directly in the Nettskjema 
 However, if you are working on a form that is no longer available in Nettskjema, and you have downloaded and saved both the data and the codebook (or the labelled data), labels can be modified  using `{haven}`:
 
 ```{r}
-#| label: lab-9
+#| label: var-lab-mod
 
 lab_data$freetex
 # Update variable-level label for 'freetext'

@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r}
-#| label: auth-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -66,8 +66,8 @@ Once you have these two environment variables set, you should check your status 
 This function should give you a clear report on whether you are ready to connect to the API.
 
 ```{r}
-#| label: auth-sitrep
-#| cassette: sitrep
+#| label: sitrep
+#| cassette: true
 
 library(nettskjemar)
 
@@ -82,8 +82,8 @@ Use the `ns_auth_token` function to retrieve your access token.
 This function exchanges your client credentials for a valid token. The token is cached by default for efficiency.
 
 ```{r}
-#| label: auth-me
-#| cassette: me
+#| label: me
+#| cassette: true
 
 # Try getting your user information
 ns_get_me()

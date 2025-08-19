@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r}
-#| label: meta-1
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -47,8 +47,8 @@ The retrieved metadata is returned as an object of class `ns_meta`.
 Here’s an example of how to retrieve metadata for a form:
 
 ```{r}
-#| label: meta-load
-#| cassette: meta
+#| label: meta
+#| cassette: true
 
 library(nettskjemar)
 
@@ -141,4 +141,4 @@ file.remove(c(
   "meta_file.json",
   "pretty_meta.json"
 ))
-
+```

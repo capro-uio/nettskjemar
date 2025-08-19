@@ -11,7 +11,7 @@ editor_options:
 ---
 
 ```{r}
-#| label: ns-setup
+#| label: setup
 #| include: false
 
 knitr::opts_chunk$set(
@@ -52,8 +52,8 @@ If you want to learn about the tidyverse and how to use it, there are excellent 
 Perhaps at the core of this package is the ability to download submission answers to a form into a tibble (variation of a data.frame).
 
 ```{r}
-#| label: ns-1
-#| cassette: data
+#| label: data
+#| cassette: true
 
 library(nettskjemar)
 formid <- 123823
@@ -76,8 +76,8 @@ The raw data may provide those who have keen interest in the time a users spent 
 The data.frame this output will have one column that indicates which question the row is for, and another which is the response to that question.
 
 ```{r}
-#| label: ns-2
-#| cassette: data-raw
+#| label: data-raw
+#| cassette: true
 
 # Fetch raw data
 ns_get_data(formid, type = "long")
@@ -96,8 +96,8 @@ We provide some extra functionality to help work with these data.
 Currently we only support working with the checkbox matrix questions, but are working on a solution for all checkboxes.
 
 ```{r}
-#| label: ns-3
-#| cassette: multi-list
+#| label: multi-list
+#| cassette: true
 
 ns_get_data(formid) |>
   ns_alter_checkbox(
@@ -108,8 +108,8 @@ ns_get_data(formid) |>
 These can be separated into rows if wanted, using tidyverse syntax.
 
 ```{r}
-#| label: ns-4
-#| cassette: multi-label
+#| label: multi-label
+#| cassette: true
 
 library(tidyr)
 library(dplyr)
@@ -136,8 +136,8 @@ another option is to work with delimited strings in columns.
 In this procedure, you can turn the checkboxes into a character column, where each option in separated by a character of your choosing.
 
 ```{r}
-#| label: ns-5
-#| cassette: multi-delim
+#| label: multi-delim
+#| cassette: true
 
 # As delimited string column
 ns_get_data(formid) |>

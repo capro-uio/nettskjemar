@@ -8,10 +8,10 @@ http_interactions:
     status: 400
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 19:41:05 GMT
+      date: Tue, 19 Aug 2025 21:26:16 GMT
       content-length: '199'
       content-encoding: gzip
-      set-cookie: JSESSIONID=0794D315BFCCC79116A452FBEE4EAD56; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=C53B1745738EFD4561C05972B39A7244; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -23,5 +23,5 @@ http_interactions:
       string: '{"message":"Valideringsfeil","errors":{"postponable":["Mellomlagring
         er bare tillatt for skjemaer med FEIDE-respondenter, er satt til å samle inn
         personopplysninger og som leverer til Nettskjema"]},"confirmForceCleanupErrors":{}}'
-  recorded_at: 2025-08-19 19:41:05
+  recorded_at: 2025-08-19 21:26:16
 recorded_with: VCR-vcr/2.0.0
