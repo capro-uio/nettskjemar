@@ -21,8 +21,6 @@ with_mocked_nettskjema_auth <- function(expr) {
   force(expr)
 }
 
-vcr::check_cassette_names()
-
 form_id <- 123823
 submission_id <- 27685292
 attachment_id <- 538819
