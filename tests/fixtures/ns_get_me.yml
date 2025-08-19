@@ -1,22 +1,16 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://nettskjema.no/api/v3/me
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
       server: nginx
-      date: Fri, 06 Jun 2025 12:11:47 GMT
-      content-length: '234'
+      date: Tue, 19 Aug 2025 17:52:54 GMT
+      content-length: '238'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=F5AA8CC20BCFE3463BA73D25E04BF01E; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=66A0416EED17F14553EB20EE7F7AA098; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -46,8 +40,6 @@ http_interactions:
       content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
       tdm-reservation: '1'
     body:
-      encoding: ''
-      file: no
-      string: '{"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true,"isInLdapGroupUioTils":false}'
-  recorded_at: 2025-06-06 12:11:47 GMT
-  recorded_with: vcr/1.6.0, webmockr/2.0.0
+      string: '{"hasAccessForCourseEvaluation":false,"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true}'
+  recorded_at: 2025-08-19 17:52:54
+recorded_with: VCR-vcr/2.0.0
