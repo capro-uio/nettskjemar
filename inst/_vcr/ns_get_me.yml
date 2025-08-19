@@ -6,19 +6,11 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-<<<<<<< HEAD:inst/_vcr/ns_get_me.yml
       date: Tue, 19 Aug 2025 20:48:50 GMT
       content-length: '238'
       content-encoding: gzip
       referrer-policy: same-origin
       set-cookie: JSESSIONID=C683ED5006ED5685FD3C6FF02CD71255; Path=/api/v3; Secure;
-=======
-      date: Tue, 19 Aug 2025 17:52:54 GMT
-      content-length: '238'
-      content-encoding: gzip
-      referrer-policy: same-origin
-      set-cookie: JSESSIONID=66A0416EED17F14553EB20EE7F7AA098; Path=/api/v3; Secure;
->>>>>>> main:tests/fixtures/ns_get_me.yml
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -49,9 +41,5 @@ http_interactions:
       tdm-reservation: '1'
     body:
       string: '{"hasAccessForCourseEvaluation":false,"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true}'
-<<<<<<< HEAD:inst/_vcr/ns_get_me.yml
   recorded_at: 2025-08-19 20:48:50
-=======
-  recorded_at: 2025-08-19 17:52:54
->>>>>>> main:tests/fixtures/ns_get_me.yml
 recorded_with: VCR-vcr/2.0.0
