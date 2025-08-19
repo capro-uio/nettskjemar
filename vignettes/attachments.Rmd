@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "atch-")
+nettskjemar:::mock_auth()
 ```
 
 # Overview

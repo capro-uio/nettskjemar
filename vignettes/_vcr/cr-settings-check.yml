@@ -6,11 +6,11 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 21:26:16 GMT
+      date: Tue, 19 Aug 2025 21:48:18 GMT
       content-length: '943'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=A53A63584B4349E29DFCD9446E83DEFC; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=FD0AC774C8DB9F91A52378D384678CF1; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -46,5 +46,5 @@ http_interactions:
         Dag Gulbrandsen","email":"areg@uio.no","type":"LOCAL"},{"personId":3439404,"username":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","name":"nettskjemar","email":"athanasm@uio.no","type":"API_CLIENT"},{"personId":58096,"username":"athanasm@uio.no","name":"Athanasia
         Monika Mowinckel","email":"a.m.mowinckel@psykologi.uio.no","type":"LOCAL"}],"personsWithCopyPermission":[],"netgroupsEditor":[],"netgroupsWithCopyPermission":[],"consentForm":false,"randomizedOrder":false,"supportuser":{"theme":"DEFAULT"},"superuser":{"afterDeliveryForwardUrl":null,"afterDeliveryForwardCodebookValues":null,"receiptPageScript":null},"isDictaphone":false,"globalCopyPermissionEnabled":false,"titleForLogging":"\"API
         test form\" (id: 123823)"}'
-  recorded_at: 2025-08-19 21:26:16
+  recorded_at: 2025-08-19 21:48:18
 recorded_with: VCR-vcr/2.0.0

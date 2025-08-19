@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "auth-")
+nettskjemar:::mock_auth()
+
 ```
 
 This vignette explains how to set up authentication with the Nettskjema API using the `ns_req` and `ns_auth_token` functions provided in the package.

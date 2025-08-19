@@ -6,11 +6,11 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 21:26:16 GMT
-      content-length: '277'
+      date: Tue, 19 Aug 2025 21:48:18 GMT
+      content-length: '278'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=BC5191439BE642EF50A532D0E3237811; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=D5DB7495224AE2D8C5F0ED6A0A62341B; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -40,6 +40,6 @@ http_interactions:
       content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
       tdm-reservation: '1'
     body:
-      string: '[{"formId":123823,"title":"API test form","openFrom":"2023-06-01T20:55:49","openTo":"2024-06-02T02:00:02","lastSubmissionDate":"2023-06-01T20:59:50","modifiedDate":"2025-08-19T23:26:16","personalDataErasedDate":null,"deliveryDestination":"DATABASE","anonymous":false,"numberOfDeliveredSubmissions":3,"owners":3,"isDictaphone":false,"myFormsFormListingGroup":"OLD","open":false}]'
-  recorded_at: 2025-08-19 21:26:16
+      string: '[{"formId":123823,"title":"API test form","openFrom":"2023-06-01T20:55:49","openTo":"2024-06-02T02:00:02","lastSubmissionDate":"2023-06-01T20:59:50","modifiedDate":"2025-08-19T23:48:18","personalDataErasedDate":null,"deliveryDestination":"DATABASE","anonymous":false,"numberOfDeliveredSubmissions":3,"owners":3,"isDictaphone":false,"myFormsFormListingGroup":"OLD","open":false}]'
+  recorded_at: 2025-08-19 21:48:18
 recorded_with: VCR-vcr/2.0.0

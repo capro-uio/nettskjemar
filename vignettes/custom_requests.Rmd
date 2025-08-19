@@ -24,6 +24,7 @@ knitr::opts_chunk$set(
 options(max.print = 50)
 
 vcr::setup_knitr(prefix = "cr-")
+nettskjemar:::mock_auth()
 
 ```
 

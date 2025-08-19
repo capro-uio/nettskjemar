@@ -9,6 +9,7 @@
 #' @examples
 #' \dontshow{
 #' vcr::insert_example_cassette("ns_get_meta", package = "nettskjemar")
+#' nettskjemar:::mock_auth()
 #' }
 #' ns_get_meta(123823)
 #' \dontshow{

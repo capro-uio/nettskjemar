@@ -49,3 +49,10 @@ null2na <- function(x) {
   }
   x
 }
+
+mock_auth <- function() {
+  if (!nettskjemar::ns_has_auth()) {
+    Sys.setenv(NETTSKJEMA_CLIENT_ID = "client")
+    Sys.setenv(NETTSKJEMA_CLIENT_SECRET = "secret")
+  }
+}

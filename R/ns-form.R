@@ -11,6 +11,7 @@
 #' @examples
 #' \dontshow{
 #' vcr::insert_example_cassette("ns_get_forms", package = "nettskjemar")
+#' nettskjemar:::mock_auth()
 #' }
 #' ns_get_forms()
 #' \dontshow{

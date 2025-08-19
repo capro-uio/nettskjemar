@@ -6,6 +6,7 @@
 #' @examples
 #' \dontshow{
 #' vcr::insert_example_cassette("ns_get_submission", package = "nettskjemar")
+#' nettskjemar:::mock_auth()
 #' }
 #' ns_get_submission(27685292)
 #' \dontshow{

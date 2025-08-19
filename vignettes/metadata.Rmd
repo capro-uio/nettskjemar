@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "meta-")
+nettskjemar:::mock_auth()
+
 ```
 
 # Overview
