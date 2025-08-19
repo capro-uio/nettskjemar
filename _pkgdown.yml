@@ -37,6 +37,7 @@ reference:
   - contains("auth")
   - ns_get_me
   - ns_client
+  - ns_sitrep
 - title: "Open online urls"
   desc: "Functions for easy opening of relevant URLs"
   contents:
