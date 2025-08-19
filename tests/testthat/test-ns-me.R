@@ -10,6 +10,7 @@ test_that("test user information", {
   expect_equal(
     names(me),
     c(
+      "hasAccessForCourseEvaluation",
       "isPersonalDataResponsible",
       "displayName",
       "logoutLink",
@@ -18,8 +19,7 @@ test_that("test user information", {
       "userType",
       "hasAcceptedTos",
       "isSupportUser",
-      "isAdministrativeUser",
-      "isInLdapGroupUioTils"
+      "isAdministrativeUser"
     )
   )
   expect_is(me$isPersonalDataResponsible, "logical")

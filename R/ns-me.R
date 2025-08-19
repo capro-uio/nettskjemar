@@ -7,8 +7,12 @@
 #' @return list of information
 #' @export
 #' @examples
-#' \dontrun{
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_me", package = "nettskjemar")
+#' }
 #' ns_get_me()
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_me <- function() {
   ns_req() |>

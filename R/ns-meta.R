@@ -7,9 +7,12 @@
 #' @return list of class ns_meta_data
 #' @export
 #' @examples
-#' \dontrun{
-#' meta_110000 <- ns_get_meta(110000)
-#'
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_meta", package = "nettskjemar")
+#' }
+#' ns_get_meta(123823)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_meta <- function(form_id) {
   resp <- ns_req() |>

@@ -23,8 +23,14 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_sitrep", package = "nettskjemar")
+#' }
+#'
 #' ns_sitrep()
+#'
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_sitrep <- function() {
   cli::cli_h1("Nettskjema API Sitrep")

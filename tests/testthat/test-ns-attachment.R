@@ -1,6 +1,6 @@
 test_that("ns_get_attachment saves an attachment file", {
   vcr::use_cassette("ns_get_attachment", {
-    temp_file <- tempfile(fileext = ".png")
+    temp_file <- withr::local_tempfile(fileext = ".png")
     with_mocked_nettskjema_auth(
       result <- ns_get_attachment(
         attachment_id,
@@ -10,7 +10,6 @@ test_that("ns_get_attachment saves an attachment file", {
   })
 
   expect_s3_class(result, "httr2_response")
-  unlink(temp_file) # Clean up
 })
 
 test_that("ns_list_form_attachments retrieves metadata", {
@@ -29,7 +28,7 @@ test_that("ns_list_form_attachments retrieves metadata", {
 
 test_that("ns_get_form_attachments saves attachments", {
   vcr::use_cassette("ns_get_form_attachments", {
-    output_dir <- tempfile()
+    output_dir <- withr::local_tempdir()
     dir.create(output_dir)
     with_mocked_nettskjema_auth(
       result <- ns_get_form_attachments(
@@ -44,7 +43,6 @@ test_that("ns_get_form_attachments saves attachments", {
   expect_true(file.exists(output_dir))
   saved_files <- list.files(output_dir)
   expect_gt(length(saved_files), 0)
-  unlink(output_dir, recursive = TRUE)
 })
 
 test_that("Retrieves submission attachment metadata", {
@@ -63,7 +61,7 @@ test_that("Retrieves submission attachment metadata", {
 
 test_that("ns_get_submission_attachments saves  sub attch", {
   vcr::use_cassette("ns_get_submission_attachments", {
-    output_dir <- tempfile()
+    output_dir <- withr::local_tempdir()
     with_mocked_nettskjema_auth(
       result <- ns_get_submission_attachments(
         submission_id,
@@ -75,6 +73,5 @@ test_that("ns_get_submission_attachments saves  sub attch", {
   # Check if files are saved successfully
   expect_true(file.exists(output_dir))
   saved_files <- list.files(output_dir)
-  expect_gt(length(saved_files), 0) # Ensure files were saved
-  unlink(output_dir, recursive = TRUE) # Clean up
+  expect_gt(length(saved_files), 0)
 })

@@ -25,7 +25,7 @@ The responses are placed in a data.frame for easy use.
 \describe{
  \item{"original"}{ - Returns data in the same tabular format
      as delivered by Nettskjema.}
-\item{"long"}{ - Returns the data in tall format, where
+ \item{"long"}{ - Returns the data in tall format, where
      there are multiple rows per participant (one per question)
      and each choice is timestamped.}
 }
@@ -36,10 +36,16 @@ The responses are placed in a data.frame for easy use.
 
 }}
 \examples{
-\dontrun{
+\dontshow{
+vcr::insert_example_cassette("ns_get_data", package = "nettskjemar")
+}
 
 # Retrieve all data
-data_110000 <- ns_get_data(110000)
+ns_get_data(123823)
 
+ns_get_data(123823, "long")
+
+\dontshow{
+vcr::eject_cassette()
 }
 }

@@ -6,11 +6,11 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Wed, 02 Jul 2025 19:56:25 GMT
+      date: Tue, 19 Aug 2025 19:41:05 GMT
       content-length: '238'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=28E6567908103EC7D8B8D9322063307E; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=683C73AD7886CD7C3D6904F45A662977; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -41,5 +41,5 @@ http_interactions:
       tdm-reservation: '1'
     body:
       string: '{"hasAccessForCourseEvaluation":false,"isPersonalDataResponsible":false,"displayName":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","logoutLink":"/signout","isSuperUser":false,"isAuthenticated":true,"userType":"UNKNOWN_ROLE","hasAcceptedTos":true,"isSupportUser":false,"isAdministrativeUser":true}'
-  recorded_at: 2025-07-02 19:56:25
-recorded_with: VCR-vcr/1.7.0.91, webmockr/2.1.0
+  recorded_at: 2025-08-19 19:41:05
+recorded_with: VCR-vcr/2.0.0

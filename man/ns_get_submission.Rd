@@ -16,7 +16,11 @@ list of all answers
 Get an individual submission answer
 }
 \examples{
-\dontrun{
-ns_get_submission(1100)
+\dontshow{
+vcr::insert_example_cassette("ns_get_submission", package = "nettskjemar")
+}
+ns_get_submission(27685292)
+\dontshow{
+vcr::eject_cassette()
 }
 }

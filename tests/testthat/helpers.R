@@ -5,7 +5,7 @@ invisible(vcr::vcr_configure(
   filter_sensitive_data = list(
     "<<CLIENT_SECRET>>" = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
   ),
-  dir = vcr::vcr_test_path("fixtures")
+  dir = vcr::vcr_test_path("_vcr")
 ))
 
 #' Helper function to mock Nettskjema authentication for VCR tests

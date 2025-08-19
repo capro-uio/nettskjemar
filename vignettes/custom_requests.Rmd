@@ -201,10 +201,25 @@ httr2 has functionality to capture the last response even after the fact!
 
 ```{r}
 #| label: cr-10
-#| cassette: patch-err-resp
+#| eval: false
 
 last_response() |>
   resp_body_json()
+```
+ 
+```
+ #> $message
+#> [1] "Valideringsfeil"
+#> 
+#> $errors
+#> $errors$postponable
+#> $errors$postponable[[1]]
+#> [1] "Mellomlagring er bare tillatt for skjemaer med FEIDE-respondenter, er satt til å samle inn personopplysninger og som leverer til Nettskjema"
+#> 
+#> 
+#> 
+#> $confirmForceCleanupErrors
+#> named list()
 ```
 
 As we can see, we get a nice clear message about what has erred.

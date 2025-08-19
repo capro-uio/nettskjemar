@@ -31,7 +31,13 @@ credentials are configured.
 - Displays system environment details such as R version and operating system.
 }
 \examples{
-\dontrun{
+\dontshow{
+vcr::insert_example_cassette("ns_sitrep", package = "nettskjemar")
+}
+
 ns_sitrep()
+
+\dontshow{
+vcr::eject_cassette()
 }
 }

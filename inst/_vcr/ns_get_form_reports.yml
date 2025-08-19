@@ -1,0 +1,233 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/csv-report
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Tue, 19 Aug 2025 20:49:03 GMT
+      content-type: text/plain
+      content-length: '464'
+      content-disposition: attachment; filename="data-123823-2025-08-19-2249.txt"
+      content-encoding: gzip
+      set-cookie: JSESSIONID=CF8AA756E4C7D66E6C654DE59EF30845; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      x-content-type-options: nosniff
+      timing-allow-origin: '*'
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      string: |
+        "$submission_id";"$created";"freetext";"radio";"checkbox.questionnaires";"checkbox.events";"checkbox.logs";"dropdown";"radio_matrix.grants";"radio_matrix.lecture";"radio_matrix.email";"checkbox_matrix.1.IT";"checkbox_matrix.1.colleague";"checkbox_matrix.1.admin";"checkbox_matrix.1.union";"checkbox_matrix.1.internet";"checkbox_matrix.2.IT";"checkbox_matrix.2.colleague";"checkbox_matrix.2.admin";"checkbox_matrix.2.union";"checkbox_matrix.2.internet";"date";"time";"datetime";"number_decimal";"number_integer";"slider";"attachment_1";"attachment_2";"$answer_time_ms"
+        "27685292";"2023-06-01T20:57:15+02:00";"some text";"1";"1";"1";"0";"4";"1";"2";"2";"1";"1";"0";"0";"0";"0";"0";"1";"0";"0";"2023-06-01";"12:00";"2023-06-12T13:33";"4.5";"77.0";"3";"sølvi.png";"";"74630"
+        "27685302";"2023-06-01T20:58:33+02:00";"another answer";"-1";"0";"0";"1";"9";"3";"3";"1";"0";"0";"0";"0";"1";"0";"0";"1";"1";"0";"2023-02-07";"14:45";"2024-02-15T08:55";"2.2";"45.0";"1";"";"marius.jpeg";"71313"
+        "27685319";"2023-06-01T20:59:50+02:00";"";"-1";"1";"1";"1";"4";"1";"1";"1";"0";"1";"0";"0";"1";"1";"1";"1";"1";"0";"2022-09-28";"05:11";"2022-03-03T07:29";"10.0";"98.0";"9";"";"";"70230"
+  recorded_at: 2025-08-19 20:49:03
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/excel-report
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Tue, 19 Aug 2025 20:49:04 GMT
+      content-type: application/octet-stream
+      content-disposition: attachment; filename="data-123823-2025-08-19-2249.xlsx"
+      set-cookie: JSESSIONID=0E9EF3D36BF5D629E6798768888057BC; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      x-content-type-options: nosniff
+      timing-allow-origin: '*'
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      raw_gzip: |-
+        eJyFV3k8lGsbtmYXWSPEsY3G2nDs+z4IIxPZmZB9ZpQtDMLQEAYJ5dgKkXXILpHInizZImQZ
+        ZJfSZ07
+        8zpfvnO887+9573/e+/nd93Xf73NdtzGYlEyUiPLoOb2YjvZ1DS9PJMwTaWvm7w1D
+        WIv5ebhXQbo8X0
+        owfEvuGBaR2TK+yoLS4HnNWrBFahWYdG1P4Pkf67vWFLJYUzS1z4bjDecb
+        0B0nnA/OUkOdKai1PeiVy
+        LqIy2xd5B2gzVKguX2KDZhTEeRO03Fj8I0DJ/Glwu2RUuWFvYtk
+        hdwZmtx8fupj9zPeIg0yo01FYRQz
+        t0C1TCJ7tMrDL1xKFz9RWb4ofxEwPsG2GPmGvdhECgIs
+        2/mqWzlJs0F2a9rOi2+SAXW1l9N0tEpDWMo
+        nstXHXg4ywUkneJ7uRwzr2HvhPrXiC8newoUc
+        SC4mRohMaa9cKqBJXycsrAOhbnIf1PTqQIKV5VwG7F
+        o0mxy3b6wk6t0IqZOz3I4UKrgXbTO4
+        xsB5KZih5MFvXng0AEtECu+m6uvMBB1iD6C6Xb0MKcOb4vSth
+        +IHxJqSwFkNesmgtcXfjcEU
+        lAlA4XoF4p8Ic5H9tMb/WAOao20Lh7kjxMUI7+LEFn1SSYZIW4G3Deke
+        5IyuY7GUDeh3FOxJ
+        oxOl6Qa62hONDS2xOHe1llmJy1M/JN/cUonSa4CIPcpB+Q6GZbuM7o9w+skpl6y
+        qsrR89p7R
+        PWNkZtf0QXkwwhTaOQ0xSWaMRanxT7hZr6gSg1vRDnhkBqm+KOI50xhj4EA6rmFoX4i0J2
+        1p
+        mvZT+PVweYdVPdq3SYfTio1S8YZt79sB/V7qL5br8yhwXqhsoJOtQajNrdGgOlnclbRlwfyt
+        KSkQ
+        jZaOZ/JNEtiX7RnoPU/We0Dnr+kD2zr9KDIu6mAT8YitUZ6ROyQElDylKMFzxxjok/wb
+        SgxH28nL0Rj
+        u5Y0Qt/f2JrSpYVwL9VGbaq4Fa3U0TCypaQ5gwygfraipXMz9INPnrl6urzKV
+        8W72rUT8k9ru5zMYQJ
+        1q8fgwhllX5l7cvLkyz/ASv0IDRIOakUnhbfYF4Wq4fZxzqDvbluAw
+        LL/cgNe/VSD//EuQXGyqnS03+
+        mMfSKcZk6B9oWiPXL/4KzvUmY6NYkIHct+hZor52y51MP1X
+        UkJaH4NujyQcB119bP85Lcb/TsvRCw4j
+        5OVxv1+/VYL5qAU+NSq5/g6j8YgSJlXzmXaasdaN
+        8ygzVD+H39nJ9zU3Xkv8NrUvux/bXbbWQSE/xWE
+        9AIRhs1K0q2rFFgeD058Jf1FzEZDPKcsV
+        2kJCWAbgrhdWM8o+q8c+0ozfsRpLlOG9Rj8NC29Yd+VH0t
+        pilrWiodBwlg3Dd5Ryjql9jgz6
+        ZMQ5EmUVCY+S9Xv0D1Zr9bL47aKUlqZ5wZf37ElrJ38oSAhc9t/CG
+        9C13qePRcdywtaDQnZl
+        RR9XBnyr07RkcZZOpddS1coOjUrCJAcJRbVtdweDizLm2KiuC4wGPL7caIXA
+        BQGmh78Jf5Pn
+        hFq3qXPw10V9SEh/TLMHQWxTEdB0/AJOpDj+lcqO7T+jyXy0/dzFES72cJgTBAl39XR
+        GEABV
+        uqdG//IiA9FaY9jKhFiARDt2x26GZos4ouRuLhBLPrs598lHKun8gtf4u6iYiFdnjMLPaK0M
+        n
+        POTXg9QjoM+eNIqbJoMxhShbED0gTkHjw/C20KfS08xtPnHmEdi0XX+T8554K+ZY606xGbQ
+        N8fXn22T
+        59DRyn4nImTg3TQi6HccH/rY/nMGdMcZIP3dYX+GXoU19Jq9yBC59p0lmjtAXy+7
+        O4rvg5JZ562z+Ly
+        CSqhDO5WlMvDi1fqmYIrZ/LiHLkWFX+7a+01FEWv3rO5YJkC9bSyTBvvx
+        989J5LEMuMO/llvSz2+V1H
+        QGuTArehGTqIV/kZuINBZn35xjBe1W486EX0r2fUiRUUu3WUUq
+        FgRybWtv/Yh1FaMTlaoYBHMpAvA9E
+        RlG9IDESFsScNphFv/H1eLQDJk9Om4eCvXxZ57c3KyW
+        4vVPVnJ94T0B2ipK721npTNYe5QpewELPMnF
+        WN8o8fLOh7sK7P1YYakfqfXwu2kmhdmVnfJ8
+        mFCli/6Tq6+l+YeUoHC8k4G5FXgod0tWcKx6EWnJsTz
+        2fVAMzxB7X58rhn0QK1z+MIqoB+ij
+        Xus39M6P3pGO36DoIN7Se3fhyaxhbz99zZcxeZTHsEqIPktamE
+        hWy5tumbiW90CxSDvpM+ob
+        GGkrrU/pOTQM18NMe8ssQqA6K3eGAjPtgzgRlGVZYgYPQOhvyqJlgSOjq
+        aVOtlx7OqslH1Xw
+        QvUlVzcrB928u3CDcI5xeqNQITYS28LJxbzmCjBqYerMDetU+63DQdFDYkLhO8S0
+        M3HHLfuU
+        /N8Kf/Zn4W97wd0cvLzcCKXHxLUYtUrQRq4pan1SAFNTqg0h1dV1G/ASNc7oOm23RBEZzvg
+        r
+        YwXNCUnbXY9DQrp3Lt2buZcWFMNRiCFB9QsuzJq0Hhzid6hweEOE3j5Sd5GfmluvtVlxyDSR
+        S4J9L
+        JfKcXQLQNEqMJ+TC8jxAV2Es89lmsZLsfN8HDNe+IHMbdxltU36Tsu+b5noA7Jycl1n
+        UjtwxHW9PN++
+        ZKHk8rlbl7LcY7476jXN9zAEc3u5yuzkBdDTtKSQ5jb/TL6HoRw2tzLt+Fkr
+        uKOtAp/w3l7lfhXmK2A
+        O7g8QHQ7B/8mTj26msE8c5+/0rz83x0+EflLlf+P0kzYTDN2OwFL9
+        EdN/x2eghT3HU9yxz00lOLQ0WR
+        ZUhsmr6mp6Xtf6XpVCYYv/3nrg2UqrEEy4vMm88hlSw6vh
+        2XY5yxrO06U//ALI28JaPjKQnn8Qbd9g6
+        emqCrAd2UVftSeTmdYaSH/vroTpuGrA3JmP8dcE
+        9I4vRuxEcy1qWTd9DuoKlYN4ZKDqfeieKs3HvSIK
+        fPvpViKYA0puZQ7J/uHi+GEnZTLn+wVA
+        B1fdoxa1qXiL8VcdoL7ZS40FIYuPQ7YXHsSvoD9Z2mhvfk7
+        kaZHW7i1pqP3z/nBezn46dAwB
+        6F9pkv2vNkK4wGBIhPifRpKAU3LaG/gH2aOrZJMZaF7y0SgBrqffn7
+        BrHet4MJOtpfsyIpZE
+        PYXHY3XTgbQzycW+unseDQwOyeknOdQ2yfTysihskDLZ4FtbwtkvcnQJab3ct
+        IDyxMc1RX6t
+        nrTNvMobnIJoz83fq19ZQgDYKPItjOaBseCca6VWDWmsfLF5AcyXK6woWYXcTFIexsGq
+        3gLn
+        X0wu8ys6+ktnCY5UFunsqL3bRVYMW7TuZhR3FgcWcxzkCQebn3XWg0IBnXuwDlOZBAMlcJlT
+        8t
+        izN/HDi+PUovaDfmmdamXysCCZ1Jv5jQ+X1ngPyu4N8WuVDUQE5BUd6Pmyjd58WtKziV1w
+        F77bmVk0U
+        r6bZ9XoVP9sfv1tUhxg6PMQJ2IgEMqd3YkujNHn7At6DYL8AXfyOte3JYmJZrIh
+        CvvNICu4Ay2ymf7F
+        7Y1+gWDKa6vSc5Q+31wpdzrhVHpXlJPz22jPPXJ4qckcm3ttLnR+pXVM
+        sSiZdy9dkkkyY9n/N/8qytQ
+        w4q+x2gFVgX7UT8VVit6tEeF8ZEi2oN3bSXyGForX1ZNqPLkF
+        jaTov9P+3q0BRFSthjJUd2usW0klXH
+        Z5Pi6NmWkW4AINh5gN2G9KXNPT6dawE+D6/ewXNb21
+        fo8CRfrpELt6M1HiaR7lmHgXbknDxrc2D/yMR
+        iKcJSsXHimbmN99IEks/FslBAu4Ykc1xucA
+        mH1jVaW7766hXnnFnYpLN1omVtzHpuQdWVGMsnPgDZdC
+        XI1rXE++nPyyy1WNELycdh/1nSf4
+        C+Rcm751jCKFzwKWIreDLlFiJLyLcXNkSxu3Baa4nqVotYOeMTr
+        wPY3QYd57QPLYrpRcWpp2
+        J8tTW2/2Qvgfvj5qKHGAq5XJtJv+oqfwuih5Y04zKbVirpmjJloxv3l3TW
+        GgAK/rdpvzUHXQ
+        lx4ovE5aM9SK+1itqIIcHl5liFfQYw9UXt/i7p1wCLNT6RJ+OYBUG9RqmJsKGYB6A
+        jfOu7x4
+        QFs5ircgt+mqwiVO+kJuz+Z7dhtaF63mi63m43Fu+0tjlyFsbqz+vAsGLmvvz8qJ5H+jthTR
+
+        1rg0RwhXAtsOOFPNC26zc1nMgEzT6PekYm8SwqUO0kB5AZjqczS5jad5BTCM5NyQgZrbyylL
+        Vddtuk
+        37aetJe6OALGNrJZzsnnYHyxUQhlWLpZJ42cCUpffAoc3lFH2AGTK6PyvBwZuVphGI
+        aWKjBU0fGrGVW
+        n/QUhr64FcI3TWrs940O7ttJk6r9NpLoVjpyvbD3pr4stJYB5CfRF6zEPMe
+        c3hLOEBgQ468Mas5lZ22
+        VlhgQ1pgg468MS/XRwdFweyni9Jh9jMoaG+gqHH5LC/NphX+lUIG
+        20Za2tqQMstR4hG1fHnwsGDR54O
+        cu5tKuNDzGzn4sX25mFLFPyp0kboSydEzqiYhgVKoOdUF
+        E8QmV31FtPOKCOvlR6ljYF5Ygq9vF2WQdT
+        rrXafsAFPI4wrZ/c375QVWkFrBSZXS52uwsj3b
+        63ce/9gUUl9TIVxZS11fm2DHc89t9p/WGExMInok0
+        E4urZMZiTAfMRGdXn8zk54+4GR8IIwO
+        NL84RxD/MlCddjwR6NXHU8Vfq5Dkf2eM094ngpQgRhl/8UaR
+        /o2UP+1+ogbRx2r1r9VL9vfa
+        9fQJJ7KCICnofjkhgfyUdjztesK3BK49+4trDMX/qI/Tzic8ROAgjl+
+        cn1H+P2I+fc5JcxAa
+        g/2Xc/qp/pm7jMHkZwjfUB09KkcRRNATERER/QehnMOx
+  recorded_at: 2025-08-19 20:49:04
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/spss-syntax
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Tue, 19 Aug 2025 20:49:05 GMT
+      content-type: application/x-vnd.spss-spss-syntax
+      content-disposition: attachment; filename="data-123823-2025-08-19-2249.sps"
+      set-cookie: JSESSIONID=C46D709BFB13268557FB4B21BA1B6AE0; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      x-content-type-options: nosniff
+      timing-allow-origin: '*'
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      raw_gzip: |-
+        eJydl19z4jYUxd/5FGef1GYKA8p2JunLDruh08zQbNpC2j5lhH2x1diSK8lL8u07km3+BBtM
+        3+Dec49
+        +iHsGfIWZinQsVfITloufhzejwRWmj/dwZB3W2uT4TsaY8Osbfv09huBj/uNwfDOc
+        3A45/3g7GFzhjt
+        ZSEZ6EkWKVER6NLsg4SXY0GFytDZGjVzcaPE1/v59+ns8wn36ezf9A0wFb
+        pNJCWgj8W5J1UiuIlS4dr
+        M7JpVIlsGVBBjIvtHFCuR+wSckQXEooLRlEQkGqonTBFuFE5s83
+        Ipb6+PBQBvtFb5CKoniDMIQNYSNd
+        igdyzr78Q7n4xPzofHk4NwAmYE9k3qrhD2wAsOGE1cVS
+        1WUPEKUUvaz066j5bEpI4+/mPVKHEOzPVDj
+        E2uOVliDDF/MJvx3I3oN2uFXof5P1yGOwB30I
+        Sd9IuVNwlaATaubbsDJRw7LohqpczsFkOjmF4tudIH
+        fCCWQ6SaRKOjG8QwdEbHQR6406Pr/p
+        +KO1X1tDttDKSr/85/anGR4AH8GW8qs/9Rbsq830r+R2K/ucC
+        2fk6ygxovULaRGBbYx0jlTI
+        DUIRoigyGQm/AbZ1mQ89qtt4q26DgyntX1z7F1uvVUbHnBlFrjR0BrRW
+        gaWUxRCo358EqzX/
+        m4xyIbMzXEEDZsPy+sujoa+cvrEwdAlWs3eNwWR0v+je730VmNVlkjqklBVYG53
+        jftG11vuD
+        ZyK2k0Y6y0gkJfUB2opbuKbYds8DbqW9OUWcS9WHMQjb+HxdWmdCJs4jBp/eeKWSuhdeEL
+        bg
+        LVUvqjDem0oqR0aR6wPWaNtWrm6dx2tMehLyXkHwKjBDEclvFDcR7ZsG3j8N/JI07Im74C6I
+        BL84
+        ErxvJGphJ+RFueAX5YL3zUUt7GLsFQ5+UTj4BeHYaTvXsGdC+LmExMK17J6vgn1JtbYE
+        ASNUrPNQDUN
+        O5i1Dvup/jjaI3g36zoftce3TTQdsLqzL3nYmAWb6cLdno8p8ReY5pkjmouU3
+        97AP9iijF4i6jBW5DZ
+        HCGELFmIwPPP19JWQ6Pev+7nb880BVeu87Dr42k3GbX1Xfu+VCS+Wg
+        VXjYqLoVmXBORGlOyj1Pjn32u
+        2DLItPC/+NZlwoyFwkdefCTHnzvMUntNbi3mf01+7JczEb/
+        AficYQc=
+  recorded_at: 2025-08-19 20:49:05
+recorded_with: VCR-vcr/2.0.0

@@ -1,8 +1,8 @@
 ---
-title: "Nettskjema Attachments: Download and Save"
+title: "Attachments: Download and Save"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Nettskjema Attachments}
+  %\VignetteIndexEntry{Attachments: Download and Save}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

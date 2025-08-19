@@ -18,3 +18,12 @@ forms, and this function uses the
 token provided to check what the
 current user has access to.
 }
+\examples{
+\dontshow{
+vcr::insert_example_cassette("ns_get_forms", package = "nettskjemar")
+}
+ns_get_forms()
+\dontshow{
+vcr::eject_cassette()
+}
+}

@@ -2,7 +2,7 @@
 title: "Fetching Information on Forms"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the Nettskjema API: Fetching Data and Forms}
+  %\VignetteIndexEntry{Fetching Information on Forms}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
