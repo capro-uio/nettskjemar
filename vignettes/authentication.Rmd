@@ -146,7 +146,8 @@ Having a couple of editors is a good idea for redundancy, but make sure to limit
 
 1. **Invalid Credentials**: Ensure your client ID and client secret are correct and have been properly registered in Nettskjema.
 2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token, though this should generally not be necessary, as it is run in the background.
-3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` and restarted your R session, the last part is necessary for R to access the new information. 
+3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` **and** restarted your R session, the last part is necessary for R to access the new information. 
+Subsequent R sessions should automatically load the credentials from `.Renviron`.
 
 ## More information
 More information about the client authentication can be found on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md), where the remaining API is documented.

@@ -5,6 +5,7 @@
 - Added `ns_sitrep()`
 - Added "Custom requests" vignette
 - Switched to cassettes in vignettes
+- Use cassettes in appropriate examples
 
 # nettskjemar 1.0.2
 
