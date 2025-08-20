@@ -18,7 +18,6 @@ vcr::use_cassette("get_raw_codebook_invalid", {
   })
 })
 
-
 test_that("converts raw to structured", {
   vcr::use_cassette("ns_get_codebook_valid", {
     with_mocked_nettskjema_auth(
@@ -94,8 +93,7 @@ test_that("returns formatted string", {
 })
 
 test_that("writes raw codebook to JSON", {
-  temp_file <- tempfile(fileext = ".json")
-  on.exit(unlink(temp_file))
+  temp_file <- withr::local_tempfile(fileext = ".json")
   raw_cb <- list(
     form_id = 123,
     elements = list(list(elementType = "text"))
@@ -108,8 +106,7 @@ test_that("writes raw codebook to JSON", {
 })
 
 test_that("writes codebook to table", {
-  temp_file <- tempfile(fileext = ".txt")
-  on.exit(unlink(temp_file))
+  temp_file <- withr::local_tempfile(fileext = ".txt")
   cb <- data.frame(
     element_no = 1,
     element_type = "text",

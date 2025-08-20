@@ -1,0 +1,23 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/100/info
+  response:
+    status: 404
+    headers:
+      server: nginx
+      date: Wed, 20 Aug 2025 17:40:33 GMT
+      content-length: '71'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=3371DEF1724FFF2079D135AFE016F45D; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+    body:
+      string: '{"message":"Skjemaet med id 100 finnes ikke"}'
+  recorded_at: 2025-08-20 17:40:33
+recorded_with: VCR-vcr/2.0.0

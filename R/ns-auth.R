@@ -75,6 +75,7 @@ ns_req_auth <- function(
 #' @return A configured `httr2::oauth_client` object.
 #'
 #' @examples
+#' \dontrun{
 #' # Example: Initialize an OAuth2 client for Nettskjema
 #' client <- ns_client(
 #'   client_id = "your_client_id",
@@ -87,7 +88,7 @@ ns_req_auth <- function(
 #'   client_secret = "your_client_secret",
 #'   client_name = "custom_client_name"
 #' )
-#'
+#' }
 #' @export
 ns_client <- function(
   client_id,
@@ -142,9 +143,8 @@ ns_has_auth <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
 ) {
-  if (client_id == "" || client_secret == "") {
-    return(FALSE)
-  }
+  cid <- validate_client_pattern(client_id, type = "id")
+  cs <- validate_client_pattern(client_secret, type = "secret")
 
-  TRUE
+  cid && cs
 }

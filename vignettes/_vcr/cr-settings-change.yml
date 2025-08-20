@@ -1,0 +1,19 @@
+http_interactions:
+- request:
+    method: PATCH
+    uri: https://nettskjema.no/api/v3/form/123823/settings
+    body:
+      string: '{"personalDataPurposeDescription":"Testing the API","shouldHideProgressBar":true}'
+  response:
+    status: 204
+    headers:
+      server: nginx
+      date: Tue, 19 Aug 2025 21:48:18 GMT
+      set-cookie: JSESSIONID=F7B1E2EA475267675104B466DC9F9733; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      cache-control: private, max-age=0, no-cache, no-store
+  recorded_at: 2025-08-19 21:48:18
+recorded_with: VCR-vcr/2.0.0
