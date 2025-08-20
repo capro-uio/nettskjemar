@@ -50,9 +50,11 @@ null2na <- function(x) {
   x
 }
 
-mock_auth <- function() {
+mock_if_no_auth <- function() {
   if (!nettskjemar::ns_has_auth()) {
-    Sys.setenv(NETTSKJEMA_CLIENT_ID = "client")
-    Sys.setenv(NETTSKJEMA_CLIENT_SECRET = "secret")
+    Sys.setenv(NETTSKJEMA_CLIENT_ID = "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+    Sys.setenv(
+      NETTSKJEMA_CLIENT_SECRET = "aB3xK9mP2vQ8fR7nL98Mcs81sT4uY6wE5zC0hJ9iO3kM8pN2qA7bD1gF4jH6lS9vX3nR5mT8"
+    )
   }
 }

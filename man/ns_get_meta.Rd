@@ -19,7 +19,7 @@ the meta-data connected to a form.
 \examples{
 \dontshow{
 vcr::insert_example_cassette("ns_get_meta", package = "nettskjemar")
-nettskjemar:::mock_auth()
+nettskjemar:::mock_if_no_auth()
 }
 ns_get_meta(123823)
 \dontshow{

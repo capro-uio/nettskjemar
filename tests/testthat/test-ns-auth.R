@@ -1,13 +1,13 @@
 test_that("ns_client creates an OAuth2 client correctly", {
   # Test case: Valid inputs
   client <- ns_client(
-    client_id = "test_id",
-    client_secret = "test_secret",
+    client_id = mock_client_id,
+    client_secret = mock_client_secret,
     client_name = "test_name"
   )
   expect_s3_class(client, "httr2_oauth_client")
-  expect_equal(client$id, "test_id")
-  expect_equal(client$secret, "test_secret")
+  expect_equal(client$id, mock_client_id)
+  expect_equal(client$secret, mock_client_secret)
   expect_equal(client$name, "test_name")
   expect_equal(
     client$token_url,
@@ -20,8 +20,8 @@ test_that("ns_client creates an OAuth2 client correctly", {
 
   # Test case: Default name
   client_default_name <- ns_client(
-    client_id = "test_id",
-    client_secret = "test_secret"
+    client_id = mock_client_id,
+    client_secret = mock_client_secret
   )
   expect_equal(client_default_name$name, "nettskjemar")
 })
@@ -30,8 +30,8 @@ test_that("ns_req_auth authenticates requests correctly", {
   # Test case: Valid credentials with environment variables
   withr::with_envvar(
     c(
-      NETTSKJEMA_CLIENT_ID = "mock_id",
-      NETTSKJEMA_CLIENT_SECRET = "mock_secret"
+      NETTSKJEMA_CLIENT_ID = mock_client_id,
+      NETTSKJEMA_CLIENT_SECRET = mock_client_secret
     ),
     {
       req <- httr2::request("https://example.com")
@@ -64,8 +64,8 @@ test_that("ns_url returns the correct URL", {
 test_that("ns_has_auth identifies variables", {
   withr::with_envvar(
     c(
-      NETTSKJEMA_CLIENT_ID = "dummy_id",
-      NETTSKJEMA_CLIENT_SECRET = "dummy_secret"
+      NETTSKJEMA_CLIENT_ID = mock_client_id,
+      NETTSKJEMA_CLIENT_SECRET = mock_client_secret
     ),
     {
       expect_true(ns_has_auth())

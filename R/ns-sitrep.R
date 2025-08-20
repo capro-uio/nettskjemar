@@ -25,7 +25,7 @@
 #' @examples
 #' \dontshow{
 #' vcr::insert_example_cassette("ns_sitrep", package = "nettskjemar")
-#' nettskjemar:::mock_auth()
+#' nettskjemar:::mock_if_no_auth()
 #' }
 #'
 #' ns_sitrep()
@@ -147,7 +147,7 @@ ns_sitrep <- function() {
 #'     input format is valid, otherwise
 #' @noRd
 validate_client_pattern <- function(x, type = c("id", "secret")) {
-  match.arg(type, c("id", "secret"))
+  type <- match.arg(type, c("id", "secret"))
 
   # nolint start
   pattern <- switch(

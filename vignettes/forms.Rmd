@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "forms-")
-nettskjemar:::mock_auth()
+nettskjemar:::mock_if_no_auth()
 
 ```
 

@@ -33,7 +33,7 @@ credentials are configured.
 \examples{
 \dontshow{
 vcr::insert_example_cassette("ns_sitrep", package = "nettskjemar")
-nettskjemar:::mock_auth()
+nettskjemar:::mock_if_no_auth()
 }
 
 ns_sitrep()

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "lab-")
-nettskjemar:::mock_auth()
+nettskjemar:::mock_if_no_auth()
 
 ```
 

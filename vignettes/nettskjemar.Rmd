@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 )
 
 vcr::setup_knitr(prefix = "ns-")
-nettskjemar:::mock_auth()
+nettskjemar:::mock_if_no_auth()
 ```
 
 Nettskjemar connects to version 3 of the [nettskjema api](https://api.nettskjema.no/v3/swagger-ui/index.html), and the main functionality here is to download data from a form into R.

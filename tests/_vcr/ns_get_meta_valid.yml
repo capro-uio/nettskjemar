@@ -6,11 +6,11 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 20:59:40 GMT
-      content-length: '404'
+      date: Wed, 20 Aug 2025 17:40:33 GMT
+      content-length: '406'
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=17B09010C87284B2D4748B8FADC5888B; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=3DAFF795C2A56BA68929909DBB418BB4; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -40,6 +40,6 @@ http_interactions:
       content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
       tdm-reservation: '1'
     body:
-      string: '{"title":"API test form","canEditForm":true,"isCodebookValid":true,"hasSubmissions":true,"modifiedDate":"2025-08-19T21:41:06","modifiedBy":{"personId":3439404,"username":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","name":"nettskjemar","email":"athanasm@uio.no","type":"API_CLIENT"},"isOpen":false,"deliveryDestination":"DATABASE","projectName":null,"numberOfPostponedSubmissions":0,"numberOfSubmissions":3,"numberOfInvitations":0,"editorsContactEmail":"a.m.mowinckel@psykologi.uio.no","editorsContactUrl":null,"lastSubmissionDate":"2023-06-01T20:59:50","markedForDeletionDate":null,"deleteDate":null,"receiptText":null}'
-  recorded_at: 2025-08-19 20:59:40
+      string: '{"title":"API test form","canEditForm":true,"isCodebookValid":true,"hasSubmissions":true,"modifiedDate":"2025-08-19T23:48:18","modifiedBy":{"personId":3439404,"username":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","name":"nettskjemar","email":"athanasm@uio.no","type":"API_CLIENT"},"isOpen":false,"deliveryDestination":"DATABASE","projectName":null,"numberOfPostponedSubmissions":0,"numberOfSubmissions":3,"numberOfInvitations":0,"editorsContactEmail":"a.m.mowinckel@psykologi.uio.no","editorsContactUrl":null,"lastSubmissionDate":"2023-06-01T20:59:50","markedForDeletionDate":null,"deleteDate":null,"receiptText":null}'
+  recorded_at: 2025-08-20 17:40:33
 recorded_with: VCR-vcr/2.0.0
