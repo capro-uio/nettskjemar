@@ -6,9 +6,9 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 19 Aug 2025 21:48:19 GMT
+      date: Tue, 26 Aug 2025 11:08:29 GMT
       content-type: application/x-ndjson
-      set-cookie: JSESSIONID=D619B525D1CA1B80921EFB0FB5B89CAA; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=B40B18CA4A0482DCB0B69B08E545621C; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       x-application-gateway-proxy: api-own-auth
@@ -62,5 +62,5 @@ http_interactions:
         E7VtnbK/qxVW5dAauCLEXGyifusTElUK1tAVITpAdBMuZ4i7xDkxQlxBqJUrwib21dX
         TIV2x
         UcnXVqrIEafGxtnNT1uoIhMDqYkqagLmf+x1dw0=
-  recorded_at: 2025-08-19 21:48:19
+  recorded_at: 2025-08-26 11:08:29
 recorded_with: VCR-vcr/2.0.0

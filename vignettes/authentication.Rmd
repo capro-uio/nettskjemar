@@ -31,6 +31,7 @@ Authentication is required to connect to the API endpoints and perform operation
 ### Setting up a client
 
 Before using the functions, you need the following:
+
 1. **A registered API client** in Nettskjema.
 2. **Your client credentials** (client ID and client secret). These are provided when you register the client.
 
@@ -77,26 +78,13 @@ ns_sitrep()
 
 ```
 
+The situation report will inform you if:
 
-### Retrieve the Access Token
+- Your client ID and client secret are set.
+- You can successfully authenticate with the Nettskjema API.
+- You have access to any forms through the API.
 
-Use the `ns_auth_token` function to retrieve your access token. 
-This function exchanges your client credentials for a valid token. The token is cached by default for efficiency.
-
-```{r}
-#| label: me
-#| cassette: true
-
-# Try getting your user information
-ns_get_me()
-```
-
-If this returns a data.frame of all the forms this client has access to.
-
-By default, the token is stored in your home directory as `.nettskjema_token.rds` with a 24-hour validity period (max validity of a token).
-The token is automatically refreshed after the 24--hour period is over, and you as a user should not even notice that this happens.
-
-You can configure the caching path using the `cache_path` argument of the function, if you are comfortable doing that.
+If everything is set up correctly, you should see a message indicating that you are authenticated and ready to use the API.
 
 ### Accessing forms
 
@@ -147,9 +135,9 @@ Having a couple of editors is a good idea for redundancy, but make sure to limit
 ## Troubleshooting
 
 1. **Invalid Credentials**: Ensure your client ID and client secret are correct and have been properly registered in Nettskjema.
-2. **Token Expiry**: Tokens are valid for 24 hours by default. Re-run `ns_auth_token` to refresh the token, though this should generally not be necessary, as it is run in the background.
-3. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` **and** restarted your R session, the last part is necessary for R to access the new information. 
+2. **Environment Variables Not Loaded**: Ensure you've added your credentials to `.Renviron` **and** restarted your R session, the last part is necessary for R to access the new information. 
 Subsequent R sessions should automatically load the credentials from `.Renviron`.
 
 ## More information
+
 More information about the client authentication can be found on the [UiO webpages](https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md), where the remaining API is documented.
