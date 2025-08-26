@@ -29,13 +29,8 @@ auxiliary forms that can be retrieved.
 }
 \examples{
 \dontrun{
-ns_get_form_reports(10009, type="csv")
-ns_get_form_reports(10009, type="excel")
-ns_get_form_reports(10009, type="spss")
-ns_get_form_reports(
-  10009,
-  type="spss",
-  path = "~/Desktop/10009/form.sav"
-)
+ns_get_form_reports(123823, type="csv")
+ns_get_form_reports(123823, type="excel")
+ns_get_form_reports(123823, type="spss")
 }
 }

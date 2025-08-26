@@ -7,9 +7,13 @@
 #' @return list of class ns_meta_data
 #' @export
 #' @examples
-#' \dontrun{
-#' meta_110000 <- ns_get_meta(110000)
-#'
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_meta", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' ns_get_meta(123823)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_meta <- function(form_id) {
   resp <- ns_req() |>
@@ -83,7 +87,7 @@ ns_write_meta.default <- function(meta, path, ...) {
 ns_write_meta.ns_meta <- function(meta, path, ...) {
   if (!grepl("json$", path)) {
     cli::cli_alert_info("Switching file extension to .json")
-    path <- sprintf("%sjson", rm_ext(path))
+    path <- sprintf("%s.json", rm_ext(path))
   }
   jsonlite::write_json(
     meta,

@@ -7,7 +7,22 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+#| label: setup
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE,
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "meta-")
+nettskjemar:::mock_if_no_auth()
+
+```
 
 # Overview
 
@@ -33,8 +48,10 @@ The retrieved metadata is returned as an object of class `ns_meta`.
 
 Here’s an example of how to retrieve metadata for a form:
 
+```{r}
+#| label: meta
+#| cassette: true
 
-``` r
 library(nettskjemar)
 
 # Replace this with your form ID
@@ -45,76 +62,6 @@ form_meta <- ns_get_meta(formid)
 
 # Display the metadata
 form_meta
-#> $form_id
-#> [1] 123823
-#> 
-#> $title
-#> [1] "API test form"
-#> 
-#> $canEditForm
-#> [1] TRUE
-#> 
-#> $isCodebookValid
-#> [1] TRUE
-#> 
-#> $hasSubmissions
-#> [1] TRUE
-#> 
-#> $modifiedDate
-#> [1] "2025-06-12T16:30:22"
-#> 
-#> $modifiedBy
-#> $modifiedBy$personId
-#> [1] 3439404
-#> 
-#> $modifiedBy$username
-#> [1] "ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient"
-#> 
-#> $modifiedBy$name
-#> [1] "nettskjemar"
-#> 
-#> $modifiedBy$email
-#> [1] "athanasm@uio.no"
-#> 
-#> $modifiedBy$type
-#> [1] "API_CLIENT"
-#> 
-#> 
-#> $isOpen
-#> [1] FALSE
-#> 
-#> $deliveryDestination
-#> [1] "DATABASE"
-#> 
-#> $projectName
-#> NULL
-#> 
-#> $numberOfPostponedSubmissions
-#> [1] 0
-#> 
-#> $numberOfSubmissions
-#> [1] 3
-#> 
-#> $numberOfInvitations
-#> [1] 0
-#> 
-#> $editorsContactEmail
-#> [1] "a.m.mowinckel@psykologi.uio.no"
-#> 
-#> $editorsContactUrl
-#> NULL
-#> 
-#> $lastSubmissionDate
-#> [1] "2023-06-01T20:59:50"
-#> 
-#> $markedForDeletionDate
-#> NULL
-#> 
-#> $deleteDate
-#> NULL
-#> 
-#> attr(,"class")
-#> [1] "ns_meta" "list"
 ```
 
 The metadata object includes various details about the form, such as the title, number of submissions, and whether the codebook is valid.
@@ -126,21 +73,19 @@ You can directly access individual fields in the metadata object as you would wi
 
 ### Example: Access Specific Metadata Fields
 
+```{r}
+#| label: meta-2
 
-``` r
 # Access the title of the form
 form_meta$title
-#> [1] "API test form"
 
 # Check the number of submissions
 num_submissions <- form_meta$numberOfSubmissions
 print(paste("Number of submissions:", num_submissions))
-#> [1] "Number of submissions: 3"
 
 # Check if the form is open
 is_open <- form_meta$isOpen
 print(paste("Is the form open?:", is_open))
-#> [1] "Is the form open?: FALSE"
 ```
 
 # Saving Metadata to a File: `ns_write_meta`
@@ -150,7 +95,9 @@ The `ns_write_meta` function writes the metadata into a JSON file, preserving al
 
 ## Example: Save Metadata as a JSON File
 
-```r
+```{r}
+#| label: meta-3
+
 # Replace with your desired file path
 output_path <- "meta_110000.json"
 
@@ -162,7 +109,9 @@ ns_write_meta(form_meta, output_path)
 
 If your file doesn’t have a `.json` extension, the function will automatically append it to the file name.
 
-```r
+```{r}
+#| label: meta-4
+
 # Save to a file without .json extension
 ns_write_meta(form_meta, "meta_file")
 
@@ -174,8 +123,24 @@ ns_write_meta(form_meta, "meta_file")
 The `ns_write_meta` function supports any additional arguments passed to the [jsonlite::write_json](https://cran.r-project.org/package=jsonlite) function.
 For example, you can specify `pretty = TRUE` for a more human-readable format.
 
-```r
+```{r}
+#| label: meta-5
+
 # Save the metadata in a pretty-printed JSON file
-ns_write_meta(form_meta, "pretty_meta.json", pretty = TRUE)
+ns_write_meta(
+  form_meta,
+  "pretty_meta.json",
+  pretty = TRUE
+)
 ```
 
+```{r}
+#| label: meta-cleanuo
+#| include: false
+
+file.remove(c(
+  "meta_110000.json",
+  "meta_file.json",
+  "pretty_meta.json"
+))
+```

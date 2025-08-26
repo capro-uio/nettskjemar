@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: PATCH
+    uri: https://nettskjema.no/api/v3/form/123823/settings
+    body:
+      string: '{"postponable":true}'
+  response:
+    status: 400
+    headers:
+      server: nginx
+      date: Tue, 26 Aug 2025 11:08:28 GMT
+      content-length: '199'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=04586381FD7D3950E4EED0B47474EDB8; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+    body:
+      string: '{"message":"Valideringsfeil","errors":{"postponable":["Mellomlagring
+        er bare tillatt for skjemaer med FEIDE-respondenter, er satt til å samle inn
+        personopplysninger og som leverer til Nettskjema"]},"confirmForceCleanupErrors":{}}'
+  recorded_at: 2025-08-26 11:08:28
+recorded_with: VCR-vcr/2.0.0

@@ -16,3 +16,5 @@
 ^CRAN-SUBMISSION$
 .lintr
 _pkgdown.yml
+^doc$
+^Meta$

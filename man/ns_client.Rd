@@ -24,6 +24,7 @@ This function initializes an OAuth2 client using
 authenticate and interact with the Nettskjema API.
 }
 \examples{
+\dontrun{
 # Example: Initialize an OAuth2 client for Nettskjema
 client <- ns_client(
   client_id = "your_client_id",
@@ -36,5 +37,5 @@ client <- ns_client(
   client_secret = "your_client_secret",
   client_name = "custom_client_name"
 )
-
+}
 }
