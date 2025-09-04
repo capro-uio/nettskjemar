@@ -1,57 +1,53 @@
-# # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#   schedule:
-#     - cron: "30 2 * * 0"
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # schedule:
+  #   - cron: "30 2 * * 0"
 
-# name: Check API endpoints
+name: Check API endpoints
 
-# permissions: read-all
+permissions: read-all
 
-# jobs:
-#   R-CMD-check:
-#     runs-on: ubuntu-latest
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-latest
+    name: Check API responses
 
-#     name: Check API responses
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+      NETTSKJEMA_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      NETTSKJEMA_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      VCR_TURN_OFF: true
 
-#     env:
-#       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-#       R_KEEP_PKG_SOURCE: yes
+    steps:
+      - uses: actions/checkout@v4
 
-#     steps:
-#       - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-pandoc@v2
 
-#       - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+          http-user-agent: "release"
+          use-public-rspm: true
 
-#       - uses: r-lib/actions/setup-r@v2
-#         with:
-#           r-version: "release"
-#           http-user-agent: "release"
-#           use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::rcmdcheck
+            any::knitr
+          needs: check
 
-#       - uses: r-lib/actions/setup-r-dependencies@v2
-#         with:
-#           extra-packages: |
-#             any::rcmdcheck
-#             any::knitr
-#           needs: check
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
+          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
 
-#       - name: "Setup env for full test suite"
-#         run: |
-#           echo "NETTSKJEMA_CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .Renviron
-#           echo "NETTSKJEMA_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> .Renviron
-#           echo "VCR_TURN_OFF=true" >> .Renviron
-
-#       - uses: r-lib/actions/check-r-package@v2
-#         with:
-#           upload-snapshots: true
-#           build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
-
-#       - name: Build vignettes
-#         run: |
-#           install.packages(".", repos = NULL, type = "source")
-#           nettskjemar:::knit_vignettes()
-#         shell: Rscript {0}
+      - name: Build vignettes
+        run: |
+          install.packages(".", repos = NULL, type = "source")
+          nettskjemar:::knit_vignettes()
+        shell: Rscript {0}
