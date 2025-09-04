@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml)
-[![DOI](https://zenodo.org/badge/206264675.svg)](https://zenodo.org/badge/latestdoi/206264675)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4745481.svg)](https://doi.org/10.5281/zenodo.4745481)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/nettskjemar)](https://CRAN.R-project.org/package=nettskjemar)
-[![Codecov test coverage](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg)](https://app.codecov.io/gh/capro-uio/nettskjemar)
+[![codecov](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg?token=fGDbrZdnkp)](https://codecov.io/gh/capro-uio/nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form information on the [Nettskjema](https://nettskjema.no/) service by the [University of Oslo, Norway](https://www.uio.no/english/).
