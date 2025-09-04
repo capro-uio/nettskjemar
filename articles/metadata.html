@@ -135,7 +135,7 @@ returned as an object of class <code>ns_meta</code>.</p>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $modifiedDate</span></span>
-<span><span class="co">#&gt; [1] "2025-06-12T16:30:22"</span></span>
+<span><span class="co">#&gt; [1] "2025-08-26T13:08:28"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $modifiedBy</span></span>
 <span><span class="co">#&gt; $modifiedBy$personId</span></span>
@@ -185,6 +185,9 @@ returned as an object of class <code>ns_meta</code>.</p>
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $deleteDate</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $receiptText</span></span>
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attr(,"class")</span></span>
@@ -242,6 +245,7 @@ function will automatically append it to the file name.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save to a file without .json extension</span></span>
 <span><span class="fu"><a href="../reference/ns_write_meta.html">ns_write_meta</a></span><span class="op">(</span><span class="va">form_meta</span>, <span class="st">"meta_file"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Switching file extension to .json</span></span>
 <span></span>
 <span><span class="co"># The file will be saved as "meta_file.json"</span></span></code></pre></div>
 </div>
@@ -254,7 +258,11 @@ function. For example, you can specify <code>pretty = TRUE</code> for a
 more human-readable format.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the metadata in a pretty-printed JSON file</span></span>
-<span><span class="fu"><a href="../reference/ns_write_meta.html">ns_write_meta</a></span><span class="op">(</span><span class="va">form_meta</span>, <span class="st">"pretty_meta.json"</span>, pretty <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/ns_write_meta.html">ns_write_meta</a></span><span class="op">(</span></span>
+<span>  <span class="va">form_meta</span>,</span>
+<span>  <span class="st">"pretty_meta.json"</span>,</span>
+<span>  pretty <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>

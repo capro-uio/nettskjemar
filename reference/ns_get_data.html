@@ -86,7 +86,7 @@ The responses are placed in a data.frame for easy use.</p>
 <dd><p>- Returns data in the same tabular format
      as delivered by Nettskjema.</p></dd>
 
-<dt>"long"</dt>
+ <dt>"long"</dt>
 <dd><p>- Returns the data in tall format, where
      there are multiple rows per participant (one per question)
      and each choice is timestamped.</p></dd>
@@ -101,12 +101,326 @@ The responses are placed in a data.frame for easy use.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Retrieve all data</span></span></span>
-<span class="r-in"><span><span class="va">data_110000</span> <span class="op">&lt;-</span> <span class="fu">ns_get_data</span><span class="op">(</span><span class="fl">110000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ns_get_data</span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   formid $submission_id                  $created       freetext radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 123823       27685292 2023-06-01T20:57:15+02:00      some text     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 123823       27685302 2023-06-01T20:58:33+02:00 another answer    -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 123823       27685319 2023-06-01T20:59:50+02:00                   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox.questionnaires checkbox.events checkbox.logs dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       1               1             0        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       0               0             1        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                       1               1             1        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   radio_matrix.grants radio_matrix.lecture radio_matrix.email</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   1                    2                  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   3                    3                  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   1                    1                  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox_matrix.1.IT checkbox_matrix.1.colleague checkbox_matrix.1.admin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    1                           1                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                    0                           0                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                    0                           1                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox_matrix.1.union checkbox_matrix.1.internet checkbox_matrix.2.IT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       0                          0                    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       0                          1                    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                       0                          1                    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox_matrix.2.colleague checkbox_matrix.2.admin checkbox_matrix.2.union</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           0                       1                       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                           0                       1                       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                           1                       1                       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox_matrix.2.internet       date  time         datetime number_decimal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          0 2023-06-01 12:00 2023-06-12T13:33            4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                          0 2023-02-07 14:45 2024-02-15T08:55            2.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                          0 2022-09-28 05:11 2022-03-03T07:29           10.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number_integer slider attachment_1 attachment_2 $answer_time_ms</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           77.0      3    sølvi.png                        74630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           45.0      1               marius.jpeg           71313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3           98.0      9                                     70230</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu">ns_get_data</span><span class="op">(</span><span class="fl">123823</span>, <span class="st">"long"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    formid formId submissionId  answerId elementId externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  123823 123823     27685292 158263133   1641697          freetext</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  123823 123823     27685292 158263124   1641698             radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  123823 123823     27685292 158263127   1641699          checkbox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  123823 123823     27685292 158263135   1641700          dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  123823 123823     27685292 158263130   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  123823 123823     27685292 158263132   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  123823 123823     27685292 158263128   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  123823 123823     27685292 158263121   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  123823 123823     27685292 158263125   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 123823 123823     27685292 158263122   1641703              date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 123823 123823     27685292 158263123   1641704              time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 123823 123823     27685292 158263136   1641705          datetime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 123823 123823     27685292 158263126   1641706    number_decimal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 123823 123823     27685292 158263131   1641707    number_integer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 123823 123823     27685292 158263129   3472259            slider</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 123823 123823     27685292 158263134   1641713      attachment_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 123823 123823     27685302 158263178   1641697          freetext</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 123823 123823     27685302 158263182   1641698             radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 123823 123823     27685302 158263177   1641699          checkbox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 123823 123823     27685302 158263186   1641700          dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 123823 123823     27685302 158263184   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 123823 123823     27685302 158263179   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 123823 123823     27685302 158263171   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 123823 123823     27685302 158263181   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 123823 123823     27685302 158263173   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 123823 123823     27685302 158263175   1641703              date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 123823 123823     27685302 158263176   1641704              time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 123823 123823     27685302 158263183   1641705          datetime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 123823 123823     27685302 158263180   1641706    number_decimal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 123823 123823     27685302 158263172   1641707    number_integer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 123823 123823     27685302 158263174   3472259            slider</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 123823 123823     27685302 158263185   3525020      attachment_2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 123823 123823     27685319 158263284   1641698             radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 123823 123823     27685319 158263290   1641699          checkbox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 123823 123823     27685319 158263291   1641700          dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 123823 123823     27685319 158263283   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 123823 123823     27685319 158263282   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 123823 123823     27685319 158263289   1641701      radio_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 123823 123823     27685319 158263293   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 123823 123823     27685319 158263288   1641702   checkbox_matrix</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 123823 123823     27685319 158263294   1641703              date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 123823 123823     27685319 158263285   1641704              time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 123823 123823     27685319 158263281   1641705          datetime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 123823 123823     27685319 158263287   1641706    number_decimal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 123823 123823     27685319 158263286   1641707    number_integer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 123823 123823     27685319 158263292   3472259            slider</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          textAnswer                      answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         some text                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              &lt;NA&gt;                              3879435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3              &lt;NA&gt;                     3879437, 3879438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4              &lt;NA&gt;                              3879439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5              &lt;NA&gt;                              3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6              &lt;NA&gt;                              3879442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7              &lt;NA&gt;                              3879442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8              &lt;NA&gt;                     3879443, 3879444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9              &lt;NA&gt;                             13309370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10       01.06.2023                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11            12:00                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 12.06.2023 13:33                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13              4,5                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14               77                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                3                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16        sølvi.png                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   another answer                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18             &lt;NA&gt;                              3879436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19             &lt;NA&gt;                             13309366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20             &lt;NA&gt;                              3879440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21             &lt;NA&gt;                             13309369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22             &lt;NA&gt;                             13309369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23             &lt;NA&gt;                              3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24             &lt;NA&gt;                             13309372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25             &lt;NA&gt;                   13309370, 13309371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26       07.02.2023                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27            14:45                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 15.02.2024 08:55                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29              2,2                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30               45                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                1                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32      marius.jpeg                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33             &lt;NA&gt;                              3879436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34             &lt;NA&gt;           3879437, 3879438, 13309366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35             &lt;NA&gt;                              3879439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36             &lt;NA&gt;                              3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37             &lt;NA&gt;                              3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38             &lt;NA&gt;                              3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39             &lt;NA&gt;                    3879444, 13309372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40             &lt;NA&gt; 3879443, 3879444, 13309370, 13309371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41       28.09.2022                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42            05:11                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 03.03.2022 07:29                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44               10                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45               98                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46                9                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         externalAnswerOptionIds     elementType         createdDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                      QUESTION 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                             1           RADIO 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        questionnaires, events        CHECKBOX 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                             4          SELECT 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                             1    MATRIX_RADIO 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                             2    MATRIX_RADIO 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                             2    MATRIX_RADIO 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                 IT, colleague MATRIX_CHECKBOX 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                         admin MATRIX_CHECKBOX 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                                         DATE 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                                         DATE 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                                         DATE 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                                       NUMBER 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                                       NUMBER 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                                 LINEAR_SCALE 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                                   ATTACHMENT 2023-06-01T20:57:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                                     QUESTION 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                           -1           RADIO 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                         logs        CHECKBOX 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                            9          SELECT 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21                            3    MATRIX_RADIO 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22                            3    MATRIX_RADIO 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23                            1    MATRIX_RADIO 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24                     internet MATRIX_CHECKBOX 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25                 admin, union MATRIX_CHECKBOX 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26                                         DATE 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27                                         DATE 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                                         DATE 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                                       NUMBER 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                                       NUMBER 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                                 LINEAR_SCALE 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32                                   ATTACHMENT 2023-06-01T20:58:33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33                           -1           RADIO 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 questionnaires, events, logs        CHECKBOX 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35                            4          SELECT 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36                            1    MATRIX_RADIO 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37                            1    MATRIX_RADIO 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38                            1    MATRIX_RADIO 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39          colleague, internet MATRIX_CHECKBOX 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  IT, colleague, admin, union MATRIX_CHECKBOX 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41                                         DATE 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42                                         DATE 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43                                         DATE 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44                                       NUMBER 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45                                       NUMBER 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46                                 LINEAR_SCALE 2023-06-01T20:59:50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           modifiedDate subElementId answerAttachmentId    filename  mediaType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2023-06-01T20:57:15      1649734                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2023-06-01T20:57:15      1649735                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  2023-06-01T20:57:15      5973024                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  2023-06-01T20:57:15      1649736                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  2023-06-01T20:57:15      1649737                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 2023-06-01T20:57:15           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 2023-06-01T20:57:15           NA             538819   sølvi.png  image/png</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 2023-06-01T20:58:33      1649734                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 2023-06-01T20:58:33      1649735                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 2023-06-01T20:58:33      5973024                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 2023-06-01T20:58:33      1649736                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 2023-06-01T20:58:33      1649737                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 2023-06-01T20:58:33           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 2023-06-01T20:58:33           NA             538820 marius.jpeg image/jpeg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 2023-06-01T20:59:50      1649734                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 2023-06-01T20:59:50      1649735                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 2023-06-01T20:59:50      5973024                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 2023-06-01T20:59:50      1649736                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 2023-06-01T20:59:50      1649737                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 2023-06-01T20:59:50           NA                 NA        &lt;NA&gt;       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      size attachment.answerAttachmentId attachment.filename</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9      NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 628613                        538819           sølvi.png</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  89494                        538820         marius.jpeg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46     NA                            NA                &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    attachment.mediaType attachment.size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9                  &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16            image/png          628613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32           image/jpeg           89494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45                 &lt;NA&gt;              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46                 &lt;NA&gt;              NA</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

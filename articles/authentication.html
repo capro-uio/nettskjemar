@@ -93,10 +93,14 @@ operations.</p>
 <div class="section level3">
 <h3 id="setting-up-a-client">Setting up a client<a class="anchor" aria-label="anchor" href="#setting-up-a-client"></a>
 </h3>
-<p>Before using the functions, you need the following: 1. <strong>A
-registered API client</strong> in Nettskjema. 2. <strong>Your client
-credentials</strong> (client ID and client secret). These are provided
-when you register the client.</p>
+<p>Before using the functions, you need the following:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>A registered API client</strong> in Nettskjema.</li>
+<li>
+<strong>Your client credentials</strong> (client ID and client
+secret). These are provided when you register the client.</li>
+</ol>
 <p>To register a client go to the <a href="https://authorization.nettskjema.no/" class="external-link">nettskjema authorization
 portal</a> or use the <code><a href="../reference/ns_create_client.html">ns_create_client()</a></code> function to open
 the url. Here you will be asked to log in with your user account, so you
@@ -129,54 +133,44 @@ Nettskjema.</p>
 </ol>
 </div>
 <div class="section level3">
-<h3 id="retrieve-the-access-token">Retrieve the Access Token<a class="anchor" aria-label="anchor" href="#retrieve-the-access-token"></a>
+<h3 id="check-your-situation-report">Check your Situation report<a class="anchor" aria-label="anchor" href="#check-your-situation-report"></a>
 </h3>
-<p>Use the <code>ns_auth_token</code> function to retrieve your access
-token. This function exchanges your client credentials for a valid
-token. The token is cached by default for efficiency.</p>
+<p>Once you have these two environment variables set, you should check
+your status with connecting to the API by running
+<code><a href="../reference/ns_sitrep.html">ns_sitrep()</a></code>. This function should give you a clear report
+on whether you are ready to connect to the API.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Try getting your user information</span></span>
-<span><span class="fu"><a href="../reference/ns_get_me.html">ns_get_me</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $isPersonalDataResponsible</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="../reference/ns_sitrep.html">ns_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $displayName</span></span>
-<span><span class="co">#&gt; [1] "ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient"</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Nettskjema API Sitrep</span> <span style="color: #00BBBB;">───────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> nettskjemar version: <span style="color: #0000BB;">1.0.2.9003</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $logoutLink</span></span>
-<span><span class="co">#&gt; [1] "/signout"</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Nettskjema API Configuration</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $isSuperUser</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> API URL is set to: <span style="color: #0000BB;">"https://nettskjema.no/api/v3/"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Client ID: Valid format and length.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Client Secret: Valid format and length.</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $isAuthenticated</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">API Connectivity</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $userType</span></span>
-<span><span class="co">#&gt; [1] "UNKNOWN_ROLE"</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Successfully connected to API</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Tested by fetching client profile</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $hasAcceptedTos</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Environment</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $isSupportUser</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $isAdministrativeUser</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $isInLdapGroupUioTils</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
-<p>If this returns a data.frame of all the forms this client has access
-to.</p>
-<p>By default, the token is stored in your home directory as
-<code>.nettskjema_token.rds</code> with a 24-hour validity period (max
-validity of a token). The token is automatically refreshed after the
-24–hour period is over, and you as a user should not even notice that
-this happens.</p>
-<p>You can configure the caching path using the <code>cache_path</code>
-argument of the function, if you are comfortable doing that.</p>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> R version: <span style="color: #0000BB;">"R version 4.5.1 (2025-06-13)"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> OS: <span style="color: #0000BB;">"Linux"</span> <span style="color: #0000BB;">"6.11.0-1018-azure"</span></span></span>
+<span><span class="co">#&gt; ────────────────────────────────────────────────────────────────────────────────</span></span></code></pre></div>
+<p>The situation report will inform you if:</p>
+<ul>
+<li>Your client ID and client secret are set.</li>
+<li>You can successfully authenticate with the Nettskjema API.</li>
+<li>You have access to any forms through the API.</li>
+</ul>
+<p>If everything is set up correctly, you should see a message
+indicating that you are authenticated and ready to use the API.</p>
 </div>
 <div class="section level3">
 <h3 id="accessing-forms">Accessing forms<a class="anchor" aria-label="anchor" href="#accessing-forms"></a>
@@ -265,15 +259,11 @@ members.</p>
 client secret are correct and have been properly registered in
 Nettskjema.</li>
 <li>
-<strong>Token Expiry</strong>: Tokens are valid for 24 hours by
-default. Re-run <code>ns_auth_token</code> to refresh the token, though
-this should generally not be necessary, as it is run in the
-background.</li>
-<li>
 <strong>Environment Variables Not Loaded</strong>: Ensure you’ve
-added your credentials to <code>.Renviron</code> and restarted your R
-session, the last part is necessary for R to access the new
-information.</li>
+added your credentials to <code>.Renviron</code> <strong>and</strong>
+restarted your R session, the last part is necessary for R to access the
+new information. Subsequent R sessions should automatically load the
+credentials from <code>.Renviron</code>.</li>
 </ol>
 </div>
 <div class="section level2">
@@ -281,9 +271,7 @@ information.</li>
 </h2>
 <p>More information about the client authentication can be found on the
 <a href="https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md" class="external-link">UiO
-webpages</a>.</p>
-<p>You can find more information about the Nettskjema v3 API on the <a href="https://www.uio.no/tjenester/it/adm-app/nettskjema/hjelp/api-clients-v3.md" class="external-link">official
-UiO documentation pages</a>.</p>
+webpages</a>, where the remaining API is documented.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

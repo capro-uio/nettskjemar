@@ -73,9 +73,517 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu">ns_get_submission</span><span class="op">(</span><span class="fl">1100</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ns_get_submission</span><span class="op">(</span><span class="fl">27685292</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$formId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 123823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$answerTime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 74630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$createdDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-06-01T20:57:15"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$modifiedDate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-06-01T20:57:15"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$anonymous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$deliveryDestination</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DATABASE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$person</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$person$name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $submissionMetadata$person$email</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "freetext"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "some text"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[1]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "QUESTION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641698</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "radio"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[2]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RADIO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641699</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "checkbox"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$answerOptionIds[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "questionnaires"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$externalAnswerOptionIds[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "events"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[3]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CHECKBOX"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dropdown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[4]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SELECT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "radio_matrix"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MATRIX_RADIO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[5]]$subElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1649734</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "radio_matrix"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MATRIX_RADIO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[6]]$subElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1649735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "radio_matrix"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MATRIX_RADIO"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[7]]$subElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5973024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "checkbox_matrix"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$answerOptionIds[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3879444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$externalAnswerOptionIds[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "colleague"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MATRIX_CHECKBOX"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[8]]$subElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1649736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "checkbox_matrix"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$answerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13309370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$externalAnswerOptionIds[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "admin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MATRIX_CHECKBOX"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[9]]$subElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1649737</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "date"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "01.06.2023"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[10]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DATE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "time"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12:00"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[11]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DATE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641705</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "datetime"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "12.06.2023 13:33"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[12]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DATE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641706</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "number_decimal"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4,5"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[13]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NUMBER"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641707</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "number_integer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "77"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[14]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NUMBER"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263129</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3472259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "slider"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[15]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "LINEAR_SCALE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$submissionId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 27685292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$answerId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 158263134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$elementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1641713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$externalElementId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "attachment_1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$textAnswer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sølvi.png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$answerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$externalAnswerOptionIds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$answerAttachmentId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 538819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$filename</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sølvi.png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$mediaType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "image/png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 628613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$elementType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ATTACHMENT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$attachment</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$attachment$answerAttachmentId</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 538819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$attachment$filename</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sølvi.png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$attachment$mediaType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "image/png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $answers[[16]]$attachment$size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 628613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

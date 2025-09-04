@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Creating custom requests • nettskjemar</title>
+<title>Building custom requests • nettskjemar</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Creating custom requests">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Building custom requests">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -73,7 +73,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Creating custom requests</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Building custom requests</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/custom_requests.Rmd" class="external-link"><code>vignettes/custom_requests.Rmd</code></a></small>
@@ -119,12 +119,12 @@ you connect to the correct API with the correct credentials.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/ns_req.html">ns_req</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; GET https://nettskjema.no/api/v3/</span></span>
-<span><span class="co">#&gt; Body: empty</span></span>
-<span><span class="co">#&gt; Policies:</span></span>
-<span><span class="co">#&gt; • auth_sign : &lt;list&gt;</span></span>
-<span><span class="co">#&gt; • auth_oauth: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_request&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">GET</span> https://nettskjema.no/api/v3/</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
 <p>As you can see, the output here shows the URL until the
 <code>v3</code> section, and also that there is Authorization added,
 which the function does in the background for you with the
@@ -137,13 +137,12 @@ remaining url.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/ns_req.html">ns_req</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_url.html" class="external-link">req_url_path_append</a></span><span class="op">(</span><span class="st">"form"</span>, <span class="va">formid</span>, <span class="st">"settings"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; GET</span></span>
-<span><span class="co">#&gt; https://nettskjema.no/api/v3/form/123823/settings</span></span>
-<span><span class="co">#&gt; Body: empty</span></span>
-<span><span class="co">#&gt; Policies:</span></span>
-<span><span class="co">#&gt; • auth_sign : &lt;list&gt;</span></span>
-<span><span class="co">#&gt; • auth_oauth: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_request&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">GET</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
 <p>Now, you can see that the path is as requested in the API
 documentation. But the request has not been submitted yet! So far, we
 have just been creating the command we want to send to the API. To send
@@ -155,12 +154,11 @@ httr2.</p>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">response</span></span>
-<span><span class="co">#&gt; &lt;httr2_response&gt;</span></span>
-<span><span class="co">#&gt; GET</span></span>
-<span><span class="co">#&gt; https://nettskjema.no/api/v3/form/123823/settings</span></span>
-<span><span class="co">#&gt; Status: 200 OK</span></span>
-<span><span class="co">#&gt; Content-Type: application/json</span></span>
-<span><span class="co">#&gt; Body: In memory (2032 bytes)</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_response&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">GET</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Status</span>: 200 OK</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Content-Type</span>: application/json</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Body</span>: In memory (2047 bytes)</span></span></code></pre></div>
 <p>In this case, we also saved the output from the request to a variable
 in our environment, so we can work with what we received, without having
 to send the request more times.</p>
@@ -298,16 +296,16 @@ response (this is API lingo, just go with it.).</p>
 <span><span class="co">#&gt; $editors</span></span>
 <span><span class="co">#&gt; $editors[[1]]</span></span>
 <span><span class="co">#&gt; $editors[[1]]$personId</span></span>
-<span><span class="co">#&gt; [1] 132</span></span>
+<span><span class="co">#&gt; [1] 58096</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[1]]$username</span></span>
-<span><span class="co">#&gt; [1] "areg@uio.no"</span></span>
+<span><span class="co">#&gt; [1] "athanasm@uio.no"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[1]]$name</span></span>
-<span><span class="co">#&gt; [1] "Are Dag Gulbrandsen"</span></span>
+<span><span class="co">#&gt; [1] "Athanasia Monika Mowinckel"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[1]]$email</span></span>
-<span><span class="co">#&gt; [1] "areg@uio.no"</span></span>
+<span><span class="co">#&gt; [1] "a.m.mowinckel@psykologi.uio.no"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[1]]$type</span></span>
 <span><span class="co">#&gt; [1] "LOCAL"</span></span>
@@ -315,16 +313,16 @@ response (this is API lingo, just go with it.).</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[2]]</span></span>
 <span><span class="co">#&gt; $editors[[2]]$personId</span></span>
-<span><span class="co">#&gt; [1] 58096</span></span>
+<span><span class="co">#&gt; [1] 132</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[2]]$username</span></span>
-<span><span class="co">#&gt; [1] "athanasm@uio.no"</span></span>
+<span><span class="co">#&gt; [1] "areg@uio.no"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[2]]$name</span></span>
-<span><span class="co">#&gt; [1] "Athanasia Monika Mowinckel"</span></span>
+<span><span class="co">#&gt; [1] "Are Dag Gulbrandsen"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[2]]$email</span></span>
-<span><span class="co">#&gt; [1] "athanasm@uio.no"</span></span>
+<span><span class="co">#&gt; [1] "areg@uio.no"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $editors[[2]]$type</span></span>
 <span><span class="co">#&gt; [1] "LOCAL"</span></span>
@@ -445,13 +443,12 @@ information, but change the method with httr2.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ns_req.html">ns_req</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_url.html" class="external-link">req_url_path_append</a></span><span class="op">(</span><span class="st">"form"</span>, <span class="va">formid</span>, <span class="st">"settings"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_method.html" class="external-link">req_method</a></span><span class="op">(</span><span class="st">"PATCH"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; PATCH</span></span>
-<span><span class="co">#&gt; https://nettskjema.no/api/v3/form/123823/settings</span></span>
-<span><span class="co">#&gt; Body: empty</span></span>
-<span><span class="co">#&gt; Policies:</span></span>
-<span><span class="co">#&gt; • auth_sign : &lt;list&gt;</span></span>
-<span><span class="co">#&gt; • auth_oauth: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_request&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">PATCH</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
 <p>Ok, we can see now that the method is correct, the URL is correct,
 but the body is empty.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -463,13 +460,12 @@ but the body is empty.</p>
 <span>      postponable <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; PATCH</span></span>
-<span><span class="co">#&gt; https://nettskjema.no/api/v3/form/123823/settings</span></span>
-<span><span class="co">#&gt; Body: json encoded data</span></span>
-<span><span class="co">#&gt; Policies:</span></span>
-<span><span class="co">#&gt; • auth_sign : &lt;list&gt;</span></span>
-<span><span class="co">#&gt; • auth_oauth: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_request&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">PATCH</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: JSON data</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
 <p>Things look kind of correct now, we’re still not sure about the body
 setup, but we will send the request and see what happens.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -482,19 +478,19 @@ setup, but we will send the request and see what happens.</p>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in `req_perform()`:</span></span>
-<span><span class="co">#&gt; ! HTTP 400 Bad Request.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `req_perform()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> HTTP 400 Bad Request.</span></span></code></pre></div>
 <p>That didn’t work, but why? We’ve not got any further error message,
 but there might be more information in the body of the response, even if
-it errored. Erring API calls like these are actually valid proper
+it erred. Erring API calls like these are actually valid proper
 responses, so we can explore them just like normal responses. If you
 didn’t store the response, like I did, you can still explore it without
 doing the call again. httr2 has functionality to capture the last
 response even after the fact!</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://httr2.r-lib.org/reference/last_response.html" class="external-link">last_response</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">resp_body_json</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $message</span></span>
+<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">resp_body_json</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span> <span class="co">#&gt; $message</span></span>
 <span><span class="co">#&gt; [1] "Valideringsfeil"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $errors</span></span>
@@ -505,14 +501,14 @@ response even after the fact!</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $confirmForceCleanupErrors</span></span>
-<span><span class="co">#&gt; named list()</span></span></code></pre></div>
-<p>As we can see, we get a nice clear message about what has errored.
-The form I’m trying to change doesn’t meet the pre-requisites for
-allowing postponing, so we cannot alter that setting!</p>
+<span><span class="co">#&gt; named list()</span></span></code></pre>
+<p>As we can see, we get a nice clear message about what has erred. The
+form I’m trying to change doesn’t meet the pre-requisites for allowing
+postponing, so we cannot alter that setting!</p>
 <p>We can try changing another setting in stead, but we have actually
 already verified that our calls to the API is working as expected. We
 can try altering two settings at once, and see what happens.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show old settings</span></span>
 <span><span class="va">settings_data</span><span class="op">$</span><span class="va">personalDataPurposeDescription</span></span>
 <span><span class="co">#&gt; [1] "Testing the API"</span></span>
@@ -530,17 +526,16 @@ can try altering two settings at once, and see what happens.</p>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_response&gt;</span></span>
-<span><span class="co">#&gt; PATCH</span></span>
-<span><span class="co">#&gt; https://nettskjema.no/api/v3/form/123823/settings</span></span>
-<span><span class="co">#&gt; Status: 204 No Content</span></span>
-<span><span class="co">#&gt; Body: None</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">&lt;httr2_response&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">PATCH</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Status</span>: 204 No Content</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Body</span>: None</span></span></code></pre></div>
 <p>Now we are cooking, we are getting a 204 back, which is a positive <a href="https://www.webcron.org/en/http-codes" class="external-link">status code</a> from an
 API. The response also says there is no content, and nothing in the
 body, so there is nothing more to inspect here.</p>
 <p>Lets retrieve the settings again and see if we can verify our selves
 that the settings have indeed changed</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">settings_new</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ns_req.html">ns_req</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_url.html" class="external-link">req_url_path_append</a></span><span class="op">(</span><span class="st">"form"</span>, <span class="va">formid</span>, <span class="st">"settings"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Nettskjema Attachments: Download and Save • nettskjemar</title>
+<title>Attachments: Download and Save • nettskjemar</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Nettskjema Attachments: Download and Save">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Attachments: Download and Save">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -73,7 +73,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Nettskjema Attachments: Download and Save</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Attachments: Download and Save</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/attachments.Rmd" class="external-link"><code>vignettes/attachments.Rmd</code></a></small>
@@ -106,22 +106,14 @@ about the available attachments.</p>
 <span><span class="co"># Example: List attachments for a specific submission</span></span>
 <span><span class="va">submission_id</span> <span class="op">&lt;-</span> <span class="fl">27685292</span></span>
 <span><span class="fu"><a href="../reference/ns_list_submission_attachments.html">ns_list_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   submissionId  answerId elementId</span></span>
-<span><span class="co">#&gt; 1     27685292 158263134   1641713</span></span>
-<span><span class="co">#&gt;   externalElementId textAnswer</span></span>
-<span><span class="co">#&gt; 1      attachment_1  sølvi.png</span></span>
-<span><span class="co">#&gt;   answerAttachmentId  filename</span></span>
-<span><span class="co">#&gt; 1             538819 sølvi.png</span></span>
-<span><span class="co">#&gt;   mediaType   size elementType</span></span>
-<span><span class="co">#&gt; 1 image/png 628613  ATTACHMENT</span></span>
-<span><span class="co">#&gt;   attachment.answerAttachmentId</span></span>
-<span><span class="co">#&gt; 1                        538819</span></span>
-<span><span class="co">#&gt;   attachment.filename</span></span>
-<span><span class="co">#&gt; 1           sølvi.png</span></span>
-<span><span class="co">#&gt;   attachment.mediaType attachment.size</span></span>
-<span><span class="co">#&gt; 1            image/png          628613</span></span>
-<span><span class="co">#&gt;   counter</span></span>
-<span><span class="co">#&gt; 1       1</span></span></code></pre></div>
+<span><span class="co">#&gt;   submissionId  answerId elementId externalElementId textAnswer</span></span>
+<span><span class="co">#&gt; 1     27685292 158263134   1641713      attachment_1  sølvi.png</span></span>
+<span><span class="co">#&gt;   answerAttachmentId  filename mediaType   size elementType</span></span>
+<span><span class="co">#&gt; 1             538819 sølvi.png image/png 628613  ATTACHMENT</span></span>
+<span><span class="co">#&gt;   attachment.answerAttachmentId attachment.filename attachment.mediaType</span></span>
+<span><span class="co">#&gt; 1                        538819           sølvi.png            image/png</span></span>
+<span><span class="co">#&gt;   attachment.size counter</span></span>
+<span><span class="co">#&gt; 1          628613       1</span></span></code></pre></div>
 <p>This function returns a <code>data.frame</code> with details such as
 the attachment ID, original filename, and standardized filename.</p>
 </div>
@@ -134,45 +126,21 @@ the attachment ID, original filename, and standardized filename.</p>
 <code class="sourceCode R"><span><span class="co"># Example: List attachments for an entire form</span></span>
 <span><span class="va">formid</span> <span class="op">&lt;-</span> <span class="fl">123823</span></span>
 <span><span class="fu"><a href="../reference/ns_list_form_attachments.html">ns_list_form_attachments</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    formid formId submissionId</span></span>
-<span><span class="co">#&gt; 16 123823 123823     27685292</span></span>
-<span><span class="co">#&gt; 32 123823 123823     27685302</span></span>
-<span><span class="co">#&gt;     answerId elementId</span></span>
-<span><span class="co">#&gt; 16 158263134   1641713</span></span>
-<span><span class="co">#&gt; 32 158263185   3525020</span></span>
-<span><span class="co">#&gt;    externalElementId  textAnswer</span></span>
-<span><span class="co">#&gt; 16      attachment_1   sølvi.png</span></span>
-<span><span class="co">#&gt; 32      attachment_2 marius.jpeg</span></span>
-<span><span class="co">#&gt;    answerOptionIds</span></span>
-<span><span class="co">#&gt; 16                </span></span>
-<span><span class="co">#&gt; 32                </span></span>
-<span><span class="co">#&gt;    externalAnswerOptionIds elementType</span></span>
-<span><span class="co">#&gt; 16                          ATTACHMENT</span></span>
-<span><span class="co">#&gt; 32                          ATTACHMENT</span></span>
-<span><span class="co">#&gt;            createdDate</span></span>
-<span><span class="co">#&gt; 16 2023-06-01T20:57:15</span></span>
-<span><span class="co">#&gt; 32 2023-06-01T20:58:33</span></span>
-<span><span class="co">#&gt;           modifiedDate subElementId</span></span>
-<span><span class="co">#&gt; 16 2023-06-01T20:57:15           NA</span></span>
-<span><span class="co">#&gt; 32 2023-06-01T20:58:33           NA</span></span>
-<span><span class="co">#&gt;    answerAttachmentId    filename</span></span>
-<span><span class="co">#&gt; 16             538819   sølvi.png</span></span>
-<span><span class="co">#&gt; 32             538820 marius.jpeg</span></span>
-<span><span class="co">#&gt;     mediaType   size</span></span>
-<span><span class="co">#&gt; 16  image/png 628613</span></span>
-<span><span class="co">#&gt; 32 image/jpeg  89494</span></span>
-<span><span class="co">#&gt;    attachment.answerAttachmentId</span></span>
-<span><span class="co">#&gt; 16                        538819</span></span>
-<span><span class="co">#&gt; 32                        538820</span></span>
-<span><span class="co">#&gt;    attachment.filename</span></span>
-<span><span class="co">#&gt; 16           sølvi.png</span></span>
-<span><span class="co">#&gt; 32         marius.jpeg</span></span>
-<span><span class="co">#&gt;    attachment.mediaType</span></span>
-<span><span class="co">#&gt; 16            image/png</span></span>
-<span><span class="co">#&gt; 32           image/jpeg</span></span>
-<span><span class="co">#&gt;    attachment.size counter</span></span>
-<span><span class="co">#&gt; 16          628613       1</span></span>
-<span><span class="co">#&gt; 32           89494       1</span></span></code></pre></div>
+<span><span class="co">#&gt;    formid formId submissionId  answerId elementId externalElementId  textAnswer</span></span>
+<span><span class="co">#&gt; 16 123823 123823     27685292 158263134   1641713      attachment_1   sølvi.png</span></span>
+<span><span class="co">#&gt; 32 123823 123823     27685302 158263185   3525020      attachment_2 marius.jpeg</span></span>
+<span><span class="co">#&gt;    answerOptionIds externalAnswerOptionIds elementType         createdDate</span></span>
+<span><span class="co">#&gt; 16                                          ATTACHMENT 2023-06-01T20:57:15</span></span>
+<span><span class="co">#&gt; 32                                          ATTACHMENT 2023-06-01T20:58:33</span></span>
+<span><span class="co">#&gt;           modifiedDate subElementId answerAttachmentId    filename  mediaType</span></span>
+<span><span class="co">#&gt; 16 2023-06-01T20:57:15           NA             538819   sølvi.png  image/png</span></span>
+<span><span class="co">#&gt; 32 2023-06-01T20:58:33           NA             538820 marius.jpeg image/jpeg</span></span>
+<span><span class="co">#&gt;      size attachment.answerAttachmentId attachment.filename</span></span>
+<span><span class="co">#&gt; 16 628613                        538819           sølvi.png</span></span>
+<span><span class="co">#&gt; 32  89494                        538820         marius.jpeg</span></span>
+<span><span class="co">#&gt;    attachment.mediaType attachment.size counter</span></span>
+<span><span class="co">#&gt; 16            image/png          628613       1</span></span>
+<span><span class="co">#&gt; 32           image/jpeg           89494       1</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -181,7 +149,9 @@ the attachment ID, original filename, and standardized filename.</p>
 <p>Once you have identified the attachments, you can download them using
 <code><a href="../reference/ns_get_attachment.html">ns_get_attachment()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Example: Download a single attachment</span></span>
+<code class="sourceCode R"><span><span class="co">#| label: dl1</span></span>
+<span></span>
+<span><span class="co"># Example: Download a single attachment</span></span>
 <span><span class="va">attachment_id</span> <span class="op">&lt;-</span> <span class="st">"12345"</span></span>
 <span><span class="fu"><a href="../reference/ns_get_attachment.html">ns_get_attachment</a></span><span class="op">(</span><span class="va">attachment_id</span>, path <span class="op">=</span> <span class="st">"downloaded_file.pdf"</span><span class="op">)</span></span></code></pre></div>
 <p>If <code>path</code> is not provided, the function returns the
@@ -196,7 +166,9 @@ response object without saving the file.</p>
 <p>Use <code><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments()</a></code> to download and save
 all attachments associated with a single submission.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Example: Save all attachments for a submission</span></span>
+<code class="sourceCode R"><span><span class="co">#| label: dl2</span></span>
+<span></span>
+<span><span class="co"># Example: Save all attachments for a submission</span></span>
 <span><span class="fu"><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span><span class="op">)</span></span></code></pre></div>
 <p>This function supports two filename conventions:</p>
 <ul>
@@ -209,21 +181,33 @@ uploaded.</li>
 </ul>
 <p>To save attachments using the original filenames:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span>, filenames <span class="op">=</span> <span class="st">"original"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#| label: dl3</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span>, filenames <span class="op">=</span> <span class="st">"original"</span><span class="op">)</span></span></code></pre></div>
 <p>You can also specify an output directory:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span>, output_dir <span class="op">=</span> <span class="st">"my_attachments/"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#| label: dl4</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ns_get_submission_attachments.html">ns_get_submission_attachments</a></span><span class="op">(</span><span class="va">submission_id</span>, output_dir <span class="op">=</span> <span class="st">"my_attachments/"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="for-an-entire-form">For an Entire Form<a class="anchor" aria-label="anchor" href="#for-an-entire-form"></a>
 </h3>
 <p>To download and save all attachments from a form:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ns_get_form_attachments.html">ns_get_form_attachments</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#| label: dl5</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ns_get_form_attachments.html">ns_get_form_attachments</a></span><span class="op">(</span><span class="va">formid</span><span class="op">)</span></span></code></pre></div>
 <p>As with submission attachments, you can specify a filename format and
 output directory:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ns_get_form_attachments.html">ns_get_form_attachments</a></span><span class="op">(</span><span class="va">formid</span>, filenames <span class="op">=</span> <span class="st">"original"</span>, output_dir <span class="op">=</span> <span class="st">"all_attachments/"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#| label: dl6</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ns_get_form_attachments.html">ns_get_form_attachments</a></span><span class="op">(</span></span>
+<span>  <span class="va">formid</span>,</span>
+<span>  filenames <span class="op">=</span> <span class="st">"original"</span>,</span>
+<span>  output_dir <span class="op">=</span> <span class="st">"all_attachments/"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

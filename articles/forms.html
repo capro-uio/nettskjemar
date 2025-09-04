@@ -95,7 +95,29 @@ have access to. 1. Download reports associated with a form.</p>
 If you haven’t, refer to the vignette on <a href="authentication.html">authentication setup</a>.</p>
 <p>Additionally, load the required package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ns_sitrep.html">ns_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Nettskjema API Sitrep</span> <span style="color: #00BBBB;">───────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> nettskjemar version: <span style="color: #0000BB;">1.0.2.9003</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Nettskjema API Configuration</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> API URL is set to: <span style="color: #0000BB;">"https://nettskjema.no/api/v3/"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Client ID: Valid format and length.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Client Secret: Valid format and length.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">API Connectivity</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Successfully connected to API</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Tested by fetching client profile</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── <span style="font-weight: bold;">Environment</span> ──</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> R version: <span style="color: #0000BB;">"R version 4.5.1 (2025-06-13)"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> OS: <span style="color: #0000BB;">"Linux"</span> <span style="color: #0000BB;">"6.11.0-1018-azure"</span></span></span>
+<span><span class="co">#&gt; ────────────────────────────────────────────────────────────────────────────────</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -111,26 +133,14 @@ If you haven’t, refer to the vignette on <a href="authentication.html">authent
 <span><span class="va">forms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ns_get_forms.html">ns_get_forms</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">forms</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   formId         title</span></span>
-<span><span class="co">#&gt; 1 123823 API test form</span></span>
-<span><span class="co">#&gt;              openFrom</span></span>
-<span><span class="co">#&gt; 1 2023-06-01T20:55:49</span></span>
-<span><span class="co">#&gt;                openTo</span></span>
-<span><span class="co">#&gt; 1 2024-06-02T02:00:02</span></span>
-<span><span class="co">#&gt;    lastSubmissionDate</span></span>
-<span><span class="co">#&gt; 1 2023-06-01T20:59:50</span></span>
-<span><span class="co">#&gt;          modifiedDate</span></span>
-<span><span class="co">#&gt; 1 2025-06-12T16:30:22</span></span>
-<span><span class="co">#&gt;   personalDataErasedDate</span></span>
-<span><span class="co">#&gt; 1                     NA</span></span>
-<span><span class="co">#&gt;   deliveryDestination anonymous</span></span>
-<span><span class="co">#&gt; 1            DATABASE     FALSE</span></span>
-<span><span class="co">#&gt;   numberOfDeliveredSubmissions owners</span></span>
-<span><span class="co">#&gt; 1                            3      3</span></span>
-<span><span class="co">#&gt;   isDictaphone myFormsFormListingGroup</span></span>
-<span><span class="co">#&gt; 1        FALSE                     OLD</span></span>
-<span><span class="co">#&gt;    open</span></span>
-<span><span class="co">#&gt; 1 FALSE</span></span></code></pre></div>
+<span><span class="co">#&gt;   formId         title            openFrom              openTo</span></span>
+<span><span class="co">#&gt; 1 123823 API test form 2023-06-01T20:55:49 2024-06-02T02:00:02</span></span>
+<span><span class="co">#&gt;    lastSubmissionDate        modifiedDate personalDataErasedDate</span></span>
+<span><span class="co">#&gt; 1 2023-06-01T20:59:50 2025-08-26T13:08:28                     NA</span></span>
+<span><span class="co">#&gt;   deliveryDestination anonymous numberOfDeliveredSubmissions owners</span></span>
+<span><span class="co">#&gt; 1            DATABASE     FALSE                            3      3</span></span>
+<span><span class="co">#&gt;   isDictaphone myFormsFormListingGroup  open</span></span>
+<span><span class="co">#&gt; 1        FALSE                     OLD FALSE</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="retrieving-raw-form-data">Retrieving Raw Form Data<a class="anchor" aria-label="anchor" href="#retrieving-raw-form-data"></a>
 </h4>
@@ -141,7 +151,49 @@ If you haven’t, refer to the vignette on <a href="authentication.html">authent
 <span><span class="va">raw_forms</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ns_get_forms.html">ns_get_forms</a></span><span class="op">(</span>asis <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Display the raw response</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">raw_forms</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">raw_forms</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; [[1]]$formId</span></span>
+<span><span class="co">#&gt; [1] 123823</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$title</span></span>
+<span><span class="co">#&gt; [1] "API test form"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$openFrom</span></span>
+<span><span class="co">#&gt; [1] "2023-06-01T20:55:49"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$openTo</span></span>
+<span><span class="co">#&gt; [1] "2024-06-02T02:00:02"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$lastSubmissionDate</span></span>
+<span><span class="co">#&gt; [1] "2023-06-01T20:59:50"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$modifiedDate</span></span>
+<span><span class="co">#&gt; [1] "2025-08-26T13:08:28"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$personalDataErasedDate</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$deliveryDestination</span></span>
+<span><span class="co">#&gt; [1] "DATABASE"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$anonymous</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$numberOfDeliveredSubmissions</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$owners</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$isDictaphone</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$myFormsFormListingGroup</span></span>
+<span><span class="co">#&gt; [1] "OLD"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[1]]$open</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -155,7 +207,9 @@ download these reports.</p>
 <h3 id="example-download-a-csv-report">Example: Download a CSV Report<a class="anchor" aria-label="anchor" href="#example-download-a-csv-report"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Define the form ID</span></span>
+<code class="sourceCode R"><span><span class="co">#| label: csv</span></span>
+<span></span>
+<span><span class="co"># Define the form ID</span></span>
 <span><span class="va">form_id</span> <span class="op">&lt;-</span> <span class="fl">110000</span></span>
 <span></span>
 <span><span class="co"># Download a CSV report to the default path</span></span>
@@ -167,14 +221,18 @@ download these reports.</p>
 <h3 id="example-download-an-excel-report">Example: Download an Excel Report<a class="anchor" aria-label="anchor" href="#example-download-an-excel-report"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download an Excel report</span></span>
+<code class="sourceCode R"><span><span class="co">#| label: excel</span></span>
+<span></span>
+<span><span class="co"># Download an Excel report</span></span>
 <span><span class="fu"><a href="../reference/ns_get_form_reports.html">ns_get_form_reports</a></span><span class="op">(</span><span class="va">form_id</span>, type <span class="op">=</span> <span class="st">"excel"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="example-save-spss-report-to-a-custom-path">Example: Save SPSS Report to a Custom Path<a class="anchor" aria-label="anchor" href="#example-save-spss-report-to-a-custom-path"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Specify the path you want to save the file</span></span>
+<code class="sourceCode R"><span><span class="co">#| label: spss</span></span>
+<span></span>
+<span><span class="co"># Specify the path you want to save the file</span></span>
 <span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path_expand.html" class="external-link">path_home</a></span><span class="op">(</span><span class="st">"Desktop/110000_report.sav"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Download and save the SPSS report</span></span>
