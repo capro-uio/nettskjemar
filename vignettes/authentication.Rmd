@@ -75,7 +75,6 @@ This function should give you a clear report on whether you are ready to connect
 library(nettskjemar)
 
 ns_sitrep()
-
 ```
 
 The situation report will inform you if:
