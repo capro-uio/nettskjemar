@@ -57,6 +57,12 @@ test_that("Applies value labels based on codebook", {
   expect_true(!inherits(labelled_data$var3, "haven_labelled"))
   # Check variable label
   expect_equal(attr(labelled_data$var3, "label"), "Variable 3")
+
+  attr(labelled_data$var3, "label") <- NULL
+  attr(labelled_data$var3, "ns_type") <- NULL
+  attr(labelled_data$var3, "class") <- NULL
+
+  expect_equal(labelled_data$var3, sample_data$var3)
 })
 
 test_that("ns_add_labels handles missing values gracefully", {
