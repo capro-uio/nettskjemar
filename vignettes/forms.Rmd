@@ -2,12 +2,27 @@
 title: "Fetching Information on Forms"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the Nettskjema API: Fetching Data and Forms}
+  %\VignetteIndexEntry{Fetching Information on Forms}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r}
+#| label: setup
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE,
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "forms-")
+nettskjemar:::mock_if_no_auth()
+
+```
 
 # Overview
 
@@ -23,8 +38,13 @@ If you haven’t, refer to the vignette on [authentication setup](authentication
 
 Additionally, load the required package:
 
-```r
+```{r}
+#| label: sitrep
+#| cassette: true
+
 library(nettskjemar)
+
+ns_sitrep()
 ```
 
 # Retrieving All Available Forms
@@ -33,39 +53,24 @@ To see which forms you have access to, use the `ns_get_forms` function.
 
 ## Example: Getting Forms
 
+```{r}
+#| label: head
+#| cassette: true
 
-``` r
 # Retrieve all forms
 forms <- ns_get_forms()
 
 head(forms)
-#>   formId         title
-#> 1 123823 API test form
-#>              openFrom
-#> 1 2023-06-01T20:55:49
-#>                openTo
-#> 1 2024-06-02T02:00:02
-#>    lastSubmissionDate
-#> 1 2023-06-01T20:59:50
-#>          modifiedDate
-#> 1 2025-06-12T16:30:22
-#>   personalDataErasedDate
-#> 1                     NA
-#>   deliveryDestination anonymous
-#> 1            DATABASE     FALSE
-#>   numberOfDeliveredSubmissions owners
-#> 1                            3      3
-#>   isDictaphone myFormsFormListingGroup
-#> 1        FALSE                     OLD
-#>    open
-#> 1 FALSE
 ```
 
 ### Retrieving Raw Form Data
 
 If you prefer to get the raw list format as returned by the API, use `asis = TRUE`.
 
-```r
+```{r}
+#| label: raw
+#| cassette: true
+
 # Retrieve raw form data
 raw_forms <- ns_get_forms(asis = TRUE)
 
@@ -81,6 +86,8 @@ Use the `ns_get_form_reports` function to download these reports.
 ## Example: Download a CSV Report
 
 ```r
+#| label: csv
+
 # Define the form ID
 form_id <- 110000
 
@@ -93,6 +100,8 @@ ns_get_form_reports(form_id, type = "csv")
 ## Example: Download an Excel Report
 
 ```r
+#| label: excel
+
 # Download an Excel report
 ns_get_form_reports(form_id, type = "excel")
 ```
@@ -100,6 +109,8 @@ ns_get_form_reports(form_id, type = "excel")
 ## Example: Save SPSS Report to a Custom Path
 
 ```r
+#| label: spss
+
 # Specify the path you want to save the file
 path <- fs::path_home("Desktop/110000_report.sav")
 

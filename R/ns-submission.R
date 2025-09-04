@@ -4,8 +4,13 @@
 #' @return list of all answers
 #' @export
 #' @examples
-#' \dontrun{
-#' ns_get_submission(1100)
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_submission", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' ns_get_submission(27685292)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_submission <- function(submission_id) {
   ns_req() |>

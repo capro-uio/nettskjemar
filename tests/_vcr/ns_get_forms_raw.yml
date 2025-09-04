@@ -1,0 +1,45 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/me
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Wed, 20 Aug 2025 17:40:33 GMT
+      content-length: '278'
+      content-encoding: gzip
+      referrer-policy: same-origin
+      set-cookie: JSESSIONID=AE93E0C4272816CDF241424BF708C4A3; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-frame-options: DENY
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+    body:
+      string: '[{"formId":123823,"title":"API test form","openFrom":"2023-06-01T20:55:49","openTo":"2024-06-02T02:00:02","lastSubmissionDate":"2023-06-01T20:59:50","modifiedDate":"2025-08-19T23:48:18","personalDataErasedDate":null,"deliveryDestination":"DATABASE","anonymous":false,"numberOfDeliveredSubmissions":3,"owners":3,"isDictaphone":false,"myFormsFormListingGroup":"OLD","open":false}]'
+  recorded_at: 2025-08-20 17:40:33
+recorded_with: VCR-vcr/2.0.0

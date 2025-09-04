@@ -10,7 +10,21 @@ editor_options:
     wrap: sentence
 ---
 
+```{r}
+#| label: setup
+#| include: false
 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = TRUE,
+  error = FALSE,
+  fig.path = "static"
+)
+
+vcr::setup_knitr(prefix = "ns-")
+nettskjemar:::mock_if_no_auth()
+```
 
 Nettskjemar connects to version 3 of the [nettskjema api](https://api.nettskjema.no/v3/swagger-ui/index.html), and the main functionality here is to download data from a form into R.
 Once you have [created a nettskjema client](authentication.html), and set up your Renvironment locally, you can start accessing your forms.
@@ -38,56 +52,15 @@ If you want to learn about the tidyverse and how to use it, there are excellent 
 
 Perhaps at the core of this package is the ability to download submission answers to a form into a tibble (variation of a data.frame).
 
+```{r}
+#| label: data
+#| cassette: true
 
-``` r
 library(nettskjemar)
 formid <- 123823
 
 data <- ns_get_data(formid)
 data
-#>   formid $submission_id
-#> 1 123823       27685292
-#>                    $created  freetext
-#> 1 2023-06-01T20:57:15+02:00 some text
-#>   radio checkbox.questionnaires
-#> 1     1                       1
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#>   radio_matrix.lecture
-#> 1                    2
-#>   radio_matrix.email
-#> 1                  2
-#>   checkbox_matrix.1.IT
-#> 1                    1
-#>   checkbox_matrix.1.colleague
-#> 1                           1
-#>   checkbox_matrix.1.admin
-#> 1                       0
-#>   checkbox_matrix.1.union
-#> 1                       0
-#>   checkbox_matrix.1.internet
-#> 1                          0
-#>   checkbox_matrix.2.IT
-#> 1                    0
-#>   checkbox_matrix.2.colleague
-#> 1                           0
-#>   checkbox_matrix.2.admin
-#> 1                       1
-#>   checkbox_matrix.2.union
-#> 1                       0
-#>   checkbox_matrix.2.internet
-#> 1                          0
-#>         date  time         datetime
-#> 1 2023-06-01 12:00 2023-06-12T13:33
-#>   number_decimal number_integer slider
-#> 1            4.5           77.0      3
-#>   attachment_1 attachment_2
-#> 1    sølvi.png             
-#>   $answer_time_ms
-#> 1           74630
-#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 ```
 
 You will notice three columns that are prefixed with `$`.
@@ -103,44 +76,12 @@ This means the data comes in a _tall_ format (many rows per submission) rather t
 The raw data may provide those who have keen interest in the time a users spent between each question.
 The data.frame this output will have one column that indicates which question the row is for, and another which is the response to that question.
 
+```{r}
+#| label: data-raw
+#| cassette: true
 
-``` r
 # Fetch raw data
 ns_get_data(formid, type = "long")
-#>   formid formId submissionId  answerId
-#> 1 123823 123823     27685292 158263133
-#> 2 123823 123823     27685292 158263124
-#>   elementId externalElementId
-#> 1   1641697          freetext
-#> 2   1641698             radio
-#>   textAnswer answerOptionIds
-#> 1  some text                
-#> 2       <NA>         3879435
-#>   externalAnswerOptionIds elementType
-#> 1                            QUESTION
-#> 2                       1       RADIO
-#>           createdDate
-#> 1 2023-06-01T20:57:15
-#> 2 2023-06-01T20:57:15
-#>          modifiedDate subElementId
-#> 1 2023-06-01T20:57:15           NA
-#> 2 2023-06-01T20:57:15           NA
-#>   answerAttachmentId filename
-#> 1                 NA     <NA>
-#> 2                 NA     <NA>
-#>   mediaType size
-#> 1      <NA>   NA
-#> 2      <NA>   NA
-#>   attachment.answerAttachmentId
-#> 1                            NA
-#> 2                            NA
-#>   attachment.filename
-#> 1                <NA>
-#> 2                <NA>
-#>   attachment.mediaType attachment.size
-#> 1                 <NA>              NA
-#> 2                 <NA>              NA
-#>  [ reached 'max' / getOption("max.print") -- omitted 44 rows ]
 ```
 
 Raw data cannot be labelled, and no other alterations have been made to the data.
@@ -155,55 +96,22 @@ Checkboxes are returned as binary columns, one columns per checkbox where 1 indi
 We provide some extra functionality to help work with these data. 
 Currently we only support working with the checkbox matrix questions, but are working on a solution for all checkboxes.
 
+```{r}
+#| label: multi-list
+#| cassette: true
 
-``` r
 ns_get_data(formid) |>
   ns_alter_checkbox(
     to = "list"
   )
-#>   $submission_id formid
-#> 1       27685292 123823
-#> 2       27685302 123823
-#>                    $created
-#> 1 2023-06-01T20:57:15+02:00
-#> 2 2023-06-01T20:58:33+02:00
-#>         freetext radio
-#> 1      some text     1
-#> 2 another answer    -1
-#>   checkbox.questionnaires
-#> 1                       1
-#> 2                       0
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#> 2               0             1
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#> 2        9                   3
-#>   radio_matrix.lecture
-#> 1                    2
-#> 2                    3
-#>   radio_matrix.email       date  time
-#> 1                  2 2023-06-01 12:00
-#> 2                  1 2023-02-07 14:45
-#>           datetime number_decimal
-#> 1 2023-06-12T13:33            4.5
-#> 2 2024-02-15T08:55            2.2
-#>   number_integer slider attachment_1
-#> 1           77.0      3    sølvi.png
-#> 2           45.0      1             
-#>   attachment_2 $answer_time_ms
-#> 1                        74630
-#> 2  marius.jpeg           71313
-#>   checkbox_matrix.1 checkbox_matrix.2
-#> 1     colleague, IT             admin
-#> 2          internet      admin, union
-#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
 ```
 
 These can be separated into rows if wanted, using tidyverse syntax.
 
+```{r}
+#| label: multi-label
+#| cassette: true
 
-``` r
 library(tidyr)
 library(dplyr)
 
@@ -213,78 +121,25 @@ ns_get_data(formid) |>
     to = "list"
   ) |>
   relocate(checkbox_matrix.1, .after = 2)
-#>   $submission_id formid
-#> 1       27685292 123823
-#> 2       27685302 123823
-#>   checkbox_matrix.1
-#> 1     colleague, IT
-#> 2          internet
-#>                    $created
-#> 1 2023-06-01T20:57:15+02:00
-#> 2 2023-06-01T20:58:33+02:00
-#>         freetext radio
-#> 1      some text     1
-#> 2 another answer    -1
-#>   checkbox.questionnaires
-#> 1                       1
-#> 2                       0
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#> 2               0             1
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#> 2        9                   3
-#>   radio_matrix.lecture
-#> 1                    2
-#> 2                    3
-#>   radio_matrix.email       date  time
-#> 1                  2 2023-06-01 12:00
-#> 2                  1 2023-02-07 14:45
-#>           datetime number_decimal
-#> 1 2023-06-12T13:33            4.5
-#> 2 2024-02-15T08:55            2.2
-#>   number_integer slider attachment_1
-#> 1           77.0      3    sølvi.png
-#> 2           45.0      1             
-#>   attachment_2 $answer_time_ms
-#> 1                        74630
-#> 2  marius.jpeg           71313
-#>   checkbox_matrix.2
-#> 1             admin
-#> 2      admin, union
-#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
 
 
-# Turns list column, into rows 
+# Turns list column, into rows
 ns_get_data(formid) |>
   ns_alter_checkbox(
     to = "list"
   ) |>
   unnest(checkbox_matrix.1) |>
   relocate(checkbox_matrix.1, .after = 2)
-#> # A tibble: 5 × 23
-#>   `$submission_id` formid
-#>              <int>  <dbl>
-#> 1         27685292 123823
-#> 2         27685292 123823
-#> 3         27685302 123823
-#> 4         27685319 123823
-#> 5         27685319 123823
-#> # ℹ 21 more variables:
-#> #   checkbox_matrix.1 <chr>,
-#> #   `$created` <chr>, freetext <chr>,
-#> #   radio <int>,
-#> #   checkbox.questionnaires <int>,
-#> #   checkbox.events <int>,
-#> #   checkbox.logs <int>, …
 ```
 
 If you are not used to working with list columns,
 another option is to work with delimited strings in columns.
 In this procedure, you can turn the checkboxes into a character column, where each option in separated by a character of your choosing.
 
+```{r}
+#| label: multi-delim
+#| cassette: true
 
-``` r
 # As delimited string column
 ns_get_data(formid) |>
   ns_alter_checkbox(
@@ -292,48 +147,8 @@ ns_get_data(formid) |>
     sep = ";"
   ) |>
   relocate(checkbox_matrix.1, .after = 2)
-#>   $submission_id formid
-#> 1       27685292 123823
-#> 2       27685302 123823
-#>   checkbox_matrix.1
-#> 1      colleague;IT
-#> 2          internet
-#>                    $created
-#> 1 2023-06-01T20:57:15+02:00
-#> 2 2023-06-01T20:58:33+02:00
-#>         freetext radio
-#> 1      some text     1
-#> 2 another answer    -1
-#>   checkbox.questionnaires
-#> 1                       1
-#> 2                       0
-#>   checkbox.events checkbox.logs
-#> 1               1             0
-#> 2               0             1
-#>   dropdown radio_matrix.grants
-#> 1        4                   1
-#> 2        9                   3
-#>   radio_matrix.lecture
-#> 1                    2
-#> 2                    3
-#>   radio_matrix.email       date  time
-#> 1                  2 2023-06-01 12:00
-#> 2                  1 2023-02-07 14:45
-#>           datetime number_decimal
-#> 1 2023-06-12T13:33            4.5
-#> 2 2024-02-15T08:55            2.2
-#>   number_integer slider attachment_1
-#> 1           77.0      3    sølvi.png
-#> 2           45.0      1             
-#>   attachment_2 $answer_time_ms
-#> 1                        74630
-#> 2  marius.jpeg           71313
-#>   checkbox_matrix.2
-#> 1             admin
-#> 2       admin;union
-#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
-  
-# Turns string column, into rows 
+
+# Turns string column, into rows
 ns_get_data(formid) |>
   ns_alter_checkbox(
     to = "character",
@@ -341,21 +156,6 @@ ns_get_data(formid) |>
   ) |>
   relocate(checkbox_matrix.1, .after = 2) |>
   separate_rows(checkbox_matrix.1)
-#> # A tibble: 5 × 23
-#>   `$submission_id` formid
-#>              <int>  <dbl>
-#> 1         27685292 123823
-#> 2         27685292 123823
-#> 3         27685302 123823
-#> 4         27685319 123823
-#> 5         27685319 123823
-#> # ℹ 21 more variables:
-#> #   checkbox_matrix.1 <chr>,
-#> #   `$created` <chr>, freetext <chr>,
-#> #   radio <int>,
-#> #   checkbox.questionnaires <int>,
-#> #   checkbox.events <int>,
-#> #   checkbox.logs <int>, …
-```
+``` 
 
 

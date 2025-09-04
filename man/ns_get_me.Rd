@@ -15,7 +15,12 @@ information on the user accessing the
 Nettskjema PI
 }
 \examples{
-\dontrun{
+\dontshow{
+vcr::insert_example_cassette("ns_get_me", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
 ns_get_me()
+\dontshow{
+vcr::eject_cassette()
 }
 }

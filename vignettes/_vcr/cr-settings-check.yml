@@ -1,0 +1,50 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/settings
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Tue, 26 Aug 2025 11:08:28 GMT
+      content-length: '944'
+      content-encoding: gzip
+      referrer-policy: same-origin
+      set-cookie: JSESSIONID=FCD88ADECE0975A0CFC22FC5BD741F6B; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-frame-options: DENY
+      x-robots-tag: noindex, nofollow, noarchive, noai, noimageai, noml, SPC
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: 'off'
+      origin-agent-cluster: ?1
+      x-permitted-cross-domain-policies: none
+      x-download-options: noopen
+      x-xss-protection: '0'
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      permissions-policy: interest-cohort=(), browsing-topics=(), join-ad-interest-group=(),
+        run-ad-auction=(), conversion-measurement=(), accelerometer=(), ambient-light-sensor=(),
+        autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(self), gamepad=(self), geolocation=(), gyroscope=(), layout-animations=(self),
+        legacy-image-formats=(), magnetometer=(), microphone=(), midi=(), oversized-images=(self),
+        payment=(), picture-in-picture=(), publickey-credentials-create=(self), publickey-credentials-get=(),
+        speaker-selection=(self), sync-xhr=(), unoptimized-images=(self), unsized-media=(self),
+        usb=(), screen-wake-lock=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(),
+        clipboard-write=(), hid=(), serial=(), cross-origin-isolated=(), execution-while-not-rendered=(self),
+        execution-while-out-of-viewport=(self), keyboard-map=(), navigation-override=(self),
+        identity-credentials-get=(), idle-detection=(), local-fonts=(), otp-credentials=(),
+        window-management=(), storage-access=()
+      content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+      tdm-reservation: '1'
+    body:
+      string: '{"formId":123823,"formType":"DEFAULT","scoreResultDisplayType":"NONE","openFrom":"2023-06-01T20:55:49","openTo":"2024-06-02T02:00:02","title":"API
+        test form","titleShort":null,"editorsContactEmail":"a.m.mowinckel@psykologi.uio.no","editorsContactUrl":null,"collectsPersonalData":true,"sensitivePersonalDataCollected":false,"personalDataSharedOutsideInstitutionWith":null,"personalDataPurposeTypes":["OTHER"],"personalDataPurposeDescription":"Testing
+        the API","languageCode":"nb","shouldHideProgressBar":true,"shouldPreventDataManipulation":false,"codebookActivated":true,"afterDeliveryForwardFormIds":null,"maxSubmissionsForm":null,"maxSubmissionsPerson":1,"canNotAnswerMessage":null,"respondentGroup":"ALL","deleteSubmissionsAfterNumberOfDays":null,"postponable":false,"retainRespondentAccessAfterDelivery":false,"sendingReceiptToRespondent":false,"receiptText":null,"editorsSubmissionEmailType":"NONE","editorsSubmissionEmails":null,"deliveryDestination":"DATABASE","emailInvitationText":null,"emailReminderText":null,"automaticReminderIntervalInDays":null,"recurringInvitationNumber":null,"recurringInvitationIntervalInDays":null,"tsdPgpPublicKeyFingerprint":null,"editorCryptKeyDatabaseEncrypted":null,"editorCryptKeyDatabaseEncryptedFingerprint":null,"editors":[{"personId":58096,"username":"athanasm@uio.no","name":"Athanasia
+        Monika Mowinckel","email":"a.m.mowinckel@psykologi.uio.no","type":"LOCAL"},{"personId":132,"username":"areg@uio.no","name":"Are
+        Dag Gulbrandsen","email":"areg@uio.no","type":"LOCAL"},{"personId":3439404,"username":"ccda25ce-8256-4c6f-ba71-7a4357dc6caf@apiclient","name":"nettskjemar","email":"athanasm@uio.no","type":"API_CLIENT"}],"personsWithCopyPermission":[],"netgroupsEditor":[],"netgroupsWithCopyPermission":[],"consentForm":false,"randomizedOrder":false,"supportuser":{"theme":"DEFAULT"},"superuser":{"afterDeliveryForwardUrl":null,"afterDeliveryForwardCodebookValues":null,"receiptPageScript":null},"isDictaphone":false,"globalCopyPermissionEnabled":false,"titleForLogging":"\"API
+        test form\" (id: 123823)"}'
+  recorded_at: 2025-08-26 11:08:28
+recorded_with: VCR-vcr/2.0.0

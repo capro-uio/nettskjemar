@@ -7,6 +7,9 @@
 #' @noRd
 rm_ext <- function(path) {
   ex <- file_ext(path)
+  if (!nzchar(ex)) {
+    return(path)
+  }
   ex <- sprintf(".%s$", ex)
   gsub(ex, "", path)
 }
@@ -14,8 +17,12 @@ rm_ext <- function(path) {
 #' assign b if a is nothing
 #' @noRd
 `%||%` <- function(a, b) {
-  if (length(a) == 0) return(b)
-  if (is.na(a) || is.null(a) || a == "") return(b)
+  if (length(a) == 0) {
+    return(b)
+  }
+  if (is.na(a) || is.null(a) || a == "") {
+    return(b)
+  }
   a
 }
 
@@ -41,4 +48,15 @@ null2na <- function(x) {
     x[[i]] <- NA
   }
   x
+}
+
+mock_if_no_auth <- function() {
+  if (!nettskjemar::ns_has_auth()) {
+    Sys.setenv(NETTSKJEMA_CLIENT_ID = "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+    # nolint start
+    Sys.setenv(
+      NETTSKJEMA_CLIENT_SECRET = "aB3xK9mP2vQ8fR7nL98Mcs81sT4uY6wE5zC0hJ9iO3kM8pN2qA7bD1gF4jH6lS9vX3nR5mT8"
+    )
+    # nolint end
+  }
 }

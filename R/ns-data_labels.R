@@ -33,11 +33,8 @@ ns_add_labels <- function(data, codebook) {
     cb_vals <- subset(cb_var, !is.na(cb_var$answer_code))
 
     if (nrow(cb_vals) == 0) {
-      vals <- utils::type.convert(
-        data[[var]],
-        tryLogical = FALSE,
-        numerals = "no.loss",
-        as.is = TRUE
+      vals <- type_convert(
+        data[[var]]
       )
 
       data[[var]] <- structure(
@@ -48,11 +45,8 @@ ns_add_labels <- function(data, codebook) {
       )
     } else {
       val_labs <- stats::setNames(
-        utils::type.convert(
-          cb_var$answer_code,
-          tryLogical = FALSE,
-          numerals = "no.loss",
-          as.is = TRUE
+        type_convert(
+          cb_var$answer_code
         ),
         cb_var$answer_text
       )
@@ -78,4 +72,14 @@ ns_add_labels <- function(data, codebook) {
 
 is_ns_data <- function(x) {
   inherits(x, "ns-data")
+}
+
+type_convert <- function(x) {
+  utils::type.convert(
+    x,
+    na.strings = c("", "NA", " ", "NaN"),
+    tryLogical = FALSE,
+    numerals = "no.loss",
+    as.is = TRUE
+  )
 }

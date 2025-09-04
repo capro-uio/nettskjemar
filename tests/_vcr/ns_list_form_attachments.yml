@@ -1,0 +1,66 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/answers
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Wed, 20 Aug 2025 17:40:32 GMT
+      content-type: application/x-ndjson
+      set-cookie: JSESSIONID=408E5106F55F89A4EECB77AE5C72E919; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      x-content-type-options: nosniff
+      timing-allow-origin: '*'
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      raw_gzip: |-
+        eJzlmt1uozgUgO/3KSpfu1n/YGy4y6SRJtr+aNuMNNJqFdHgpuwGyAKZ6W4177X3+2IrQmba
+        BIcAdhm
+        UuUoDFMPnY/ucL34GD3ESTnzgYkIFoRCk6/swSNMgjvKjhNuCEYdA4EXpZ5lsrmSC
+        2BRTCoFcylBG2e
+        aobWHb4RDIp0wmkbccv5wDD4mUmXzKAAT5x3BzL+CCNA7l2fZE0cDNKts0
+        nQL3t99fbjZUnixamP69k
+        sAFv34Y300nN9cAgnkivUz6F16WnyCI0HNknyM8Jchl3MUMQBDG
+        fvAQVF705afn9niIpcAj1HgSzw9i
+        JQIquGNRVkkCYFCCcTu8mNz0hQRXkHDUJOaPcv7nffxU
+        AYPD4lNUQ/lrLdP8a+QFiUwBBPKTjLK0jGr
+        0fjz65d3Nx57QoqxEiyOkpuUn8cqPP0cVtJxq
+        SlaZx934cjya9oUGUtDAFaNoFnpZElTEj4UbD6ar4f
+        R28nFmeExtKIx33s3h1NLDRYzjItW4
+        yPfFxfRmJvHD4GIOp4joRRfBClykeiI/TozC4tOqJjfZTEnxc
+        im9xVoexGh+NlcHnq1Hkpkl
+        iSlFDuWoGqHnh0H03clxPXKqGY4eWB7zR9vLOBEeIHuQP62BlPNiOB2b
+        w6XHhSq4WGouWRCW
+        uGDiInRaSKitQMIOh4oay9dwOcPUpacWNCpCtppQtA7vZTLz5TwIveU+JwsyA2i
+        uP1y9G9/2
+        BA5VrXa8Ek4QZXIhk304nJ8aG+LssKEWJ4QdKOnSZeCXmZgYSZeT6/HwdnY3Gl72ZUTRct
+        XP
+        8YHlycsyb/6Yf53hkhj579/lp2CwihatOBX/MfzWQN4eo0JgB4KHYCkjL5T7rYTSD7wt2SD0
+        FvLn
+        4nga/COBaxNhY7rfA8PpdDh6fzW+NlgvwldggPv8Zu/ypWZHU6TqaF4uHRrbLy+Ks0eZ
+        nBU3NzAg6io
+        wUaxk1Z2xuUiLkSAKRi0VmF2d2p63dWAdoeCmHFiR6dtHcCzjhYbp6oiJUGUf
+        rU2XdaT4cdqarq5oKF
+        aO1i5iGyVH5B/VkxH1weiprgMjyvnReDE9Xtggry5MantczVzXgeFo
+        2HVtDc0RPZgXEEkkM21Joxtrt
+        l6s0TeBh+D2jyOBV3guCNZREOv7Ll2UXA+lyhQ28V18gEiX
+        vquj5ZKrkocmvstyLRPKokdIhGrUNfVd
+        bBsu1hkSLjs1QqpfE1v5LgKJATT1nE5HcLjKrLfy
+        XUYGVr/Y7CbnLXwXNoCkie/qCIzYXZ4oIwyRAzX
+        cK99F9vGEXhKs08EfK2lWeOXP8koS7TZT
+        tkTbE4UmEo7lWPt9UN94Nckb6hkv7Zeprbxyt7bf10QY3N
+        H0VjrHcRk6Cn1zkRYKBylQGNjS
+        BOvpnUN7m6Cm+OmKnqq26t8Wp45oKNO2Phfm9bloeh81LvNbnPqNi
+        +nhMqnJ+o2rofZRT02G
+        zcV2axOsp39etjdBcypIN/5svfgTbwH0254x2FAN7e0ig4ZdkS5rrhe8qp8Q
+        GrgiIgbIyYt/
+        E7VtnbK/qxVW5dAauCLEXGyifusTElUK1tAVITpAdBMuZ4i7xDkxQlxBqJUrwib21dX
+        TIV2x
+        UcnXVqrIEafGxtnNT1uoIhMDqYkqagLmf+x1dw0=
+  recorded_at: 2025-08-20 17:40:32
+recorded_with: VCR-vcr/2.0.0

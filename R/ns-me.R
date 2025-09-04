@@ -7,8 +7,13 @@
 #' @return list of information
 #' @export
 #' @examples
-#' \dontrun{
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_me", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
 #' ns_get_me()
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_me <- function() {
   ns_req() |>

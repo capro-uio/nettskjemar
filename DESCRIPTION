@@ -26,6 +26,7 @@ Imports:
     tools
 Suggests: 
     covr,
+    dplyr,
     fs,
     haven,
     knitr,
@@ -33,6 +34,7 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
+    tidyr,
     vcr (>= 0.6.0),
     withr
 VignetteBuilder: 

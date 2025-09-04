@@ -67,8 +67,7 @@ test_that("format.ns_meta returns string", {
 })
 
 test_that("writes data to a file", {
-  temp_file <- tempfile(fileext = ".json")
-  on.exit(unlink(temp_file))
+  temp_file <- withr::local_tempfile(fileext = ".json")
   meta <- meta_raw(list(
     form_id = 123,
     title = "Test Form",
@@ -88,8 +87,7 @@ test_that("writes data to a file", {
 })
 
 test_that("changes non-json extension", {
-  temp_file <- tempfile(fileext = ".txt")
-  on.exit(unlink(paste0(temp_file, "json")))
+  temp_file <- withr::local_tempfile(fileext = ".txt")
   meta <- meta_raw(list(
     form_id = 123,
     title = "Test Form"
@@ -104,7 +102,7 @@ test_that("changes non-json extension", {
   # Confirm JSON file exists
   expect_true(
     file.exists(
-      paste0(rm_ext(temp_file), "json")
+      paste0(rm_ext(temp_file), ".json")
     )
   )
 })
