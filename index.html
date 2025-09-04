@@ -71,97 +71,8 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="nettskjemar-">nettskjemar <a class="anchor" aria-label="anchor" href="#nettskjemar-"></a>
-</h1>
-</div>
-<!-- badges: start -->
-
-<p>The goal of {nettskjemar} is to have easy access to data and form information on the <a href="https://nettskjema.no/" class="external-link">Nettskjema</a> service by the <a href="https://www.uio.no/english/" class="external-link">University of Oslo, Norway</a>. Currently the main possibilities is help in creating users and tokens for accessing Nettskjema through its API, downloading meta-data and codebooks about specific forms and data associated with a specific form.</p>
-<p>Install the released version from CRAN with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nettskjemar"</span><span class="op">)</span></span></code></pre></div>
-<p>Newer releases can be installed through the authors r-universe:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Enable this universe</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span>
-<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    lcbc_uio <span class="op">=</span> <span class="st">'https://CAPRO-UIO.r-universe.dev'</span>,</span>
-<span>    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Install some packages</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'nettskjemar'</span><span class="op">)</span></span></code></pre></div>
-<p>Install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CAPRO-UIO/nettskjemar"</span><span class="op">)</span></span></code></pre></div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>Currently, the package contains functions to download data from forms, including submission answers, meta-data, and codebook information. The most important, is the function that will download nettskjema submission data and return them as a data.frame. This needs only the <em>id</em> of a nettskjema.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/CAPRO-UiO/nettskjemar" class="external-link">nettskjemar</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   formid $submission_id                  $created       freetext radio</span></span>
-<span><span class="co">#&gt; 1 123823       27685292 2023-06-01T20:57:15+02:00      some text     1</span></span>
-<span><span class="co">#&gt; 2 123823       27685302 2023-06-01T20:58:33+02:00 another answer    -1</span></span>
-<span><span class="co">#&gt; 3 123823       27685319 2023-06-01T20:59:50+02:00                   -1</span></span>
-<span><span class="co">#&gt;   checkbox.questionnaires checkbox.events checkbox.logs dropdown</span></span>
-<span><span class="co">#&gt; 1                       1               1             0        4</span></span>
-<span><span class="co">#&gt; 2                       0               0             1        9</span></span>
-<span><span class="co">#&gt; 3                       1               1             1        4</span></span>
-<span><span class="co">#&gt;   radio_matrix.grants radio_matrix.lecture radio_matrix.email</span></span>
-<span><span class="co">#&gt; 1                   1                    2                  2</span></span>
-<span><span class="co">#&gt; 2                   3                    3                  1</span></span>
-<span><span class="co">#&gt; 3                   1                    1                  1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.IT checkbox_matrix.1.colleague checkbox_matrix.1.admin</span></span>
-<span><span class="co">#&gt; 1                    1                           1                       0</span></span>
-<span><span class="co">#&gt; 2                    0                           0                       0</span></span>
-<span><span class="co">#&gt; 3                    0                           1                       0</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.1.union checkbox_matrix.1.internet checkbox_matrix.2.IT</span></span>
-<span><span class="co">#&gt; 1                       0                          0                    0</span></span>
-<span><span class="co">#&gt; 2                       0                          1                    0</span></span>
-<span><span class="co">#&gt; 3                       0                          1                    1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.colleague checkbox_matrix.2.admin checkbox_matrix.2.union</span></span>
-<span><span class="co">#&gt; 1                           0                       1                       0</span></span>
-<span><span class="co">#&gt; 2                           0                       1                       1</span></span>
-<span><span class="co">#&gt; 3                           1                       1                       1</span></span>
-<span><span class="co">#&gt;   checkbox_matrix.2.internet       date  time         datetime number_decimal</span></span>
-<span><span class="co">#&gt; 1                          0 2023-06-01 12:00 2023-06-12T13:33            4.5</span></span>
-<span><span class="co">#&gt; 2                          0 2023-02-07 14:45 2024-02-15T08:55            2.2</span></span>
-<span><span class="co">#&gt; 3                          0 2022-09-28 05:11 2022-03-03T07:29           10.0</span></span>
-<span><span class="co">#&gt;   number_integer slider attachment_1 attachment_2 $answer_time_ms</span></span>
-<span><span class="co">#&gt; 1           77.0      3    sølvi.png                        74630</span></span>
-<span><span class="co">#&gt; 2           45.0      1               marius.jpeg           71313</span></span>
-<span><span class="co">#&gt; 3           98.0      9                                     70230</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
-</h2>
-<p>Package documentation can be found on the associated <a href="https://www.capro.dev/nettskjemar/" class="external-link">GitHub pages</a>, where there are 7 tutorials.</p>
-</div>
-</div>
-<div class="section level1">
-<h1 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h1>
-<p>To cite nettskjemar in publications use:</p>
-<p>Athanasia Monika Mowinckel. (2021, May 10). LCBC-UiO/nettskjemar: v0.1.04 (Version v0.1.04). Zenodo. <a href="http://doi.org/10.5281/zenodo.4745481" class="external-link uri">http://doi.org/10.5281/zenodo.4745481</a></p>
-<p>A BibTeX entry for LaTeX users is</p>
-<p>@Manual{, title = {nettskjemar - Package to work with University of Oslo Nettskjema API}, author = {Athanasia Mo Mowinckel}, year = {2021}, month = {05}, day = {10}, doi = {10.5281/zenodo.4745481}, }</p>
-</div>
-<div class="section level1">
-<h1 id="funding">Funding<a class="anchor" aria-label="anchor" href="#funding"></a>
-</h1>
-<p>This tool is partly funded by:</p>
-<p><strong>EU Horizon 2020 Grant:</strong> Healthy minds 0-100 years: Optimising the use of European brain imaging cohorts (Lifebrain).</p>
-<p><strong>Grant agreement number:</strong> 732592.</p>
-<p><strong>Call:</strong> Societal challenges: Health, demographic change and well-being</p>
-</div>
-
+  <main id="main" class="col-md-9">
+Enables users to retrieve data, meta-data, and codebooks from &lt;<a href="https://nettskjema.no/" class="external-link">https://nettskjema.no/</a>&gt;. The data from the API is richer than from the online data portal. This package is not developed by the University of Oslo IT. Mowinckel (2021) &lt;<a href="https://doi.org/10.5281/zenodo.4745481" class="external-link">doi:10.5281/zenodo.4745481</a>&gt;.
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -201,16 +112,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/capro-uio/nettskjemar/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/206264675" class="external-link"><img src="https://zenodo.org/badge/206264675.svg" alt="DOI"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=nettskjemar" class="external-link"><img src="https://www.r-pkg.org/badges/version/nettskjemar" alt="CRAN status"></a></li>
-<li><a href="https://codecov.io/gh/capro-uio/nettskjemar" class="external-link"><img src="https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg?token=fGDbrZdnkp" alt="Code coverage"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
