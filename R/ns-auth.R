@@ -38,9 +38,6 @@ ns_req <- function(...) {
 #' @keywords internal
 #' @noRd
 error_details <- function(resp) {
-  status <- httr2::resp_status(resp)
-  status_desc <- httr2::resp_status_desc(resp)
-
   ed <- tryCatch(
     {
       body <- httr2::resp_body_json(resp)
