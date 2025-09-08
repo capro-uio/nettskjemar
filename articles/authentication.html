@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,20 +76,21 @@
       <img src="../logo.png" class="logo" alt=""><h1>Authentication Setup for Nettskjema API</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.3/vignettes/authentication.Rmd" class="external-link"><code>vignettes/authentication.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/vignettes/authentication.Rmd" class="external-link"><code>vignettes/authentication.Rmd</code></a></small>
       <div class="d-none name"><code>authentication.Rmd</code></div>
     </div>
 
     
     
 <p>This vignette explains how to set up authentication with the
-Nettskjema API using the <code>ns_req</code> and
-<code>ns_auth_token</code> functions provided in the package.
-Authentication is required to connect to the API endpoints and perform
-operations.</p>
+Nettskjema API. Authentication is required to connect to the API
+endpoints and perform operations.</p>
 <div class="section level2">
 <h2 id="setting-up-authentication">Setting Up Authentication<a class="anchor" aria-label="anchor" href="#setting-up-authentication"></a>
 </h2>
+<p>The Nettskjema API uses OAuth 2.1 for authentication. This involves
+creating a registered API client in the Nettskjema system, which
+provides you with a client ID and client secret.</p>
 <div class="section level3">
 <h3 id="setting-up-a-client">Setting up a client<a class="anchor" aria-label="anchor" href="#setting-up-a-client"></a>
 </h3>
@@ -145,7 +146,7 @@ on whether you are ready to connect to the API.</p>
 <span><span class="fu"><a href="../reference/ns_sitrep.html">ns_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Nettskjema API Sitrep</span> <span style="color: #00BBBB;">───────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> nettskjemar version: <span style="color: #0000BB;">1.0.3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> nettskjemar version: <span style="color: #0000BB;">1.0.4</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Nettskjema API Configuration</span> ──</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -213,7 +214,7 @@ portal, only access to the specific forms that one client has access to
 <p>With that being said, here we have provided information about <a href="#add-credentials-to-your--renviron-file">adding the secret to you
 <code>.Renviron</code> file</a>. Please note, that if you do this, you
 should <strong>not by any means</strong> share this file openly. If you
-and your team with with <code>git</code> for instance, this should
+and your team work with <code>git</code> for instance, this should
 <strong>never</strong> be added to your git history.</p>
 <p>If you by mistake share the secret with someone who should not have
 access, or you only wanted to grant temporary access, the easiest way to

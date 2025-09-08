@@ -16,7 +16,6 @@
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
 <url><loc>/reference/codebook.html</loc></url>
-<url><loc>/reference/get_raw_codebook.html</loc></url>
 <url><loc>/reference/has_codebook.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/nettskjemar-package.html</loc></url>
@@ -35,12 +34,14 @@
 <url><loc>/reference/ns_get_meta.html</loc></url>
 <url><loc>/reference/ns_get_submission.html</loc></url>
 <url><loc>/reference/ns_get_submission_attachments.html</loc></url>
+<url><loc>/reference/ns_get_token.html</loc></url>
 <url><loc>/reference/ns_has_auth.html</loc></url>
 <url><loc>/reference/ns_list_form_attachments.html</loc></url>
 <url><loc>/reference/ns_list_submission_attachments.html</loc></url>
 <url><loc>/reference/ns_req.html</loc></url>
 <url><loc>/reference/ns_req_auth.html</loc></url>
 <url><loc>/reference/ns_sitrep.html</loc></url>
+<url><loc>/reference/ns_validate_client_pattern.html</loc></url>
 <url><loc>/reference/ns_write_codebook.html</loc></url>
 <url><loc>/reference/ns_write_meta.html</loc></url>
 </urlset>

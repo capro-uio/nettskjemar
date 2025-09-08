@@ -11,7 +11,7 @@ representations into one of the specified formats."><meta property="og:image" co
 
     <a class="navbar-brand me-2" href="../index.html">nettskjemar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ representations into one of the specified formats."><meta property="og:image" co
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Alter checkbox matrix variables in a dataset</h1>
-      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/v1.0.3/R/ns-checkbox.R" class="external-link"><code>R/ns-checkbox.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/capro-uio/nettskjemar/blob/main/R/ns-checkbox.R" class="external-link"><code>R/ns-checkbox.R</code></a></small>
       <div class="d-none name"><code>ns_alter_checkbox.Rd</code></div>
     </div>
 
@@ -98,11 +98,50 @@ the codebook is generated using `ns_get_codebook()`.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="fl">11000</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">ns_alter_checkbox</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dt</span>, to <span class="op">=</span> <span class="st">"list"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">ns_alter_checkbox</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dt</span>, to <span class="op">=</span> <span class="st">"character"</span>, sep <span class="op">=</span> <span class="st">";"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="ns_get_data.html">ns_get_data</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cb</span> <span class="op">&lt;-</span> <span class="fu"><a href="ns_get_codebook.html">ns_get_codebook</a></span><span class="op">(</span><span class="fl">123823</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ns_alter_checkbox</span><span class="op">(</span><span class="va">dt</span>, to <span class="op">=</span> <span class="st">"list"</span>, cb <span class="op">=</span> <span class="va">cb</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   $submission_id formid                  $created       freetext radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       27685292 123823 2023-06-01T20:57:15+02:00      some text     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       27685302 123823 2023-06-01T20:58:33+02:00 another answer    -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       27685319 123823 2023-06-01T20:59:50+02:00                   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox.questionnaires checkbox.events checkbox.logs dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       1               1             0        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       0               0             1        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                       1               1             1        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   radio_matrix.grants radio_matrix.lecture radio_matrix.email       date  time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   1                    2                  2 2023-06-01 12:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   3                    3                  1 2023-02-07 14:45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   1                    1                  1 2022-09-28 05:11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           datetime number_decimal number_integer slider attachment_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2023-06-12T13:33            4.5           77.0      3    sølvi.png</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-02-15T08:55            2.2           45.0      1             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2022-03-03T07:29           10.0           98.0      9             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   attachment_2 $answer_time_ms   checkbox_matrix.1           checkbox_matrix.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                        74630       IT, colleague                       admin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  marius.jpeg           71313            internet                admin, union</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                        70230 colleague, internet IT, admin, colleague, union</span>
+<span class="r-in"><span><span class="fu">ns_alter_checkbox</span><span class="op">(</span><span class="va">dt</span>, to <span class="op">=</span> <span class="st">"character"</span>, sep <span class="op">=</span> <span class="st">";"</span>, cb <span class="op">=</span> <span class="va">cb</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   $submission_id formid                  $created       freetext radio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       27685292 123823 2023-06-01T20:57:15+02:00      some text     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       27685302 123823 2023-06-01T20:58:33+02:00 another answer    -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       27685319 123823 2023-06-01T20:59:50+02:00                   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   checkbox.questionnaires checkbox.events checkbox.logs dropdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       1               1             0        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       0               0             1        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                       1               1             1        4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   radio_matrix.grants radio_matrix.lecture radio_matrix.email       date  time</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   1                    2                  2 2023-06-01 12:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                   3                    3                  1 2023-02-07 14:45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                   1                    1                  1 2022-09-28 05:11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           datetime number_decimal number_integer slider attachment_1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2023-06-12T13:33            4.5           77.0      3    sølvi.png</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2024-02-15T08:55            2.2           45.0      1             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2022-03-03T07:29           10.0           98.0      9             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   attachment_2 $answer_time_ms  checkbox_matrix.1        checkbox_matrix.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                        74630       IT;colleague                    admin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  marius.jpeg           71313           internet              admin;union</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                        70230 colleague;internet IT;admin;colleague;union</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
