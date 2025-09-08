@@ -1,0 +1,24 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/submission/999999
+  response:
+    status: 404
+    headers:
+      server: nginx
+      date: Mon, 08 Sep 2025 20:50:52 GMT
+      content-length: '69'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=C812032BD2006E3207BB2E7566B29A84; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+      uio-cache-status: MISS
+    body:
+      string: '{"message":"Svaret med id 999999 finnes ikke"}'
+  recorded_at: 2025-09-08 20:50:52
+recorded_with: VCR-vcr/2.0.0

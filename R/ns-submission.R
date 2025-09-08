@@ -34,8 +34,8 @@ ns_get_submission <- function(submission_id) {
 #' @noRd
 #' @examples
 #' \dontrun{
-#' ns_get_submission_pdf(1100)
-#' ns_get_submission_pdf(1100, "~/Desktop/1100.pdf")
+#' ns_get_submission_pdf(27685292)
+#' ns_get_submission_pdf(27685292, "~/Desktop/1100.pdf")
 #' }
 ns_get_submission_pdf <- function(
   submission_id,
