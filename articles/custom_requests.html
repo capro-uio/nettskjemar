@@ -154,8 +154,10 @@ you connect to the correct API with the correct credentials.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">GET</span> https://nettskjema.no/api/v3/</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign     </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth    </span>: TRUE</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_is_error</span>: &lt;function&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_body    </span>: &lt;function&gt;</span></span></code></pre></div>
 <p>As you can see, the output here shows the URL until the
 <code>v3</code> section, and also that there is Authorization added,
 which the function does in the background for you with the
@@ -172,8 +174,10 @@ remaining url.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">GET</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign     </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth    </span>: TRUE</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_is_error</span>: &lt;function&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_body    </span>: &lt;function&gt;</span></span></code></pre></div>
 <p>Now, you can see that the path is as requested in the API
 documentation. But the request has not been submitted yet! So far, we
 have just been creating the command we want to send to the API. To send
@@ -478,8 +482,10 @@ information, but change the method with httr2.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">PATCH</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: empty</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign     </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth    </span>: TRUE</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_is_error</span>: &lt;function&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_body    </span>: &lt;function&gt;</span></span></code></pre></div>
 <p>Ok, we can see now that the method is correct, the URL is correct,
 but the body is empty.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -495,8 +501,10 @@ but the body is empty.</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">PATCH</span> https://nettskjema.no/api/v3/form/123823/settings</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Body</span>: JSON data</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Policies:</span></span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign </span>: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth</span>: TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_sign     </span>: &lt;list&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">auth_oauth    </span>: TRUE</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_is_error</span>: &lt;function&gt;</span></span>
+<span><span class="co">#&gt; * <span style="color: #00BB00;">error_body    </span>: &lt;function&gt;</span></span></code></pre></div>
 <p>Things look kind of correct now, we’re still not sure about the body
 setup, but we will send the request and see what happens.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -510,7 +518,10 @@ setup, but we will send the request and see what happens.</p>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `req_perform()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> HTTP 400 Bad Request.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> HTTP 400 Bad Request.</span></span>
+<span><span class="co">#&gt; Error: list("Mellomlagring er bare tillatt for skjemaer med FEIDE-respondenter,</span></span>
+<span><span class="co">#&gt; er satt til å samle inn personopplysninger og som leverer til Nettskjema")</span></span>
+<span><span class="co">#&gt; Message: Valideringsfeil</span></span></code></pre></div>
 <p>That didn’t work, but why? We’ve not got any further error message,
 but there might be more information in the body of the response, even if
 it erred. Erring API calls like these are actually valid proper
