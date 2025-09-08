@@ -38,6 +38,8 @@ reference:
   - ns_get_me
   - ns_client
   - ns_sitrep
+  - ns_get_token
+  - ns_validate_client_pattern
 - title: "Open online urls"
   desc: "Functions for easy opening of relevant URLs"
   contents:

@@ -35,9 +35,44 @@ These most often pertain to sending data _to_ the API, either for creating new f
 In order to facilitate users potential wish to connect to these endpoints too, the base function `ns_req()` is available to build the query you are after.
 This vignette will in short show how you can combine this function, with functionality from the [httr2](https://httr2.r-lib.org/index.html) package to create custom requests to the Nettskjema API.
 
-## Setting up a custom GET request
+## Understanding the basics of APIs
 
-First, you will need to identify the functionality you want to use in the [Nettskjema API docs](https://nettskjema.no/apidoc).
+APIs are a way for computers to talk to each other.
+They are often used to allow different software systems to interact and share data.
+APIs are built around the concept of "endpoints", which are specific URLs that correspond to different functionalities or resources.
+Each endpoint is associated with a specific HTTP method, which defines the type of action to be performed.
+
+The most common HTTP methods are:
+- `GET`: Retrieve data from the server.
+- `POST`: Send data to the server to create a new resource.
+- `PUT`: Update an existing resource on the server.
+- `PATCH`: Partially update an existing resource on the server.
+- `DELETE`: Remove a resource from the server.
+
+When making a request to an API, you typically need to provide:
+- The endpoint URL.
+- The HTTP method.
+- Any required headers (e.g., for authentication).
+- Any required parameters (e.g., query parameters or body data).
+- The format of the response (e.g., JSON, XML).
+
+Before you you start setting up a custom request, you should familiarize yourself with the [Nettskjema API documentation](https://nettskjema.no/apidoc).
+In particular, you should try the endpoint you are interested in, by authenticating in the API docs and using the "Try it out" functionality.
+This will give you a good idea of how the endpoint works, what parameters it requires, and what kind of response you can expect.
+
+To authenticate, you will need to have an access token.
+The access tokens from Nettskjema only last for 24 hours, so if you are doing a lot of testing, you will need to generate new tokens often.
+You can get a token by running the `ns_get_token()` function.
+
+```{r}
+#| label: get-token
+#| eval: false
+
+library(nettskjemar)
+ns_get_token()
+```
+
+## Setting up a custom GET request
 
 Let's assume you want to update the settings for a form.
 To do this, we can first retrieve the settings as they are stored, alter the setting we want to alter, then send that back to Nettskjema.
