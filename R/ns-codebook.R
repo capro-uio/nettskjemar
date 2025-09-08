@@ -79,16 +79,8 @@ ns_get_codebook <- function(form_id, asis = FALSE) {
 #' with \code{asis = TRUE}.
 #' @template form_id
 #' @return long format tibble with meta-data for a specific nettskjema
-#' @export
-#' @examples
-#' \dontshow{
-#' vcr::insert_example_cassette("ns_get_raw_codebook", package = "nettskjemar")
-#' nettskjemar:::mock_if_no_auth()
-#' }
-#' get_raw_codebook(123823)
-#' \dontshow{
-#' vcr::eject_cassette()
-#' }
+#' @keywords internal
+#' @noRd
 get_raw_codebook <- function(form_id) {
   resp <- ns_req() |>
     httr2::req_url_path_append("form", form_id, "elements") |>

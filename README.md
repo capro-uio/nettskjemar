@@ -12,7 +12,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/nettskjemar.png)](https://CRAN.R-project.org/package=nettskjemar)
-[![codecov](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg?token=fGDbrZdnkp)](https://codecov.io/gh/capro-uio/nettskjemar)
+[![codecov](https://codecov.io/gh/capro-uio/nettskjemar/graph/badge.svg?token=fGDbrZdnkp)](https://app.codecov.io/gh/capro-uio/nettskjemar)
 <!-- badges: end -->
 
 The goal of {nettskjemar} is to have easy access to data and form
