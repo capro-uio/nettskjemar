@@ -6,18 +6,8 @@
 #'
 #' @param meta form meta-data from \code{\link{ns_get_meta}}
 #' @return long format tibble with meta-data for a specific nettskjema
-#' @export
-#'
-#' @examples
-#' \dontshow{
-#' vcr::insert_example_cassette("codebook", package = "nettskjemar")
-#' nettskjemar:::mock_if_no_auth()
-#' }
-#' meta <- ns_get_meta(123823)
-#' codebook(meta)
-#' \dontshow{
-#' vcr::eject_cassette()
-#' }
+#' @keywords internal
+#' @noRd
 codebook <- function(meta) {
   els <- lapply(
     seq_along(meta$elements),
