@@ -24,7 +24,8 @@ nettskjemar:::mock_if_no_auth()
 
 # Overview
 
-Nettskjema allows users to upload attachments with their form submissions. This vignette explains how to use the functions provided in this package to list, retrieve, and save these attachments efficiently.
+Nettskjema allows users to upload attachments with their form submissions. 
+This vignette explains how to use the functions provided in this package to list, retrieve, and save these attachments efficiently.
 
 # Listing Attachments
 
@@ -32,10 +33,11 @@ Before downloading any attachments, it's useful to list the available files.
 
 ## Listing attachments for a specific submission
 
-Each submission ID may have associated attachments. Use `ns_list_submission_attachments()` to retrieve information about the available attachments.
+Each submission ID may have associated attachments. 
+Use `ns_list_submission_attachments()` to retrieve information about the available attachments.
 
 ```{r}
-#| label: atch
+#| label: list
 #| cassette: true
 
 library(nettskjemar)

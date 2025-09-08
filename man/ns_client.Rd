@@ -4,7 +4,11 @@
 \alias{ns_client}
 \title{Create an OAuth2 Client for Nettskjema API}
 \usage{
-ns_client(client_id, client_secret, client_name = "nettskjemar")
+ns_client(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
+  client_name = "nettskjemar"
+)
 }
 \arguments{
 \item{client_id}{[character] The client ID provided by Nettskjema.}

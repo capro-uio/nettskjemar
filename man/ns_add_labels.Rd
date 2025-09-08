@@ -29,10 +29,15 @@ and metadata required for the
 "ns-data" class.
 }
 \examples{
-\dontrun{
-data <- ns_get_data(11000)
-cb <- ns_get_codebook(11000)
+\dontshow{
+vcr::insert_example_cassette("ns_add_labels", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+data <- ns_get_data(123823)
+cb <- ns_get_codebook(123823)
 labeled_data <- ns_add_labels(data, cb)
+\dontshow{
+vcr::eject_cassette()
 }
 
 }

@@ -14,8 +14,7 @@ release_bullets <- function() {
     sprintf(
       "Coverage is at: %s",
       covr::coverage_to_list(covr::package_coverage())$totalcoverage
-    ),
-    knit_vignettes()
+    )
   )
 } # nocov end
 

@@ -18,8 +18,13 @@ It will return a data.frame in long format with
 meta-data information from a specific nettskjema form.
 }
 \examples{
-\dontrun{
-meta_110000 <- ns_get_meta(110000)
-codebook(meta_110000)
+\dontshow{
+vcr::insert_example_cassette("codebook", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+meta <- ns_get_meta(123823)
+codebook(meta)
+\dontshow{
+vcr::eject_cassette()
 }
 }

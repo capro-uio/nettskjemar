@@ -1,0 +1,23 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/999999/csv-report
+  response:
+    status: 404
+    headers:
+      server: nginx
+      date: Sat, 06 Sep 2025 16:40:37 GMT
+      content-length: '71'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=E1584078A2F6A4ED9CDAE582E9E7AA02; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+    body:
+      string: '{"message":"Skjemaet med id 999999 finnes ikke"}'
+  recorded_at: 2025-09-06 16:40:37
+recorded_with: VCR-vcr/2.0.0

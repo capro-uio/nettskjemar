@@ -25,7 +25,7 @@ options(max.print = 50)
 
 vcr::setup_knitr(prefix = "cr-")
 nettskjemar:::mock_if_no_auth()
-
+warning(nettskjemar::ns_has_auth())
 ```
 
 This package focuses on retrieving information from the Nettskjema API, primarily regarding collected data and meta-data for forms.

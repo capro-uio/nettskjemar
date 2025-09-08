@@ -1,0 +1,55 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123823/spss-syntax
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Sat, 06 Sep 2025 16:34:07 GMT
+      content-type: application/x-vnd.spss-spss-syntax
+      content-disposition: attachment; filename="data-123823-2025-09-06-1834.sps"
+      set-cookie: JSESSIONID=7F3C678E3E047EB36D745B49F10B01E6; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive, noai, noml, SPC
+      x-content-type-options: nosniff
+      timing-allow-origin: '*'
+      cache-control: private, max-age=0, no-cache, no-store
+      tdm-reservation: '1'
+    body:
+      raw_gzip: |-
+        eJydl19z4jYUxd/9Kc4+qc0UBpxtJ9uXHXZDp5mh2bSFtH3KCPtiq7ElV5KX5Nt3JNv8CTY2
+        +wb3nnv
+        0Q9wz4CvMZaRiIZOfsVr+MroZB1eYPdzBkrHYKJ3jOxFjGl7fhNffY4RwEv44mnwY
+        TX4aTW+u3wfBFW
+        5pIyThkWvB1xnhQauCtBVkxkFwtdFEll7sOHic/XE3+7SYYzH7NF/8iaYD
+        tkyFgTDg+K8kY4WS4GtVW
+        hiVk02FTGDKgjREXihtubQ/YJuSJtiUUBrSiLiEkEVpvS38icyd
+        r3ks1Onhvgz2q9oi5UXxCq4JW8JW
+        2BT3ZK15/pdy/pG50cXqeC4ApmCPpF+r4XcsANhoyupi
+        KeuyA4hSip7X6mXcfDbJhXZ38xapQwj2V8o
+        tYuXwSkMQ/ov5iN+PZG9BO9wq9H/IOOQJ2L06
+        hqSvJO05uErQCTV3bRiRyFFZdENVLn0wmUrOobh2J8
+        gttxyZShIhk04M59ABEWtVxGorT89v
+        Ou5o5dZWkymUNMItf9/+NMMB8B5sJb64Uz+AfTGZ+o3sfmWfc
+        m61eBknmrd+IS0isK0W1pL0
+        uYEvghdFJiLuNsC0LvOxR3Ubr9VthGBSuRfX7sXOa53RKWdGkS019YDW
+        KrCUshgc9fuzYLXm
+        m8ko5yLr4fIaMOOX110ejVzl/I35oUuwmr1rDKbju2X3fh+qwIwqk9QipazARqs
+        cd8uutT4c
+        7InYXhqpLCOelDQEaCdu4Zph1+0H3EkHc/I4F3IIoxe28bm6MFb7TPQjep/BeKUUahCeF7
+        bg
+        reQgKj8+mEpIS1qSHQLWaNtWrm714zUmAwnDQUFwKjBNEYmvFDcRHZqGcHgawkvScCDugrsg
+        EuHF
+        kQiHRqIWdkJelIvwolyEQ3NRC7sYB4UjvCgc4QXh2Gs713BgQsK+hMTctuyeq4J9TpUy
+        BA7NZaxyX/V
+        DVuQtQ67qfo62iN4Mus673XHt000HbMGNzV73Jh5mdn97YCPLfE36KaZI5Lzl
+        N/e4D/Ygomfwuow12S
+        2RxARcxphOjjzdfSWkOz3r/v523PNAVXrrO/G+JhNxm19VP7jlQglp
+        oaR/2Ki6FRm3lkdpTtI+TU99D
+        rtgqyJT3P3j2ZQSIucJnXiEZz3Cg8ckedAInc387/nn1XI+
+        /h/CV2ED
+  recorded_at: 2025-09-06 16:34:07
+recorded_with: VCR-vcr/2.0.0

@@ -52,10 +52,10 @@ ns_sitrep <- function() {
     "NETTSKJEMA_CLIENT_ID",
     unset = NA
   )
-  if (validate_client_pattern(client_id, type = "id")) {
+  if (ns_validate_client_id(client_id)) {
     cli::cli_alert_success("Client ID: Valid format and length.")
   } else {
-    if (is.na(client_id) || nzchar(client_id)) {
+    if (is.na(client_id) || !nzchar(client_id)) {
       cli::cli_alert_warning(
         "Client ID not found or empty (check {.envvar NETTSKJEMA_CLIENT_ID})"
       )
@@ -71,10 +71,10 @@ ns_sitrep <- function() {
     "NETTSKJEMA_CLIENT_SECRET",
     unset = NA
   )
-  if (validate_client_pattern(client_secret, type = "secret")) {
+  if (ns_validate_client_secret(client_secret)) {
     cli::cli_alert_success("Client Secret: Valid format and length.")
   } else {
-    if (is.na(client_secret) || nchar(client_secret) == 0) {
+    if (is.na(client_secret) || !nzchar(client_secret)) {
       cli::cli_alert_warning(
         "Client Secret not found or empty (check 
         {.envvar NETTSKJEMA_CLIENT_SECRET})"
@@ -145,15 +145,28 @@ ns_sitrep <- function() {
 #'     validate (`"id"` or `"secret"`).
 #' @return A logical value: `TRUE` if the
 #'     input format is valid, otherwise
-#' @noRd
-validate_client_pattern <- function(x, type = c("id", "secret")) {
+#'
+#' @examples
+#' client_id <- "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+#' ns_validate_client_pattern(client_id,
+#' type = "id")
+#' ns_validate_client_id(client_id)
+#'
+#'
+#' client_secret <- "aB3xK9mP2vQ8_R7nL98Mcs81sT4uY6wE5zC0hJ9iO3kM8pN2qA7bD1gF4jH6lS-9vX3nR5mT" #nolint
+#' ns_validate_client_pattern(client_secret,
+#' type = "secret")
+#' ns_validate_client_secret(client_secret)
+#'
+#' @export
+ns_validate_client_pattern <- function(x, type = c("id", "secret")) {
   type <- match.arg(type, c("id", "secret"))
 
   # nolint start
   pattern <- switch(
     type,
-    "secret" = "^[a-zA-Z0-9]{72}$",
-    "id" = "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    "secret" = "^[A-Za-z0-9_-]{72}$",
+    "id" = "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
   )
   # nolint end
 
@@ -167,4 +180,16 @@ validate_client_pattern <- function(x, type = c("id", "secret")) {
   }
 
   FALSE
+}
+
+#' @describeIn ns_validate_client_pattern Validate Nettskjema Client ID
+#' @export
+ns_validate_client_id <- function(x) {
+  ns_validate_client_pattern(x, type = "id")
+}
+
+#' @describeIn ns_validate_client_pattern Validate Nettskjema Client Secret
+#' @export
+ns_validate_client_secret <- function(x) {
+  ns_validate_client_pattern(x, type = "secret")
 }

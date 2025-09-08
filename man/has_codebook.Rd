@@ -20,7 +20,12 @@ checks if the codebook of a form has been activated
 or not
 }
 \examples{
-\dontrun{
-has_codebook(110000)
+\dontshow{
+vcr::insert_example_cassette("has_codebook", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+has_codebook(123823)
+\dontshow{
+vcr::eject_cassette()
 }
 }

@@ -31,9 +31,15 @@ variables in a dataset, transforming their
 representations into one of the specified formats.
 }
 \examples{
-\dontrun{
-dt <- ns_get_data(11000)
-ns_alter_checkbox(data = dt, to = "list")
-ns_alter_checkbox(data = dt, to = "character", sep = ";")
+\dontshow{
+vcr::insert_example_cassette("ns_alter_checkbox", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+dt <- ns_get_data(123823)
+cb <- ns_get_codebook(123823)
+ns_alter_checkbox(dt, to = "list", cb = cb)
+ns_alter_checkbox(dt, to = "character", sep = ";", cb = cb)
+\dontshow{
+vcr::eject_cassette()
 }
 }

@@ -22,11 +22,12 @@ if the nettskjema submission data has been returned
 with \code{asis = TRUE}.
 }
 \examples{
-\dontrun{
-form_id <- 100000
-get_raw_codebook(form_id)
-
-Or if the token is saved in a non-standard name
-get_raw_codebook(form_id)
+\dontshow{
+vcr::insert_example_cassette("ns_get_raw_codebook", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+get_raw_codebook(123823)
+\dontshow{
+vcr::eject_cassette()
 }
 }

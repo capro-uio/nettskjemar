@@ -18,19 +18,30 @@
 #'   the class `"ns-data"`.
 #'
 #' @examples
-#' \dontrun{
-#' data <- ns_get_data(11000)
-#' cb <- ns_get_codebook(11000)
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_add_labels", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' data <- ns_get_data(123823)
+#' cb <- ns_get_codebook(123823)
 #' labeled_data <- ns_add_labels(data, cb)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 #'
 #' @export
 ns_add_labels <- function(data, codebook) {
-  cb <- subset(codebook, codebook$element_code %in% names(data))
+  cb <- subset(
+    codebook,
+    codebook$element_code %in% names(data)
+  )
 
   for (var in cb$element_code) {
     cb_var <- codebook[codebook$element_code %in% var, ]
-    cb_vals <- subset(cb_var, !is.na(cb_var$answer_code))
+    cb_vals <- subset(
+      cb_var,
+      !is.na(cb_var$answer_code)
+    )
 
     if (nrow(cb_vals) == 0) {
       vals <- type_convert(
@@ -70,10 +81,16 @@ ns_add_labels <- function(data, codebook) {
   )
 }
 
+#' Check if object is of class ns-data
+#' @keywords internal
+#' @noRd
 is_ns_data <- function(x) {
   inherits(x, "ns-data")
 }
 
+#' Convert types safely
+#' @keywords internal
+#' @noRd
 type_convert <- function(x) {
   utils::type.convert(
     x,

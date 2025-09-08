@@ -32,7 +32,9 @@ ns_get_attachment <- function(attachment_id, path = NULL) {
     ) |>
     httr2::req_perform()
 
-  if (!is.null(path)) writeBin(httr2::resp_body_raw(resp), path)
+  if (!is.null(path)) {
+    writeBin(httr2::resp_body_raw(resp), path)
+  }
 
   invisible(resp)
 }
@@ -124,7 +126,7 @@ ns_get_form_attachments <- function(
 
   ids <- ns_list_form_attachments(form_id)
 
-  if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
   files <- switch(
     filenames,
@@ -215,7 +217,7 @@ ns_get_submission_attachments <- function(
 ) {
   ids <- ns_list_submission_attachments(submission_id)
 
-  if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
   files <- switch(
     filenames,

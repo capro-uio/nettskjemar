@@ -6,10 +6,10 @@ http_interactions:
     status: 200
     headers:
       server: nginx
-      date: Tue, 26 Aug 2025 11:08:29 GMT
+      date: Mon, 08 Sep 2025 14:57:37 GMT
       content-encoding: gzip
       referrer-policy: same-origin
-      set-cookie: JSESSIONID=0B2FF12E70043DC39E8B131948A4C77F; Path=/api/v3; Secure;
+      set-cookie: JSESSIONID=870DC0F5E9FF9CC59CF76079AE89D67F; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       vary: accept-encoding
@@ -38,6 +38,7 @@ http_interactions:
         window-management=(), storage-access=()
       content-security-policy: object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
       tdm-reservation: '1'
+      uio-cache-status: MISS
     body:
       string: '[{"elementId":1641694,"questionId":null,"text":"Let talk about Nettskjema!
         This is a subheading!","description":null,"elementType":"HEADING","dateFormat":null,"sequence":1,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":null,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":null,"minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":[],"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":1641695,"questionId":null,"text":null,"description":"<p>This
@@ -78,5 +79,5 @@ http_interactions:
         sign-ups","redirectToForm":null,"isPreselected":true,"isCorrect":false,"additionalRecipientEmail":null,"externalAnswerOptionId":"events","image":null,"imageUrl":null,"altText":null,"externalElementId":"checkbox","textOrAltText":"Event
         sign-ups"}],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false},{"elementId":3525020,"questionId":3786410,"text":"This
         is an attachment2","description":"<p>with description</p>\n\n<p></p>\n","elementType":"ATTACHMENT","dateFormat":null,"sequence":14,"maxSelectedAnswerOptions":null,"imageUrl":null,"altText":null,"linearScaleType":null,"nationalIdNumberType":null,"repeatedNationalIdRequired":null,"nationalIdNumberOfLetters":null,"nationalIdNumberOfDigits":null,"isAutofill":null,"image":null,"isMandatory":false,"isHorizontal":false,"isRangeMarksShown":false,"externalElementId":"attachment_2","minimumValue":null,"maximumValue":null,"sendAdditionalRecipientEmail":false,"useForRedirectToForm":false,"minimumValueText":null,"midValueText":null,"maximumValueText":null,"numberOfDecimals":null,"routingReferenceIds":[],"answerOptions":[],"answerOptionsVisibilityFilter":[],"subElements":[],"validationScripts":[],"isAnswerHashed":false,"maxNumberOfCharacters":null,"isRandomizedOrder":false}]'
-  recorded_at: 2025-08-26 11:08:29
+  recorded_at: 2025-09-08 14:57:37
 recorded_with: VCR-vcr/2.0.0

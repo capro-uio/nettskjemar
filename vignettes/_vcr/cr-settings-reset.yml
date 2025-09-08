@@ -8,12 +8,13 @@ http_interactions:
     status: 204
     headers:
       server: nginx
-      date: Tue, 26 Aug 2025 11:08:28 GMT
-      set-cookie: JSESSIONID=F24C7C7A18AABB4EF4C54B071596A993; Path=/api/v3; Secure;
+      date: Mon, 08 Sep 2025 14:57:36 GMT
+      set-cookie: JSESSIONID=FE45683C41D609A3AA452201FE111223; Path=/api/v3; Secure;
         HttpOnly; SameSite=Lax
       strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
       x-application-gateway-proxy: api-own-auth
       x-robots-tag: noindex, nofollow, noarchive
       cache-control: private, max-age=0, no-cache, no-store
-  recorded_at: 2025-08-26 11:08:28
+      uio-cache-status: MISS
+  recorded_at: 2025-09-08 14:57:36
 recorded_with: VCR-vcr/2.0.0

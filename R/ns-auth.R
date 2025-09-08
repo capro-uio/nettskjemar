@@ -20,7 +20,8 @@
 #' }
 ns_req <- function(...) {
   httr2::request(ns_url()) |>
-    ns_req_auth(...)
+    ns_req_auth(...) |>
+    httr2::req_headers(`Accept-Encoding` = NULL)
 }
 
 #' Set general nettskjema api URL.
@@ -91,15 +92,15 @@ ns_req_auth <- function(
 #' }
 #' @export
 ns_client <- function(
-  client_id,
-  client_secret,
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
   client_name = "nettskjemar"
 ) {
   # Check for valid id and secret
   if (!ns_has_auth(client_id, client_secret)) {
     cli::cli_abort(c(
       "Variables ",
-      "{.code client_id} and ",
+      "{.code client_id} and/or ",
       "{.code client_secret} ",
       "are not set up.",
       "Please read ",
@@ -143,8 +144,49 @@ ns_has_auth <- function(
   client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
   client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET")
 ) {
-  cid <- validate_client_pattern(client_id, type = "id")
-  cs <- validate_client_pattern(client_secret, type = "secret")
+  ns_validate_client_id(client_id) &&
+    ns_validate_client_secret(client_secret)
+}
 
-  cid && cs
+
+#' Get Current Nettskjema Access Token
+#'
+#' Retrieves the current OAuth2 access token for debugging
+#' purposes, such as testing endpoints in Swagger UI.
+#' This function uses the client credentials flow to obtain
+#' the token.
+#' You will not normally need to call this function
+#' directly, as authentication is handled automatically.
+#'
+#' @inheritParams ns_req_auth
+#' @return httr2 token object, list with
+#'    access_token, token_type, and expires_in
+#' @export
+#' @examples
+#' \dontrun{
+#' # Get token for Swagger debugging
+#' token <- ns_get_token()
+#' token$access_token
+#' }
+ns_get_token <- function(
+  client_id = Sys.getenv("NETTSKJEMA_CLIENT_ID"),
+  client_secret = Sys.getenv("NETTSKJEMA_CLIENT_SECRET"),
+  client_name = "nettskjemar"
+) {
+  req <- ns_req(
+    client_id = client_id,
+    client_secret = client_secret,
+    client_name = client_name
+  ) |>
+    httr2::req_perform()
+
+  token <- req$request$policies$auth_sign$cache
+
+  if (is.null(token)) {
+    cli::cli_abort(c(
+      "Failed to retrieve access token.",
+      "Please check your client ID and secret."
+    ))
+  }
+  token$get()
 }

@@ -134,3 +134,67 @@ test_that("triggers warning", {
     "Cannot write object of class"
   )
 })
+
+# Test for print.ns_codebook_raw (lines 108-109)
+test_that("print.ns_codebook_raw works correctly", {
+  # Create a mock raw codebook
+  mock_raw_codebook <- structure(
+    list(
+      form_id = 12345,
+      elements = list(
+        list(elementType = "TEXT"),
+        list(elementType = "CHECKBOX"),
+        list(elementType = "MATRIX")
+      )
+    ),
+    class = c("ns_codebook_raw", "list")
+  )
+
+  # Capture the print output
+  output <- capture.output(print(mock_raw_codebook))
+
+  expect_true(any(grepl("Nettskjema raw codebook for form 12345", output)))
+  expect_true(any(grepl("no. elements: 3", output)))
+})
+
+test_that("ns_write_codebook.ns_codebook_raw handles path extension", {
+  mock_raw_codebook <- structure(
+    list(
+      form_id = 12345,
+      elements = list(list(elementType = "TEXT"))
+    ),
+    class = c("ns_codebook_raw", "list")
+  )
+
+  withr::with_tempdir({
+    expect_message(
+      ns_write_codebook(mock_raw_codebook, "test.txt"),
+      "Switching path extension to .json"
+    )
+    expect_true(file.exists("test.json"))
+  })
+})
+
+test_that("has_codebook returns logical value", {
+  with_mocked_bindings(
+    ns_get_meta = function(form_id) {
+      list(isCodebookValid = TRUE)
+    },
+    {
+      result <- has_codebook(12345)
+      expect_true(result)
+      expect_type(result, "logical")
+    }
+  )
+
+  with_mocked_bindings(
+    ns_get_meta = function(form_id) {
+      list(isCodebookValid = FALSE)
+    },
+    {
+      result <- has_codebook(12345)
+      expect_false(result)
+      expect_type(result, "logical")
+    }
+  )
+})

@@ -20,10 +20,16 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' dt <- ns_get_data(11000)
-#' ns_alter_checkbox(data = dt, to = "list")
-#' ns_alter_checkbox(data = dt, to = "character", sep = ";")
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_alter_checkbox", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' dt <- ns_get_data(123823)
+#' cb <- ns_get_codebook(123823)
+#' ns_alter_checkbox(dt, to = "list", cb = cb)
+#' ns_alter_checkbox(dt, to = "character", sep = ";", cb = cb)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_alter_checkbox <- function(
   data,
@@ -34,6 +40,11 @@ ns_alter_checkbox <- function(
   to <- match.arg(to)
 
   check_cols <- find_checkbox_matrix(data, cb)
+
+  if (nrow(check_cols) == 0) {
+    cli::cli_alert_info("No checkbox matrix variables found.")
+    return(data)
+  }
 
   dt <- switch(
     to,
@@ -78,12 +89,20 @@ ns_alter_checkbox <- function(
 #'   * `lab_answ`: Answer text of the variable.
 #'
 #' @examples
-#' # Example usage:
+#' \dontshow{
+#' vcr::insert_example_cassette("find_checkbox_matrix", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' dt <- ns_get_data(123823)
+#' cb <- ns_get_codebook(123823)
 #' find_checkbox_matrix(data = dt, cb = cb)
 #' find_checkbox_matrix(data = dt)
+#' \dontshow{
+#' vcr::eject_cassette()
+#' }
 #'
 #' @noRd
-find_checkbox_matrix <- function(data, cb) {
+find_checkbox_matrix <- function(data, cb = NULL) {
   if (is.null(cb)) {
     cb <- ns_get_codebook(unique(data$formid))
   }
@@ -146,7 +165,6 @@ cbm_aggr <- function(data, fun, ...) {
     FUN = fun,
     ...
   )
-
   split_df <- split(aggr, aggr[["X2"]])
   split_df <- lapply(split_df, function(x) {
     names(x)[3] <- unique(x[["X2"]])
@@ -179,6 +197,16 @@ cbm_aggr <- function(data, fun, ...) {
 #'      checkbox matrix.
 #' @noRd
 checkbox2long <- function(data, columns) {
+  if (nrow(columns) == 0) {
+    cli::cli_warn("No checkbox matrix variables found.")
+    return(data)
+  }
+
+  if (nrow(data) == 0) {
+    cli::cli_warn("Data has no rows, cannot process checkboxes.")
+    return(data)
+  }
+
   ret_dat <- list()
   for (g in unique(columns$X2)) {
     cols <- subset(columns, columns$X2 %in% g)
@@ -208,10 +236,10 @@ checkbox2long <- function(data, columns) {
     ret_dat <- c(
       ret_dat,
       list(dat_long)
-    )
+    ) |>
+      stats::na.omit()
   }
-  ret_dat <- do.call(rbind, ret_dat)
-  stats::na.omit(ret_dat)
+  do.call(rbind, ret_dat)
 }
 
 #' Identify Checkbox Matrix Variables
@@ -226,8 +254,9 @@ checkbox2long <- function(data, columns) {
 #'
 #' @noRd
 is_checkbox_matrix <- function(x) {
-  a <- attributes(x)$ns_type
-  if (length(a) == 0) return(FALSE)
+  if (is.null(attr(x, "ns_type"))) {
+    return(FALSE)
+  }
 
   attributes(x)$ns_type %in% "MATRIX_CHECKBOX"
 }

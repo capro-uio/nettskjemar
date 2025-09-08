@@ -89,10 +89,10 @@ str(lab_data)
 
 You can see there are lots of label attributes attached to `lab_data` that are not there in the `data` object.
 These labels are attached from the codebook, and provide important context to what the data source actually is.
-These hidden features of the data are unlocked when working with functions from the {haven} package.
-
+These hidden features of the data are unlocked when working with functions from the [{haven}](https://haven.tidyverse.org/) package.
 
 Notice how the metadata (variable and value labels) are now embedded in the dataset.
+
 
 ## Exploring Labelled Data with `{haven}`
 

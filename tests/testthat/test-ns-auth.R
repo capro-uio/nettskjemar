@@ -95,3 +95,53 @@ test_that("ns_req creates a valid request", {
   expect_s3_class(req, "httr2_response")
   expect_equal(httr2::resp_status(req), 200)
 })
+
+test_that("ns_get_token extracts token from request", {
+  test_token <- "test_token_123"
+  # Mock a successful request with token
+  mock_response <- list(
+    request = list(
+      policies = list(
+        auth_sign = list(
+          cache = list(get = function() {
+            list(access_token = test_token)
+          })
+        )
+      )
+    )
+  )
+
+  # Mock ns_req and req_perform to return our mock
+  local_mocked_bindings(
+    "req_url_path_append" = function(req, ...) req,
+    "req_perform" = function(req) mock_response,
+    .package = "httr2"
+  )
+  local_mocked_bindings(
+    "ns_req" = function(...) list()
+  )
+
+  result <- ns_get_token()
+  expect_equal(
+    result$access_token,
+    test_token
+  )
+})
+
+test_that("ns_get_token handles missing token gracefully", {
+  # Mock response with missing token structure
+  mock_response <- list(request = list(policies = list()))
+
+  local_mocked_bindings(
+    "req_url_path_append" = function(req, ...) req,
+    "req_perform" = function(req) mock_response,
+    .package = "httr2"
+  )
+  local_mocked_bindings(
+    "ns_req" = function(...) list(),
+  )
+  expect_error(
+    ns_get_token(),
+    "Failed to retrieve access token"
+  )
+})

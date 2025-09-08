@@ -2,6 +2,7 @@ test_that("rm_ext works", {
   expect_equal(rm_ext("path.txt"), "path")
   expect_equal(rm_ext("some/path.txt"), "some/path")
   expect_equal(rm_ext("path.txt.txt"), "path.txt")
+  expect_equal(rm_ext("path"), "path")
 })
 
 test_that("default to works", {

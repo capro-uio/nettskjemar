@@ -25,6 +25,9 @@ ns_get_submission <- function(submission_id) {
 
 #' Get an individual submission answer as a pdf
 #'
+#' Writes the Nettskjema generated report PDF to
+#' the specified path, defaults to `<submission_id>.pdf`
+#'
 #' @template submission_id
 #' @template path
 #' @return nothing, writes file to path
@@ -38,15 +41,15 @@ ns_get_submission_pdf <- function(
   submission_id,
   path = sprintf("%s.pdf", submission_id)
 ) {
-  resp <- ns_req() |>
+  ns_req() |>
     httr2::req_url_path_append(
       "form",
       "submission",
       submission_id,
       "pdf"
     ) |>
-    httr2::req_headers("accept: application/pdf") |>
-    httr2::req_perform()
-
-  writeBin(httr2::resp_body_raw(resp), path)
+    httr2::req_headers(Accept = "application/pdf") |>
+    httr2::req_perform() |>
+    httr2::resp_body_raw() |>
+    writeBin(path)
 }

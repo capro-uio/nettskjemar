@@ -9,9 +9,14 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' meta_110000 <- ns_get_meta(110000)
-#' codebook(meta_110000)
+#' \dontshow{
+#' vcr::insert_example_cassette("codebook", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' meta <- ns_get_meta(123823)
+#' codebook(meta)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 codebook <- function(meta) {
   els <- lapply(
@@ -41,15 +46,23 @@ codebook <- function(meta) {
 #' @return list of class ns_meta_data
 #' @export
 #' @examples
-#' \dontrun{
-#' codebook_110000 <- ns_get_codebook(110000)
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_codebook", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' ns_get_codebook(123823)
+#' ns_get_codebook(123823, asis = TRUE)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 ns_get_codebook <- function(form_id, asis = FALSE) {
   cb <- get_raw_codebook(
     form_id = form_id
   )
 
-  if (asis) return(cb)
+  if (asis) {
+    return(cb)
+  }
 
   codebook(cb)
 }
@@ -66,13 +79,15 @@ ns_get_codebook <- function(form_id, asis = FALSE) {
 #' with \code{asis = TRUE}.
 #' @template form_id
 #' @return long format tibble with meta-data for a specific nettskjema
+#' @export
 #' @examples
-#' \dontrun{
-#' form_id <- 100000
-#' get_raw_codebook(form_id)
-#'
-#' Or if the token is saved in a non-standard name
-#' get_raw_codebook(form_id)
+#' \dontshow{
+#' vcr::insert_example_cassette("ns_get_raw_codebook", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' get_raw_codebook(123823)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 get_raw_codebook <- function(form_id) {
   resp <- ns_req() |>
@@ -195,8 +210,13 @@ ns_write_codebook.ns_codebook <- function(codebook, path, sep = "\t", ...) {
 #' @export
 #' @importFrom tools file_ext
 #' @examples
-#' \dontrun{
-#' has_codebook(110000)
+#' \dontshow{
+#' vcr::insert_example_cassette("has_codebook", package = "nettskjemar")
+#' nettskjemar:::mock_if_no_auth()
+#' }
+#' has_codebook(123823)
+#' \dontshow{
+#' vcr::eject_cassette()
 #' }
 has_codebook <- function(form_id) {
   meta <- ns_get_meta(form_id)

@@ -1,5 +1,10 @@
 # nettskjemar (development version)
 
+# nettskjemar 1.0.4
+
+- fixed bug in client secret validation that used to error if secret contained special characters
+- Added more tests and vcr examples
+
 # nettskjemar 1.0.3
 
 - Added `ns_sitrep()`

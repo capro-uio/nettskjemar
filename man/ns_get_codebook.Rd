@@ -19,7 +19,13 @@ With the given API token, will retrieve
 a list of all the forms you have access to
 }
 \examples{
-\dontrun{
-codebook_110000 <- ns_get_codebook(110000)
+\dontshow{
+vcr::insert_example_cassette("ns_get_codebook", package = "nettskjemar")
+nettskjemar:::mock_if_no_auth()
+}
+ns_get_codebook(123823)
+ns_get_codebook(123823, asis = TRUE)
+\dontshow{
+vcr::eject_cassette()
 }
 }

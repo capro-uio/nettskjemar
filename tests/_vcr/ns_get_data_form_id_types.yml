@@ -1,0 +1,23 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://nettskjema.no/api/v3/form/123456/csv-report
+  response:
+    status: 403
+    headers:
+      server: nginx
+      date: Sat, 06 Sep 2025 16:40:36 GMT
+      content-length: '97'
+      content-encoding: gzip
+      set-cookie: JSESSIONID=1443EFCBBDECCD5F1B09272C02393D64; Path=/api/v3; Secure;
+        HttpOnly; SameSite=Lax
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+      vary: accept-encoding
+      x-application-gateway-proxy: api-own-auth
+      x-robots-tag: noindex, nofollow, noarchive
+      content-type: application/json
+      cache-control: private, max-age=0, no-cache, no-store
+    body:
+      string: '{"message":"Du har ikke tilgang til å redigere skjemaet med id 123456."}'
+  recorded_at: 2025-09-06 16:40:36
+recorded_with: VCR-vcr/2.0.0
