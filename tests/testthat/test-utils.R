@@ -5,12 +5,15 @@ test_that("rm_ext works", {
   expect_equal(rm_ext("path"), "path")
 })
 
-test_that("default to works", {
+test_that("%||% selects correct values", {
   expect_equal("a" %||% "b", "a")
   expect_equal(NA %||% "b", "b")
   expect_equal(NULL %||% "b", "b")
-  expect_equal(list() %||% "b", "b")
+  expect_equal("" %||% "b", "b")
+  expect_equal(character(0) %||% "b", "b")
+  expect_equal(c("a", "b") %||% "b", c("a", "b"))
 })
+
 
 dt <- lapply(1:10, function(x) {
   list(

@@ -21,7 +21,49 @@
 ns_req <- function(...) {
   httr2::request(ns_url()) |>
     ns_req_auth(...) |>
-    httr2::req_headers(`Accept-Encoding` = NULL)
+    httr2::req_headers(`Accept-Encoding` = NULL) |>
+    httr2::req_error(
+      is_error = function(resp) {
+        httr2::resp_is_error(resp)
+      },
+      body = function(resp) {
+        error_details(resp)
+      }
+    )
+}
+
+#' Extract error details from an httr2 response
+#' @param resp An httr2 response object
+#' @return A character vector with error title and message
+#' @keywords internal
+#' @noRd
+error_details <- function(resp) {
+  status <- httr2::resp_status(resp)
+  status_desc <- httr2::resp_status_desc(resp)
+
+  ed <- tryCatch(
+    {
+      body <- httr2::resp_body_json(resp)
+      list(
+        title = body$title %||% body$error %||% "API Error",
+        message = body$message %||%
+          body$detail %||%
+          body$error_description %||%
+          "No additional details provided"
+      )
+    },
+    error = function(e) {
+      list(
+        title = "API Error",
+        message = "Unable to parse error details from response"
+      )
+    }
+  )
+
+  c(
+    paste("Error:", ed$title),
+    paste("Message:", ed$message)
+  )
 }
 
 #' Set general nettskjema api URL.

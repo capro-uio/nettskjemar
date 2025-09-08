@@ -17,10 +17,19 @@ rm_ext <- function(path) {
 #' assign b if a is nothing
 #' @noRd
 `%||%` <- function(a, b) {
+  if (length(a) > 1) {
+    return(a)
+  }
+  if (is.null(a)) {
+    return(b)
+  }
   if (length(a) == 0) {
     return(b)
   }
-  if (is.na(a) || is.null(a) || a == "") {
+  if (is.na(a)) {
+    return(b)
+  }
+  if (a == "") {
     return(b)
   }
   a

@@ -4,6 +4,7 @@
 
 - fixed bug in client secret validation that used to error if secret contained special characters
 - Added more tests and vcr examples
+- Added better error messages for API errors
 
 # nettskjemar 1.0.3
 

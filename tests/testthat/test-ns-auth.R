@@ -145,3 +145,52 @@ test_that("ns_get_token handles missing token gracefully", {
     "Failed to retrieve access token"
   )
 })
+
+mock_response <- function(
+  status = 404,
+  body = charToRaw(sprintf(
+    '{"title": "%s", "message": "%s"}',
+    "Mock Error",
+    "This is a mock error message"
+  ))
+) {
+  structure(
+    list(
+      status_code = status,
+      type = "response",
+      method = "GET",
+      url = "https://nettskjema.no/api/v3/mock-endpoint",
+      request = list(),
+      cache = environment(),
+      headers = list(
+        `content-type` = "application/json"
+      ),
+      body = body
+    ),
+    class = "httr2_response"
+  )
+}
+
+test_that("error_details parses error details from valid response body", {
+  resp <- mock_response()
+
+  result <- error_details(resp)
+  expect_length(result, 2)
+  expect_equal(result[1], "Error: Mock Error")
+  expect_equal(result[2], "Message: This is a mock error message")
+})
+
+test_that("error_details handles missing body keys with fallback values", {
+  resp <- mock_response(
+    401,
+    charToRaw("PROBLEMATIC BODY")
+  )
+
+  result <- error_details(resp)
+  expect_length(result, 2)
+  expect_equal(result[1], "Error: API Error")
+  expect_equal(
+    result[2],
+    "Message: Unable to parse error details from response"
+  )
+})
